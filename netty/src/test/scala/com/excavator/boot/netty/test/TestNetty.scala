@@ -72,7 +72,7 @@ object TestNetty{
 
   @BeforeAll
   def initNettyServer() = {
-    nettyServer = new NettyServer(new LengthFieldRpcHandler)
+    nettyServer = new NettyServer(9500, new LengthFieldRpcHandler)
     nettyServer.run("")
   }
 
