@@ -5,7 +5,7 @@ import java.util.UUID
 import com.excavator.boot.netty.client.NettyClient
 import com.excavator.boot.netty.component.LengthFieldRpcHandler
 import com.excavator.boot.netty.enums.ResponseViewMode
-import com.excavator.boot.netty.server.lengthField.NettyServer
+import com.excavator.boot.netty.lengthField.NettyServer
 import org.junit.jupiter.api._
 import org.junit.jupiter.api.Assertions._
 import org.slf4j.LoggerFactory
