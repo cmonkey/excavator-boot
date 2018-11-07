@@ -15,7 +15,7 @@ class TestNettyClient {
 
   var data = ""
 
-  var responseViewMode: ResponseViewMode = ResponseViewMode.FULL
+  var responseViewMode: ResponseViewMode = ResponseViewMode.BODY
 
   @BeforeEach
   def initRequestId() ={
