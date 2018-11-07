@@ -44,6 +44,8 @@
 		<javax-servlet.version>3.1.0</javax-servlet.version>
 		<redisson.version>3.6.4</redisson.version>
 		<commons-codec.version>1.11</commons-codec.version>
+		<netty.version>4.1.29.Final</netty.version>
+		<junit-jupiter.version>5.3.1</junit-jupiter.version>
 	</properties>
 
 	<licenses>
@@ -165,6 +167,33 @@
 				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-transport-native-epoll</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>27.0-jre</version>
 			</dependency>
 
 			<!-- excavator boot start -->

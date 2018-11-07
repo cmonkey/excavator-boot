@@ -12,13 +12,14 @@
 	<description>Excavator Boot project for Spring Boot</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.14.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.excavator-boot</groupId>
+		<artifactId>excavator-boot-dependencies</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>./excavator-boot-dependencies/pom.xml</relativePath>
 	</parent>
 	<modules>
 		<module>excavator-boot-dependencies</module>
+		<module>netty</module>
 	</modules>
 
 	<properties>
@@ -38,6 +39,7 @@
 		<cobertura.maven.plugin>2.6</cobertura.maven.plugin>
 		<coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
 		<main.user.dir>${user.dir}</main.user.dir>
+		<alchim31.scala-version>3.4.2</alchim31.scala-version>
 	</properties>
 	<build>
 		<plugins>
@@ -198,6 +200,42 @@
                -    </executions>
                -</plugin>
                -->
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<version>${alchim31.scala-version}</version>
+				<executions>
+					<execution>
+						<id>compile-scala</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-compile-scala</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<recompileMode>incremental</recompileMode>
+					<compileOrder>Mixed</compileOrder>
+					<scalaVersion>${scala.version}</scalaVersion>
+					<args>
+						<arg>-deprecation</arg>
+					</args>
+					<jvmArgs>
+						<jvmArg>-Xms64m</jvmArg>
+						<jvmArg>-Xmx1024m</jvmArg>
+					</jvmArgs>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
