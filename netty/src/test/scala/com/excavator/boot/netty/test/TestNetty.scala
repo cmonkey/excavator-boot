@@ -67,7 +67,7 @@ class TestNetty {
 
 }
 
-object TestNettyClient{
+object TestNetty{
   var nettyServer: NettyServer = null
 
   @BeforeAll
