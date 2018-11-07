@@ -17,20 +17,26 @@ import io.netty.handler.codec.string.StringEncoder
 import io.netty.util.concurrent.GenericFutureListener
 import org.slf4j.LoggerFactory
 
-class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: ResponseViewMode){
+class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, charset: Charset, responseViewMode: ResponseViewMode){
   private val logger = LoggerFactory.getLogger(classOf[NettyClient])
 
   private val lock = new ReentrantLock()
   private var bootstrap: Bootstrap = null
   private var workerGroup:EventLoopGroup = null
   private var channelFuture: ChannelFuture = null
+  val defaultMaxFrameLength = 10 * 1024 * 1024
+  val defaultPosition = 8
 
   def this(host:String, port:Int) = {
-    this(host, port, Charsets.UTF_8, ResponseViewMode.FULL)
+    this(host, port, defaultMaxFrameLength, defaultPosition, Charsets.UTF_8, ResponseViewMode.BODY)
   }
 
   def this(host:String, port:Int, charset: Charset) = {
-    this(host, port, charset, ResponseViewMode.FULL)
+    this(host, port, defaultMaxFrameLength, defaultPosition, charset, ResponseViewMode.BODY)
+  }
+
+  def this(host: String, port:Int, maxFrameLength: Int, position: Int){
+    this(host, port, maxFrameLength, position, Charsets.UTF_8, ResponseViewMode.BODY)
   }
 
   init()
@@ -53,7 +59,7 @@ class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: Res
     bootstrap.handler(new ChannelInitializer[SocketChannel]() {
       override protected def initChannel(socketChannel: SocketChannel): Unit = {
         socketChannel.pipeline
-          .addLast(new RpcDecoder(1024 * 1024 * 10, 8, charset, responseViewMode))
+          .addLast(new RpcDecoder(maxFrameLength, position, charset, responseViewMode))
           .addLast(new StringEncoder(charset))
           .addLast(new RpcHandler)
       }
