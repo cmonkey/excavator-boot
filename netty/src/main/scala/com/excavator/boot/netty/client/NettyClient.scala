@@ -5,6 +5,7 @@ import java.util.concurrent.locks.ReentrantLock
 
 import com.excavator.boot.netty.component.{RpcDecoder, RpcHandler}
 import com.excavator.boot.netty.enums.ResponseViewMode
+import com.excavator.boot.netty.response.ResponseFuture
 import com.google.common.base.{Charsets, StandardSystemProperty}
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.epoll.{EpollEventLoopGroup, EpollSocketChannel}
@@ -13,6 +14,7 @@ import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.string.StringEncoder
+import io.netty.util.concurrent.GenericFutureListener
 import org.slf4j.LoggerFactory
 
 class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: ResponseViewMode){
@@ -29,6 +31,7 @@ class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: Res
   }
 
   var bootstrap: Bootstrap = null
+  var workerGroup:EventLoopGroup = null
   var channelFuture: ChannelFuture = null
 
   init()
@@ -37,8 +40,6 @@ class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: Res
     lock.lock()
 
     bootstrap = new Bootstrap()
-
-    var workerGroup:EventLoopGroup = null
 
     if (StandardSystemProperty.OS_NAME.value == "Linux") {
       workerGroup = new EpollEventLoopGroup
@@ -49,7 +50,7 @@ class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: Res
       bootstrap.channel(classOf[NioSocketChannel])
     }
     bootstrap.group(workerGroup)
-    bootstrap.option(ChannelOption.SO_KEEPALIVE, true)
+    bootstrap.option[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, true)
     bootstrap.handler(new ChannelInitializer[SocketChannel]() {
       override protected def initChannel(socketChannel: SocketChannel): Unit = {
         socketChannel.pipeline
@@ -68,4 +69,25 @@ class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: Res
     lock.unlock()
   }
 
+  def send(msg:String): String = {
+    lock.lock()
+    try{
+
+      val responseFuture = new ResponseFuture()
+
+      channelFuture.addListener(new GenericFutureListener[ChannelFuture](){
+        override def operationComplete(f: ChannelFuture): Unit = {
+          channelFuture.channel.pipeline.get(classOf[RpcHandler]).setResponseFuture(responseFuture)
+          channelFuture.channel.writeAndFlush(msg).sync
+        }
+      })
+
+      responseFuture.get()
+
+    }finally {
+      channelFuture.channel().close()
+      workerGroup.shutdownGracefully()
+      lock.unlock()
+    }
+  }
 }
