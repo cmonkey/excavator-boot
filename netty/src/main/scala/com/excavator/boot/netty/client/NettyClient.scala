@@ -24,15 +24,13 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
   private var bootstrap: Bootstrap = null
   private var workerGroup:EventLoopGroup = null
   private var channelFuture: ChannelFuture = null
-  val defaultMaxFrameLength = 10 * 1024 * 1024
-  val defaultPosition = 8
 
   def this(host:String, port:Int) = {
-    this(host, port, defaultMaxFrameLength, defaultPosition, Charsets.UTF_8, ResponseViewMode.BODY)
+    this(host, port, 10 * 1024 * 1024, 8, Charsets.UTF_8, ResponseViewMode.BODY)
   }
 
   def this(host:String, port:Int, charset: Charset) = {
-    this(host, port, defaultMaxFrameLength, defaultPosition, charset, ResponseViewMode.BODY)
+    this(host, port, 10 * 1024 * 1024, 8, charset, ResponseViewMode.BODY)
   }
 
   def this(host: String, port:Int, maxFrameLength: Int, position: Int){
