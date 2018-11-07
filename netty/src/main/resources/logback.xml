@@ -1,134 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-
-    <property name="LOG_FILE" value="/var/log/web"/>
+    <property name="LOG_FILE" value="/tmp"/>
     <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread%X{sourceThread}]%logger{24} - %msg%n"/>
 
-    <springProfile name="dev">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{MM/dd/yyyy HH:mm:ss} %-5level [%thread%X{sourceThread}]%logger{24} - %msg%n</pattern>
+        </encoder>
+    </appender>
 
-        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-                <pattern>%d{MM/dd/yyyy HH:mm:ss} %-5level [%thread%X{sourceThread}]%logger{24} - %msg%n</pattern>
-            </encoder>
-        </appender>
+    <appender name="ROLLING-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}/rolling.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_FILE}/log.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <!-- 保留30天的历史日志 -->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
 
-        <appender name="ROLLING-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${LOG_FILE}/rolling.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <!-- daily rollover -->
-                <fileNamePattern>${LOG_FILE}/log.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-                <!-- 保留30天的历史日志 -->
-                <maxHistory>7</maxHistory>
-            </rollingPolicy>
-            <encoder>
-                <pattern>${PATTERN}</pattern>
-            </encoder>
-        </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}/file.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_FILE}/file.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <!-- 保留30天的历史日志 -->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
 
-        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${LOG_FILE}/file.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <!-- daily rollover -->
-                <fileNamePattern>${LOG_FILE}/file.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-                <!-- 保留30天的历史日志 -->
-                <maxHistory>7</maxHistory>
-            </rollingPolicy>
-            <encoder>
-                <pattern>${PATTERN}</pattern>
-            </encoder>
-        </appender>
 
-        <appender name="SQL-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${LOG_FILE}/sql.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <!-- daily rollover -->
-                <fileNamePattern>${LOG_FILE}/sql.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-                <!-- 保留30天的历史日志 -->
-                <maxHistory>7</maxHistory>
-            </rollingPolicy>
-            <encoder>
-                <pattern>${PATTERN}</pattern>
-            </encoder>
-        </appender>
+    <logger name="com.excavator.boot.netty" level="DEBUG"/>
 
-        <logger name="org.springframework.jdbc.core.JdbcTemplate" level="debug">
-            <appender-ref ref="SQL-FILE"/>
-        </logger>
-
-        <logger name="org.springframework.web.servlet.mvc" level="info"/>
-
-        <root level="INFO">
-            <appender-ref ref="ROLLING-FILE"/>
-            <appender-ref ref="FILE"/>
-            <!--
-               -<appender-ref ref="STDOUT"/>
-               -->
-        </root>
-
-    </springProfile>
-
-    <springProfile name="prod">
-        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-                <pattern>%d{MM/dd/yyyy HH:mm:ss} %-5level [%thread%X{sourceThread}]%logger{24} - %msg%n</pattern>
-            </encoder>
-        </appender>
-
-        <appender name="ROLLING-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${LOG_FILE}/rolling.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <!-- daily rollover -->
-                <fileNamePattern>${LOG_FILE}/log.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-                <!-- 保留30天的历史日志 -->
-                <maxHistory>7</maxHistory>
-            </rollingPolicy>
-            <encoder>
-                <pattern>${PATTERN}</pattern>
-            </encoder>
-        </appender>
-
-        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${LOG_FILE}/file.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <!-- daily rollover -->
-                <fileNamePattern>${LOG_FILE}/file.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-                <!-- 保留30天的历史日志 -->
-                <maxHistory>7</maxHistory>
-            </rollingPolicy>
-            <encoder>
-                <pattern>${PATTERN}</pattern>
-            </encoder>
-        </appender>
-
-        <appender name="SQL-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${LOG_FILE}/sql.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <!-- daily rollover -->
-                <fileNamePattern>${LOG_FILE}/sql.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
-                <!-- 保留30天的历史日志 -->
-                <maxHistory>7</maxHistory>
-            </rollingPolicy>
-            <encoder>
-                <pattern>${PATTERN}</pattern>
-            </encoder>
-        </appender>
-
-        <logger name="org.springframework.jdbc.core.JdbcTemplate" level="debug">
-            <appender-ref ref="SQL-FILE"/>
-        </logger>
-
-        <logger name="org.springframework.web.servlet.mvc" level="info"/>
-
-        <root level="INFO">
-            <appender-ref ref="ROLLING-FILE"/>
-            <appender-ref ref="FILE"/>
-            <!--
-               -<appender-ref ref="STDOUT"/>
-               -->
-        </root>
-
-    </springProfile>
+    <root level="INFO">
+        <appender-ref ref="ROLLING-FILE"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
 
 </configuration>
