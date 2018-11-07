@@ -8,7 +8,7 @@ import com.excavator.boot.netty.enums.ResponseViewMode
 import com.google.common.base.{Charsets, StandardSystemProperty}
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.epoll.{EpollEventLoopGroup, EpollSocketChannel}
-import io.netty.channel.{ChannelInitializer, ChannelOption, EventLoopGroup, nio}
+import io.netty.channel._
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
@@ -29,6 +29,7 @@ class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: Res
   }
 
   var bootstrap: Bootstrap = null
+  var channelFuture: ChannelFuture = null
 
   init()
 
@@ -57,6 +58,8 @@ class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: Res
           .addLast(new RpcHandler)
       }
     })
+
+    channelFuture = bootstrap.connect(host, port).sync()
 
     if(logger.isDebugEnabled()){
       logger.debug(s"init bootstrap = ${bootstrap}")
