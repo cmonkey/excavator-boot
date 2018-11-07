@@ -1,4 +1,4 @@
-package com.excavator.boot.netty.client.test
+package com.excavator.boot.netty.test
 
 import java.util.UUID
 
@@ -10,8 +10,8 @@ import org.junit.jupiter.api._
 import org.junit.jupiter.api.Assertions._
 import org.slf4j.LoggerFactory
 
-class TestNettyClient {
-  private val logger = LoggerFactory.getLogger(classOf[TestNettyClient])
+class TestNetty {
+  private val logger = LoggerFactory.getLogger(classOf[TestNetty])
 
   var requestId = ""
 
