@@ -1,4 +1,4 @@
-package com.excavator.boot.netty.server.lengthField
+package com.excavator.boot.netty.lengthField
 
 import com.excavator.boot.netty.component.{RpcDecoder, RpcHandler}
 import com.excavator.boot.netty.enums.ResponseViewMode
