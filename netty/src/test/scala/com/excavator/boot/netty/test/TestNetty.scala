@@ -34,6 +34,26 @@ class TestNetty {
     testBody()
   }
 
+  @Test
+  @DisplayName("testInBody")
+  @RepeatedTest(1000) 
+  def testInBody(): Unit = {
+    for (i <- 0 until 1004){
+      data += "a"
+    }
+
+    testBody()
+  }
+
+  @Test
+  @DisplayName("testMaxBody")
+  @RepeatedTest(10000) 
+  def testMaxBody(): Unit = {
+    for(i <- 0 until 1000){
+      data += "abcdefghijklmnopqrstuvwxyz"
+    }
+    testBody()
+  }
   def testBody() = {
     val length = data.getBytes.length
 
