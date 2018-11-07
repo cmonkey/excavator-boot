@@ -20,7 +20,10 @@ import org.slf4j.LoggerFactory
 class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: ResponseViewMode){
   private val logger = LoggerFactory.getLogger(classOf[NettyClient])
 
-  val lock = new ReentrantLock()
+  private val lock = new ReentrantLock()
+  private var bootstrap: Bootstrap = null
+  private var workerGroup:EventLoopGroup = null
+  private var channelFuture: ChannelFuture = null
 
   def this(host:String, port:Int) = {
     this(host, port, Charsets.UTF_8, ResponseViewMode.FULL)
@@ -29,10 +32,6 @@ class NettyClient(host:String, port:Int, charset: Charset, responseViewMode: Res
   def this(host:String, port:Int, charset: Charset) = {
     this(host, port, charset, ResponseViewMode.FULL)
   }
-
-  var bootstrap: Bootstrap = null
-  var workerGroup:EventLoopGroup = null
-  var channelFuture: ChannelFuture = null
 
   init()
 
