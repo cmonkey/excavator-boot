@@ -19,6 +19,7 @@
 	</parent>
 	<modules>
 		<module>excavator-boot-dependencies</module>
+		<module>netty</module>
 	</modules>
 
 	<properties>
