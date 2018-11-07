@@ -14,6 +14,7 @@
   7. authorization  (基于redis 生成token, 和通过token 获取用户信息)
   8. commons-generator (通过简单的数据库配置，生成基本的代码框架)
   9. lock (提供分布式锁服务, 基于redisson)
+  10. netty (提供对同步报文的发送)
 
 
 
