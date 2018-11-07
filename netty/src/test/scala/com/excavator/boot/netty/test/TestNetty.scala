@@ -1,21 +1,23 @@
-package com.excavator.boot.netty.client.test
+package com.excavator.boot.netty.test
 
 import java.util.UUID
 
 import com.excavator.boot.netty.client.NettyClient
+import com.excavator.boot.netty.component.LengthFieldRpcHandler
 import com.excavator.boot.netty.enums.ResponseViewMode
+import com.excavator.boot.netty.lengthField.NettyServer
 import org.junit.jupiter.api._
 import org.junit.jupiter.api.Assertions._
 import org.slf4j.LoggerFactory
 
-class TestNettyClient {
-  private val logger = LoggerFactory.getLogger(classOf[TestNettyClient])
+class TestNetty {
+  private val logger = LoggerFactory.getLogger(classOf[TestNetty])
 
   var requestId = ""
 
   var data = ""
 
-  var responseViewMode: ResponseViewMode = ResponseViewMode.FULL
+  var responseViewMode: ResponseViewMode = ResponseViewMode.BODY
 
   @BeforeEach
   def initRequestId() ={
@@ -32,6 +34,26 @@ class TestNettyClient {
     testBody()
   }
 
+  @Test
+  @DisplayName("testInBody")
+  @RepeatedTest(1000) 
+  def testInBody(): Unit = {
+    for (i <- 0 until 1004){
+      data += "a"
+    }
+
+    testBody()
+  }
+
+  @Test
+  @DisplayName("testMaxBody")
+  @RepeatedTest(10000) 
+  def testMaxBody(): Unit = {
+    for(i <- 0 until 1000){
+      data += "abcdefghijklmnopqrstuvwxyz"
+    }
+    testBody()
+  }
   def testBody() = {
     val length = data.getBytes.length
 
@@ -60,5 +82,22 @@ class TestNettyClient {
   def clear() = {
     data = ""
     requestId = ""
+  }
+
+
+}
+
+object TestNetty{
+  var nettyServer: NettyServer = null
+
+  @BeforeAll
+  def initNettyServer() = {
+    nettyServer = new NettyServer(9500, new LengthFieldRpcHandler)
+    nettyServer.run("")
+  }
+
+  @AfterAll
+  def shutdown() = {
+    nettyServer.shutdown()
   }
 }
