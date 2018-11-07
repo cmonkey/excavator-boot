@@ -3,7 +3,9 @@ package com.excavator.boot.netty.client.test
 import java.util.UUID
 
 import com.excavator.boot.netty.client.NettyClient
+import com.excavator.boot.netty.component.LengthFieldRpcHandler
 import com.excavator.boot.netty.enums.ResponseViewMode
+import com.excavator.boot.netty.server.lengthField.NettyServer
 import org.junit.jupiter.api._
 import org.junit.jupiter.api.Assertions._
 import org.slf4j.LoggerFactory
@@ -60,5 +62,22 @@ class TestNettyClient {
   def clear() = {
     data = ""
     requestId = ""
+  }
+
+
+}
+
+object TestNettyClient{
+  var nettyServer: NettyServer = null
+
+  @BeforeAll
+  def initNettyServer() = {
+    nettyServer = new NettyServer(new LengthFieldRpcHandler)
+    nettyServer.run("")
+  }
+
+  @AfterAll
+  def shutdown() = {
+    nettyServer.shutdown()
   }
 }
