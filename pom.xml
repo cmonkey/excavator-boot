@@ -20,6 +20,7 @@
 	<modules>
 		<module>excavator-boot-dependencies</module>
 		<module>netty</module>
+		<module>idWorker-spring-boot-starter</module>
 	</modules>
 
 	<properties>
