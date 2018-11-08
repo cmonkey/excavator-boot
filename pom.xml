@@ -21,6 +21,7 @@
 		<module>excavator-boot-dependencies</module>
         <module>base</module>
         <module>common</module>
+        <module>common-generator</module>
 		<module>netty</module>
 		<module>idWorker-spring-boot-starter</module>
 	</modules>
