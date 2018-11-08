@@ -1,8 +1,8 @@
-package com.excavator.boot.netty.component
+package org.excavator.boot.netty.component
 
 import java.nio.charset.Charset
 
-import com.excavator.boot.netty.enums.ResponseViewMode
+import org.excavator.boot.netty.enums.ResponseViewMode
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder

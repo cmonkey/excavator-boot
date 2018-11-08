@@ -1,7 +1,7 @@
-package com.excavator.boot.netty.lengthField
+package org.excavator.boot.netty.lengthField
 
-import com.excavator.boot.netty.component.{RpcDecoder, RpcHandler}
-import com.excavator.boot.netty.enums.ResponseViewMode
+import org.excavator.boot.netty.component.{RpcDecoder, RpcHandler}
+import org.excavator.boot.netty.enums.ResponseViewMode
 import com.google.common.base.{Charsets, StandardSystemProperty}
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.{ChannelInboundHandler, ChannelInitializer, ChannelOption, EventLoopGroup}

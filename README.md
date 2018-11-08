@@ -36,7 +36,7 @@
    替换为：
 
     <parent>
-            <groupId>com.excavator.boot</groupId>
+            <groupId>org.excavator.boot</groupId>
             <artifactId>excavator-boot-dependencies</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <relativePath/> <!-- lookup parent from repository -->
