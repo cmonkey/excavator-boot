@@ -22,7 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author lh
+ * @author
  */
 public class StringUtil {
 
