@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.14.RELEASE</version>
+		<version>1.5.17.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -47,7 +47,7 @@
 		<netty.version>4.1.29.Final</netty.version>
 		<junit-jupiter.version>5.3.1</junit-jupiter.version>
         <commons-logging.version>1.2</commons-logging.version>
-		<guava.version>27.0-jre</guava.version>
+		<guava.version>19.0</guava.version>
 	</properties>
 
 	<licenses>
