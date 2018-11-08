@@ -6,11 +6,11 @@ object TestSnowflake extends App{
 
   val snowflake = Snowflake.create(1)
 
-  print(s"${snowflake.nextId()}")
+  println(s"id = ${snowflake.nextId()}")
 
   val groupName = "sss"
   val workerId = "bbb"
-  println(s"/${groupName}/${workerId}")
+  println(s"groupName/workerId = /${groupName}/${workerId}")
 
   val size = 1000
 
