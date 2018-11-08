@@ -10,8 +10,8 @@ import org.junit.jupiter.api._
 import org.junit.jupiter.api.Assertions._
 import org.slf4j.LoggerFactory
 
-class TestNetty {
-  private val logger = LoggerFactory.getLogger(classOf[TestNetty])
+class NettyTest {
+  private val logger = LoggerFactory.getLogger(classOf[NettyTest])
 
   var requestId = ""
 
