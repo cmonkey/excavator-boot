@@ -23,8 +23,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-public class TestCodeGen {
-    private final static Logger logger = LoggerFactory.getLogger(TestCodeGen.class);
+public class CodeGenTest {
+    private final static Logger logger = LoggerFactory.getLogger(CodeGenTest.class);
 
     @Test
     public void testCodeGen() throws IOException {
