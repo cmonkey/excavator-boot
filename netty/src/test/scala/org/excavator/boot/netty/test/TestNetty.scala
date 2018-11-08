@@ -1,11 +1,11 @@
-package com.excavator.boot.netty.test
+package org.excavator.boot.netty.test
 
 import java.util.UUID
 
-import com.excavator.boot.netty.client.NettyClient
-import com.excavator.boot.netty.component.LengthFieldRpcHandler
-import com.excavator.boot.netty.enums.ResponseViewMode
-import com.excavator.boot.netty.lengthField.NettyServer
+import org.excavator.boot.netty.client.NettyClient
+import org.excavator.boot.netty.component.LengthFieldRpcHandler
+import org.excavator.boot.netty.enums.ResponseViewMode
+import org.excavator.boot.netty.lengthField.NettyServer
 import org.junit.jupiter.api._
 import org.junit.jupiter.api.Assertions._
 import org.slf4j.LoggerFactory
@@ -67,7 +67,6 @@ class TestNetty {
 
     assertNotNull(result)
 
-    import com.excavator.boot.netty.enums.ResponseViewMode
     var responseId = result.substring(0, 8)
 
     if (responseViewMode eq ResponseViewMode.FULL) {

@@ -37,7 +37,7 @@
     </appender>
 
 
-    <logger name="com.excavator.boot.netty" level="DEBUG"/>
+    <logger name="org.excavator.boot.netty" level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="ROLLING-FILE"/>

@@ -1,11 +1,11 @@
-package com.excavator.boot.netty.client
+package org.excavator.boot.netty.client
 
 import java.nio.charset.Charset
 import java.util.concurrent.locks.ReentrantLock
 
-import com.excavator.boot.netty.component.{RpcDecoder, RpcHandler}
-import com.excavator.boot.netty.enums.ResponseViewMode
-import com.excavator.boot.netty.response.ResponseFuture
+import org.excavator.boot.netty.component.{RpcDecoder, RpcHandler}
+import org.excavator.boot.netty.enums.ResponseViewMode
+import org.excavator.boot.netty.response.ResponseFuture
 import com.google.common.base.{Charsets, StandardSystemProperty}
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.epoll.{EpollEventLoopGroup, EpollSocketChannel}

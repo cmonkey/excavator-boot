@@ -1,8 +1,8 @@
-package com.excavator.boot.netty.response
+package org.excavator.boot.netty.response
 
 import java.util.concurrent.{ArrayBlockingQueue, TimeUnit}
 
-import com.excavator.boot.netty.enums.State
+import org.excavator.boot.netty.enums.State
 import io.netty.util.concurrent.{Future, GenericFutureListener}
 
 import scala.concurrent.TimeoutException

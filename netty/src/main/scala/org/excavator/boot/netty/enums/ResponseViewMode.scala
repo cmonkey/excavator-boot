@@ -1,4 +1,4 @@
-package com.excavator.boot.netty.enums
+package org.excavator.boot.netty.enums
 
 sealed class ResponseViewMode protected(name:String,ordinal:Int) extends java.lang.Enum[ResponseViewMode](name, ordinal)
 

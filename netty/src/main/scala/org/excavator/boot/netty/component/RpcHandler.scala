@@ -1,6 +1,6 @@
-package com.excavator.boot.netty.component
+package org.excavator.boot.netty.component
 
-import com.excavator.boot.netty.response.ResponseFuture
+import org.excavator.boot.netty.response.ResponseFuture
 import io.netty.channel.{ChannelHandlerContext, SimpleChannelInboundHandler}
 
 class RpcHandler extends SimpleChannelInboundHandler[String]{

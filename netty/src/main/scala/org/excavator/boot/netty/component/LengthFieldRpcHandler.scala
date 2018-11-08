@@ -1,4 +1,4 @@
-package com.excavator.boot.netty.component
+package org.excavator.boot.netty.component
 
 import java.util.UUID
 
