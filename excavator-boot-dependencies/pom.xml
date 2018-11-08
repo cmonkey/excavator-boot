@@ -213,6 +213,21 @@
 				<artifactId>idWorker-spring-boot-starter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>base</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>netty</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<!-- excavator boot end -->
 
 			<!-- soga start -->
