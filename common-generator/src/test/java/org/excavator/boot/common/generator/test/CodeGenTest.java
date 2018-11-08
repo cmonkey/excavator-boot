@@ -31,15 +31,15 @@ public class CodeGenTest {
         Builder.getInstance().codegen(System.getProperty("user.dir") + "/src/test/resources/",
             null, null, null);
 
-        String user = "cmc";
-        String password = "cmc@123";
-        String database = "cmc";
-        String host = "120.79.19.225";
+        String user = "root";
+        String password = "root";
+        String database = "boot";
+        String host = "www.excavator.boot";
         int port = 3306;
         String driverClass = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://" + host + ":" + port + "/" + database
                      + "?useUnicode=true&amp;characterEncoding=UTF-8";
-        String packagePath = "com.ifdp.web";
+        String packagePath = "com.excavator.web";
         String author = "";
 
         Builder.getInstance().codegen(user, password, host, port, database, driverClass, url,
