@@ -4,7 +4,7 @@ import java.util.concurrent.{TimeUnit, TimeoutException}
 
 import org.apache.curator.framework.CuratorFramework
 import org.apache.curator.framework.recipes.locks.InterProcessMutex
-import org.excavator.boot.idworker.helper.JSONProxy
+import org.excavator.boot.common.helper.JSONProxy
 import org.excavator.boot.idworker.registry.RegisterCenter
 import org.slf4j.LoggerFactory
 
