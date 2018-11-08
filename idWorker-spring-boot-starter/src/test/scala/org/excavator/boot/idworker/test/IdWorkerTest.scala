@@ -6,6 +6,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
+import org.junit.Assert._
 
 @RunWith(classOf[SpringRunner])
 @SpringBootTest(classes = Array(classOf[IdWorkerApplication]))
@@ -17,6 +18,6 @@ class IdWorkerTest {
   @Test
   def next() = {
     val nextId = idGenerator.nextId
-    assert(nextId.toString.length == 18)
+    assertEquals(nextId.toString.length,18)
   }
 }
