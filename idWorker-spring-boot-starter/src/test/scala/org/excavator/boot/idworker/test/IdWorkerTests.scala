@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(classOf[SpringRunner])
 @SpringBootTest(classes = Array(classOf[IdWorkerApplication]))
-class TestIdWorker {
+class IdWorkerTests {
 
   @Resource
   val idGenerator: IdGenerator = null
