@@ -40,7 +40,7 @@
 		<cobertura.maven.plugin>2.6</cobertura.maven.plugin>
 		<coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
 		<main.user.dir>${user.dir}</main.user.dir>
-		<alchim31.scala-version>3.4.2</alchim31.scala-version>
+		<alchim31.scala-version>3.4.4</alchim31.scala-version>
 	</properties>
 	<build>
 		<plugins>
