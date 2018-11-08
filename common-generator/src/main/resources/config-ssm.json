@@ -1,0 +1,87 @@
+{
+    "project": "project",
+
+    "packagePath" : "org/excavator/service/web",
+
+	"model":"",
+
+    "author": "cmonkey",
+
+    //    msyql
+    "DatabaseConfig": {
+        "driverClass": "com.mysql.jdbc.Driver",
+        "username": "root",
+        "password": "root",
+        "url": "jdbc:mysql:\/\/www.excavator.boot:3306/boot?useUnicode=true&amp;characterEncoding=UTF-8"
+    },
+
+    "ignorePrefix": "",
+
+    "templateDir": "/template",
+
+    "groups" : [{
+        "name" 	 : "base",
+        "prefix" : "BASE"
+    }, {
+        "name" 	 : "inventory",
+        "prefix" : "INVENTORY"
+    }, {
+        "name" 	 : "mall",
+        "prefix" : "MALL"
+    }, {
+        "name" 	 : "purchase",
+        "prefix" : "PURCHASE"
+    }, {
+        "name" 	 : "sec",
+        "prefix" : "SECURITY"
+    }, {
+        "name" 	 : "site",
+        "prefix" : "SITE"
+    }, {
+        "name" 	 : "log",
+        "prefix" : "LOG"
+    }],
+
+    "mappings" : [/*{
+        "template"	:	"controller.ftl",
+        "dir"		:	"${targetpath}/controller",
+        "rpadding"	:	"controller"
+    }, */{
+        "template"	:	"pojo.ftl",
+        "dir"		:	"${project}/${packagePath}/entity",
+        "packagePath":	"${packagePath}.entity"
+    },/* {
+        "template"	:	"dto.ftl",
+        "dir"		:	"${project}/${packagePath}/dto",
+        "packagePath":	"${packagePath}.dto.${model}",
+        "ePadding"	:	"DTO"
+    }, */{
+        "template"	:	"service_impl.ftl",
+        "dir"		:	"${project}/${packagePath}/service/impl",
+        "packagePath":	"${packagePath}",
+        "ePadding"	:	"ServiceImpl"
+    }, {
+        "template"	:	"service_spi.ftl",
+        "dir"		:	"${project}/${packagePath}/service",
+        "packagePath":	"${packagePath}",
+        "ePadding"	:	"Service"
+    }, {
+        "template"	:	"dalMapper.ftl",
+        "dir"		:	"${project}/${packagePath}/dao",
+        "packagePath":	"${packagePath}",
+        "ePadding"	:	"Dao"
+    }, {
+        "template"	:	"mybatis_xml.ftl",
+		//"dir"		:	"${project}/${packagePath}/dao/${model}",
+        "dir"		:	"${project}/mappings/${model}",
+        //"dir"		:	"${project}/mappings",
+        "ePadding"  :   "Mapper",
+        "packagePath":	"${packagePath}",
+        "suffix"	:	"xml"
+    },{
+        "template"	:	"controller.ftl",
+        "dir"		:	"${project}/${packagePath}/controller",
+        "packagePath":	"${packagePath}",
+        "ePadding"	:	"Controller"
+    }]
+}
