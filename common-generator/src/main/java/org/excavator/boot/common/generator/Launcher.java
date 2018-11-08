@@ -39,7 +39,7 @@ public class Launcher {
             "database driver / default [com.mysql.jdbc.Driver] (example: com.mysql.jdbc.Driver)");
         options
             .addOption("packagePath", true,
-                "codegen package path / default packagePath com/ifdp/service/web (example: com/ifdp/service/web)");
+                "codegen package path / default packagePath org.excavator.web (example: org.excavator.service.web)");
         options.addOption("author", true, "code author / default cmonkey (example: Baby)");
 
         options
@@ -64,7 +64,7 @@ public class Launcher {
             String database = "";
             String driverClass = "com.mysql.jdbc.Driver";
             String url = "";
-            String packagePath = "com/ifdp/service/web";
+            String packagePath = "org.excavator.web";
             String author = "";
 
             if (commandLine.hasOption("user")) {
