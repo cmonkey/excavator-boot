@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.excavator.boot.idworker.autoconfigure.IdWorkerAutoConfigure
