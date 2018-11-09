@@ -17,13 +17,13 @@ class KafkaConsumerAutoConfiguration {
   val logger = LoggerFactory.getLogger(classOf[KafkaConsumerAutoConfiguration])
 
   @Value("${spring.kafka.bootstrap-servers}")
-  val bootstrapServers: String = _
+  val bootstrapServers: String = null
 
   @Value("${spring.kafka.consumer.group-id:}")
-  val groupId:String = _
+  val groupId:String = null
 
   @Value("${spring.application.name:defaultGroup}")
-  val applicationName:String = _
+  val applicationName:String = null
 
   @Bean
   @ConditionalOnMissingBean
@@ -41,7 +41,11 @@ class KafkaConsumerAutoConfiguration {
 
     logger.info(s"init consumerFactory param = ${map}")
 
-    new DefaultKafkaConsumerFactory[](map)
+    import scala.collection.JavaConverters._
+
+    val javaMap = map.map{case (k, v) => k -> v.asInstanceOf[Object]}.asJava
+
+    new DefaultKafkaConsumerFactory[String, String](javaMap)
   }
 
 }
