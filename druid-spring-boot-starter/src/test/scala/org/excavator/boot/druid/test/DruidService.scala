@@ -13,7 +13,7 @@ class DruidService{
 
   def getId(): Long = {
 
-    val sql = "select id from orderRecord"
+    val sql = "select id from ac_date"
     val rs = dataSource.getConnection.prepareStatement(sql).executeQuery()
     var id = 0L
     while(rs.next()){
