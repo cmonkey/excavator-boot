@@ -13,9 +13,9 @@ spring :
   datasource :
     type : com.alibaba.druid.pool.DruidDataSource
     driverClassName : com.mysql.cj.jdbc.Driver
-    url : jdbc:mysql://www.excavator.boot:3306/order?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
-    username : root
-    password : root
+    url : jdbc:mysql://www.excavator.boot:3306/bsc?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
+    username : bsc
+    password : bsc
     initialSize : 5
     minIdle : 5
     maxActive : 20
