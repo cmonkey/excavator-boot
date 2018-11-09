@@ -25,6 +25,7 @@
 		<module>netty</module>
 		<module>idWorker-spring-boot-starter</module>
 		<module>druid-spring-boot-starter</module>
+		<module>kafka-spring-boot-starter</module>
 	</modules>
 
 	<properties>
