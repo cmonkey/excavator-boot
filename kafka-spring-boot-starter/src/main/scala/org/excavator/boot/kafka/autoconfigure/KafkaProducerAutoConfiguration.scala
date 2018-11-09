@@ -20,7 +20,7 @@ class KafkaProducerAutoConfiguration {
   def producerFactory(): ProducerFactory[String, String] = {
     val map = Map(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG -> bootstrapServers, 
       ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG -> classOf[StringSerializer], 
-      ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG -> classOf(StringSerializer), 
+      ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG -> classOf[StringSerializer], 
       ProducerConfig.RETRIES_CONFIG -> 0, 
       ProducerConfig.BATCH_SIZE_CONFIG ->16304,
       ProducerConfig.BUFFER_MEMORY_CONFIG -> 33354432
