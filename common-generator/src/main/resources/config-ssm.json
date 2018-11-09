@@ -10,9 +10,9 @@
     //    msyql
     "DatabaseConfig": {
         "driverClass": "com.mysql.jdbc.Driver",
-        "username": "root",
-        "password": "root",
-        "url": "jdbc:mysql:\/\/www.excavator.boot:3306/boot?useUnicode=true&amp;characterEncoding=UTF-8"
+        "username": "bsc",
+        "password": "bsc",
+        "url": "jdbc:mysql:\/\/www.excavator.boot:3306/bsc?useUnicode=true&amp;characterEncoding=UTF-8"
     },
 
     "ignorePrefix": "",
