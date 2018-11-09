@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.excavator.boot.druid.autoconfigure.DruidDataSourceAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.excavator.boot.druid.autoconfigure.DruidDataSourceAutoConfiguration,\
+  org.excavator.boot.druid.autoconfigure.DruidMonitorAutoCofngiuration
