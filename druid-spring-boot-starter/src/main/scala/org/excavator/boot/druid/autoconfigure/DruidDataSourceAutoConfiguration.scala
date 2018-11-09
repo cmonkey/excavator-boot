@@ -13,9 +13,9 @@ import org.springframework.context.annotation.{Bean, Configuration}
 ;
 
 @Configuration
-@ConditionalOnClass(DruidDataSource.class)
-@EnableConfigurationProperties(DruidDataSourceProperties.class)
-@AutoConfigureBefore(DataSourceAutoConfiguration.class)
+@ConditionalOnClass(Array(classOf[DruidDataSource]))
+@EnableConfigurationProperties(Array(classOf[DruidDataSourceProperties]))
+@AutoConfigureBefore(Array(classOf[DataSourceAutoConfiguration]))
 class DruidDataSourceAutoConfiguration{
   val logger = LoggerFactory.getLogger(classOf[DruidDataSourceAutoConfiguration])
 
