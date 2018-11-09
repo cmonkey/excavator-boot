@@ -36,9 +36,9 @@ public class CodeGenTest {
         String database = "bsc";
         String host = "www.excavator.boot";
         int port = 3306;
-        String driverClass = "com.mysql.jdbc.Driver";
+        String driverClass = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://" + host + ":" + port + "/" + database
-                     + "?useUnicode=true&amp;characterEncoding=UTF-8";
+                     + "?useUnicode=true&characterEncoding=UTF-8";
         String packagePath = "com.excavator.web";
         String author = "";
 
