@@ -26,6 +26,8 @@ class KafkaProducerAutoConfiguration {
       ProducerConfig.BUFFER_MEMORY_CONFIG -> 33354432
       )
 
+    logger.info(s"init producerFactory in properties = ${map}")
+
     import scala.collection.JavaConverters._
     val javaMap = map.map{case (k, v) => k -> v.asInstanceOf[Object]}.asJava
 
