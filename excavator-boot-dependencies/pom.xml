@@ -61,7 +61,7 @@
 		<coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
 		<main.user.dir>${user.dir}</main.user.dir>
 		<alchim31.scala-version>3.4.4</alchim31.scala-version>
-
+		<maven.surefire.version>2.22.1</maven.surefire.version>
 	</properties>
 
 	<licenses>
