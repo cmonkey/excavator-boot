@@ -24,6 +24,7 @@
         <module>common-generator</module>
 		<module>netty</module>
 		<module>idWorker-spring-boot-starter</module>
+		<module>druid-spring-boot-starter</module>
 	</modules>
 
 	<properties>
