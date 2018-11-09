@@ -49,6 +49,8 @@
         <commons-logging.version>1.2</commons-logging.version>
 		<guava.version>19.0</guava.version>
 
+		<main.user.dir>${user.dir}</main.user.dir>
+
         <!-- plugin -->
         <license.maven.plugin>3.0</license.maven.plugin>
 		<maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
@@ -59,8 +61,8 @@
 		<maven.gpg.pluign>1.5</maven.gpg.pluign>
 		<cobertura.maven.plugin>2.6</cobertura.maven.plugin>
 		<coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
-		<main.user.dir>${user.dir}</main.user.dir>
-		<alchim31.scala-version>3.4.4</alchim31.scala-version>
+		<alchim31.scala.plugin>3.4.4</alchim31.scala.plugin>
+		<maven.surefire.plugin>2.22.1</maven.surefire.plugin>
 
 	</properties>
 
