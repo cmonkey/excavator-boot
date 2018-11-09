@@ -25,8 +25,8 @@
 		<project.encoding>UTF-8</project.encoding>
 		<project.build.encoding>UTF-8</project.build.encoding>
 
-		<spring.boot.version>1.5.14.RELEASE</spring.boot.version>
 		<spring-cloud.version>Edgware.SR4</spring-cloud.version>
+
 		<!-- 3rd lib dependency -->
 		<fastjson.version>1.2.47</fastjson.version>
 		<curator.version>2.11.1</curator.version>
@@ -48,6 +48,20 @@
 		<junit-jupiter.version>5.3.1</junit-jupiter.version>
         <commons-logging.version>1.2</commons-logging.version>
 		<guava.version>19.0</guava.version>
+
+        <!-- plugin -->
+        <license.maven.plugin>3.0</license.maven.plugin>
+		<maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
+		<maven.compiler.plugin>3.1</maven.compiler.plugin>
+		<maven.source.plugin>3.0.0</maven.source.plugin>
+		<maven.javadoc.plugin>2.9.1</maven.javadoc.plugin>
+		<maven.staging.plugin>1.6.7</maven.staging.plugin>
+		<maven.gpg.pluign>1.5</maven.gpg.pluign>
+		<cobertura.maven.plugin>2.6</cobertura.maven.plugin>
+		<coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
+		<main.user.dir>${user.dir}</main.user.dir>
+		<alchim31.scala-version>3.4.4</alchim31.scala-version>
+
 	</properties>
 
 	<licenses>
