@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.{Bean, Configuration}
 import org.springframework.kafka.annotation.EnableKafka
+import org.springframework.kafka.config.{ConcurrentKafkaListenerContainerFactory, KafkaListenerContainerFactory}
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory
+import org.springframework.kafka.listener.ConcurrentMessageListenerContainer
 
 @Configuration
 @EnableKafka
@@ -46,6 +48,19 @@ class KafkaConsumerAutoConfiguration {
     val javaMap = map.map{case (k, v) => k -> v.asInstanceOf[Object]}.asJava
 
     new DefaultKafkaConsumerFactory[String, String](javaMap)
+  }
+
+  @Bean
+  @ConditionalOnMissingBean
+  def kafkaListenerContainerFactory():KafkaListenerContainerFactory[ConcurrentMessageListenerContainer[String, String]] = {
+    val concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory[String, String]()
+
+    concurrentKafkaListenerContainerFactory.setConsumerFactory(consumerFactory())
+    concurrentKafkaListenerContainerFactory.getContainerProperties().setPollTimeout(1500L)
+
+    logger.info(s"init concurrentKafkaListenerContainerFactory = ${concurrentKafkaListenerContainerFactory}")
+
+    concurrentKafkaListenerContainerFactory
   }
 
 }
