@@ -19,7 +19,7 @@ class KafkaTests {
   val msg = "foo testing"
 
   @Test
-  def testSendMsg() = {
+  def testForSendMsg() = {
     val topic = "foo"
     val r = kafkaService.sendMsg(topic, msg)
 
