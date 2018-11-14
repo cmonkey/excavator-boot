@@ -1,11 +1,9 @@
 package org.excavator.boot.kafka.test
 
-import java.util.concurrent.TimeUnit
-
 import javax.annotation.Resource
+import org.junit.Assert._
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.Assert._
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
 
