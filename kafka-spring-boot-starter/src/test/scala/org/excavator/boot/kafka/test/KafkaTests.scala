@@ -19,7 +19,7 @@ class KafkaTests {
   val msg = "foo testing"
 
   @Test
-  def testSendMsg() = {
+  def testForSendMsg() = {
     val topic = "foo"
     val r = kafkaService.sendMsg(topic, msg)
 
@@ -27,7 +27,7 @@ class KafkaTests {
   }
 
   @Test
-  def pollMsg(): Unit = {
+  def testPollMsg(): Unit = {
     val r = kafkaService.takeMsg()
 
     assertEquals(msg, r)
