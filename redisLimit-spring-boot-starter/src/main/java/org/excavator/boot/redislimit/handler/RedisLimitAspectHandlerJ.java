@@ -40,9 +40,9 @@ import java.util.List;
  */
 @Aspect
 @Component
-public class RedisLimitAspectHandler {
+public class RedisLimitAspectHandlerJ {
 
-    private static final Logger logger = LoggerFactory.getLogger(RedisLimitAspectHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedisLimitAspectHandlerJ.class);
 
     @Resource(name = "redisLimitTemplate")
     RedisTemplate               redisTemplate;
