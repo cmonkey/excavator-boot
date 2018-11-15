@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.{JsonAutoDetect, PropertyAccessor}
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.excavator.boot.redislimit.config.RedisLimitServiceConfigFactory
 import org.excavator.boot.redislimit.factory.RedisLimitServiceFactory
-import org.excavator.boot.redislimit.handler.RedisLimitAspectHandler
+import org.excavator.boot.redislimit.handler.{RedisLimitAspectHandler, RedisLimitExecute}
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.config.ServiceLocatorFactoryBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -20,7 +20,9 @@ import org.springframework.scripting.support.ResourceScriptSource
 
 @Configuration
 @EnableCaching
-@Import(Array(classOf[RedisLimitServiceConfigFactory], classOf[RedisLimitAspectHandler]))
+@Import(Array(classOf[RedisLimitServiceConfigFactory],
+  classOf[RedisLimitExecute],
+  classOf[RedisLimitAspectHandler]))
 class RedisLimitAutoConfiguration{
 
   val logger = LoggerFactory.getLogger(classOf[RedisLimitAutoConfiguration])
