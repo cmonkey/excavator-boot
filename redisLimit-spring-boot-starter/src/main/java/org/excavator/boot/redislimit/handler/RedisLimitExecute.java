@@ -31,7 +31,7 @@ public class RedisLimitExecute {
     @Resource(name = "redisLimitScript")
     DefaultRedisScript<Long> defaultRedisScript;
 
-    public long execute(List<String> keys, long limitTime, long expireTime) {
-        return (Long) redisTemplate.execute(defaultRedisScript, keys, limitTime, expireTime);
+    public long execute(List<String> keys, long limit, long expireTime) {
+        return (Long) redisTemplate.execute(defaultRedisScript, keys, expireTime, limit);
     }
 }
