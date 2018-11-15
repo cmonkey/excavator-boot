@@ -51,7 +51,7 @@ public class RedisLimitAspectHandler {
     DefaultRedisScript<Long>    defaultRedisScript;
 
     @Resource(shareable = false)
-    RedisLimitService redisLimitService;
+    RedisLimitService           redisLimitService;
 
     @Around(value = "@annotation(redisLimiter)")
     public Object around(ProceedingJoinPoint joinPoint, RedisLimiter redisLimiter) throws Throwable {
