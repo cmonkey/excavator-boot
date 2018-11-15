@@ -26,6 +26,7 @@
 		<module>idWorker-spring-boot-starter</module>
 		<module>druid-spring-boot-starter</module>
 		<module>kafka-spring-boot-starter</module>
+		<module>redisLimit-spring-boot-starter</module>
 	</modules>
 
     <build>
