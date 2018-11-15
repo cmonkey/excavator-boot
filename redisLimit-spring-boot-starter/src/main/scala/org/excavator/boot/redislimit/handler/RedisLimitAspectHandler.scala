@@ -43,14 +43,14 @@ class RedisLimitAspectHandler {
         key = getName(key, signature.asInstanceOf[MethodSignature])
       }
 
-      val limitTime = redisLimiter.limit()
+      val limit = redisLimiter.limit()
       val expireTime = redisLimiter.expire()
 
-      logger.info(s"redis limiter method = ${methodName}, key = ${key}, limit = ${limitTime}, expire = ${expireTime}")
+      logger.info(s"redis limiter method = ${methodName}, key = ${key}, limit = ${limit}, expire = ${expireTime}")
 
       val keys = util.Collections.singletonList[String](key)
 
-      val result = redisLimitExecute.execute(keys, limitTime, expireTime)
+      val result = redisLimitExecute.execute(keys, limit, expireTime)
 
       logger.info(s"redis limiter time = ${System.currentTimeMillis - startTime}")
 
