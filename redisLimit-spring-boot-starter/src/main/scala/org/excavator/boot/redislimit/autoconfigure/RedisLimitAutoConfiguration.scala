@@ -62,7 +62,7 @@ class RedisLimitAutoConfiguration{
   @Bean(name = Array("redisLimitScript"))
   @ConditionalOnMissingBean(name = Array("redisLimitScript"))
   def defaultRedisScript(): DefaultRedisScript[Long] = {
-    val defaultRedisScript = new DefaultRedisScript()
+    val defaultRedisScript = new DefaultRedisScript[Long]()
 
     defaultRedisScript.setResultType(classOf[Long])
     defaultRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("redisLimiter.lua")))
