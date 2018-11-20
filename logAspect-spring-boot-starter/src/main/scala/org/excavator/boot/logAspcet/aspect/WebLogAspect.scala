@@ -24,7 +24,7 @@ class WebLogAspect {
   val startTime = new ThreadLocal[Long]
 
   @Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
-  def weblog(): Unit = {}
+  def webLog(): Unit = {}
 
 
   @Before("webLog()")
@@ -45,9 +45,9 @@ class WebLogAspect {
 
     val  list = util.Arrays.stream(objects).filter(o => {
       if(o.isInstanceOf[HttpServletRequest]){
-        return false;
+        false;
       }else {
-        return !(o.isInstanceOf[HttpServletResponse]);
+        !(o.isInstanceOf[HttpServletResponse]);
       }
     }).collect(Collectors.toList());
 
