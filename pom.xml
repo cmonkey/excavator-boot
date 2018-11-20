@@ -27,6 +27,7 @@
 		<module>druid-spring-boot-starter</module>
 		<module>kafka-spring-boot-starter</module>
 		<module>redisLimit-spring-boot-starter</module>
+		<module>logAspect-spring-boot-starter</module>
 	</modules>
 
     <build>
