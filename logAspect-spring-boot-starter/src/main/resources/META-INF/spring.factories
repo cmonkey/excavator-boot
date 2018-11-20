@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.excavator.boot.kafka.autoconfigure.KafkaConsumerAutoConfiguration,\
-  org.excavator.boot.kafka.autoconfigure.KafkaProducerAutoConfiguration
+  org.excavator.boot.logAspcet.autoconfigure.LogAspectAutoConfigure
