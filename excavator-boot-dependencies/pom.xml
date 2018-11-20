@@ -48,6 +48,7 @@
 		<junit-jupiter.version>5.3.1</junit-jupiter.version>
         <commons-logging.version>1.2</commons-logging.version>
 		<guava.version>19.0</guava.version>
+		<commons-text.version>1.4</commons-text.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -223,6 +224,13 @@
 				<artifactId>commons-logging</artifactId>
 				<version>${commons-logging.version}</version>
 			</dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+            </dependency>
+
 			<!-- excavator boot start -->
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
