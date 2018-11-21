@@ -267,6 +267,11 @@
 				<artifactId>kafka-spring-boot-starter</artifactId>
 				<version>${project.version}</version>
             </dependency>
+            <dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>logAspect-spring-boot-starter</artifactId>
+				<version>${project.version}</version>
+            </dependency>
 			<!-- excavator boot end -->
 
 			<!-- soga start -->
