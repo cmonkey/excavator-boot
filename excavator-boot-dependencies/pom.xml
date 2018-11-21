@@ -254,6 +254,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
 				<artifactId>idWorker-spring-boot-starter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
