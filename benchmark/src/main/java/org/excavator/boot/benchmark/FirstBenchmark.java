@@ -26,10 +26,10 @@ public class FirstBenchmark {
 
     public static void main(String[] args) throws RunnerException {
         Options opts = new OptionsBuilder()
-                .include(FirstBenchmark.class.getSimpleName())
-                .forks(1)
-                .warmupIterations(5)
-                .measurementIterations(5)
+                .include(FirstBenchmark.class.getSimpleName()) // 测试类的名字，可以通过正则表达式进行匹配
+                .forks(1) // fork 次数，fork 多少个进程进行测试
+                .warmupIterations(5) // 预热的迭代次数
+                .measurementIterations(5) // 实际测量的次数
                 .build();
         new Runner(opts).run();
     }
