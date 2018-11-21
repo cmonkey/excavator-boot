@@ -242,9 +242,9 @@
                 <version>${jmh.version}</version>
             </dependency>
 			<!-- excavator boot start -->
-			<dependency>
+            <dependency>
 				<groupId>org.excavator.boot</groupId>
-				<artifactId>idWorker-spring-boot-starter</artifactId>
+				<artifactId>base</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -254,14 +254,34 @@
 			</dependency>
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
-				<artifactId>base</artifactId>
+				<artifactId>druid-spring-boot-starter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
+				<artifactId>idWorker-spring-boot-starter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+            <dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>kafka-spring-boot-starter</artifactId>
+				<version>${project.version}</version>
+            </dependency>
+            <dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>logAspect-spring-boot-starter</artifactId>
+				<version>${project.version}</version>
+            </dependency>
+            <dependency>
+				<groupId>org.excavator.boot</groupId>
 				<artifactId>netty</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>redisLimit-spring-boot-starter</artifactId>
+				<version>${project.version}</version>
+            </dependency>
 			<!-- excavator boot end -->
 
 			<!-- soga start -->
