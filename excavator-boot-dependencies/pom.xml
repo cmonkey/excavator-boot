@@ -49,6 +49,7 @@
         <commons-logging.version>1.2</commons-logging.version>
 		<guava.version>19.0</guava.version>
 		<commons-text.version>1.4</commons-text.version>
+        <jmh.version>1.21</jmh.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -230,7 +231,16 @@
                 <artifactId>commons-text</artifactId>
                 <version>${commons-text.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-core</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
 			<!-- excavator boot start -->
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
