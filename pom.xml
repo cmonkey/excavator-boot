@@ -28,6 +28,7 @@
 		<module>kafka-spring-boot-starter</module>
 		<module>redisLimit-spring-boot-starter</module>
 		<module>logAspect-spring-boot-starter</module>
+		<module>benchmark</module>
 	</modules>
 
     <build>
