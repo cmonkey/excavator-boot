@@ -1,4 +1,4 @@
-package org.excavator.boot.logAspcet.aspect
+package org.excavator.boot.logAspect.aspect
 
 import java.util
 import java.util.stream.Collectors

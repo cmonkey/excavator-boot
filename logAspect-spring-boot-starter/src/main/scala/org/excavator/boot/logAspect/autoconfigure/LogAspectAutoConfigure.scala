@@ -1,6 +1,6 @@
-package org.excavator.boot.logAspcet.autoconfigure
+package org.excavator.boot.logAspect.autoconfigure
 
-import org.excavator.boot.logAspcet.aspect.WebLogAspect
+import org.excavator.boot.logAspect.aspect.WebLogAspect
 import org.springframework.context.annotation.{Configuration, Import}
 
 @Configuration

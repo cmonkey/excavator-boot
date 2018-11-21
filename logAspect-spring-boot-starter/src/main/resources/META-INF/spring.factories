@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.excavator.boot.logAspcet.autoconfigure.LogAspectAutoConfigure
+  org.excavator.boot.logAspect.autoconfigure.LogAspectAutoConfigure
