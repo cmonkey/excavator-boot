@@ -54,6 +54,18 @@ class NettyTest {
     }
     testBody()
   }
+
+  @Test
+  @DisplayName("test1013")
+  @RepeatedTest(10000)
+  def test1013() = {
+    for(i <-0 until 1013-8){
+      data += "a"
+    }
+
+    testBody()
+  }
+
   def testBody() = {
     val length = data.getBytes.length
 
