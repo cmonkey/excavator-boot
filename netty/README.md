@@ -4,7 +4,7 @@
 
 # 快速开始
 
-spring boot项目接入, 添加lock starter组件依赖
+spring boot项目接入, 添加netty组件依赖
 
 ```
         <dependency>
