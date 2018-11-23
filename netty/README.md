@@ -4,14 +4,11 @@
 
 # 快速开始
 
-> spring boot项目接入
-
-
-添加lock starter组件依赖，目前还没上传到公共仓库，需要自己下源码build
+spring boot项目接入, 添加lock starter组件依赖
 
 ```
         <dependency>
-            <groupId>com.ifdp.services</groupId>
+            <groupId>org.excavator.boot</groupId>
             <artifactId>netty</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
