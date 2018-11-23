@@ -40,7 +40,7 @@
 		<mysql-connector.version>8.0.13</mysql-connector.version>
 		<commons-lang3.version>3.8</commons-lang3.version>
 		<lombok.version>1.16.22</lombok.version>
-		<druid.version>1.1.10</druid.version>
+		<druid.version>1.1.11</druid.version>
 		<javax-servlet.version>3.1.0</javax-servlet.version>
 		<redisson.version>3.6.4</redisson.version>
 		<commons-codec.version>1.11</commons-codec.version>
