@@ -38,6 +38,7 @@
 
 
     <logger name="org.excavator.boot.netty" level="DEBUG"/>
+    <logger name="org.excavator.boot.netty.test" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="ROLLING-FILE"/>
