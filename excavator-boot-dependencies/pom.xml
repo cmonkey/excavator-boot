@@ -45,7 +45,7 @@
 		<redisson.version>3.6.4</redisson.version>
 		<commons-codec.version>1.11</commons-codec.version>
 		<netty.version>4.1.29.Final</netty.version>
-		<junit-jupiter.version>5.3.1</junit-jupiter.version>
+		<junit-jupiter.version>5.3.2</junit-jupiter.version>
         <commons-logging.version>1.2</commons-logging.version>
 		<guava.version>19.0</guava.version>
 		<commons-text.version>1.4</commons-text.version>
