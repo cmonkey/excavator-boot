@@ -27,6 +27,8 @@
 
 		<spring-cloud.version>Edgware.SR4</spring-cloud.version>
 
+        <excavator.boot.version>1.0.0-SNAPSHOT</excavator.boot.version>
+
 		<!-- 3rd lib dependency -->
 		<fastjson.version>1.2.47</fastjson.version>
 		<curator.version>2.11.1</curator.version>
@@ -245,42 +247,42 @@
             <dependency>
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>base</artifactId>
-				<version>${project.version}</version>
+				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>common</artifactId>
-				<version>${project.version}</version>
+				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>idWorker-spring-boot-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${excavator.boot.version}</version>
 			</dependency>
             <dependency>
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>kafka-spring-boot-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${excavator.boot.version}</version>
             </dependency>
             <dependency>
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>logAspect-spring-boot-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${excavator.boot.version}</version>
             </dependency>
             <dependency>
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>netty</artifactId>
-				<version>${project.version}</version>
+				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>redisLimit-spring-boot-starter</artifactId>
-				<version>${project.version}</version>
+				<version>${excavator.boot.version}</version>
             </dependency>
 			<!-- excavator boot end -->
 
