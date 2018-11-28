@@ -25,7 +25,7 @@ class SnowflakeTest{
   @Test
   def serializer(): Unit ={
     val info = new SnowflakeNodeInfo(1)
-    val s = JSONProxy.toJSONString(info.toString)
+    val s = JSONProxy.toJSONString(info.getFieldMap())
     println(s"${s}")
   }
 }
