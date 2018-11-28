@@ -4,8 +4,6 @@ import java.lang.management.ManagementFactory
 import java.net.{InetAddress, UnknownHostException}
 import java.util
 
-import org.excavator.boot.common.helper.JSONProxy
-
 class SnowflakeNodeInfo(workerId: Int, var ip:String = "", var hostName: String = "", var pid: String = "") {
   try{
     ip = InetAddress.getLocalHost.getHostAddress
@@ -15,7 +13,8 @@ class SnowflakeNodeInfo(workerId: Int, var ip:String = "", var hostName: String 
     case ex: UnknownHostException => print("exception ")
   }
 
-  override def toString: String = {
+
+  def getFieldMap(): util.Map[String,String] = {
     val map = new util.HashMap[String, String]()
 
     map.put("ip" , ip)
@@ -23,8 +22,7 @@ class SnowflakeNodeInfo(workerId: Int, var ip:String = "", var hostName: String 
     map.put("pid" , pid)
     map.put("workerId" , workerId.toString)
 
-
-    map.toString
+    map
   }
 
 }
