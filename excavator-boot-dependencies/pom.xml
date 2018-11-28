@@ -25,7 +25,7 @@
 		<project.encoding>UTF-8</project.encoding>
 		<project.build.encoding>UTF-8</project.build.encoding>
 
-		<spring-cloud.version>Edgware.SR4</spring-cloud.version>
+		<spring-cloud.version>Edgware.SR5</spring-cloud.version>
 
         <excavator.boot.version>1.0.0-SNAPSHOT</excavator.boot.version>
 
