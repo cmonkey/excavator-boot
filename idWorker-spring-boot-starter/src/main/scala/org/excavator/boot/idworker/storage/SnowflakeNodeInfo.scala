@@ -14,13 +14,13 @@ class SnowflakeNodeInfo(workerId: Int, var ip:String = "", var hostName: String 
   }
 
 
-  def getFieldMap(): util.Map[String,String] = {
-    val map = new util.HashMap[String, String]()
+  def getFieldMap(): util.Map[String,Any] = {
+    val map = new util.HashMap[String, Any]()
 
     map.put("ip" , ip)
     map.put("hostName" , hostName)
     map.put("pid" , pid)
-    map.put("workerId" , workerId.toString)
+    map.put("workerId" , workerId)
 
     map
   }
