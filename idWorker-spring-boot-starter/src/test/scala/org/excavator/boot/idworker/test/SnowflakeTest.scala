@@ -1,6 +1,8 @@
 package org.excavator.boot.idworker.test
 
+import org.excavator.boot.common.helper.JSONProxy
 import org.excavator.boot.idworker.algorithm.Snowflake
+import org.excavator.boot.idworker.storage.SnowflakeNodeInfo
 import org.junit.Test
 import org.junit.Assert._
 class SnowflakeTest{
@@ -18,5 +20,12 @@ class SnowflakeTest{
     val ids = new Array[Long](size)
 
     assertEquals(size, ids.size)
+  }
+
+  @Test
+  def serializer(): Unit ={
+    val info = new SnowflakeNodeInfo(1)
+    val s = JSONProxy.toJSONString(info.getFieldMap())
+    println(s"${s}")
   }
 }

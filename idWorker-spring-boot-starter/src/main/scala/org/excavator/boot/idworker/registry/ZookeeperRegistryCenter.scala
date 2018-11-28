@@ -72,7 +72,7 @@ class ZookeeperRegistryCenter(idWorkerProperties: IdWorkerProperties, curatorFra
 
   override def persistEphemeral(key: String, value: String): Unit = {
     try{
-      if(!isExisted(key)){
+      if(isExisted(key)){
         curatorFramework.delete().deletingChildrenIfNeeded().forPath(key)
       }
 

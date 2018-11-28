@@ -43,7 +43,10 @@ class SnowflakeNodeRegister(val registerCenter: RegisterCenter, val nodePath: Sn
             if (!children.contains(workerIdStr)) {
 
               val key = nodePath.getWorkerPath() + "/" + workerId
-              val value = JSONProxy.toJSONString(new SnowflakeNodeInfo(workerId))
+
+              val snowflakeNodeInfo = new SnowflakeNodeInfo(workerId)
+
+              val value = JSONProxy.toJSONString(snowflakeNodeInfo.getFieldMap())
 
               registerCenter.persistEphemeral(key, value)
 
