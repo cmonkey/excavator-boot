@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component
 class RedisLimitServiceConfigFactory {
   val logger = LoggerFactory.getLogger(classOf[RedisLimitServiceConfigFactory])
 
-  @Value("${redis.limit.component:defaultRedisLimitService}")
+  @Value("${excavator.redis.limit.component:defaultRedisLimitService}")
   val limitComponent: String = null
 
   @Resource

@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 import scala.beans.BeanProperty
 
-@ConfigurationProperties("idWorker")
+@ConfigurationProperties("excavator.idWorker")
 case class IdWorkerProperties() {
   @BeanProperty var group: String = "default"
 

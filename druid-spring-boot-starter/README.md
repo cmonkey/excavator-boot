@@ -20,17 +20,18 @@
 2.application.properties配置DB INFO
 
 ```
-druid:
-  monitor:
-    enabled: true         ## 当druid.monitor.enabled == true 时，启用druid monitor
-    allow: 127.0.0.1
-    stat-view: /druid/*
-    deny: 192.168.0.7
-    login-name: admin
-    login-password: admin
-    reset-enable: true
-    url-patterns: /*
-    exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+excavator:
+  druid:
+    monitor:
+      enabled: true
+      allow: 127.0.0.1
+      stat-view: /druid/*
+      deny: 192.168.0.7
+      login-name: admin
+      login-password: admin
+      reset-enable: true
+      url-patterns: /*
+      exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 spring :
   datasource :
     type : com.alibaba.druid.pool.DruidDataSource

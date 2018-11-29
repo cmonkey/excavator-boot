@@ -18,11 +18,11 @@ import org.springframework.context.annotation.Bean
 @Configuration
 @ConditionalOnClass(Array(classOf[DruidDataSource]))
 @EnableConfigurationProperties(Array(classOf[DruidMonitorProperties]))
-@ConditionalOnProperty(prefix = "druid.monitor", name = Array("enabled"), havingValue = "true")
+@ConditionalOnProperty(name = Array("excavator.druid.monitor.enabled"), havingValue = "true")
 @AutoConfigureAfter(Array(classOf[DataSource]))
-class DruidMonitorAutoConfigiuration{
+class DruidMonitorAutoConfiguration{
 
-  val logger = LoggerFactory.getLogger(classOf[DruidMonitorAutoConfigiuration])
+  val logger = LoggerFactory.getLogger(classOf[DruidMonitorAutoConfiguration])
 
   @Bean
   @ConditionalOnMissingBean
