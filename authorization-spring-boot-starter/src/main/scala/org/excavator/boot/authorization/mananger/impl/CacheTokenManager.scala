@@ -12,7 +12,7 @@ import org.springframework.data.redis.core.{HashOperations, SetOperations, Strin
 import org.springframework.stereotype.Component
 
 @Component
-class CacheTokenManager(val stringRedisTemplate: StringRedisTemplate) extends TokenManager {
+class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenManager {
 
   val logger = LoggerFactory.getLogger(classOf[CacheTokenManager])
 
