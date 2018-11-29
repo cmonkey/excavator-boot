@@ -12,15 +12,23 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 
+import scala.collection.JavaConverters._
+
 @Component
 class HandlerMethodArgumentResolverFactory {
   @Value("${authorization.method.resolvers:empty}")
   private val resolvers: String = null
   @Resource
-  private[autoconfigure] val authorizationResolverFactory: AuthorizationResolverFactory = null
+  val authorizationResolverFactory: AuthorizationResolverFactory = null
 
   def getServices: util.List[HandlerMethodArgumentResolver] =
-    if (StringUtils.isNotEmpty(resolvers) && !("empty" == resolvers))
-      util.Arrays.stream(resolvers.split(",")).map((instance: String) => authorizationResolverFactory.getService(instance)).collect(Collectors.toList)
-  else Lists.newArrayList
+    if (StringUtils.isNotEmpty(resolvers) && !("empty" == resolvers)){
+      resolvers.split(",").map(instance => {
+        authorizationResolverFactory.getService(instance)
+      }).toList.asJava
+    }else{
+      val empty:List[HandlerMethodArgumentResolver] = Lists.newArrayList[HandlerMethodArgumentResolver]
+
+      empty
+    }
 }
