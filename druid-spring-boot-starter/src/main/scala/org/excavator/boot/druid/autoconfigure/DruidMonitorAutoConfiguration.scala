@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Bean
 @AutoConfigureAfter(Array(classOf[DataSource]))
 class DruidMonitorAutoConfiguration{
 
-  val logger = LoggerFactory.getLogger(classOf[DruidMonitorAutoConfigiuration])
+  val logger = LoggerFactory.getLogger(classOf[DruidMonitorAutoConfiguration])
 
   @Bean
   @ConditionalOnMissingBean
