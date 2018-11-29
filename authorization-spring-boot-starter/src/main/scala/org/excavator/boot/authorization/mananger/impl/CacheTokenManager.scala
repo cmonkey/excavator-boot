@@ -1,4 +1,4 @@
-package org.excavator.boot.authorization.autoconfigure.mananger.impl
+package org.excavator.boot.authorization.mananger.impl
 
 import java.util.UUID
 import java.util.concurrent.TimeUnit
@@ -34,24 +34,33 @@ class CacheTokenManager(val stringRedisTemplate: StringRedisTemplate) extends To
       logger.info(s"createToken ${customerId} isMember in auth = ${auth}")
 
       if(StringUtils.isNotBlank(auth)){
-        val optionToken = getToken(auth) match {
-          case Some(t) => token = t
+
+        getToken(auth) match {
+
+          case Some(t) => {
+            logger.info(s"createToken getToken by ${auth} in token = ${t}")
+            token = t
+          }
+
           case None => token = {
 
             hashOps.delete(CacheKeys.USERS_AUTH_HASH, customerIdStr)
-            val newToken = getNowTokenModel(customerId)
+
+            token = getNowTokenModel(customerId)
+
             hashOps.put(CacheKeys.USERS_AUTH_HASH, customerIdStr, token.getToken)
 
-            newToken
+            logger.info(s"createToken getToken by ${auth} new build Token = ${token}")
           }
         }
 
       }
-    }
-    else {
+    }else {
       setOps.add(CacheKeys.USERS_AUTH_SET, customerIdStr)
       token = getNowTokenModel(customerId)
       hashOps.put(CacheKeys.USERS_AUTH_HASH, customerIdStr, token.getToken)
+
+      logger.info(s"createToken ${customerId} noMember in token = ${token}")
     }
 
     logger.info(s"createToken result = ${token}")
@@ -70,6 +79,8 @@ class CacheTokenManager(val stringRedisTemplate: StringRedisTemplate) extends To
     model.setToken(token)
 
     saveBaseToken(token, customerId)
+
+    logger.info(s"getNowTokenModel by ${customerId} in model = ${model}")
 
     model
   }
