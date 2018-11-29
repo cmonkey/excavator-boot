@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 import scala.beans.BeanProperty
 
-@ConfigurationProperties(prefix = "druid.monitor")
+@ConfigurationProperties(prefix = "excavator.druid.monitor")
 case class DruidMonitorProperties() {
   @BeanProperty
   var statView:String = _;
