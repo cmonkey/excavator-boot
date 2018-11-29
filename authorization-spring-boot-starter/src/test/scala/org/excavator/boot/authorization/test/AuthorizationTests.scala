@@ -1,7 +1,5 @@
 package org.excavator.boot.authorization.test
 
-import java.util.concurrent.TimeUnit
-
 import javax.annotation.Resource
 import org.junit.Test
 import org.junit.Assert._
@@ -13,7 +11,7 @@ import org.springframework.http.{HttpEntity, HttpHeaders, HttpMethod}
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(classOf[SpringRunner])
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = Array(classOf[AuthorizationApplication]), webEnvironment = WebEnvironment.RANDOM_PORT)
 class AuthorizationTests {
 
   @Resource
