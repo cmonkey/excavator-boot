@@ -1,6 +1,6 @@
 package org.excavator.boot.authorization.mananger.impl
 
-import java.util.UUID
+import java.util.{Optional, UUID}
 import java.util.concurrent.TimeUnit
 
 import org.apache.commons.lang3.StringUtils
@@ -16,7 +16,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
   val logger = LoggerFactory.getLogger(classOf[CacheTokenManager])
 
-  override def createToken(customerId: Long): Token = {
+  override def createToken(customerId: Long): Optional[Token] = {
     logger.info(s"createToken param customerId = ${customerId}")
 
     val setOps = stringRedisTemplate.opsForSet
@@ -25,7 +25,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
     var token:Token = null
 
-    val hashOps:HashOperations[String, String, String]  = stringRedisTemplate.opsForHash
+    val hashOps:HashOperations[String, String, String]  = stringRedisTemplate.opsForHash[String,String]
 
     if (setOps.isMember(CacheKeys.USERS_AUTH_SET, customerIdStr)) {
 
@@ -35,14 +35,14 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
       if(StringUtils.isNotBlank(auth)){
 
-        getToken(auth) match {
+        getTokenOption(auth) match {
 
           case Some(t) => {
             logger.info(s"createToken getToken by ${auth} in token = ${t}")
             token = t
           }
 
-          case None => token = {
+          case None => {
 
             hashOps.delete(CacheKeys.USERS_AUTH_HASH, customerIdStr)
 
@@ -65,7 +65,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
     logger.info(s"createToken result = ${token}")
 
-    return token
+    Optional.ofNullable(token)
 
   }
 
@@ -116,7 +116,14 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
     }
   }
 
-  override def getToken(authorization: String): Option[Token] = {
+  override def getToken(authenticate: String): Optional[Token] = {
+    getTokenOption(authenticate) match {
+      case Some(t) => Optional.of(t)
+      case None => Optional.empty()
+    }
+  }
+
+  def getTokenOption(authorization: String): Option[Token] = {
 
     if (StringUtils.isBlank(authorization)){
       None
@@ -144,7 +151,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
   }
 
   override def deleteToken(token: String): Unit = {
-    getToken(token).map(tokenModel => {
+    getTokenOption(token).map(tokenModel => {
 
       val cacheKey = CacheKeys.USERS_AUTH_TOKEN + token
 
