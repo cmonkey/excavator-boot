@@ -7,6 +7,7 @@ import org.junit.Test
 import org.junit.Assert._
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(classOf[SpringRunner])
@@ -16,6 +17,9 @@ class DruidApplicationTests {
   @Resource
   val druidService: DruidService = null
 
+  @Resource
+  val filterRegistrationBean: FilterRegistrationBean = null
+
   @Test
   def testQuery() = {
 
@@ -23,5 +27,10 @@ class DruidApplicationTests {
     val rId = druidService.getId()
     assertNotEquals(id, rId)
 
+  }
+
+  @Test
+  def testFilterRegistrationBean() = {
+    assertNotNull(filterRegistrationBean)
   }
 }
