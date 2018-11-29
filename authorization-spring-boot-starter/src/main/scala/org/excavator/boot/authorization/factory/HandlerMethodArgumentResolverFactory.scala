@@ -1,14 +1,13 @@
 package org.excavator.boot.authorization.factory
 
 import java.util
-import java.util.{Arrays, List}
-import java.util.stream.Collectors
+import java.util.{List}
 
 import com.google.common.collect.Lists
 import javax.annotation.Resource
 import org.apache.commons.lang3.StringUtils
+import org.excavator.boot.authorization.config.AuthorizationProperties
 import org.excavator.boot.authorization.resolver.AuthorizationResolverFactory
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 
@@ -16,14 +15,15 @@ import scala.collection.JavaConverters._
 
 @Component
 class HandlerMethodArgumentResolverFactory {
-  @Value("${authorization.method.resolvers:empty}")
-  private val resolvers: String = null
+  @Resource
+  val authorizationProperties: AuthorizationProperties = null
+
   @Resource
   val authorizationResolverFactory: AuthorizationResolverFactory = null
 
   def getServices: util.List[HandlerMethodArgumentResolver] =
-    if (StringUtils.isNotEmpty(resolvers) && !("empty" == resolvers)){
-      resolvers.split(",").map(instance => {
+    if (StringUtils.isNotEmpty(authorizationProperties.getResolvers)){
+      authorizationProperties.getResolvers.split(",").map(instance => {
         authorizationResolverFactory.getService(instance)
       }).toList.asJava
     }else{

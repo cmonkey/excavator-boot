@@ -3,7 +3,9 @@ package org.excavator.boot.authorization.mananger.impl
 import java.util.{Optional, UUID}
 import java.util.concurrent.TimeUnit
 
+import javax.annotation.Resource
 import org.apache.commons.lang3.StringUtils
+import org.excavator.boot.authorization.config.AuthorizationProperties
 import org.excavator.boot.authorization.constant.{CacheKeys, TokenConstants}
 import org.excavator.boot.authorization.manager.TokenManager
 import org.excavator.boot.authorization.model.Token
@@ -15,6 +17,9 @@ import org.springframework.stereotype.Component
 class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenManager {
 
   val logger = LoggerFactory.getLogger(classOf[CacheTokenManager])
+
+  @Resource
+  val authorizationProperties: AuthorizationProperties = null
 
   override def createToken(customerId: Long): Optional[Token] = {
     logger.info(s"createToken param customerId = ${customerId}")
@@ -91,7 +96,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
     val cacheKey = CacheKeys.USERS_AUTH_TOKEN + token
 
-    valueOperations.set(cacheKey, String.valueOf(customerId), TokenConstants.TOKEN_EXPIRES_DAY, TimeUnit.DAYS)
+    valueOperations.set(cacheKey, String.valueOf(customerId), authorizationProperties.getExpire_second, TimeUnit.SECONDS)
   }
 
   override def checkToken(token: Token): Boolean = {
@@ -109,7 +114,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
         false
       }else {
         //如果验证成功，说明此用户进行了一次有效操作，延长token的过期时间
-        valueOperations.set(cacheKey, customerId, TokenConstants.TOKEN_EXPIRES_DAY, TimeUnit.DAYS)
+        valueOperations.set(cacheKey, customerId, authorizationProperties.getExpire_second, TimeUnit.SECONDS)
 
         true
       }

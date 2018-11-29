@@ -26,16 +26,6 @@ public interface TokenConstants {
     String CURRENT_USER_ID    = "CURRENT_USER_ID";
 
     /**
-     * token有效期（小时）
-     */
-    int    TOKEN_EXPIRES_HOUR = 72;
-
-    /**
-     * token 有效期限(天)
-     */
-    int    TOKEN_EXPIRES_DAY  = 15;
-
-    /**
      * 存放Authorization的header字段
      */
     String AUTHORIZATION      = "Authorization";
