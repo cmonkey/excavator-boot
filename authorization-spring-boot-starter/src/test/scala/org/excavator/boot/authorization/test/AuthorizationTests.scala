@@ -1,7 +1,5 @@
 package org.excavator.boot.authorization.test
 
-import java.util.concurrent.TimeUnit
-
 import javax.annotation.Resource
 import org.junit.Test
 import org.junit.Assert._
