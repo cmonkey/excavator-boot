@@ -11,7 +11,7 @@ import org.springframework.http.{HttpEntity, HttpHeaders, HttpMethod}
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(classOf[SpringRunner])
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = Array(classOf[AuthorizationApplication]), webEnvironment = WebEnvironment.RANDOM_PORT)
 class AuthorizationTests {
 
   @Resource
