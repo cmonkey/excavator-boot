@@ -29,6 +29,7 @@
 		<module>redisLimit-spring-boot-starter</module>
 		<module>logAspect-spring-boot-starter</module>
 		<module>benchmark</module>
+		<module>authorization-spring-boot-starter</module>
 	</modules>
 
     <build>
