@@ -40,19 +40,11 @@ class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             request.setAttribute(TokenConstants.AUTHORIZATION, authorization)
             r = true
           }else{
-            val responseEntity = new ResponseEntity[String]("authorization failed", HttpStatus.UNAUTHORIZED)
-            response.setContentType("application/json; charset=UTF-8")
-            val printout = response.getWriter
-            printout.print(JSONProxy.toJSONString(responseEntity))
-            printout.flush()
+            writeResponse(response)
             r = false
           }
         }else{
-          val responseEntity = new ResponseEntity[String]("authorization failed", HttpStatus.UNAUTHORIZED)
-          response.setContentType("application/json; charset=UTF-8")
-          val printout = response.getWriter
-          printout.print(JSONProxy.toJSONString(responseEntity))
-          printout.flush()
+          writeResponse(response)
           r = false
         }
       }else{
@@ -61,5 +53,18 @@ class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     }
 
     r
+  }
+
+  def writeResponse(response:HttpServletResponse) = {
+    val responseEntity = new ResponseEntity[String]("authorization failed", HttpStatus.UNAUTHORIZED)
+
+    response.setContentType("application/json; charset=UTF-8")
+    response.setStatus(HttpStatus.UNAUTHORIZED.value())
+
+    val printout = response.getWriter
+
+    printout.print(JSONProxy.toJSONString(responseEntity))
+
+    printout.flush()
   }
 }
