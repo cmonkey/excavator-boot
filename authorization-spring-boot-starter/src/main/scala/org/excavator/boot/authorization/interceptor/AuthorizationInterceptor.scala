@@ -35,6 +35,7 @@ class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         val token = tokenOpt.get()
         if(tokenManager.checkToken(token)){
           request.setAttribute(TokenConstants.CURRENT_USER_ID, token.getCustomerId)
+          request.setAttribute(TokenConstants.AUTHORIZATION, authorization)
           true
         }else{
           val responseEntity = new ResponseEntity[String]("authorization failed", HttpStatus.UNAUTHORIZED)
