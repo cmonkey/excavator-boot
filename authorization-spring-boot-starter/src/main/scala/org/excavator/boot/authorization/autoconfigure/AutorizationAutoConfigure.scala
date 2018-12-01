@@ -1,13 +1,13 @@
 package org.excavator.boot.authorization.autoconfigure
 
 import javax.annotation.Resource
-import org.excavator.boot.authorization.autoconfigure.mananger.impl.interceptor.AuthorizationInterceptor
+import org.excavator.boot.authorization.interceptor.AuthorizationInterceptor
 import org.excavator.boot.authorization.config.{AuthorizationConfig, AuthorizationProperties}
 import org.excavator.boot.authorization.factory.HandlerMethodArgumentResolverFactory
 import org.excavator.boot.authorization.manager.TokenManager
 import org.excavator.boot.authorization.mananger.impl.CacheTokenManager
 import org.excavator.boot.authorization.resolver.AuthorizationResolverFactory
-import org.slf4j.{Logger, LoggerFactory}
+import org.slf4j.{LoggerFactory}
 import org.springframework.beans.factory.config.ServiceLocatorFactoryBean
 import org.springframework.boot.autoconfigure.AutoConfigureAfter
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
