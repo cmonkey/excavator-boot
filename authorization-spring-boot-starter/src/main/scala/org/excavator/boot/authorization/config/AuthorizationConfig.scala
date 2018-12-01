@@ -1,12 +1,11 @@
 package org.excavator.boot.authorization.config
 
 import java.util
-import java.util.List
 
 import javax.annotation.Resource
-import org.excavator.boot.authorization.autoconfigure.mananger.impl.interceptor.AuthorizationInterceptor
+import org.excavator.boot.authorization.interceptor.AuthorizationInterceptor
 import org.excavator.boot.authorization.factory.HandlerMethodArgumentResolverFactory
-import org.slf4j.{Logger, LoggerFactory}
+import org.slf4j.{LoggerFactory}
 import org.springframework.context.annotation.Configuration
 import org.springframework.util.CollectionUtils
 import org.springframework.web.method.support.HandlerMethodArgumentResolver

@@ -1,4 +1,4 @@
-package org.excavator.boot.authorization.autoconfigure.mananger.impl.interceptor
+package org.excavator.boot.authorization.interceptor
 
 
 import javax.annotation.Resource
