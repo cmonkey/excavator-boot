@@ -16,7 +16,6 @@
  */
 package org.excavator.boot.lock.annotation;
 
-
 import org.excavator.boot.lock.enums.LockType;
 
 import java.lang.annotation.ElementType;

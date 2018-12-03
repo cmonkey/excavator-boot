@@ -27,7 +27,7 @@ public class ReadLock implements LockService {
 
     private RReadWriteLock rLock;
 
-    private LockInfo lockInfo;
+    private LockInfo       lockInfo;
 
     private RedissonClient redissonClient;
 

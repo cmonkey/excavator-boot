@@ -42,7 +42,7 @@ public class LockFactory {
     private RedissonClient                          redissonClient;
 
     @Autowired
-    private LockInfoProvider lockInfoProvider;
+    private LockInfoProvider                        lockInfoProvider;
 
     private static final Map<LockType, LockService> lockMap = new HashMap<>();
 

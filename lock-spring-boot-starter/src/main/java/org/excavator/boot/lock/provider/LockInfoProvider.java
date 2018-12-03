@@ -36,7 +36,7 @@ public class LockInfoProvider {
     public static final String  LOCK_NAME_SEPARATOR = ".";
 
     @Autowired
-    private LockConfig lockConfig;
+    private LockConfig          lockConfig;
 
     @Autowired
     private BusinessKeyProvider businessKeyProvider;

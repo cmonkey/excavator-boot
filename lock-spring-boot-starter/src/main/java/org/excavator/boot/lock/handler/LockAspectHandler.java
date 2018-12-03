@@ -38,7 +38,7 @@ public class LockAspectHandler {
     private static final Logger logger = LoggerFactory.getLogger(LockAspectHandler.class);
 
     @Resource
-    LockFactory lockFactory;
+    LockFactory                 lockFactory;
 
     @Around(value = "@annotation(lock)")
     public Object around(ProceedingJoinPoint joinPoint, Lock lock) throws Throwable {

@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 package org.excavator.boot.lock.configuration;
+
 import org.excavator.boot.lock.config.LockConfig;
 import org.excavator.boot.lock.handler.LockAspectHandler;
 import org.excavator.boot.lock.provider.BusinessKeyProvider;

@@ -37,7 +37,7 @@ public class LockTests {
     private final static Logger logger = LoggerFactory.getLogger(LockTests.class);
 
     @Autowired
-    TestLockService testLockService;
+    TestLockService             testLockService;
 
     /**
      * 同一进程内多线程获取锁测试

@@ -27,7 +27,7 @@ public class FairLock implements LockService {
 
     private RLock          rLock;
 
-    private LockInfo lockInfo;
+    private LockInfo       lockInfo;
 
     private RedissonClient redissonClient;
 

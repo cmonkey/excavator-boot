@@ -16,7 +16,6 @@
  */
 package org.excavator.boot.lock.service;
 
-
 import org.excavator.boot.lock.model.LockInfo;
 
 public interface LockService {
