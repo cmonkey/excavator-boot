@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureBefore
 import org.springframework.boot.autoconfigure.condition.{ConditionalOnClass, ConditionalOnMissingBean}
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 import org.springframework.boot.context.properties.EnableConfigurationProperties
-import org.springframework.context.annotation.{Bean, Configuration}
+import org.springframework.context.annotation.{Bean, Configuration, Primary}
 ;
 
 @Configuration
@@ -21,6 +21,7 @@ class DruidDataSourceAutoConfiguration{
 
   @Bean(destroyMethod = "close")
   @ConditionalOnMissingBean
+  @Primary
   def dataSource(properties: DruidDataSourceProperties) = {
     val druidDataSource = new DruidDataSource()
 

@@ -54,6 +54,7 @@
 		<commons-text.version>1.4</commons-text.version>
         <jmh.version>1.21</jmh.version>
         <commons-collection.version>3.2.2</commons-collection.version>
+		<quartz.version>2.3.0</quartz.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -250,6 +251,17 @@
                 <artifactId>commons-collections</artifactId>
                 <version>${commons-collection.version}</version>
             </dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz-jobs</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+
 			<!-- excavator boot start -->
             <dependency>
 				<groupId>org.excavator.boot</groupId>
