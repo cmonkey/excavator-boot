@@ -97,18 +97,18 @@ public class CodeGenTest {
         return list;
     }
 
-    private boolean isDirectory(Path path){
+    private boolean isDirectory(Path path) {
         boolean isDirectory = Files.isDirectory(path);
         logger.info("isDirectory = {}", isDirectory);
 
         return isDirectory;
     }
 
-    private void clearCodeGenDirectory(Path path){
+    private void clearCodeGenDirectory(Path path) {
 
         boolean isDirectory = isDirectory(path);
 
-        if(isDirectory){
+        if (isDirectory) {
             try {
                 File file = new File(path.toUri());
                 FileUtils.deleteDirectory(file);
