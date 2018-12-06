@@ -27,7 +27,7 @@ class NettyTest {
 
   @Test
   @DisplayName("testMinBody")
-  @RepeatedTest(100)
+  @RepeatedTest(10)
   def testMinBody() = {
     data += "abcdefghijklmnopqrstuvwxyz"
 
@@ -36,7 +36,7 @@ class NettyTest {
 
   @Test
   @DisplayName("testInBody")
-  @RepeatedTest(1000) 
+  @RepeatedTest(10) 
   def testInBody(): Unit = {
     for (i <- 0 until 1004){
       data += "a"
@@ -47,7 +47,7 @@ class NettyTest {
 
   @Test
   @DisplayName("testMaxBody")
-  @RepeatedTest(10000) 
+  @RepeatedTest(10) 
   def testMaxBody(): Unit = {
     for(i <- 0 until 1000){
       data += "abcdefghijklmnopqrstuvwxyz"
@@ -57,7 +57,7 @@ class NettyTest {
 
   @Test
   @DisplayName("test1013")
-  @RepeatedTest(10000)
+  @RepeatedTest(10)
   def test1013() = {
     for(i <-0 until 1013-8){
       data += "a"
