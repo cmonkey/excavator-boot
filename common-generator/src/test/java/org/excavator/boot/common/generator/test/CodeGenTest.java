@@ -64,6 +64,7 @@ public class CodeGenTest {
         Path projectPath = Paths.get("project");
         diffFileNames(projectPath);
 
+        clearCodeGenDirectory(projectPath);
 
         logger.info("codegen success");
     }
