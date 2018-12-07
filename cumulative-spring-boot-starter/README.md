@@ -1,0 +1,2 @@
+## cumulative-spring-boot-starter
+

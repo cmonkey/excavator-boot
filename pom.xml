@@ -32,6 +32,7 @@
 		<module>authorization-spring-boot-starter</module>
 		<module>lock-spring-boot-starter</module>
 		<module>quartz-spring-boot-starter</module>
+		<module>cumulative-spring-boot-starter</module>
 	</modules>
 
     <build>
