@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  org.excavator.boot.processor.autoconfigure.MyEnvironmentPostProcessor
