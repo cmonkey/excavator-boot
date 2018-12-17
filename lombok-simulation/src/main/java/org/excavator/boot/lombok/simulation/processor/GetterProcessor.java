@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.excavator.boot.lombok.simulation.processor;
 
 import org.excavator.boot.lombok.simulation.annotation.Getter;
@@ -20,11 +36,11 @@ import java.util.Set;
 @SupportedAnnotationTypes("org.excavator.boot.lombok.simulation.annotation.Getter")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class GetterProcessor extends AbstractProcessor {
-    private Messager messager;
+    private Messager   messager;
     private JavacTrees javacTrees;
-    private Context context;
-    private TreeMaker treeMarker;
-    private Names names;
+    private Context    context;
+    private TreeMaker  treeMarker;
+    private Names      names;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
@@ -34,7 +50,7 @@ public class GetterProcessor extends AbstractProcessor {
 
         javacTrees = JavacTrees.instance(processingEnv);
 
-        context = ((JavacProcessingEnvironment)processingEnv).getContext();
+        context = ((JavacProcessingEnvironment) processingEnv).getContext();
 
         treeMarker = TreeMaker.instance(context);
 
@@ -76,25 +92,15 @@ public class GetterProcessor extends AbstractProcessor {
     private JCTree makeGetterMethodDecl(JCTree.JCVariableDecl jcVariableDecl) {
         ListBuffer<JCTree.JCStatement> listBuffer = new ListBuffer<>();
 
-        listBuffer.append(
-                treeMarker.Return(
-                        treeMarker.Select(
-                                treeMarker.Ident(
-                                        names.fromString("this")), jcVariableDecl.getName())));
+        listBuffer.append(treeMarker.Return(treeMarker.Select(
+            treeMarker.Ident(names.fromString("this")), jcVariableDecl.getName())));
 
         JCTree.JCBlock body = treeMarker.Block(0, listBuffer.toList());
 
         Name name = getNewMethodName(jcVariableDecl.getName());
 
-        return treeMarker.MethodDef(treeMarker.Modifiers(Flags.PUBLIC),
-                name,
-                jcVariableDecl.vartype,
-                List.nil(),
-                List.nil(),
-                List.nil(),
-                body,
-                null);
-
+        return treeMarker.MethodDef(treeMarker.Modifiers(Flags.PUBLIC), name,
+            jcVariableDecl.vartype, List.nil(), List.nil(), List.nil(), body, null);
 
     }
 
@@ -102,6 +108,7 @@ public class GetterProcessor extends AbstractProcessor {
 
         String s = name.toString();
 
-        return names.fromString("get" + s.substring(0, 1).toUpperCase() + s.substring(1,name.length()));
+        return names.fromString("get" + s.substring(0, 1).toUpperCase()
+                                + s.substring(1, name.length()));
     }
 }
