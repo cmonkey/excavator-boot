@@ -11,7 +11,7 @@ Getter 注解使用ElementType.TYPE 定义类注解
 
 RetentionPolicy.SOURCE 表示对编译期起效
 
-通过jsr259 , 在编译时指定processor 对编辑阶段的注解进行解析
+通过jsr269 , 在编译时指定processor 对编辑阶段的注解进行解析
 
 ## GetterProcessor 
 
