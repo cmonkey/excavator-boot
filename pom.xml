@@ -35,6 +35,7 @@
 		<module>cumulative-spring-boot-starter</module>
 		<module>processor-spring-boot-starter</module>
         <module>lombok-simulation</module>
+        <module>cake-pattern</module>
 	</modules>
 
     <build>
