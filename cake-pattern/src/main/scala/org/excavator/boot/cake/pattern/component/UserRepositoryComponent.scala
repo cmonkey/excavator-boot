@@ -1,5 +1,9 @@
 package org.excavator.boot.cake.pattern.component
 
-class UserRepositoryComponent {
+import org.excavator.boot.cake.pattern.dao.UserRepository
+
+trait UserRepositoryComponent {
+
+  val userRepository: UserRepository
 
 }
