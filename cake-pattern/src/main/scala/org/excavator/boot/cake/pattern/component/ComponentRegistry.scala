@@ -4,15 +4,12 @@ import org.excavator.boot.cake.pattern.dao.mock.MockUserRepository
 import org.excavator.boot.cake.pattern.service.UserService
 
 object ComponentRegistry extends UserServiceComponent with UserRepositoryComponent {
+  override val userRepository: UserRepository = new MockUserRepository
   override val userService: UserService = {
+    val service = new UserService
 
-    val userService = new UserService
+    service.userRepository = userRepository
 
-    userService.userRepository = userRepository
-
-    userService
-  }
-  override val userRepository: UserRepository = {
-    new MockUserRepository
+    service
   }
 }
