@@ -1,6 +1,7 @@
 package org.excavator.boot.netty.client
 
 import java.nio.charset.Charset
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.locks.ReentrantLock
 
 import org.excavator.boot.netty.component.{RpcDecoder, RpcHandler}
@@ -72,7 +73,11 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
     lock.unlock()
   }
 
-  def send(msg:String): String = {
+  def send(msg:String): String = send(msg, 0, TimeUnit.SECONDS, false)
+
+  def send(msg: String, timeout:Long, timeUnit: TimeUnit) = send(msg, timeout, timeUnit, true)
+
+  private def send(msg:String, timeout:Long, timeUnit: TimeUnit, isTimeout: Boolean): String = {
     lock.lock()
     try{
 
@@ -85,7 +90,11 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
         }
       })
 
-      responseFuture.get()
+      if(isTimeout){
+        responseFuture.get(timeout, timeUnit)
+      }else{
+        responseFuture.get()
+      }
 
     }finally {
       channelFuture.channel().close()
