@@ -1,5 +1,5 @@
 package org.excavator.boot.cake.pattern.config
 
-class EnvRegistry {
+object EnvRegistry extends Env with InMemoryConfig {
 
 }
