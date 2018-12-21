@@ -1,6 +1,7 @@
 package org.excavator.boot.netty.test
 
 import java.util.UUID
+import java.util.concurrent.TimeUnit
 
 import org.excavator.boot.netty.client.NettyClient
 import org.excavator.boot.netty.component.LengthFieldRpcHandler
@@ -66,14 +67,25 @@ class NettyTest {
     testBody()
   }
 
-  def testBody() = {
+  @Test
+  @DisplayName("testTimeout")
+  @RepeatedTest(10)
+  def testTimeout() = {
+    for(i <- 0 until 1000){
+      data += "timeout"
+    }
+
+    testBody(true)
+  }
+
+  def testBody(isTimeout: Boolean = false) = {
     val length = data.getBytes.length
 
     data = "%08d".format(length) + data
 
     val nettyClient = new NettyClient("localhost", 9500)
 
-    val result = nettyClient.send(data)
+    val result = if (isTimeout) nettyClient.send(data, 1, TimeUnit.SECONDS) else nettyClient.send(data)
 
     logger.info(s"result = ${result}")
 
