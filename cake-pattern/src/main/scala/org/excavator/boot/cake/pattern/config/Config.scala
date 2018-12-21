@@ -1,5 +1,9 @@
-package org.excavator.boot.cake.pattern
+package org.excavator.boot.cake.pattern.config
 
-class Config {
+trait Config {
+
+  val text: String
+
+  def load: Unit
 
 }
