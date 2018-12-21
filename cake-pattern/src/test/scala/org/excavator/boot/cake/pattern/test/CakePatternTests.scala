@@ -27,7 +27,7 @@ class CakePatternTests{
 
     r match {
       case Some(u) => assertEquals(u, user)
-      case None => println("fail match")
+      case None => fail(() => "find fail")
     }
   }
 
@@ -44,7 +44,7 @@ class CakePatternTests{
 
     userService.find(userName) match {
       case Some(u) => assertEquals(user, u)
-      case None => println("find fail")
+      case None => fail(() => "find fail")
     }
 
   }
