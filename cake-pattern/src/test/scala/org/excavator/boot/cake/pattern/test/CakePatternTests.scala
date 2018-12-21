@@ -1,5 +1,6 @@
 package org.excavator.boot.cake.pattern.test
 
+import org.excavator.boot.cake.pattern.component.ComponentRegistry
 import org.excavator.boot.cake.pattern.dao.mock.MockUserRepository
 import org.excavator.boot.cake.pattern.domain.User
 import org.excavator.boot.cake.pattern.service.UserService
@@ -28,6 +29,24 @@ class CakePatternTests{
       case Some(u) => assertEquals(u, user)
       case None => println("fail match")
     }
+  }
+
+  @Test
+  @DisplayName("test cake pattern")
+  def testCakePattern() = {
+    val userName = "cmonkey"
+
+    val user = User(userName)
+
+    val userService = ComponentRegistry.userService
+
+    userService.create(user)
+
+    userService.find(userName) match {
+      case Some(u) => assertEquals(user, u)
+      case None => println("find fail")
+    }
+
   }
 
 }
