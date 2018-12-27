@@ -66,6 +66,7 @@ public class Launcher {
             String url = "";
             String packagePath = "org.excavator.web";
             String author = "";
+            String table = "";
 
             if (commandLine.hasOption("user")) {
                 user = commandLine.getOptionValue("user");
@@ -114,8 +115,12 @@ public class Launcher {
                 author = commandLine.getOptionValue("author");
             }
 
+            if (commandLine.hasOption("table")) {
+                author = commandLine.getOptionValue("table");
+            }
+
             Builder.getInstance().codegen(user, password, host, port, database, driverClass, url,
-                packagePath, author);
+                packagePath, table, author);
         } catch (ParseException | IOException e) {
             logger.error("parse Exception = {}", e);
             System.exit(0);
