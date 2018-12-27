@@ -40,7 +40,7 @@ public class CodeGenTest {
     @Test
     public void testCodeGen() throws IOException {
         Builder.getInstance().codegen(System.getProperty("user.dir") + "/src/test/resources/",
-            null, null,null, null);
+            null, null, null, null);
 
         String user = "bsc";
         String password = "bsc";
