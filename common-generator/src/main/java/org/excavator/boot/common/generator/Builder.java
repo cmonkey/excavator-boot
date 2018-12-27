@@ -97,8 +97,8 @@ public class Builder {
     }
 
     public void codegen(String user, String password, String host, int port, String database,
-                        String driverClass, String url, String packagePath, String table, String author)
-                                                                                          throws IOException {
+                        String driverClass, String url, String packagePath, String table,
+                        String author) throws IOException {
         logger
             .info(
                 "codegen param user = {}, password = {}, host  = {}, port = {}, database = {}, driverClass = {}, url = {}, packagePath = {}, table = {}, author = {}",
