@@ -36,17 +36,18 @@ public class Launcher {
         options.addOption("port", true, "database port / default port 3306 (example: 3306)");
         options.addOption("database", true, "database name (example: codegen)");
         options.addOption("driverClass", true,
-            "database driver / default [com.mysql.jdbc.Driver] (example: com.mysql.jdbc.Driver)");
+            "database driver / default [com.mysql.cj.jdbc.Driver] (example: com.mysql.cj.jdbc.Driver)");
         options
             .addOption("packagePath", true,
                 "codegen package path / default packagePath org.excavator.web (example: org.excavator.service.web)");
         options.addOption("author", true, "code author / default cmonkey (example: Baby)");
+        options.addOption("table", true, "table  / default null (example: ac_date)");
 
         options
             .addOption(
                 "url",
                 false,
-                "database url (example: 'jdbc:mysql://127.0.0.1:3306/codegen?useUnicode=true&amp;characterEncoding=UTF-8')");
+                "database url (example: 'jdbc:mysql://127.0.0.1:3306/codegen?useUnicode=true&characterEncoding=UTF-8')");
 
         CommandLineParser commandLineParser = new DefaultParser();
 
@@ -62,7 +63,7 @@ public class Launcher {
             String host = "";
             int port = 3306;
             String database = "";
-            String driverClass = "com.mysql.jdbc.Driver";
+            String driverClass = "com.mysql.cj.jdbc.Driver";
             String url = "";
             String packagePath = "org.excavator.web";
             String author = "";
@@ -104,7 +105,7 @@ public class Launcher {
                 url = commandLine.getOptionValue("url");
             } else {
                 url = "jdbc:mysql://" + host + ":" + port + "/" + database
-                      + "?useUnicode=true&amp;characterEncoding=UTF-8";
+                      + "?useUnicode=true&characterEncoding=UTF-8";
             }
 
             if (commandLine.hasOption("packagePath")) {
@@ -116,7 +117,7 @@ public class Launcher {
             }
 
             if (commandLine.hasOption("table")) {
-                author = commandLine.getOptionValue("table");
+                table = commandLine.getOptionValue("table");
             }
 
             Builder.getInstance().codegen(user, password, host, port, database, driverClass, url,
