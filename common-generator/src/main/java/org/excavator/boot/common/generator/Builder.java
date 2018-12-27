@@ -25,6 +25,7 @@ import java.nio.file.attribute.UserPrincipal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.io.FileUtils;
@@ -49,7 +50,7 @@ public class Builder {
     //待生成表集合
     private static String[]     tables = {};
 
-    private void dbSchemeToEntity(BuildFactory factory, Config config) {
+    private void dbSchemeToEntity(BuildFactory factory, Config config, String table) {
         // iterator all template file
         TemplateMapping[] mappings = config.getMappings();
 
@@ -57,6 +58,10 @@ public class Builder {
 
         if (null == tables || tables.length == 0) {
             tableList = factory.getDao().queryAllTables();
+
+            if(StringUtils.isNotBlank(table)){
+                tableList = tableList.stream().filter(t -> t.equals(table)).collect(Collectors.toList());
+            }
         }
 
         for (TemplateMapping m : mappings) {
@@ -92,12 +97,12 @@ public class Builder {
     }
 
     public void codegen(String user, String password, String host, int port, String database,
-                        String driverClass, String url, String packagePath, String author)
-                                                                                          throws IOException {
+                        String driverClass, String url, String packagePath, String table,
+                        String author) throws IOException {
         logger
             .info(
-                "codegen param user = {}, password = {}, host  = {}, port = {}, database = {}, driverClass = {}, url = {}, packagePath = {}, author = {}",
-                user, password, host, port, database, driverClass, url, packagePath, author);
+                "codegen param user = {}, password = {}, host  = {}, port = {}, database = {}, driverClass = {}, url = {}, packagePath = {}, table = {}, author = {}",
+                user, password, host, port, database, driverClass, url, packagePath, table, author);
 
         Path path = Files.createTempDirectory("codegen");
 
@@ -118,7 +123,7 @@ public class Builder {
             author = getAuthor(path);
         }
 
-        codegen(path.toString(), databaseConfig, packagePath, author);
+        codegen(path.toString(), databaseConfig, packagePath, table, author);
 
         clearPath(path);
     }
@@ -177,7 +182,7 @@ public class Builder {
     }
 
     public void codegen(String resourcesDir, DatabaseConfig databaseConfig, String packagePath,
-                        String author) {
+                        String table, String author) {
         logger.info("codegen param resourceDir = {}", resourcesDir);
 
         Config config = getConfig(resourcesDir);
@@ -198,7 +203,7 @@ public class Builder {
 
         factory.setSettingInfo(resourcesDir, config.getDatabaseConfig());
 
-        instance.dbSchemeToEntity(factory, config);
+        instance.dbSchemeToEntity(factory, config, table);
     }
 
     private Config getConfig(String resourcesDir) {

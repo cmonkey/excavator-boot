@@ -40,7 +40,7 @@ public class CodeGenTest {
     @Test
     public void testCodeGen() throws IOException {
         Builder.getInstance().codegen(System.getProperty("user.dir") + "/src/test/resources/",
-            null, null, null);
+            null, null, null, null);
 
         String user = "bsc";
         String password = "bsc";
@@ -52,14 +52,16 @@ public class CodeGenTest {
                      + "?useUnicode=true&characterEncoding=UTF-8";
         String packagePath = "com.excavator.web";
         String author = "";
+        String table = "";
 
         Builder.getInstance().codegen(user, password, host, port, database, driverClass, url,
-            packagePath, author);
+            packagePath, table, author);
 
         packagePath = "com.demo";
+        table = "ac_date";
 
         Builder.getInstance().codegen(user, password, host, port, database, driverClass, url,
-            packagePath, author);
+            packagePath, table, author);
 
         Path projectPath = Paths.get("project");
         diffFileNames(projectPath);
