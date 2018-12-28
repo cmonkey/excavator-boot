@@ -68,6 +68,17 @@ class NettyTest {
   }
 
   @Test
+  @DisplayName("test90040")
+  @RepeatedTest(10)
+  def test90040() = {
+    for(i <-0 until 90040){
+      data += "A"
+    }
+
+    testBody()
+  }
+
+  @Test
   @DisplayName("testTimeout")
   @RepeatedTest(10)
   def testTimeout() = {
