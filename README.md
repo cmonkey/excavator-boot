@@ -15,6 +15,7 @@
   8. commons-generator (通过简单的数据库配置，生成基本的代码框架)
   9. lock (提供分布式锁服务, 基于redisson)
   10. netty (提供对同步报文的发送)
+  11. kafka (提供开箱即用的kafka 支持)
 
 
 
