@@ -15,6 +15,10 @@
   8. commons-generator (通过简单的数据库配置，生成基本的代码框架)
   9. lock (提供分布式锁服务, 基于redisson)
   10. netty (提供对同步报文的发送)
+  11. kafka (提供开箱即用的kafka 支持)
+  12. cumulative(基于redis的多维度统计api)
+  13, quartz (对quartz 添加开箱即用的starter 支持，因为目前默认依赖spring boot version = 1.5.18)
+  14. redisLimit (通过redis + lua 实现的redis limit , 可用于对资源进行额度限制)
 
 
 
