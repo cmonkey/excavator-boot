@@ -17,6 +17,7 @@
   10. netty (提供对同步报文的发送)
   11. kafka (提供开箱即用的kafka 支持)
   12. cumulative(基于redis的多维度统计api)
+  13, quartz (对quartz 添加开箱即用的starter 支持，因为目前默认依赖spring boot version = 1.5.18)
 
 
 
