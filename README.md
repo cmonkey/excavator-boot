@@ -16,6 +16,7 @@
   9. lock (提供分布式锁服务, 基于redisson)
   10. netty (提供对同步报文的发送)
   11. kafka (提供开箱即用的kafka 支持)
+  12. cumulative(基于redis的多维度统计api)
 
 
 
