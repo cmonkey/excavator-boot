@@ -35,8 +35,9 @@ public class Launcher {
         options.addOption("host", true, "database host (example: 127.0.0.1)");
         options.addOption("port", true, "database port / default port 3306 (example: 3306)");
         options.addOption("database", true, "database name (example: codegen)");
-        options.addOption("driverClass", true,
-            "database driver / default [com.mysql.cj.jdbc.Driver] (example: com.mysql.cj.jdbc.Driver)");
+        options
+            .addOption("driverClass", true,
+                "database driver / default [com.mysql.cj.jdbc.Driver] (example: com.mysql.cj.jdbc.Driver)");
         options
             .addOption("packagePath", true,
                 "codegen package path / default packagePath org.excavator.web (example: org.excavator.service.web)");
