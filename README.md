@@ -53,3 +53,7 @@
 ExecutionException The forked VM terminated without properly saying goodbye. VM crash or System.exit called? 错误
 
 所以在进行测试时，执行 mvn -pl '!netty' test
+
+## TODO List 
+
+1. 通过docker-compose 的方式将对测试的外部依赖进行docker 化
