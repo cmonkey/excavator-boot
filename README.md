@@ -45,3 +45,15 @@
             <version>1.0.0-SNAPSHOT</version>
             <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+## 本地测试
+
+批量对netty 进行测试容易出现
+
+ExecutionException The forked VM terminated without properly saying goodbye. VM crash or System.exit called? 错误
+
+所以在进行测试时，执行 mvn -pl '!netty' test
+
+## TODO List 
+
+1. 通过docker-compose 的方式将对测试的外部依赖进行docker 化
