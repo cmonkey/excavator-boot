@@ -37,7 +37,6 @@
         <module>lombok-simulation</module>
         <module>cake-pattern</module>
         <module>json-path</module>
-        <module>jdk</module>
 	</modules>
 
     <build>
