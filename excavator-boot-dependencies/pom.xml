@@ -30,7 +30,7 @@
         <excavator.boot.version>1.0.0-SNAPSHOT</excavator.boot.version>
 
 		<!-- 3rd lib dependency -->
-		<fastjson.version>1.2.47</fastjson.version>
+		<fastjson.version>1.2.54</fastjson.version>
 		<curator.version>2.11.1</curator.version>
 		<joda.time.version>2.9.9</joda.time.version>
         <scala.major-version>2.12</scala.major-version>
