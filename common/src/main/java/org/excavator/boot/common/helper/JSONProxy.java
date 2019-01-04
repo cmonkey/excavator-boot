@@ -30,4 +30,8 @@ public class JSONProxy {
         return JSON.parseObject(text);
     }
 
+    public static <T> T parseObject(String text, Class<T> classes){
+        return JSON.parseObject(text, classes);
+    }
+
 }
