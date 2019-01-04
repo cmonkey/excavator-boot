@@ -36,6 +36,7 @@
 		<module>processor-spring-boot-starter</module>
         <module>lombok-simulation</module>
         <module>cake-pattern</module>
+        <module>json-path</module>
 	</modules>
 
     <build>
