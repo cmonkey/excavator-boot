@@ -7,7 +7,8 @@ import org.excavator.boot.authorization.factory.HandlerMethodArgumentResolverFac
 import org.excavator.boot.authorization.manager.TokenManager
 import org.excavator.boot.authorization.mananger.impl.CacheTokenManager
 import org.excavator.boot.authorization.resolver.AuthorizationResolverFactory
-import org.slf4j.{LoggerFactory}
+import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.factory.config.ServiceLocatorFactoryBean
 import org.springframework.boot.autoconfigure.AutoConfigureAfter
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
@@ -24,7 +25,7 @@ class AutorizationAutoConfigure {
   val logger = LoggerFactory.getLogger(classOf[AutorizationAutoConfigure])
 
   @Bean
-  def tokenManager: TokenManager = {
+  def tokenManager(@Qualifier("stringRedisTemplate") stringRedisTemplate: StringRedisTemplate): TokenManager = {
     val tokenManager = new CacheTokenManager(stringRedisTemplate)
     logger.info("tokenManager init")
     tokenManager
