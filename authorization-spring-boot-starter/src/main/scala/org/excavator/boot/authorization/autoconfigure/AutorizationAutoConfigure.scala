@@ -23,9 +23,6 @@ import org.springframework.data.redis.core.StringRedisTemplate
 class AutorizationAutoConfigure {
   val logger = LoggerFactory.getLogger(classOf[AutorizationAutoConfigure])
 
-  @Resource
-  val stringRedisTemplate: StringRedisTemplate = null
-
   @Bean
   def tokenManager: TokenManager = {
     val tokenManager = new CacheTokenManager(stringRedisTemplate)
