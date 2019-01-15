@@ -69,7 +69,7 @@ class NettyTest {
 
   @Test
   @DisplayName("test90040")
-  @RepeatedTest(10)
+  @RepeatedTest(2)
   def test90040() = {
     for(i <-0 until 90040){
       data += "A"
