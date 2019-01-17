@@ -13,7 +13,7 @@ RUN wget $host/$kafka_version/kafka_$scala_version-$kafka_version.tgz -O /opt/ka
 && sed -i "s|/tmp/kafka-logs|/opt/kafka/kafka-logs|" /opt/kafka_$scala_version-$kafka_version/config/server.properties 
 
 WORKDIR /opt/kafka_$scala_version-$kafka_version
-ENV JAVA_OPTS="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/jvmdump"
+#ENV JAVA_OPTS="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/jvmdump"
 
 ENTRYPOINT exec bin/kafka-server-start.sh config/server.properties
 
