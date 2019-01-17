@@ -56,3 +56,10 @@ junit5 默认模式为per-method , 在per-method 模式下, @BeforceAll 标注�
 ref: https://junit.org/junit5/docs/current/user-guide/#writing-tests-test-instance-lifecycle
 
 
+## 测试BloomFilter 
+
+jvm 参数 
+
+```
+-Xms64m -Xmx64m -XX:+PrintHeapAtGC -XX:+HeapDumpOnOutOfMemoryError
+```
