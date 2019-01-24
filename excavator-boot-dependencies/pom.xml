@@ -34,7 +34,7 @@
 		<curator.version>2.11.1</curator.version>
 		<joda.time.version>2.9.9</joda.time.version>
         <scala.major-version>2.12</scala.major-version>
-        <scala.version>${scala.major-version}.7</scala.version>
+        <scala.version>${scala.major-version}.8</scala.version>
 		<pagehelper.version>1.2.7</pagehelper.version>
 		<mybatis.version>1.3.2</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
@@ -68,7 +68,7 @@
 		<maven.gpg.pluign>1.5</maven.gpg.pluign>
 		<cobertura.maven.plugin>2.6</cobertura.maven.plugin>
 		<coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
-		<alchim31.scala.plugin>3.4.4</alchim31.scala.plugin>
+		<alchim31.scala.plugin>3.4.6</alchim31.scala.plugin>
 		<maven.surefire.plugin>2.22.1</maven.surefire.plugin>
 
 	</properties>
