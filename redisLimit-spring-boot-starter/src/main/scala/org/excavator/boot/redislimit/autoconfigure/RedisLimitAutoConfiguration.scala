@@ -29,8 +29,8 @@ class RedisLimitAutoConfiguration{
 
   @Bean
   @ConditionalOnMissingBean
-  def cacheManager(redisTemplate: RedisTemplate[Any, Any]) = {
-    val cacheManager = new RedisCacheManager(redisTemplate)
+  def cacheManager(redisConnectionFactory: RedisConnectionFactory) = {
+    val cacheManager = RedisCacheManager.create(redisConnectionFactory)
 
     logger.info("cacheManager in redisCacheManager init ")
 
