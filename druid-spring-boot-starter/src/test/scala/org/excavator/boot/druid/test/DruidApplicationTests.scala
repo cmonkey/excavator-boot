@@ -2,6 +2,7 @@ package org.excavator.boot.druid.test
 
 import java.util.concurrent.TimeUnit
 
+import com.alibaba.druid.support.http.WebStatFilter
 import javax.annotation.Resource
 import org.junit.Test
 import org.junit.Assert._
@@ -18,7 +19,7 @@ class DruidApplicationTests {
   val druidService: DruidService = null
 
   @Resource
-  val filterRegistrationBean: FilterRegistrationBean = null
+  val filterRegistrationBean: FilterRegistrationBean[WebStatFilter] = null
 
   @Test
   def testQuery() = {
