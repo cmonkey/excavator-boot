@@ -55,6 +55,7 @@
         <jmh.version>1.21</jmh.version>
         <commons-collection.version>3.2.2</commons-collection.version>
 		<quartz.version>2.3.0</quartz.version>
+		<commons-pool2.version>2.6.1</commons-pool2.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -190,6 +191,11 @@
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
 				<version>${commons-codec.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-pool2</artifactId>
+				<version>${commons-pool2.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
