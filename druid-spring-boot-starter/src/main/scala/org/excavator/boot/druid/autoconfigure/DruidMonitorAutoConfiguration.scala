@@ -26,7 +26,7 @@ class DruidMonitorAutoConfiguration{
 
   @Bean
   @ConditionalOnMissingBean
-  def druidServlet(properties: DruidMonitorProperties): ServletRegistrationBean = {
+  def druidServlet(properties: DruidMonitorProperties): ServletRegistrationBean[StatViewServlet] = {
     val servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet, properties.getStatView)
     //添加初始化参数：initParams
     //白名单：
@@ -46,8 +46,8 @@ class DruidMonitorAutoConfiguration{
 
   @Bean
   @ConditionalOnMissingBean
-  def filterRegistrationBean(properties: DruidMonitorProperties): FilterRegistrationBean = {
-    val filterRegistrationBean = new FilterRegistrationBean
+  def filterRegistrationBean(properties: DruidMonitorProperties): FilterRegistrationBean[WebStatFilter] = {
+    val filterRegistrationBean = new FilterRegistrationBean[WebStatFilter]
 
     filterRegistrationBean.setFilter(new WebStatFilter)
     filterRegistrationBean.addUrlPatterns(properties.getUrlPatterns)

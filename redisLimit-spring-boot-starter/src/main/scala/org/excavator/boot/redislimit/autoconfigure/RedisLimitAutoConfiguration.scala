@@ -29,8 +29,8 @@ class RedisLimitAutoConfiguration{
 
   @Bean
   @ConditionalOnMissingBean
-  def cacheManager(redisTemplate: RedisTemplate[Any, Any]) = {
-    val cacheManager = new RedisCacheManager(redisTemplate)
+  def cacheManager(redisConnectionFactory: RedisConnectionFactory) = {
+    val cacheManager = RedisCacheManager.create(redisConnectionFactory)
 
     logger.info("cacheManager in redisCacheManager init ")
 
@@ -64,10 +64,10 @@ class RedisLimitAutoConfiguration{
 
   @Bean(name = Array("redisLimitScript"))
   @ConditionalOnMissingBean(name = Array("redisLimitScript"))
-  def defaultRedisScript(): DefaultRedisScript[Long] = {
-    val defaultRedisScript = new DefaultRedisScript[Long]()
+  def defaultRedisScript(): DefaultRedisScript[java.lang.Long] = {
+    val defaultRedisScript = new DefaultRedisScript[java.lang.Long]()
 
-    defaultRedisScript.setResultType(classOf[Long])
+    defaultRedisScript.setResultType(classOf[java.lang.Long])
     defaultRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("redisLimiter.lua")))
 
     logger.info("defaultRedisScript init")

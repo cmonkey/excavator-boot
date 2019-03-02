@@ -2,12 +2,12 @@ package org.excavator.boot.quartz.autoconfigure
 
 import java.util.Properties
 
-import org.excavator.boot.quartz.config.{QuartzDataSourceConfig}
+import org.excavator.boot.quartz.config.QuartzDataSourceConfig
 import org.excavator.boot.quartz.factory.SpringJobFactory
 import org.excavator.boot.quartz.properties.QuartzProperties
 import javax.annotation.Resource
 import javax.sql.DataSource
-import org.quartz.{JobDetail, Scheduler, SimpleTrigger, Trigger}
+import org.quartz._
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -52,7 +52,7 @@ class QuartzAutoConfiguration{
   @Bean
   def scheduler(schedulerFactoryBean: SchedulerFactoryBean): Scheduler = schedulerFactoryBean.getScheduler
 
-  def createJobDetail(jobClass: Class[_], description: String): JobDetailFactoryBean = {
+  def createJobDetail(jobClass: Class[Job], description: String): JobDetailFactoryBean = {
     val factoryBean = new JobDetailFactoryBean
 
     factoryBean.setJobClass(jobClass)

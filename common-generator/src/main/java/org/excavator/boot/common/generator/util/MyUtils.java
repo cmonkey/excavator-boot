@@ -66,7 +66,7 @@ public class MyUtils {
         path += m.getSPadding() + StringUtil.className(tableName) + m.getEPadding() + "."
                 + m.getSuffix();
 
-        logger.info("getOutPutPath ### modelName = {]", getModelName(config, tableName, "/"));
+        logger.info("getOutPutPath ### modelName = {}", getModelName(config, tableName, "/"));
         logger.info("getOutPutPath path = {}", path);
 
         mkdir(path);

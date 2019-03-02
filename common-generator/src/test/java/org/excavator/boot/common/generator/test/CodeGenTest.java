@@ -49,7 +49,7 @@ public class CodeGenTest {
         int port = 3306;
         String driverClass = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://" + host + ":" + port + "/" + database
-                     + "?useUnicode=true&characterEncoding=UTF-8";
+                     + "?useUnicode=true&characterEncoding=UTF-8&useSSL=false";
         String packagePath = "com.excavator.web";
         String author = "";
         String table = "";
