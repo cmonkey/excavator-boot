@@ -12,7 +12,7 @@
         "driverClass": "com.mysql.cj.jdbc.Driver",
         "username": "bsc",
         "password": "bsc",
-        "url": "jdbc:mysql:\/\/www.excavator.boot:3306/bsc?useUnicode=true&characterEncoding=UTF-8"
+        "url": "jdbc:mysql:\/\/www.excavator.boot:3306/bsc?useUnicode=true&characterEncoding=UTF-8&useSSL=false"
     },
 
     "ignorePrefix": "",
