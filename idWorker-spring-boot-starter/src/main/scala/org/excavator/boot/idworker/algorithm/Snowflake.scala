@@ -2,6 +2,7 @@ package org.excavator.boot.idworker.algorithm
 
 import org.joda.time.{DateTime, format}
 import org.joda.time.format.DateTimeFormat
+import java.security.SecureRandom
 import org.slf4j.LoggerFactory
 import org.slf4j.Logger
 
@@ -31,6 +32,8 @@ class Snowflake private(id: Long){
   var sequence = 0L
 
   var lastTimestamp = -1L
+
+  val RANDOM = new SecureRandom()
 
   if(id > maxWorkerId ||  id < 0){
       val message = String.format("worker id grater than %d or less than 0", Array(maxWorkerId))
@@ -65,10 +68,21 @@ class Snowflake private(id: Long){
       sequence = sequence + 1 & sequenceMask
 
       if(sequence == 0){
+        /**
+          *
+          * sequence 为0 的时候表示是下一个毫秒时间，　开始对sequence 做随机
+          * 数据量大时，一般做分库分表，id 作为一个取模的依据, 为了分库分表均匀
+          * id 生成需要“取模随机", sequence 在id最末位，保证id随机
+          * 如果跨毫秒，每次都将sequence 归0
+          * 会导致sequence 为0 的序号比较多, 导致生成的id取模后不均匀
+          * ref:github.com:Meituan-Dianping/Leaf.git
+          * ref:https://mp.weixin.qq.com/s/0H-GEXlFnM1z-THI8ZGV2Q
+          **/
+        sequence = RANDOM.nextInt(10)
         timestamp = tilNextMillis(lastTimestamp)
       }
     }else{
-      sequence = 0
+      sequence = RANDOM.nextInt(10)
     }
 
     if(timestamp < lastTimestamp){
