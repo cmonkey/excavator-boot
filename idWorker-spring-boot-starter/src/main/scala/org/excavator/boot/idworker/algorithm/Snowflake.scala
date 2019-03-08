@@ -64,6 +64,25 @@ class Snowflake private(id: Long){
 
     var timestamp = timeGen
 
+    //发生了时间回拨，　当前时间小于上次发号时间
+    if(timestamp < lastTimestamp){
+      val offset = lastTimestamp - timestamp
+
+      if(offset <= 5){
+        try {
+          // 时间爱你偏差大小小于5ms, 等待两倍时间
+          wait(offset << 1)
+          timestamp = timeGen()
+          if (timestamp < lastTimestamp) {
+            // 抛出时间回拨异常
+            throw new RuntimeException("clock moved backwards Exception")
+          }
+        }catch {
+          case _:Throwable => throw new RuntimeException("wait interrupts Exception")
+        }
+      }
+    }
+
     if(lastTimestamp == timestamp){
       sequence = sequence + 1 & sequenceMask
 
