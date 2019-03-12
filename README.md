@@ -17,7 +17,7 @@
   10. netty (提供对同步报文的发送)
   11. kafka (提供开箱即用的kafka 支持)
   12. cumulative(基于redis的多维度统计api)
-  13, quartz (对quartz 添加开箱即用的starter 支持，因为目前默认依赖spring boot version = 1.5.19)
+  13, quartz (对quartz 添加开箱即用的starter 支持，因为目前默认依赖spring boot version = 2.1.3)
   14. redisLimit (通过redis + lua 实现的redis limit , 可用于对资源进行额度限制)
 
 
@@ -42,7 +42,7 @@
     <parent>
             <groupId>org.excavator.boot</groupId>
             <artifactId>excavator-boot-dependencies</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>2.0.0-SNAPSHOT</version>
             <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
