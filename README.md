@@ -42,7 +42,7 @@
     <parent>
             <groupId>org.excavator.boot</groupId>
             <artifactId>excavator-boot-dependencies</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>2.0.0-SNAPSHOT</version>
             <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
