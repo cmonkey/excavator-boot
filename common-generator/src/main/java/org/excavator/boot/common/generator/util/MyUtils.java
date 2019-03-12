@@ -37,7 +37,7 @@ public class MyUtils {
 
     public static String getGroupName(Config config, String tableName) {
         Group[] groups = config.getGroups();
-        String name = null;
+        String name;
         for (Group g : groups) {
             name = g.findGroupName(tableName);
             if (name != null) {
