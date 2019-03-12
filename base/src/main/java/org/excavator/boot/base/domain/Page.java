@@ -261,11 +261,9 @@ public class Page<T> implements java.io.Serializable {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Page [pageNo=").append(page).append(", pageSize=").append(pageSize)
-            .append(", rows=").append(rows).append(", totalPage=").append(totalPage)
-            .append(", count=").append(count).append("]");
-        return builder.toString();
+        String builder = "Page [pageNo=" + page + ", pageSize=" + pageSize + ", rows=" + rows
+                         + ", totalPage=" + totalPage + ", count=" + count + "]";
+        return builder;
     }
 
     @JsonIgnore
