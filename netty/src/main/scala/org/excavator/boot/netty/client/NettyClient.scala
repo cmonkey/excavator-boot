@@ -22,7 +22,7 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
   private val logger = LoggerFactory.getLogger(classOf[NettyClient])
 
   private val lock = new ReentrantLock()
-  private var bootstrap: Bootstrap = null
+  private var bootstrap: Bootstrap = _
   private var workerGroup:EventLoopGroup = null
   private var channelFuture: ChannelFuture = null
 
@@ -67,13 +67,13 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
     channelFuture = bootstrap.connect(host, port).sync()
 
     if(logger.isDebugEnabled()){
-      logger.debug(s"init bootstrap = ${bootstrap}")
+      logger.debug(s"init bootstrap = $bootstrap")
     }
 
     lock.unlock()
   }
 
-  def send(msg:String): String = sendAndGetResponse(msg, 0, TimeUnit.SECONDS, false)
+  def send(msg:String): String = sendAndGetResponse(msg, 0, TimeUnit.SECONDS, isTimeout = false)
 
   def send(msg: String, timeout:Long, timeUnit: TimeUnit) = sendAndGetResponse(msg, timeout, timeUnit, true)
 
@@ -83,11 +83,9 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
 
       val responseFuture = new ResponseFuture()
 
-      channelFuture.addListener(new GenericFutureListener[ChannelFuture](){
-        override def operationComplete(f: ChannelFuture): Unit = {
-          channelFuture.channel.pipeline.get(classOf[RpcHandler]).setResponseFuture(responseFuture)
-          channelFuture.channel.writeAndFlush(msg).sync
-        }
+      channelFuture.addListener((f: ChannelFuture) => {
+        channelFuture.channel.pipeline.get(classOf[RpcHandler]).setResponseFuture(responseFuture)
+        channelFuture.channel.writeAndFlush(msg).sync
       })
 
       if(isTimeout){
