@@ -37,7 +37,7 @@ public class ResourceUtils {
         BufferedReader br = new BufferedReader(new InputStreamReader(getResourceAsStream(filePath)));
 
         while (true) {
-            String str = null;
+            String str;
             if ((str = br.readLine()) == null) {
                 return content.toString();
             }
