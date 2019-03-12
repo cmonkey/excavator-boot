@@ -34,6 +34,7 @@ import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class BusinessKeyProvider {
 
@@ -42,13 +43,12 @@ public class BusinessKeyProvider {
     private ExpressionParser        parser         = new SpelExpressionParser();
 
     public String getKeyName(ProceedingJoinPoint joinPoint, Lock lock) {
-        List<String> keyList = new ArrayList<>();
 
         Method method = getMethod(joinPoint);
 
         List<String> definitionKeys = getSpelDefinitionKey(lock.keys(), method, joinPoint.getArgs());
 
-        keyList.addAll(definitionKeys);
+        List<String> keyList = new ArrayList<>(definitionKeys);
 
         List<String> parameterKeys = getParameterKey(method.getParameters(), joinPoint.getArgs());
 
@@ -78,7 +78,7 @@ public class BusinessKeyProvider {
 
             if (org.apache.commons.lang3.StringUtils.isNotBlank(definitionKey)) {
                 EvaluationContext context = new MethodBasedEvaluationContext(null, method, parameterValues, nameDiscoverer);
-                String key = parser.parseExpression(definitionKey).getValue(context).toString();
+                String key = Objects.requireNonNull(parser.parseExpression(definitionKey).getValue(context)).toString();
                 definitionKeyList.add(key);
             }
         });
@@ -96,8 +96,8 @@ public class BusinessKeyProvider {
                 } else {
                     StandardEvaluationContext context = new StandardEvaluationContext(
                         parameterValues[i]);
-                    String key = parser.parseExpression(keyAnnotation.value()).getValue(context)
-                        .toString();
+                    String key = Objects.requireNonNull(
+                        parser.parseExpression(keyAnnotation.value()).getValue(context)).toString();
                     parameterKey.add(key);
                 }
             }
