@@ -29,6 +29,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class JsonPathTests {
@@ -37,10 +38,11 @@ public class JsonPathTests {
 
     @BeforeAll
     private static void initJsonText() throws URISyntaxException, IOException {
-        URI uri = JsonPathTests.class.getClassLoader().getResource("simple.json").toURI();
+        URI uri = Objects.requireNonNull(
+            JsonPathTests.class.getClassLoader().getResource("simple.json")).toURI();
         List<String> lines = Files.readAllLines(Paths.get(uri));
 
-        json = lines.stream().collect(Collectors.joining());
+        json = String.join("", lines);
     }
 
     @Test
