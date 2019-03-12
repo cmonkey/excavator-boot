@@ -30,7 +30,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class PageRows<T> implements Serializable {
     private Pagination page;
-    private List<T>    rows = new ArrayList<T>();
+    private List<T>    rows = new ArrayList<>();
 
     public PageRows() {
     }
