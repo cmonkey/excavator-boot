@@ -65,7 +65,7 @@ public class Launcher {
             int port = 3306;
             String database = "";
             String driverClass = "com.mysql.cj.jdbc.Driver";
-            String url = "";
+            String url;
             String packagePath = "org.excavator.web";
             String author = "";
             String table = "";
