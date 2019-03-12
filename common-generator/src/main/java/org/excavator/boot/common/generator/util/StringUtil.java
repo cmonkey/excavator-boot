@@ -77,9 +77,10 @@ public class StringUtil {
         int strLen;
         if (str == null || (strLen = str.length()) == 0) {
             return str;
-        } else
+        } else {
             return (new StringBuilder(strLen)).append(Character.toLowerCase(str.charAt(0)))
                 .append(str.substring(1)).toString();
+        }
     }
 
     /**
