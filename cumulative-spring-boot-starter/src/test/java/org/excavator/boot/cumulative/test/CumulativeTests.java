@@ -38,7 +38,7 @@ public class CumulativeTests {
         String value = "10";
         String r = cumulativeService.cumulativeByDay(key, dimensionKey, value);
 
-        assertEquals(true, Long.valueOf(r) >= Long.valueOf(value));
+        assertTrue(Long.valueOf(r) >= Long.valueOf(value));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class CumulativeTests {
         String value = "10";
         String r = cumulativeService.cumulativeByMonth(key, dimensionKey, value);
 
-        assertEquals(true, Long.valueOf(r) >= Long.valueOf(value));
+        assertTrue(Long.valueOf(r) >= Long.valueOf(value));
     }
 
     @Test
@@ -61,8 +61,8 @@ public class CumulativeTests {
         String dayValue = cumulativeService.queryByDay(key, dimensionKey);
         String monthValue = cumulativeService.queryByMonth(key, dimensionKey);
 
-        assertEquals(true, Long.valueOf(dayValue) >= Long.valueOf(value));
-        assertEquals(true, Long.valueOf(monthValue) >= Long.valueOf(value));
+        assertTrue(Long.valueOf(dayValue) >= Long.valueOf(value));
+        assertTrue(Long.valueOf(monthValue) >= Long.valueOf(value));
     }
 
     @Test
@@ -72,10 +72,10 @@ public class CumulativeTests {
         String value = "10";
         String r = cumulativeService.cumulativeByYear(key, dimensionKey, value);
 
-        assertEquals(true, Long.valueOf(r) >= Long.valueOf(value));
+        assertTrue(Long.valueOf(r) >= Long.valueOf(value));
 
         r = cumulativeService.queryByYear(key, dimensionKey);
 
-        assertEquals(true, Long.valueOf(r) >= Long.valueOf(value));
+        assertTrue(Long.valueOf(r) >= Long.valueOf(value));
     }
 }
