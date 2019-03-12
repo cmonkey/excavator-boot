@@ -40,7 +40,7 @@ public class MysqlDao extends AbstractDaoSupport {
 
     @Override
     public List<Column> queryColumns(String tableName) {
-        List<Column> list = new ArrayList<Column>();
+        List<Column> list = new ArrayList<>();
         try {
             checkDriver();
             Connection conn = getConn();
@@ -65,7 +65,7 @@ public class MysqlDao extends AbstractDaoSupport {
     @Override
     public String typesConvert(String sqlType) {
         sqlType = sqlType.substring(0,
-            sqlType.indexOf("(") == -1 ? sqlType.length() : sqlType.indexOf("("));
+            !sqlType.contains("(") ? sqlType.length() : sqlType.indexOf("("));
         if (sqlType.equalsIgnoreCase("bit")) {
             return "Boolean";
         } else if (sqlType.equalsIgnoreCase("tinyint")) {
@@ -97,7 +97,7 @@ public class MysqlDao extends AbstractDaoSupport {
     //@Override
     @Deprecated
     public String typesConverts(String mysqlType) {
-        mysqlType = mysqlType.substring(0, mysqlType.indexOf("(") == -1 ? mysqlType.length()
+        mysqlType = mysqlType.substring(0, !mysqlType.contains("(") ? mysqlType.length()
             : mysqlType.indexOf("("));
 
         if (mysqlType.equalsIgnoreCase("varchar") || mysqlType.equalsIgnoreCase("char")
