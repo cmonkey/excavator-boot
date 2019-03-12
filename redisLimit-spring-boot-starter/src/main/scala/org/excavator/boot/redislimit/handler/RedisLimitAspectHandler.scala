@@ -31,7 +31,7 @@ class RedisLimitAspectHandler {
 
     val signature = joinPoint.getSignature()
 
-    if(!(signature.isInstanceOf[MethodSignature])){
+    if(!signature.isInstanceOf[MethodSignature]){
       throw new IllegalArgumentException("the annoation @RedisLimiter must used on Method")
     }else{
 
@@ -46,7 +46,7 @@ class RedisLimitAspectHandler {
       val limit = redisLimiter.limit()
       val expireTime = redisLimiter.expire()
 
-      logger.info(s"redis limiter method = ${methodName}, key = ${key}, limit = ${limit}, expire = ${expireTime}")
+      logger.info(s"redis limiter method = $methodName, key = $key, limit = $limit, expire = $expireTime")
 
       val keys = util.Collections.singletonList[String](key)
 
