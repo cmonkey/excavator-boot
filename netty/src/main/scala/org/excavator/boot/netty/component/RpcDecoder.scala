@@ -13,7 +13,7 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
   val logger = LoggerFactory.getLogger(classOf[RpcDecoder])
 
   if(logger.isDebugEnabled()){
-    logger.debug(s"rpcDecoder init maxFrameLength = ${maxFrameLength}, position = ${position}, charset = ${charset}, responseViewMode = ${responseViewMode}")
+    logger.debug(s"rpcDecoder init maxFrameLength = $maxFrameLength, position = $position, charset = $charset, responseViewMode = $responseViewMode")
   }
 
   override def decode(ctx: ChannelHandlerContext, in: ByteBuf): AnyRef = {
@@ -33,7 +33,7 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
     val length = Integer.parseInt(headLength)
 
     if(logger.isDebugEnabled){
-      logger.debug(s"decode headLength = ${headLength} to IntLength = ${length}")
+      logger.debug(s"decode headLength = $headLength to IntLength = $length")
     }
 
     if((in.readableBytes() + 1 ) < length){
@@ -55,11 +55,11 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
       msg = headLength + msg
 
       if(logger.isDebugEnabled()){
-        logger.debug(s"decode responseViewMode = ${responseViewMode}, fullMsg = ${msg}")
+        logger.debug(s"decode responseViewMode = $responseViewMode, fullMsg = $msg")
       }
     }else{
       if(logger.isDebugEnabled()){
-        logger.debug(s"decode responseViewMode = ${responseViewMode}, bodyMsg = ${msg}")
+        logger.debug(s"decode responseViewMode = $responseViewMode, bodyMsg = $msg")
       }
     }
 
