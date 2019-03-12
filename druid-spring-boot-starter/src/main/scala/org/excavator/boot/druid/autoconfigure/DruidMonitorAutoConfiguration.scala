@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Bean
 @AutoConfigureAfter(Array(classOf[DataSource]))
 class DruidMonitorAutoConfiguration{
 
-  val logger = LoggerFactory.getLogger(classOf[DruidMonitorAutoConfiguration])
+  private val logger = LoggerFactory.getLogger(classOf[DruidMonitorAutoConfiguration])
 
   @Bean
   @ConditionalOnMissingBean
@@ -39,7 +39,7 @@ class DruidMonitorAutoConfiguration{
     //是否能够重置数据.
     servletRegistrationBean.addInitParameter("resetEnable", properties.getResetEnable)
 
-    logger.info(s"init druidServlet in servletRegistrationBean = ${servletRegistrationBean}")
+    logger.info(s"init druidServlet in servletRegistrationBean = $servletRegistrationBean")
 
     servletRegistrationBean
   }
