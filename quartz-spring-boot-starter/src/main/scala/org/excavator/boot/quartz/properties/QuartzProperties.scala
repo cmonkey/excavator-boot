@@ -7,16 +7,16 @@ import scala.beans.BeanProperty
 @ConfigurationProperties("excavator.quartz")
 case class QuartzProperties (){
   @BeanProperty
-  var driverClassName:String = null
+  var driverClassName:String = _
 
   @BeanProperty
-  var url:String = null
+  var url:String = _
 
   @BeanProperty
-  var username:String = null
+  var username:String = _
 
   @BeanProperty
-  var password:String = null
+  var password:String = _
 
   @BeanProperty
   var initialSize:Int = 0
@@ -37,7 +37,7 @@ case class QuartzProperties (){
   var minEvictableIdleTimeMillis: Long = 0
 
   @BeanProperty
-  var validationQuery: String = null
+  var validationQuery: String = _
 
   @BeanProperty
   var testWhileIdle: Boolean = false
@@ -55,8 +55,8 @@ case class QuartzProperties (){
   var maxPoolPreparedStatementPerConnectionSize: Int = 0
 
   @BeanProperty
-  var filters: String = null
+  var filters: String = _
 
   @BeanProperty
-  var connectionProperties: String = null
+  var connectionProperties: String = _
 }
