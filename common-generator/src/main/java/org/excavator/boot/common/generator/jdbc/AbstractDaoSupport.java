@@ -50,7 +50,7 @@ public abstract class AbstractDaoSupport {
     }
 
     public List<String> queryAllTables(String nativeSql) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         try {
             checkDriver();
             Connection conn = getConn();
@@ -77,7 +77,7 @@ public abstract class AbstractDaoSupport {
     }
 
     protected Connection getConn() throws SQLException {
-        return (Connection) DriverManager.getConnection(url, username, password);
+        return DriverManager.getConnection(url, username, password);
     }
 
     protected void checkDriver() {
