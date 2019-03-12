@@ -22,7 +22,7 @@ class SnowflakeNodeRegister(val registerCenter: RegisterCenter, val nodePath: Sn
 
     val curatorFramework = registerCenter.getRawClient().asInstanceOf[CuratorFramework]
 
-    val lock = new InterProcessMutex(curatorFramework, nodePath.getGroupPath)
+    val lock = new InterProcessMutex(curatorFramework, nodePath.getGroupPath())
 
     try {
 
