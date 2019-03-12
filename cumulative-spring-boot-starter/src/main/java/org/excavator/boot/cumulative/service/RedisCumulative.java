@@ -26,6 +26,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RedisCumulative implements Cumulative {
@@ -138,7 +139,7 @@ public class RedisCumulative implements Cumulative {
             new LongRedisSerializer(), keys, argsArray);
         if (rst != 0) {
             throw new RuntimeException("redis day and month cumulative occured error, keys " + keys
-                                       + ", args " + argsArray);
+                                       + ", args " + Arrays.toString(argsArray));
         }
     }
 
