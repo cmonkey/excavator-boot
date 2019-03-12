@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner
 class ProcessorTests {
 
   @Value("${author}")
-  var author: String = null
+  var author: String = _
 
   @Test
   def testAspectLog() = {
