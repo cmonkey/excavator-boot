@@ -3,7 +3,7 @@ package org.excavator.boot.idworker.registry
 import java.nio.charset.StandardCharsets
 import java.util.Collections
 
-import org.apache.curator.framework.{CuratorFramework}
+import org.apache.curator.framework.CuratorFramework
 import org.apache.curator.utils.CloseableUtils
 import org.apache.zookeeper.{CreateMode}
 import org.excavator.boot.idworker.config.IdWorkerProperties
