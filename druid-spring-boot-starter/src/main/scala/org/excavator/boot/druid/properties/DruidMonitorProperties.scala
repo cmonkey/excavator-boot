@@ -7,27 +7,27 @@ import scala.beans.BeanProperty
 @ConfigurationProperties(prefix = "excavator.druid.monitor")
 case class DruidMonitorProperties() {
   @BeanProperty
-  var statView:String = _;
+  var statView:String = _
 
   @BeanProperty
   var allow:String = _ ;
 
   @BeanProperty
-  var deny:String = _;
+  var deny:String = _
 
   @BeanProperty
-  var loginName:String = _;
+  var loginName:String = _
 
   @BeanProperty
-  var loginPassword:String = _;
+  var loginPassword:String = _
 
   @BeanProperty
-  var resetEnable:String = _;
+  var resetEnable:String = _
 
   @BeanProperty
-  var urlPatterns:String = _;
+  var urlPatterns:String = _
 
   @BeanProperty
-  var exclusions:String = _;
+  var exclusions:String = _
 
 }
