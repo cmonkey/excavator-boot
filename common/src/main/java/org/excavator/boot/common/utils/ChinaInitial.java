@@ -57,7 +57,7 @@ public class ChinaInitial {
 
                 char c = (char) b[i];
 
-                if (!Character.isJavaIdentifierPart(c)){
+                if (!Character.isJavaIdentifierPart(c)) {
                     //确定指定字符是否可以是 Java 标识符中首字符以外的部分。
                     c = 'A';
                 }
