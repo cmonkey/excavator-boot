@@ -7,7 +7,6 @@
 
     "author": "cmonkey",
 
-    //    msyql
     "DatabaseConfig": {
         "driverClass": "com.mysql.cj.jdbc.Driver",
         "username": "bsc",
@@ -42,20 +41,11 @@
         "prefix" : "LOG"
     }],
 
-    "mappings" : [/*{
-        "template"	:	"controller.ftl",
-        "dir"		:	"${targetpath}/controller",
-        "rpadding"	:	"controller"
-    }, */{
+    "mappings" : [{
         "template"	:	"pojo.ftl",
         "dir"		:	"${project}/${packagePath}/entity",
         "packagePath":	"${packagePath}.entity"
-    },/* {
-        "template"	:	"dto.ftl",
-        "dir"		:	"${project}/${packagePath}/dto",
-        "packagePath":	"${packagePath}.dto.${model}",
-        "ePadding"	:	"DTO"
-    }, */{
+    },{
         "template"	:	"service_impl.ftl",
         "dir"		:	"${project}/${packagePath}/service/impl",
         "packagePath":	"${packagePath}",
@@ -72,9 +62,7 @@
         "ePadding"	:	"Dao"
     }, {
         "template"	:	"mybatis_xml.ftl",
-		//"dir"		:	"${project}/${packagePath}/dao/${model}",
         "dir"		:	"${project}/mappings/${model}",
-        //"dir"		:	"${project}/mappings",
         "ePadding"  :   "Mapper",
         "packagePath":	"${packagePath}",
         "suffix"	:	"xml"
