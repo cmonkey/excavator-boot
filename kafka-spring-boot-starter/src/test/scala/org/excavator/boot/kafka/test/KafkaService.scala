@@ -19,7 +19,7 @@ class KafkaService {
   val kafkaTemplate: KafkaTemplate[String, String] = null
 
   def sendMsg(topic:String, msg: String) = {
-    logger.info(s"sendMsg in topic = ${topic} msg = ${msg}")
+    logger.info(s"sendMsg in topic = $topic msg = ${msg}")
 
     kafkaTemplate.send(topic, msg)
   }
