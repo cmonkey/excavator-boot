@@ -40,7 +40,7 @@ public class OracleDao extends AbstractDaoSupport {
 
     @Override
     public List<Column> queryColumns(String tableName) {
-        List<Column> list = new ArrayList<Column>();
+        List<Column> list = new ArrayList<>();
         try {
             checkDriver();
             Connection conn = getConn();
