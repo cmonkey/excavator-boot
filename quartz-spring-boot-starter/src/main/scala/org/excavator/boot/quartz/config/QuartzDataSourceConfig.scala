@@ -73,6 +73,6 @@ class QuartzDataSourceConfig {
         e.printStackTrace()
     }
 
-    return druidDataSource
+    druidDataSource
   }
 }
