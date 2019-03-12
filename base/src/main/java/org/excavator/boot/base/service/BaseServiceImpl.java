@@ -69,7 +69,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
     public Page<T> findPage(T entity) {
         Page<T> page = entity.getPage();
         if (page == null) {
-            page = new Page<T>();
+            page = new Page<>();
         }
         page.setRows(dao.findList(entity));
         return page;
@@ -92,14 +92,14 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
         }
         //批量提交的子列表
         int rows = 0;
-        List<T> subList = new ArrayList<T>();
+        List<T> subList = new ArrayList<>();
         for (final T t : list) {
             //t.setId(idGenerator.nextId());
             subList.add(t);
             //子列表已满,批量提交
             if (subList.size() == Constant.BATCH_OPERATION_COUNT) {
                 rows += dao.insertBatch(subList);
-                subList = new ArrayList<T>();
+                subList = new ArrayList<>();
             }
         }
         //子列表未满的部分,做一次批量提交
@@ -142,7 +142,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
             return;
         }
         //批量提交的子列表
-        List<T> subList = new ArrayList<T>();
+        List<T> subList = new ArrayList<>();
         for (final T t : list) {
             t.preUpdate();
             subList.add(t);
@@ -152,7 +152,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
                 if (result == Constant.INT_ZERO) {
                     throw new BusinessException("No updated records");
                 }
-                subList = new ArrayList<T>();
+                subList = new ArrayList<>();
             }
         }
         //子列表未满的部分,做一次批量提交
