@@ -44,7 +44,7 @@ class QuartzAutoConfiguration{
     schedulerFactoryBean.setQuartzProperties(getProperties)
     schedulerFactoryBean.setTriggers(triggers:_*)
 
-    logger.info(s"schedulerFactoryBean init = ${schedulerFactoryBean}")
+    logger.info(s"schedulerFactoryBean init = $schedulerFactoryBean")
 
     schedulerFactoryBean
   }
@@ -59,7 +59,7 @@ class QuartzAutoConfiguration{
     factoryBean.setDurability(true)
     factoryBean.setDescription(description)
 
-    logger.info(s"createJobDetail init ${factoryBean}")
+    logger.info(s"createJobDetail init $factoryBean")
 
     factoryBean
   }
@@ -72,7 +72,7 @@ class QuartzAutoConfiguration{
     factoryBean.setDescription(description)
     factoryBean.setMisfireInstruction(SimpleTrigger.MISFIRE_INSTRUCTION_FIRE_NOW)
 
-    logger.info(s"createCronTrigger init ${factoryBean}")
+    logger.info(s"createCronTrigger init $factoryBean")
 
     factoryBean
   }
@@ -101,7 +101,7 @@ class QuartzAutoConfiguration{
     prop.put("org.quartz.plugin.shutdownhook.class", "org.quartz.plugins.management.ShutdownHookPlugin")
     prop.put("org.quartz.plugin.shutdownhook.cleanShutdown", "true")
 
-    logger.info(s"getProperties init = ${prop}")
+    logger.info(s"getProperties init = $prop")
 
     prop
   }
