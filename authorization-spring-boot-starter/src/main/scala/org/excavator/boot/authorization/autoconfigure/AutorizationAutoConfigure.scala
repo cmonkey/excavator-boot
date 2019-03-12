@@ -22,7 +22,7 @@ import org.springframework.data.redis.core.StringRedisTemplate
 @EnableConfigurationProperties(Array(classOf[AuthorizationProperties]))
 @Import(Array(classOf[AuthorizationInterceptor], classOf[AuthorizationConfig], classOf[HandlerMethodArgumentResolverFactory]))
 class AutorizationAutoConfigure {
-  val logger = LoggerFactory.getLogger(classOf[AutorizationAutoConfigure])
+  private val logger = LoggerFactory.getLogger(classOf[AutorizationAutoConfigure])
 
   @Bean
   def tokenManager(@Qualifier("stringRedisTemplate") stringRedisTemplate: StringRedisTemplate): TokenManager = {
