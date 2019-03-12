@@ -38,7 +38,7 @@ public class IdworkerSpringBootStarterApplicationTests {
     public void testDateTime() {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime localDateTime = LocalDateTime.of(2017, 1, 1, 0, 0, 0);
-        logger.info("localDateTime = {}", localDateTime.format(fmt).toString());
+        logger.info("localDateTime = {}", localDateTime.format(fmt));
         logger.info("localDateTime nano = {}", localDateTime.getNano());
 
         org.joda.time.format.DateTimeFormatter dateTimeFormatter = DateTimeFormat
