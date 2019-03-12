@@ -9,12 +9,12 @@ class MockUserRepository extends UserRepository {
   val list = new util.ArrayList[User]()
 
   override def create(user: User): Unit = {
-    println(s"create user = ${user}")
+    println(s"create user = $user")
     list.add(user)
   }
 
   override def find(name: String): Option[User] = {
-    println(s"find username = ${name}")
+    println(s"find username = $name")
 
     val optional = list.stream().filter(u => u.name == name).findFirst()
 
@@ -26,10 +26,10 @@ class MockUserRepository extends UserRepository {
   }
 
   override def update(user: User): Unit = {
-    println(s"update user = ${user}")
+    println(s"update user = $user")
   }
 
   override def delete(user: User): Unit = {
-    println(s"delete user = ${user}")
+    println(s"delete user = $user")
   }
 }
