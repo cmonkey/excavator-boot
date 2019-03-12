@@ -1,7 +1,7 @@
 package org.excavator.boot.authorization.factory
 
 import java.util
-import java.util.{List}
+import java.util.List
 
 import com.google.common.collect.Lists
 import javax.annotation.Resource
@@ -27,7 +27,7 @@ class HandlerMethodArgumentResolverFactory {
         authorizationResolverFactory.getService(instance)
       }).toList.asJava
     }else{
-      val empty:List[HandlerMethodArgumentResolver] = Lists.newArrayList[HandlerMethodArgumentResolver]
+      val empty:util.List[HandlerMethodArgumentResolver] = Lists.newArrayList[HandlerMethodArgumentResolver]
 
       empty
     }
