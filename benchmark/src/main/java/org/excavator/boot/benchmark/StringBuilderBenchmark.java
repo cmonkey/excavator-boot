@@ -34,11 +34,11 @@ public class StringBuilderBenchmark {
 
     @Benchmark
     public void testStringAdd() {
-        String a = "";
+        StringBuilder a = new StringBuilder();
         for (int i = 0; i < 10; i++) {
-            a += i;
+            a.append(i);
         }
-        print(a);
+        print(a.toString());
     }
 
     @Benchmark
