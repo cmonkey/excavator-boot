@@ -248,6 +248,8 @@ public class EncodeUtils {
                         case 'f':
                             aChar = '\f';
                             break;
+                        default:
+                            break;
                     }
                     outBuffer.append(aChar);
                 }
