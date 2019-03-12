@@ -170,7 +170,7 @@ public class EncodeUtils {
     /**
      * URL 解码, Encode默认为UTF-8.
      */
-    public static String[] urlDecode(String param[]) {
+    public static String[] urlDecode(String[] param) {
         if (param == null) {
             return null;
         }
@@ -253,8 +253,9 @@ public class EncodeUtils {
                     }
                     outBuffer.append(aChar);
                 }
-            } else
+            } else {
                 outBuffer.append(aChar);
+            }
         }
         return outBuffer.toString();
     }
