@@ -17,7 +17,7 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
 @Component
 class CurrentUserMethodArgumentResolver extends HandlerMethodArgumentResolver{
 
-  val logger = LoggerFactory.getLogger(classOf[CurrentUserMethodArgumentResolver])
+  private val logger = LoggerFactory.getLogger(classOf[CurrentUserMethodArgumentResolver])
 
   @Resource
   val tokenManager: TokenManager = null
@@ -30,7 +30,7 @@ class CurrentUserMethodArgumentResolver extends HandlerMethodArgumentResolver{
 
     logger.info("resolveArgument param customerId = {}", customerId)
 
-    if (null != customerId) {
+    if (customerId != 0) {
       val customer = new Customer(10, "cmonkey", "12345678911")
       if (null != customer) return customer
       else {

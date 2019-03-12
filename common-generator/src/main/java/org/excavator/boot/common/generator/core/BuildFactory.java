@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +44,7 @@ public class BuildFactory {
     private final static Logger                     logger = LoggerFactory
                                                                .getLogger(BuildFactory.class);
 
-    private static Map<String, Map<String, Object>> CACHE  = new HashMap<String, Map<String, Object>>();
+    private static Map<String, Map<String, Object>> CACHE  = new HashMap<>();
     private static AbstractDaoSupport               dao;
 
     /**
@@ -74,7 +75,8 @@ public class BuildFactory {
     public void build(String templateFile, Object obj, String outFile) {
         try {
             Template t = cfg.getTemplate(templateFile);
-            Writer out = new OutputStreamWriter(new FileOutputStream(outFile), "utf-8");
+            Writer out = new OutputStreamWriter(new FileOutputStream(outFile),
+                StandardCharsets.UTF_8);
             t.process(obj, out);
         } catch (IOException | TemplateException e) {
             logger.error("build Exception = {} ", e);
@@ -95,7 +97,7 @@ public class BuildFactory {
         // 数据准备,可以是Map,List或者是实体
         //String className = StringUtil.className(tableName.replace(config.getIgnorePrefix(), ""));
 
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         map.put("package_path", packagePath);
         map.put("model_package", MyUtils.buildModelPackage(config, tableName));
         map.put("table_name", tableName);

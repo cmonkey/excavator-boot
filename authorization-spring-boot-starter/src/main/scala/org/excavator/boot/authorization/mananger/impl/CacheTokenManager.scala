@@ -16,13 +16,13 @@ import org.springframework.stereotype.Component
 @Component
 class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenManager {
 
-  val logger = LoggerFactory.getLogger(classOf[CacheTokenManager])
+  private val logger = LoggerFactory.getLogger(classOf[CacheTokenManager])
 
   @Resource
   val authorizationProperties: AuthorizationProperties = null
 
   override def createToken(customerId: Long): Optional[Token] = {
-    logger.info(s"createToken param customerId = ${customerId}")
+    logger.info(s"createToken param customerId = $customerId")
 
     val setOps = stringRedisTemplate.opsForSet
 

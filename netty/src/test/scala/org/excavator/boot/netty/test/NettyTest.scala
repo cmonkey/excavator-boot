@@ -98,7 +98,7 @@ class NettyTest {
 
     val result = if (isTimeout) nettyClient.send(data, 1, TimeUnit.SECONDS) else nettyClient.send(data)
 
-    logger.info(s"result = ${result}")
+    logger.info(s"result = $result")
 
     assertNotNull(result)
 
@@ -122,7 +122,7 @@ class NettyTest {
 }
 
 object NettyTest{
-  var nettyServer: NettyServer = null
+  var nettyServer: NettyServer = _
 
   @BeforeAll
   def initNettyServer() = {

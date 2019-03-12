@@ -37,7 +37,7 @@ public class ChinaInitial {
 
             StringBuilder buffer = new StringBuilder();
 
-            byte b[] = strChinese.getBytes("GBK");//把中文转化成byte数组
+            byte[] b = strChinese.getBytes("GBK");//把中文转化成byte数组
 
             for (int i = 0; i < b.length; i++) {
 
@@ -57,9 +57,10 @@ public class ChinaInitial {
 
                 char c = (char) b[i];
 
-                if (!Character.isJavaIdentifierPart(c))//确定指定字符是否可以是 Java 标识符中首字符以外的部分。
-
+                if (!Character.isJavaIdentifierPart(c)) {
+                    //确定指定字符是否可以是 Java 标识符中首字符以外的部分。
                     c = 'A';
+                }
 
                 buffer.append(c);
 

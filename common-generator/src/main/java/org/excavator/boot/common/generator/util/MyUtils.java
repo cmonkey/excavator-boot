@@ -37,7 +37,7 @@ public class MyUtils {
 
     public static String getGroupName(Config config, String tableName) {
         Group[] groups = config.getGroups();
-        String name = null;
+        String name;
         for (Group g : groups) {
             name = g.findGroupName(tableName);
             if (name != null) {
@@ -77,8 +77,9 @@ public class MyUtils {
     public static void mkdir(String filePath) {
         int index = filePath.lastIndexOf("\\");
         int index2 = filePath.lastIndexOf("/");
-        if (index + index2 == -2)
+        if (index + index2 == -2) {
             return;
+        }
         index = index > index2 ? index : index2;
         if (index != -1 && !new File(filePath.substring(0, index)).exists()) {
 

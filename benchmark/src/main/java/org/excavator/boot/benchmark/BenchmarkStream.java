@@ -48,9 +48,9 @@ public class BenchmarkStream {
         int e = a.length;
         int m = Integer.MIN_VALUE;
 
-        for (int i = 0; i < e; i++) {
-            if (a[i] > m) {
-                m = a[i];
+        for (int i1 : a) {
+            if (i1 > m) {
+                m = i1;
             }
         }
     }

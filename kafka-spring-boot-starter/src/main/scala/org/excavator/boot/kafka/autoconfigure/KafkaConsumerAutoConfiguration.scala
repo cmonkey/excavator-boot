@@ -41,7 +41,7 @@ class KafkaConsumerAutoConfiguration {
       ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG -> "100"
       )
 
-    logger.info(s"init consumerFactory param = ${map}")
+    logger.info(s"init consumerFactory param = $map")
 
     import scala.collection.JavaConverters._
 

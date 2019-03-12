@@ -17,7 +17,7 @@ import org.springframework.context.annotation.{Bean, Configuration, Primary}
 @EnableConfigurationProperties(Array(classOf[DruidDataSourceProperties]))
 @AutoConfigureBefore(Array(classOf[DataSourceAutoConfiguration]))
 class DruidDataSourceAutoConfiguration{
-  val logger = LoggerFactory.getLogger(classOf[DruidDataSourceAutoConfiguration])
+  private val logger = LoggerFactory.getLogger(classOf[DruidDataSourceAutoConfiguration])
 
   @Bean(destroyMethod = "close")
   @ConditionalOnMissingBean
@@ -25,34 +25,34 @@ class DruidDataSourceAutoConfiguration{
   def dataSource(properties: DruidDataSourceProperties) = {
     val druidDataSource = new DruidDataSource()
 
-      druidDataSource.setDriverClassName(properties.getDriverClassName());
-      druidDataSource.setUrl(properties.getUrl());
-      druidDataSource.setUsername(properties.getUsername());
-      druidDataSource.setPassword(properties.getPassword());
-      druidDataSource.setInitialSize(properties.getInitialSize());
-      druidDataSource.setMinIdle(properties.getMinIdle());
-      druidDataSource.setMaxActive(properties.getMaxActive());
-      druidDataSource.setMaxWait(properties.getMaxWait());
-      druidDataSource.setTimeBetweenEvictionRunsMillis(properties
-          .getTimeBetweenEvictionRunsMillis());
-      druidDataSource.setMinEvictableIdleTimeMillis(properties.getMinEvictableIdleTimeMillis());
-      druidDataSource.setValidationQuery(properties.getValidationQuery());
-      druidDataSource.setTestWhileIdle(properties.getTestWhileIdle());
-      druidDataSource.setTestOnBorrow(properties.getTestOnBorrow());
-      druidDataSource.setTestOnReturn(properties.getTestOnReturn());
-      druidDataSource.setPoolPreparedStatements(properties.getPoolPreparedStatements());
-      druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(properties
-          .getMaxPoolPreparedStatementPerConnectionSize());
-      druidDataSource.setConnectionProperties(properties.getConnectionProperties());
+      druidDataSource.setDriverClassName(properties.getDriverClassName())
+    druidDataSource.setUrl(properties.getUrl())
+    druidDataSource.setUsername(properties.getUsername())
+    druidDataSource.setPassword(properties.getPassword())
+    druidDataSource.setInitialSize(properties.getInitialSize())
+    druidDataSource.setMinIdle(properties.getMinIdle())
+    druidDataSource.setMaxActive(properties.getMaxActive())
+    druidDataSource.setMaxWait(properties.getMaxWait())
+    druidDataSource.setTimeBetweenEvictionRunsMillis(properties
+          .getTimeBetweenEvictionRunsMillis())
+    druidDataSource.setMinEvictableIdleTimeMillis(properties.getMinEvictableIdleTimeMillis())
+    druidDataSource.setValidationQuery(properties.getValidationQuery())
+    druidDataSource.setTestWhileIdle(properties.getTestWhileIdle())
+    druidDataSource.setTestOnBorrow(properties.getTestOnBorrow())
+    druidDataSource.setTestOnReturn(properties.getTestOnReturn())
+    druidDataSource.setPoolPreparedStatements(properties.getPoolPreparedStatements())
+    druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(properties
+          .getMaxPoolPreparedStatementPerConnectionSize())
+    druidDataSource.setConnectionProperties(properties.getConnectionProperties())
 
-      try {
-          druidDataSource.setFilters(properties.getFilters());
+    try {
+          druidDataSource.setFilters(properties.getFilters())
           druidDataSource.init();
       } catch {
         case e:SQLException => e.printStackTrace()
       }
 
-      logger.info(s"init druidDataSource in properties ${properties}")
+      logger.info(s"init druidDataSource in properties $properties")
 
       druidDataSource
 

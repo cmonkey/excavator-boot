@@ -25,6 +25,7 @@ import java.nio.file.attribute.UserPrincipal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.alibaba.fastjson.JSON;
@@ -56,7 +57,7 @@ public class Builder {
 
         List<String> tableList = Arrays.asList(tables);
 
-        if (null == tables || tables.length == 0) {
+        if (tables.length == 0) {
             tableList = factory.getDao().queryAllTables();
 
             if(StringUtils.isNotBlank(table)){
@@ -173,7 +174,7 @@ public class Builder {
 
             InputStream inputStream = classLoader.getResourceAsStream(fileName);
 
-            IOUtils.copy(inputStream, outputStream);
+            IOUtils.copy(Objects.requireNonNull(inputStream), outputStream);
 
         } catch (IOException e) {
             logger.error("copyFile Exception = {}", e);
@@ -213,10 +214,10 @@ public class Builder {
     }
 
     private String readConfig(String resourcesDir) {
-        StringBuilder builder = new StringBuilder("");
+        StringBuilder builder = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(resourcesDir + File.separator
                                                                    + "config-ssm.json"))) {
-            String str = "";
+            String str;
             while ((str = in.readLine()) != null) {
                 int contentIndex = str.indexOf("//"); // 处理行注释
                 if (contentIndex != -1) {

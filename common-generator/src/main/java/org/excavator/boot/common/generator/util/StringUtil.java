@@ -49,9 +49,9 @@ public class StringUtil {
     public static String javaStyleOfTableName(Config config, String tableName) {
         String prefixs = config.getIgnorePrefix();
         String[] ps = prefixs.split(",");
-        for (int i = 0; i < ps.length; i++) {
-            if (tableName.startsWith(ps[i])) {
-                tableName = tableName.replaceAll(ps[i], "");
+        for (String p : ps) {
+            if (tableName.startsWith(p)) {
+                tableName = tableName.replaceAll(p, "");
             }
         }
         return StringUtil.javaStyle(tableName);
@@ -65,20 +65,22 @@ public class StringUtil {
 
     public static String capitalize(String str) {
         int strLen;
-        if (str == null || (strLen = str.length()) == 0)
+        if (str == null || (strLen = str.length()) == 0) {
             return str;
-        else
+        } else {
             return (new StringBuilder(strLen)).append(Character.toTitleCase(str.charAt(0)))
                 .append(str.substring(1)).toString();
+        }
     }
 
     public static String uncapitalize(String str) {
         int strLen;
-        if (str == null || (strLen = str.length()) == 0)
+        if (str == null || (strLen = str.length()) == 0) {
             return str;
-        else
+        } else {
             return (new StringBuilder(strLen)).append(Character.toLowerCase(str.charAt(0)))
                 .append(str.substring(1)).toString();
+        }
     }
 
     /**
@@ -89,7 +91,7 @@ public class StringUtil {
      */
     private static String toUpper(String str) {
         char[] charArr = str.toCharArray();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < charArr.length; i++) {
             if (charArr[i] == '_') {
                 sb.append(String.valueOf(charArr[i + 1]).toUpperCase());

@@ -23,7 +23,7 @@ class QuartzJobConfig {
 
     jobDetail.setDurability(true)
 
-    logger.info(s"customBatchJobBean init = ${jobDetail}")
+    logger.info(s"customBatchJobBean init = $jobDetail")
 
     jobDetail
   }
@@ -38,7 +38,7 @@ class QuartzJobConfig {
     trigger.setCronExpression("0/1 * * * * ?")
     trigger.setName("customJobTrigger")
 
-    logger.info(s"customJobTrigger init = ${trigger}")
+    logger.info(s"customJobTrigger init = $trigger")
 
     trigger
   }

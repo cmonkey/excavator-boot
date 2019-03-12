@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.{InterceptorRegistry, W
 
 @Configuration
 class AuthorizationConfig extends WebMvcConfigurer {
-  val logger = LoggerFactory.getLogger(classOf[AuthorizationConfig])
+  private val logger = LoggerFactory.getLogger(classOf[AuthorizationConfig])
 
   @Resource
   private val authorizationInterceptor: AuthorizationInterceptor = null

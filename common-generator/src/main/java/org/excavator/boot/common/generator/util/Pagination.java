@@ -110,7 +110,7 @@ public class Pagination implements Serializable {
     }
 
     public List<Integer> getDisplayingPages() {
-        List<Integer> displayingPages = new ArrayList<Integer>();
+        List<Integer> displayingPages = new ArrayList<>();
         int startPage = Math.max(1, curPage - displayingPageLimit / 2);
         int endPage = Math.min(startPage + displayingPageLimit, maxPage);
         for (int i = startPage; i <= endPage; i++) {

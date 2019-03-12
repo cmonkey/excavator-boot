@@ -16,7 +16,7 @@ public class ${class_name} extends BaseEntity<${class_name}> {
 	
 	private static final long serialVersionUID = 1L;
 	<#list table_column as c>
-	<#if (c.name!="uuid")>private ${c.type}	${c.nameJ};		<#if (c.remark?exists && c.remark!="")> /* ${c.remark} */ </#if></#if>
+	<#if (c.name!="uuid")>private ${c.type}	${c.nameJ};		<#if (c.remark?? && c.remark!="")> /* ${c.remark} */ </#if></#if>
 	</#list>
 
 	//其他自定义属性

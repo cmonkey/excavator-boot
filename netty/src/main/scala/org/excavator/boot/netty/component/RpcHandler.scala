@@ -4,7 +4,7 @@ import org.excavator.boot.netty.response.ResponseFuture
 import io.netty.channel.{ChannelHandlerContext, SimpleChannelInboundHandler}
 
 class RpcHandler extends SimpleChannelInboundHandler[String]{
-  var responseFuture: ResponseFuture = null
+  var responseFuture: ResponseFuture = _
 
   def setResponseFuture(responseFuture: ResponseFuture) = {
     this.responseFuture = responseFuture

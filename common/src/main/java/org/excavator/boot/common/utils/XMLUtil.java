@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +86,7 @@ public class XMLUtil {
      */
     public static Map<String, String> parseXmlStringToMap(String str) throws Exception {
         Map<String, String> resultMap;
-        InputStream inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
+        InputStream inputStream = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
         resultMap = parseInputStreamToMap(inputStream);
         return resultMap;
     }

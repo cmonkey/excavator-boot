@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.{GetMapping, RestController}
 
 @RestController
 class AuthorizationController {
-  val log = LoggerFactory.getLogger(classOf[AuthorizationController])
+  private val log = LoggerFactory.getLogger(classOf[AuthorizationController])
 
   @Resource val tokenManager:TokenManager = null
 

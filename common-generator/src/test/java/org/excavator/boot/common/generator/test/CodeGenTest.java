@@ -75,7 +75,7 @@ public class CodeGenTest {
 
         List<String> fileNames = getFileNames(path);
 
-        fileNames.stream().forEach(f -> logger.info("f name = {}", f));
+        fileNames.forEach(f -> logger.info("f name = {}", f));
 
         String[] array = {"org", "com", "mappings"};
 

@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory
 
 class BloomFilterTest {
 
-  val logger = LoggerFactory.getLogger(classOf[BloomFilterTest])
+  private val logger = LoggerFactory.getLogger(classOf[BloomFilterTest])
 
   @Test
   @DisplayName("testMapTest")

@@ -17,7 +17,7 @@ object ProcessorApplication{
 
     val author = content.getEnvironment.getProperty("author")
 
-    logger.info(s"pre properties author = ${author}")
+    logger.info(s"pre properties author = $author")
 
     content.close()
   }

@@ -14,7 +14,7 @@ import java.util.Date;
 public class ${class_name}DTO implements Serializable {
 	
 	<#list table_column as c>
-	<#if (c.name!="id")>private ${c.type}	${c.nameJ};		<#if (c.remark?exists && c.remark!="")> /* ${c.remark} */ </#if></#if>
+	<#if (c.name!="id")>private ${c.type}	${c.nameJ};		<#if (c.remark?? && c.remark!="")> /* ${c.remark} */ </#if></#if>
 	</#list>
 
 	// Constructor

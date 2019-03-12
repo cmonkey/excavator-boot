@@ -5,7 +5,7 @@ import org.excavator.boot.idworker.storage.SnowflakeNodeRegister
 
 class SnowflakeGenerator(val storage: SnowflakeNodeRegister) extends IdGenerator {
 
-  var snowFlake: Snowflake = null
+  var snowFlake: Snowflake = _
 
   def init() = {
     val workerId = storage.register()

@@ -19,13 +19,13 @@ class SnowflakeTest{
 
     val ids = new Array[Long](size)
 
-    assertEquals(size, ids.size)
+    assertEquals(size, ids.length)
   }
 
   @Test
   def serializer(): Unit ={
     val info = new SnowflakeNodeInfo(1)
     val s = JSONProxy.toJSONString(info.getFieldMap())
-    println(s"${s}")
+    println(s"$s")
   }
 }

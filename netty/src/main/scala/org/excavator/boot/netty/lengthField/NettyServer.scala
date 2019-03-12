@@ -17,7 +17,7 @@ class NettyServer(maxFrameLength: Int, position: Int, port: Int, channelInBoundH
 
   val logger = LoggerFactory.getLogger(classOf[NettyServer])
 
-  private var bossGroup: EventLoopGroup = null
+  private var bossGroup: EventLoopGroup = _
   private var workerGroup: EventLoopGroup = null
 
   def this(channelInboundHandler: ChannelInboundHandler) = {
@@ -46,7 +46,7 @@ class NettyServer(maxFrameLength: Int, position: Int, port: Int, channelInBoundH
       .childOption[java.lang.Integer](ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000)
 
     if(logger.isDebugEnabled()) {
-      logger.debug(s"Bootstrap lengthField config = ${bootstrap}")
+      logger.debug(s"Bootstrap lengthField config = $bootstrap")
     }
   }
 
@@ -73,7 +73,7 @@ class NettyServer(maxFrameLength: Int, position: Int, port: Int, channelInBoundH
     }
 
     if(logger.isDebugEnabled()){
-      logger.info(s"Netty lengthField RPC started on port(s) = ${port}, headerLength = ${position}")
+      logger.info(s"Netty lengthField RPC started on port(s) = $port, headerLength = $position")
     }
   }
 
@@ -88,10 +88,10 @@ class NettyServer(maxFrameLength: Int, position: Int, port: Int, channelInBoundH
         workerGroup.shutdownGracefully.await
       }
 
-      logger.info(s"Stopped Netty lengthField Rpc Server port on = ${port}")
+      logger.info(s"Stopped Netty lengthField Rpc Server port on = $port")
     } catch {
       case e: InterruptedException =>
-        logger.error(s"shutdown Netty lengthField Rpc Server Exception = ${e}")
+        logger.error(s"shutdown Netty lengthField Rpc Server Exception = $e")
     }
   }
 }

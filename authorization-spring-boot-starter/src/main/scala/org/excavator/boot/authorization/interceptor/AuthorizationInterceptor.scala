@@ -55,7 +55,7 @@ class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     r
   }
 
-  def writeResponse(response:HttpServletResponse) = {
+  private def writeResponse(response:HttpServletResponse) = {
     val responseEntity = new ResponseEntity[String]("authorization failed", HttpStatus.UNAUTHORIZED)
 
     response.setContentType("application/json; charset=UTF-8")

@@ -19,7 +19,7 @@ class SpringJobFactory extends AdaptableJobFactory {
 
     autowireCapableBeanFactory.autowireBean(instance)
 
-    logger.info(s"createJobInstance = ${instance}")
+    logger.info(s"createJobInstance = $instance")
 
     instance
   }

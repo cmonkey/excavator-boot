@@ -52,7 +52,7 @@ class Snowflake private(id: Long){
 
     val ids = new Array[Long](size)
     for(i <- 0 until size){
-      ids(i) = nextId
+      ids(i) = nextId()
     }
 
     logger.info("nextId result = {}", ids)

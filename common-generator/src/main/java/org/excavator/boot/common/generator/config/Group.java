@@ -29,8 +29,9 @@ public class Group {
     public String findGroupName(String tableName) {
         String[] ps = prefix.split(",");
         for (String s : ps) {
-            if (tableName.startsWith(s))
+            if (tableName.startsWith(s)) {
                 return this.name;
+            }
         }
         return null;
     }

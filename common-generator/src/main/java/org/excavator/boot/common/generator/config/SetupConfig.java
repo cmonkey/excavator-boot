@@ -56,11 +56,11 @@ public class SetupConfig {
     }
 
     private static String loadJson() {
-        StringBuilder builder = new StringBuilder("");
+        StringBuilder builder = new StringBuilder();
         try {
             BufferedReader in = new BufferedReader(new FileReader(USER_DIR + RESOURCES_PATH
                                                                   + "config-ssm.json"));
-            String str = "";
+            String str;
             while ((str = in.readLine()) != null) {
                 int contentIndex = str.indexOf("//"); // 处理行注释
                 if (contentIndex != -1) {

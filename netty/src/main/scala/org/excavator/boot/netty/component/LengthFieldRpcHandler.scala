@@ -20,7 +20,7 @@ class LengthFieldRpcHandler extends SimpleChannelInboundHandler[String] {
     var result = msg
 
     if(logger.isDebugEnabled()) {
-      logger.debug(s"remoteAddress = ${remoteAddress}, localAddress = ${localAddress}")
+      logger.debug(s"remoteAddress = $remoteAddress, localAddress = ${localAddress}")
       logger.debug(s"Channel send msg  = ${result}")
     }
 

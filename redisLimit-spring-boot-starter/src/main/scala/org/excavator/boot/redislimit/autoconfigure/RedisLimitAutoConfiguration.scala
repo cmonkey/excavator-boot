@@ -82,7 +82,7 @@ class RedisLimitAutoConfiguration{
 
     serviceLocatorFactoryBean.setServiceLocatorInterface(classOf[RedisLimitServiceFactory])
 
-    logger.info(s"serviceLocatorFactoryBean redisLimitServiceFactory init = ${serviceLocatorFactoryBean}")
+    logger.info(s"serviceLocatorFactoryBean redisLimitServiceFactory init = $serviceLocatorFactoryBean")
 
     serviceLocatorFactoryBean
   }

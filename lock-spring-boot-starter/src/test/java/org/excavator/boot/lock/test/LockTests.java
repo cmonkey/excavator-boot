@@ -62,9 +62,7 @@ public class LockTests {
             Object obj = null;
             try {
                 obj = future.get();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
+            } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
 
