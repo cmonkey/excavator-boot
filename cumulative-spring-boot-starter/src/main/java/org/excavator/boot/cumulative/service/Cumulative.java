@@ -62,7 +62,7 @@ public interface Cumulative {
     enum CumulativeMode {
         DAY("0"), MONTH("1"), DAY_AND_MONTH("2"),YEAR("3");
         String mode;
-        private CumulativeMode(String mode) {
+        CumulativeMode(String mode) {
             this.mode = mode;
         }
         public String getMode() {
@@ -70,7 +70,7 @@ public interface Cumulative {
         }
     }
     
-    public static class Dimension {
+    class Dimension {
         private String key;
         private String value;
 
