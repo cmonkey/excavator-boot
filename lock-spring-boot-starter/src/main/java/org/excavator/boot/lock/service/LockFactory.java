@@ -44,20 +44,20 @@ public class LockFactory {
     @Autowired
     private LockInfoProvider                        lockInfoProvider;
 
-    private static final Map<LockType, LockService> lockMap = new HashMap<>();
+    private static final Map<LockType, LockService> LOCKMAP = new HashMap<>();
 
     @PostConstruct
     public void init() {
-        lockMap.put(LockType.Reentrant, new ReentrantLock(redissonClient));
-        lockMap.put(LockType.Fair, new FairLock(redissonClient));
-        lockMap.put(LockType.Read, new ReadLock(redissonClient));
-        lockMap.put(LockType.Write, new WriteLock(redissonClient));
+        LOCKMAP.put(LockType.Reentrant, new ReentrantLock(redissonClient));
+        LOCKMAP.put(LockType.Fair, new FairLock(redissonClient));
+        LOCKMAP.put(LockType.Read, new ReadLock(redissonClient));
+        LOCKMAP.put(LockType.Write, new WriteLock(redissonClient));
         logger.info("Lock Initialization Successful");
     }
 
     public LockService getLock(ProceedingJoinPoint joinPoint, Lock lock) {
         LockInfo lockInfo = lockInfoProvider.get(joinPoint, lock);
-        return lockMap.get(lockInfo.getType()).setLockInfo(lockInfo);
+        return LOCKMAP.get(lockInfo.getType()).setLockInfo(lockInfo);
     }
 
 }
