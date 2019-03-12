@@ -25,7 +25,7 @@ import org.springframework.context.annotation.{Bean, Configuration}
 @EnableConfigurationProperties(Array(classOf[IdWorkerProperties]))
 class IdWorkerAutoConfigure {
 
-  val logger = LoggerFactory.getLogger(classOf[IdWorkerAutoConfigure])
+  private val logger = LoggerFactory.getLogger(classOf[IdWorkerAutoConfigure])
 
   @Autowired
   val idWorkerProperties: IdWorkerProperties = null
