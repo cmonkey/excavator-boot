@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +44,7 @@ public class BuildFactory {
     private final static Logger                     logger = LoggerFactory
                                                                .getLogger(BuildFactory.class);
 
-    private static Map<String, Map<String, Object>> CACHE  = new HashMap<String, Map<String, Object>>();
+    private static Map<String, Map<String, Object>> CACHE  = new HashMap<>();
     private static AbstractDaoSupport               dao;
 
     /**
@@ -74,7 +75,8 @@ public class BuildFactory {
     public void build(String templateFile, Object obj, String outFile) {
         try {
             Template t = cfg.getTemplate(templateFile);
-            Writer out = new OutputStreamWriter(new FileOutputStream(outFile), "utf-8");
+            Writer out = new OutputStreamWriter(new FileOutputStream(outFile),
+                StandardCharsets.UTF_8);
             t.process(obj, out);
         } catch (IOException | TemplateException e) {
             logger.error("build Exception = {} ", e);
