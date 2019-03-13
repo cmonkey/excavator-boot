@@ -68,8 +68,9 @@ public class MultithreadCalculator implements Calculator {
     }
 
     class SubTask implements Callable<Long> {
-        private int[] numbers;
-        private int   from, to;
+        private final int[] numbers;
+        private final int   from;
+        private final int   to;
 
         public SubTask(int[] numbers, int from, int to) {
             this.numbers = numbers;
@@ -78,7 +79,7 @@ public class MultithreadCalculator implements Calculator {
         }
 
         @Override
-        public Long call() throws Exception {
+        public Long call() {
             long total = 0L;
 
             for (int i = from; i < to; i++) {
