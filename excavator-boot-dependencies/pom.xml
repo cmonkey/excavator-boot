@@ -339,9 +339,18 @@
 
 
 			<!-- excavator boot end -->
-
-			<!-- soga start -->
-			<!-- soga end -->
+            <!-- pack start -->
+            <dependency>
+                <groupId>org.apache.servicecomb.pack</groupId>
+                <artifactId>omega-spring-starter</artifactId>
+                <version>${pack.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.servicecomb.pack</groupId>
+                <artifactId>omega-transport-resttemplate</artifactId>
+                <version>${pack.version}</version>
+            </dependency>
+            <!-- pack end -->
 
 		</dependencies>
 	</dependencyManagement>
