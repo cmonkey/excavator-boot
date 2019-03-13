@@ -44,7 +44,7 @@
 		<excavatorp-boot.version>1.0.0-SNAPSHOT</excavatorp-boot.version>
 		<pack.version>0.3.0</pack.version>
 		<mysql-connector.version>8.0.11</mysql-connector.version>
-		<commons-lang3.version>3.8</commons-lang3.version>
+		<commons-lang3.version>3.8.1</commons-lang3.version>
 		<lombok.version>1.16.22</lombok.version>
 		<druid.version>1.1.11</druid.version>
 		<javax-servlet.version>3.1.0</javax-servlet.version>
