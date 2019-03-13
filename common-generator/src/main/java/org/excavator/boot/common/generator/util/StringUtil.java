@@ -68,8 +68,7 @@ public class StringUtil {
         if (str == null || (strLen = str.length()) == 0) {
             return str;
         } else {
-            return (new StringBuilder(strLen)).append(Character.toTitleCase(str.charAt(0)))
-                .append(str.substring(1)).toString();
+            return String.valueOf(Character.toTitleCase(str.charAt(0))) + str.substring(1);
         }
     }
 
@@ -78,8 +77,7 @@ public class StringUtil {
         if (str == null || (strLen = str.length()) == 0) {
             return str;
         } else {
-            return (new StringBuilder(strLen)).append(Character.toLowerCase(str.charAt(0)))
-                .append(str.substring(1)).toString();
+            return String.valueOf(Character.toLowerCase(str.charAt(0))) + str.substring(1);
         }
     }
 
