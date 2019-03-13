@@ -70,7 +70,7 @@
 		<maven.javadoc.plugin>3.1.0</maven.javadoc.plugin>
 		<maven.staging.plugin>1.6.7</maven.staging.plugin>
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
-		<cobertura.maven.plugin>2.6</cobertura.maven.plugin>
+		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
 		<coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
 		<alchim31.scala.plugin>3.4.6</alchim31.scala.plugin>
 		<maven.surefire.plugin>2.22.1</maven.surefire.plugin>
