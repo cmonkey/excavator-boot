@@ -66,7 +66,7 @@ public class XMLUtil {
         Element root = document.getRootElement();
         // 得到根元素的所有子节点
         List<Element> elementList = root.elements();
-         // 解析结果存储在HashMap中
+        // 解析结果存储在HashMap中
         Map<String, String> map = new HashMap<>(elementList.size());
 
         //遍历所有子节点
