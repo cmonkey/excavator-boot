@@ -50,7 +50,7 @@
 		<javax-servlet.version>4.0.1</javax-servlet.version>
 		<redisson.version>3.10.4</redisson.version>
 		<commons-codec.version>1.12</commons-codec.version>
-		<netty.version>4.1.29.Final</netty.version>
+		<netty.version>4.1.34.Final</netty.version>
 		<junit-jupiter.version>5.3.2</junit-jupiter.version>
         <commons-logging.version>1.2</commons-logging.version>
 		<guava.version>20.0</guava.version>
