@@ -41,16 +41,16 @@ import org.slf4j.LoggerFactory;
  * @author cmonkey
  */
 public class BuildFactory {
-    private final static Logger                     logger = LoggerFactory
-                                                               .getLogger(BuildFactory.class);
+    private final static Logger                           logger = LoggerFactory
+                                                                     .getLogger(BuildFactory.class);
 
-    private static Map<String, Map<String, Object>> CACHE  = new HashMap<>();
-    private static AbstractDaoSupport               dao;
+    private static final Map<String, Map<String, Object>> CACHE  = new HashMap<>();
+    private static AbstractDaoSupport                     dao;
 
     /**
      * 配置属性
      */
-    private Configuration                           cfg    = new Configuration();
+    private final Configuration                           cfg    = new Configuration();
 
     /**
      * 这里设置模板的根目录
