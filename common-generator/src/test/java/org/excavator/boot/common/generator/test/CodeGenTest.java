@@ -93,6 +93,7 @@ public class CodeGenTest {
             try {
                 list = Files.list(path).map(f -> f.getFileName().toString()).collect(Collectors.toList());
             } catch (IOException e) {
+                logger.error("getFileNames Exception = {}", e);
             }
         }
 
