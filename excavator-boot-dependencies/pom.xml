@@ -42,7 +42,7 @@
 		<mybatis.version>2.0.0</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
 		<excavatorp-boot.version>1.0.0-SNAPSHOT</excavatorp-boot.version>
-		<saga.version>0.2.0-SNAPSHOT</saga.version>
+		<pack.version>0.3.0</pack.version>
 		<mysql-connector.version>8.0.11</mysql-connector.version>
 		<commons-lang3.version>3.8</commons-lang3.version>
 		<lombok.version>1.16.22</lombok.version>
@@ -341,32 +341,6 @@
 			<!-- excavator boot end -->
 
 			<!-- soga start -->
-			<dependency>
-				<groupId>org.apache.servicecomb.saga</groupId>
-				<artifactId>omega-spring-starter</artifactId>
-				<version>${saga.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.servicecomb.saga</groupId>
-				<artifactId>omega-transport-resttemplate</artifactId>
-				<version>${saga.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.reactivex</groupId>
-				<artifactId>rxnetty</artifactId>
-				<version>0.4.9</version>
-				<exclusions>
-					<exclusion>
-						<groupId>io.netty</groupId>
-						<artifactId>netty-transport-native-epoll</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>io.netty</groupId>
-						<artifactId>netty-codec-http</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-
 			<!-- soga end -->
 
 		</dependencies>
