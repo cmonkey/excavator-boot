@@ -20,7 +20,7 @@ import org.excavator.boot.lombok.simulation.annotation.Getter;
 
 @Getter
 public class App {
-    private String value;
+    private final String value;
 
     public App(String value) {
         this.value = value;
