@@ -46,10 +46,10 @@ import org.slf4j.LoggerFactory;
  *@version 3.0
  */
 public class Builder {
-    private final static Logger logger = LoggerFactory.getLogger(Builder.class);
+    private final static Logger   logger = LoggerFactory.getLogger(Builder.class);
 
     //待生成表集合
-    private static String[]     tables = {};
+    private static final String[] tables = {};
 
     private void dbSchemeToEntity(BuildFactory factory, Config config, String table) {
         // iterator all template file
