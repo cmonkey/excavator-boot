@@ -18,7 +18,7 @@ class NettyServer(maxFrameLength: Int, position: Int, port: Int, channelInBoundH
   val logger = LoggerFactory.getLogger(classOf[NettyServer])
 
   private var bossGroup: EventLoopGroup = _
-  private var workerGroup: EventLoopGroup = null
+  private var workerGroup: EventLoopGroup = _
 
   def this(channelInboundHandler: ChannelInboundHandler) = {
     this(10 * 1024 * 1024, 8, 9500, channelInboundHandler)
