@@ -30,28 +30,31 @@
         <excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
 		<!-- 3rd lib dependency -->
-		<fastjson.version>1.2.54</fastjson.version>
-		<curator.version>2.11.1</curator.version>
-		<joda.time.version>2.9.9</joda.time.version>
+		<fastjson.version>1.2.55</fastjson.version>
+        <!--
+		   -<curator.version>2.11.1</curator.version>
+           -->
+        <zookeeper.version>3.4.13</zookeeper.version>
+		<joda.time.version>2.10.1</joda.time.version>
         <scala.major-version>2.12</scala.major-version>
         <scala.version>${scala.major-version}.8</scala.version>
-		<pagehelper.version>1.2.7</pagehelper.version>
-		<mybatis.version>1.3.2</mybatis.version>
+		<pagehelper.version>1.2.10</pagehelper.version>
+		<mybatis.version>2.0.0</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
 		<excavatorp-boot.version>1.0.0-SNAPSHOT</excavatorp-boot.version>
-		<saga.version>0.2.0-SNAPSHOT</saga.version>
+		<pack.version>0.3.0</pack.version>
 		<mysql-connector.version>8.0.11</mysql-connector.version>
-		<commons-lang3.version>3.8</commons-lang3.version>
-		<lombok.version>1.16.22</lombok.version>
-		<druid.version>1.1.11</druid.version>
-		<javax-servlet.version>3.1.0</javax-servlet.version>
-		<redisson.version>3.6.4</redisson.version>
-		<commons-codec.version>1.11</commons-codec.version>
-		<netty.version>4.1.29.Final</netty.version>
-		<junit-jupiter.version>5.3.2</junit-jupiter.version>
+		<commons-lang3.version>3.8.1</commons-lang3.version>
+		<lombok.version>1.18.6</lombok.version>
+		<druid.version>1.1.14</druid.version>
+		<javax-servlet.version>4.0.1</javax-servlet.version>
+		<redisson.version>3.10.4</redisson.version>
+		<commons-codec.version>1.12</commons-codec.version>
+		<netty.version>4.1.34.Final</netty.version>
+		<junit-jupiter.version>5.4.0</junit-jupiter.version>
         <commons-logging.version>1.2</commons-logging.version>
 		<guava.version>20.0</guava.version>
-		<commons-text.version>1.4</commons-text.version>
+		<commons-text.version>1.6</commons-text.version>
         <jmh.version>1.21</jmh.version>
         <commons-collection.version>3.2.2</commons-collection.version>
 		<quartz.version>2.3.0</quartz.version>
@@ -62,14 +65,14 @@
         <!-- plugin -->
         <license.maven.plugin>3.0</license.maven.plugin>
 		<maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
-		<maven.compiler.plugin>3.1</maven.compiler.plugin>
-		<maven.source.plugin>3.0.0</maven.source.plugin>
-		<maven.javadoc.plugin>2.9.1</maven.javadoc.plugin>
+		<maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+		<maven.source.plugin>3.0.1</maven.source.plugin>
+		<maven.javadoc.plugin>3.1.0</maven.javadoc.plugin>
 		<maven.staging.plugin>1.6.7</maven.staging.plugin>
-		<maven.gpg.pluign>1.5</maven.gpg.pluign>
-		<cobertura.maven.plugin>2.6</cobertura.maven.plugin>
-		<coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
-		<alchim31.scala.plugin>3.4.6</alchim31.scala.plugin>
+		<maven.gpg.plugin>1.6</maven.gpg.plugin>
+		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
+		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
+		<alchim31.scala.plugin>4.0.1</alchim31.scala.plugin>
 		<maven.surefire.plugin>2.22.1</maven.surefire.plugin>
 
 	</properties>
@@ -147,21 +150,30 @@
 				<version>${commons-lang3.version}</version>
 			</dependency>
 			<!-- curator -->
-			<dependency>
-				<groupId>org.apache.curator</groupId>
-				<artifactId>curator-framework</artifactId>
-				<version>${curator.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.curator</groupId>
-				<artifactId>curator-x-discovery</artifactId>
-				<version>${curator.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.curator</groupId>
-				<artifactId>curator-recipes</artifactId>
-				<version>${curator.version}</version>
-			</dependency>
+            <!--
+			   -<dependency>
+			   -    <groupId>org.apache.curator</groupId>
+			   -    <artifactId>curator-framework</artifactId>
+			   -    <version>${curator.version}</version>
+			   -</dependency>
+			   -<dependency>
+			   -    <groupId>org.apache.curator</groupId>
+			   -    <artifactId>curator-x-discovery</artifactId>
+			   -    <version>${curator.version}</version>
+			   -</dependency>
+			   -<dependency>
+			   -    <groupId>org.apache.curator</groupId>
+			   -    <artifactId>curator-recipes</artifactId>
+			   -    <version>${curator.version}</version>
+			   -</dependency>
+               -->
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
@@ -226,6 +238,12 @@
 				<version>${junit-jupiter.version}</version>
 				<scope>test</scope>
 			</dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+				<version>${junit-jupiter.version}</version>
+            </dependency>
+
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
@@ -327,35 +345,18 @@
 
 
 			<!-- excavator boot end -->
-
-			<!-- soga start -->
-			<dependency>
-				<groupId>org.apache.servicecomb.saga</groupId>
-				<artifactId>omega-spring-starter</artifactId>
-				<version>${saga.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.servicecomb.saga</groupId>
-				<artifactId>omega-transport-resttemplate</artifactId>
-				<version>${saga.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.reactivex</groupId>
-				<artifactId>rxnetty</artifactId>
-				<version>0.4.9</version>
-				<exclusions>
-					<exclusion>
-						<groupId>io.netty</groupId>
-						<artifactId>netty-transport-native-epoll</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>io.netty</groupId>
-						<artifactId>netty-codec-http</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-
-			<!-- soga end -->
+            <!-- pack start -->
+            <dependency>
+                <groupId>org.apache.servicecomb.pack</groupId>
+                <artifactId>omega-spring-starter</artifactId>
+                <version>${pack.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.servicecomb.pack</groupId>
+                <artifactId>omega-transport-resttemplate</artifactId>
+                <version>${pack.version}</version>
+            </dependency>
+            <!-- pack end -->
 
 		</dependencies>
 	</dependencyManagement>
