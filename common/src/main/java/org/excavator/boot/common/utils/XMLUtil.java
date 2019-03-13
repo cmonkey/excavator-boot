@@ -59,8 +59,6 @@ public class XMLUtil {
     public static Map<String, String> parseInputStreamToMap(InputStream inputStream)
                                                                                     throws DocumentException,
                                                                                     IOException {
-        // 解析结果存储在HashMap中
-        Map<String, String> map = new HashMap<>();
         // 读取输入流
         SAXReader reader = new SAXReader();
         Document document = reader.read(inputStream);
@@ -68,6 +66,9 @@ public class XMLUtil {
         Element root = document.getRootElement();
         // 得到根元素的所有子节点
         List<Element> elementList = root.elements();
+         // 解析结果存储在HashMap中
+        Map<String, String> map = new HashMap<>(elementList.size());
+
         //遍历所有子节点
         for (Element e : elementList) {
             map.put(e.getName(), e.getText());
