@@ -34,6 +34,7 @@
         <!--
 		   -<curator.version>2.11.1</curator.version>
            -->
+        <zookeeper.version>3.4.13</zookeeper.version>
 		<joda.time.version>2.9.9</joda.time.version>
         <scala.major-version>2.12</scala.major-version>
         <scala.version>${scala.major-version}.8</scala.version>
@@ -166,6 +167,13 @@
 			   -    <version>${curator.version}</version>
 			   -</dependency>
                -->
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
