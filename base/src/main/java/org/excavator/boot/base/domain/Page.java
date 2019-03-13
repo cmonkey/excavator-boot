@@ -23,7 +23,7 @@ import java.util.List;
 public class Page<T> implements java.io.Serializable {
 
     private static final long serialVersionUID      = -9200442566817527918L;
-    public static final int   defaultExportPageSize = 5000;
+    public static final int   DEFAULTEXPORTPAGESIZE = 5000;
     private static final char SEPARATOR             = '_';
     /**
      * 排序的字段(数据库字段)
