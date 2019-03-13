@@ -18,7 +18,7 @@ package org.excavator.boot.common.utils;
 
 public class IPThreadLocal {
 
-    private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
     public static void setRemoteIp(String remoteIp) {
         threadLocal.set(remoteIp);
