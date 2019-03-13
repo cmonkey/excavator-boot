@@ -36,7 +36,7 @@ public class Pagination implements Serializable {
     private int             maxPage;
     private int             startRowIdx;
     private int             endRowIdx;
-    private int             displayingPageLimit = 5;
+    private final int       displayingPageLimit = 5;
 
     public Pagination() {
         this(0, 1, DEFAULT_PAGE_SIZE);
