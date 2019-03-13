@@ -97,7 +97,7 @@ public class BuildFactory {
         // 数据准备,可以是Map,List或者是实体
         //String className = StringUtil.className(tableName.replace(config.getIgnorePrefix(), ""));
 
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(10);
         map.put("package_path", packagePath);
         map.put("model_package", MyUtils.buildModelPackage(config, tableName));
         map.put("table_name", tableName);
