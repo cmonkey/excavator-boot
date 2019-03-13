@@ -25,11 +25,11 @@ import java.util.concurrent.TimeUnit;
 
 public class WriteLock implements LockService {
 
-    private RReadWriteLock rLock;
+    private RReadWriteLock       rLock;
 
-    private LockInfo       lockInfo;
+    private LockInfo             lockInfo;
 
-    private RedissonClient redissonClient;
+    private final RedissonClient redissonClient;
 
     public WriteLock(RedissonClient redissonClient) {
         this.redissonClient = redissonClient;

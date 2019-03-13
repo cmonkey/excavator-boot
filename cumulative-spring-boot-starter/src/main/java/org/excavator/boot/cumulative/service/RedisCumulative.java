@@ -30,16 +30,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RedisCumulative implements Cumulative {
-    private static final Logger           logger          = LoggerFactory
-                                                              .getLogger(RedisCumulative.class);
+    private static final Logger                 logger          = LoggerFactory
+                                                                    .getLogger(RedisCumulative.class);
 
-    public static final String            HASH_KEY_PREFIX = "CUMULATIVE.";
+    public static final String                  HASH_KEY_PREFIX = "CUMULATIVE.";
 
-    private RedisTemplate<String, String> redisTemplate;
-    private DefaultRedisScript<Long>      defaultRedisScript;
+    private final RedisTemplate<String, String> redisTemplate;
+    private final DefaultRedisScript<Long>      defaultRedisScript;
 
     public RedisCumulative(RedisTemplate<String, String> redisTemplate,
-                           DefaultRedisScript<Long> defaultRedisScript) throws IOException {
+                           DefaultRedisScript<Long> defaultRedisScript) {
         this.redisTemplate = redisTemplate;
         this.defaultRedisScript = defaultRedisScript;
     }

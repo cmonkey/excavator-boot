@@ -31,7 +31,7 @@ public class IdworkerSpringBootStarterApplicationTests {
 
     @Test
     public void contextLoads() {
-
+        logger.info("IdWorker tests running");
     }
 
     @Test

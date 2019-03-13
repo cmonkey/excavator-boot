@@ -41,16 +41,16 @@ import org.slf4j.LoggerFactory;
  * @author cmonkey
  */
 public class BuildFactory {
-    private final static Logger                     logger = LoggerFactory
-                                                               .getLogger(BuildFactory.class);
+    private final static Logger                           logger = LoggerFactory
+                                                                     .getLogger(BuildFactory.class);
 
-    private static Map<String, Map<String, Object>> CACHE  = new HashMap<>();
-    private static AbstractDaoSupport               dao;
+    private static final Map<String, Map<String, Object>> CACHE  = new HashMap<>();
+    private static AbstractDaoSupport                     dao;
 
     /**
      * 配置属性
      */
-    private Configuration                           cfg    = new Configuration();
+    private final Configuration                           cfg    = new Configuration();
 
     /**
      * 这里设置模板的根目录
@@ -97,7 +97,7 @@ public class BuildFactory {
         // 数据准备,可以是Map,List或者是实体
         //String className = StringUtil.className(tableName.replace(config.getIgnorePrefix(), ""));
 
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(10);
         map.put("package_path", packagePath);
         map.put("model_package", MyUtils.buildModelPackage(config, tableName));
         map.put("table_name", tableName);

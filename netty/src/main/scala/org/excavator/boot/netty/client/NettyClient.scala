@@ -23,8 +23,8 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
 
   private val lock = new ReentrantLock()
   private var bootstrap: Bootstrap = _
-  private var workerGroup:EventLoopGroup = null
-  private var channelFuture: ChannelFuture = null
+  private var workerGroup:EventLoopGroup = _
+  private var channelFuture: ChannelFuture = _
 
   def this(host:String, port:Int) = {
     this(host, port, 10 * 1024 * 1024, 8, Charsets.UTF_8, ResponseViewMode.BODY)

@@ -36,7 +36,7 @@ public enum HttpHeader {
 
     HTTP_X_FORWARDED_FOR("HTTP_X_FORWARDED_FOR");
 
-    private String key;
+    private final String key;
 
     HttpHeader(String key) {
         this.key = key;

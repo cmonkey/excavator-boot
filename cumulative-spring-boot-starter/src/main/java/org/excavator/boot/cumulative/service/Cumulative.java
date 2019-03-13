@@ -61,7 +61,7 @@ public interface Cumulative {
     
     enum CumulativeMode {
         DAY("0"), MONTH("1"), DAY_AND_MONTH("2"),YEAR("3");
-        String mode;
+        final String mode;
         CumulativeMode(String mode) {
             this.mode = mode;
         }

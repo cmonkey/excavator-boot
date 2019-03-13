@@ -25,11 +25,11 @@ import java.util.concurrent.TimeUnit;
 
 public class FairLock implements LockService {
 
-    private RLock          rLock;
+    private RLock                rLock;
 
-    private LockInfo       lockInfo;
+    private LockInfo             lockInfo;
 
-    private RedissonClient redissonClient;
+    private final RedissonClient redissonClient;
 
     public FairLock(RedissonClient redissonClient) {
         this.redissonClient = redissonClient;

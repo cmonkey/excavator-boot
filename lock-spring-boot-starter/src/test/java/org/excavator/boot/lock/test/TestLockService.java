@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 public class TestLockService {
 
     @Lock(waitTime = 1, leaseTime = 1)
-    public String getValue(String param) throws Exception {
+    public String getValue(String param) {
         return "success";
     }
 

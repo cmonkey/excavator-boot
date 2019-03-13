@@ -32,7 +32,8 @@ public class BeanValidators {
     /**
      * JSR303校验器
      */
-    private static Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
+    private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory()
+                                                 .getValidator();
 
     public static <T> void validate(final T t) {
         Set<ConstraintViolation<T>> constraintViolations = VALIDATOR.validate(t);

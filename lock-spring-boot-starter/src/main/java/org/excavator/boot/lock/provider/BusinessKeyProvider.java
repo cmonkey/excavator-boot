@@ -38,9 +38,9 @@ import java.util.Objects;
 
 public class BusinessKeyProvider {
 
-    private ParameterNameDiscoverer nameDiscoverer = new DefaultParameterNameDiscoverer();
+    private final ParameterNameDiscoverer nameDiscoverer = new DefaultParameterNameDiscoverer();
 
-    private ExpressionParser        parser         = new SpelExpressionParser();
+    private final ExpressionParser        parser         = new SpelExpressionParser();
 
     public String getKeyName(ProceedingJoinPoint joinPoint, Lock lock) {
 

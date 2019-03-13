@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> implements
                                                                                BaseService<T> {
 
@@ -77,14 +77,14 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
 
     /***************************** 增删改操作 *****************************/
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     @Override
     public int insert(T entity) {
         //entity.setId(idGenerator.nextId());
         return dao.insert(entity);
     }
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     @Override
     public int insertBatch(List<T> list) {
         if (CollectionUtils.isEmpty(list)) {
@@ -109,7 +109,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
         return rows;
     }
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     @Override
     public void save(T entity) {
         int result;
@@ -125,7 +125,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
         }
     }
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     @Override
     public void update(T entity) {
         entity.preUpdate();
@@ -135,7 +135,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
         }
     }
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     @Override
     public void updateBatch(List<T> list) {
         if (CollectionUtils.isEmpty(list)) {
@@ -164,7 +164,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
         }
     }
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     @Override
     public void delete(final Long id) {
         int result = dao.delete(id);
@@ -173,7 +173,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
         }
     }
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     @Override
     public void deleteBatch(final Long[] ids) {
         int result = dao.deleteBatch(ids);
@@ -182,7 +182,7 @@ public class BaseServiceImpl<D extends BaseMapper<T>, T extends BaseEntity<T>> i
         }
     }
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     @Override
     public void deleteLogic(final Long id) {
         final int result = dao.deleteLogic(id);
