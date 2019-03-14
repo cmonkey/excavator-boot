@@ -62,7 +62,7 @@ class Snowflake private(id: Long){
 
   def nextId(): Long = {
 
-    var timestamp = timeGen
+    var timestamp = timeGen()
 
     //发生了时间回拨，　当前时间小于上次发号时间
     if(timestamp < lastTimestamp){
