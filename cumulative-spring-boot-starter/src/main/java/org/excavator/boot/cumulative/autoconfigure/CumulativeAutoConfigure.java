@@ -33,8 +33,7 @@ import java.io.IOException;
 public class CumulativeAutoConfigure {
 
     @Bean
-    public Cumulative redisCumulative(@Qualifier("stringRedisTemplate") RedisTemplate<String, String> redisTemplate)
-                                                                                                                    throws IOException {
+    public Cumulative redisCumulative(@Qualifier("stringRedisTemplate") RedisTemplate<String, String> redisTemplate) {
         return new RedisCumulative(redisTemplate, cumulativeScript());
     }
 

@@ -68,7 +68,7 @@ public class StringUtil {
         if (str == null || (strLen = str.length()) == 0) {
             return str;
         } else {
-            return String.valueOf(Character.toTitleCase(str.charAt(0))) + str.substring(1);
+            return Character.toTitleCase(str.charAt(0)) + str.substring(1);
         }
     }
 
@@ -77,7 +77,7 @@ public class StringUtil {
         if (str == null || (strLen = str.length()) == 0) {
             return str;
         } else {
-            return String.valueOf(Character.toLowerCase(str.charAt(0))) + str.substring(1);
+            return Character.toLowerCase(str.charAt(0)) + str.substring(1);
         }
     }
 

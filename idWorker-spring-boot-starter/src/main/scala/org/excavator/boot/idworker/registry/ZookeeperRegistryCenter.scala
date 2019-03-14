@@ -5,7 +5,7 @@ import java.util.Collections
 
 import org.apache.curator.framework.CuratorFramework
 import org.apache.curator.utils.CloseableUtils
-import org.apache.zookeeper.{CreateMode}
+import org.apache.zookeeper.CreateMode
 import org.excavator.boot.idworker.config.IdWorkerProperties
 import org.slf4j.LoggerFactory
 
