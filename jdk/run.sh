@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 JAVA_HOME=.:~/software/jdk-12
-CLASSPATH=.:$java_home/lib
+CLASSPATH=.:$JAVA_HOME/lib
 PATH=$JAVA_HOME/bin:$PATH
 export JAVA_HOME CLASSPATH PATH
 
