@@ -75,7 +75,7 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
 
   def send(msg:String): String = sendAndGetResponse(msg, 0, TimeUnit.SECONDS, isTimeout = false)
 
-  def send(msg: String, timeout:Long, timeUnit: TimeUnit) = sendAndGetResponse(msg, timeout, timeUnit, true)
+  def send(msg: String, timeout:Long, timeUnit: TimeUnit) = sendAndGetResponse(msg, timeout, timeUnit, isTimeout = true)
 
   private def sendAndGetResponse(msg:String, timeout:Long, timeUnit: TimeUnit, isTimeout: Boolean): String = {
     lock.lock()
