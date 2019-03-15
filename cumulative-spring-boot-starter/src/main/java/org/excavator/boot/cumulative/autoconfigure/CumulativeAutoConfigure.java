@@ -27,8 +27,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.scripting.support.ResourceScriptSource;
 
-import java.io.IOException;
-
 @Configuration
 public class CumulativeAutoConfigure {
 
