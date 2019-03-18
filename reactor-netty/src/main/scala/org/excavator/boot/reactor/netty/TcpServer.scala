@@ -20,15 +20,15 @@ class TcpServer{
   def createServerBootstrap(): ServerBootstrap = {
 
     new ServerBootstrap().option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
-      .option(ChannelOption.SO_REUSEADDR, true)
-      .option(ChannelOption.SO_BACKLOG, 1000)
+      .option[java.lang.Boolean](ChannelOption.SO_REUSEADDR, true)
+      .option[java.lang.Integer](ChannelOption.SO_BACKLOG, 1000)
       .childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
-      .childOption(ChannelOption.SO_RCVBUF, 1024 * 1024)
-      .childOption(ChannelOption.SO_SNDBUF, 1024 * 1024)
-      .childOption(ChannelOption.AUTO_READ, false)
-      .childOption(ChannelOption.SO_KEEPALIVE, true)
-      .childOption(ChannelOption.TCP_NODELAY, true)
-      .childOption(ChannelOption.CONNECT_TIMEOUT_MILLIS, 30000)
+      .childOption[java.lang.Integer](ChannelOption.SO_RCVBUF, 1024 * 1024)
+      .childOption[java.lang.Integer](ChannelOption.SO_SNDBUF, 1024 * 1024)
+      .childOption[java.lang.Boolean](ChannelOption.AUTO_READ, false)
+      .childOption[java.lang.Boolean](ChannelOption.SO_KEEPALIVE, true)
+      .childOption[java.lang.Boolean](ChannelOption.TCP_NODELAY, true)
+      .childOption[java.lang.Integer](ChannelOption.CONNECT_TIMEOUT_MILLIS, 30000)
       .localAddress(new InetSocketAddress(DEFAULT_PORT))
   }
 
@@ -40,7 +40,7 @@ class TcpServer{
     val server = TcpServer.create()
       .host(host)
       .port(port)
-      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
+      .option[java.lang.Integer](ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
       .wiretap(true)
       .runOn(loopResources)
       .secure(spec => {
