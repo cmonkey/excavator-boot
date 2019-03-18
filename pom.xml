@@ -36,6 +36,7 @@
         <module>lombok-simulation</module>
         <module>cake-pattern</module>
         <module>json-path</module>
+        <module>reactor-netty</module>
 	</modules>
 
     <build>
