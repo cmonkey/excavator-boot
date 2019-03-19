@@ -10,7 +10,6 @@ spring boot项目接入
         <dependency>
             <groupId>org.excavator.boot</groupId>
             <artifactId>cumulative-spring-boot-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 ```
 
