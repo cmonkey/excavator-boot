@@ -10,7 +10,6 @@ spring boot项目接入, 添加netty组件依赖
         <dependency>
             <groupId>org.excavator.boot</groupId>
             <artifactId>netty</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 ```
 
