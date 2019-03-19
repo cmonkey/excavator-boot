@@ -41,7 +41,7 @@
 		<pagehelper.version>1.2.10</pagehelper.version>
 		<mybatis.version>2.0.0</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
-		<excavatorp-boot.version>1.0.0-SNAPSHOT</excavatorp-boot.version>
+		<excavatorp-boot.version>2.0.0-SNAPSHOT</excavatorp-boot.version>
 		<pack.version>0.3.0</pack.version>
 		<mysql-connector.version>8.0.11</mysql-connector.version>
 		<commons-lang3.version>3.8.1</commons-lang3.version>
