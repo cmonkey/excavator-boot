@@ -1,10 +1,10 @@
 系统提供common-generator 进行基本的代码生成能力
 
-用户需要得到common-generator-1.0.0-SNAPSHOT-jar-with-dependencies.jar 
+用户需要得到common-generator-2.0.0-SNAPSHOT-jar-with-dependencies.jar 
 
 example: 
 ```
-    java -jar common-generator-1.0.0-SNAPSHOT-jar-with-dependencies.jar -user root -password root -host www.excavator.boot -database boot -packagePath com.excavator.service -author cmonkey -port 3306
+    java -jar common-generator-2.0.0-SNAPSHOT-jar-with-dependencies.jar -user root -password root -host www.excavator.boot -database boot -packagePath com.excavator.service -author cmonkey -port 3306
 
 ```
 系统会在当前目录生成project目录
