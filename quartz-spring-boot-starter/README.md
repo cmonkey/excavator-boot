@@ -9,7 +9,6 @@
         <dependency>
             <groupId>org.excavator.boot</groupId>
             <artifactId>quartz-spring-boot-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 ```
 

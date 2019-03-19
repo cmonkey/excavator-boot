@@ -13,7 +13,6 @@
         <dependency>
             <groupId>org.excavator.boot</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 ```
 
