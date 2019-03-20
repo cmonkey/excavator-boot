@@ -8,7 +8,7 @@
 
 # 快速开始
 
-> spring boot项目接入
+spring boot项目接入
 
 
 1.添加lock starter组件依赖
