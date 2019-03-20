@@ -2,7 +2,7 @@
 
 # 快速开始
 
-> spring boot项目接入
+spring boot项目接入
 
 1.添加quartz starter组件依赖，目前还没上传到公共仓库，需要自己下源码build
 ```
