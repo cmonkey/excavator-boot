@@ -64,8 +64,7 @@ public class StringUtil {
     }
 
     public static String capitalize(String str) {
-        int strLen;
-        if (str == null || (strLen = str.length()) == 0) {
+        if (str == null || str.length() == 0) {
             return str;
         } else {
             return Character.toTitleCase(str.charAt(0)) + str.substring(1);
@@ -73,8 +72,7 @@ public class StringUtil {
     }
 
     public static String uncapitalize(String str) {
-        int strLen;
-        if (str == null || (strLen = str.length()) == 0) {
+        if (str == null || str.length() == 0) {
             return str;
         } else {
             return Character.toLowerCase(str.charAt(0)) + str.substring(1);
