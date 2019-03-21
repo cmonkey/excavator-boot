@@ -64,7 +64,6 @@ public class StringUtil {
     }
 
     public static String capitalize(String str) {
-        int strLen;
         if (str == null || str.length() == 0) {
             return str;
         } else {
@@ -73,7 +72,6 @@ public class StringUtil {
     }
 
     public static String uncapitalize(String str) {
-        int strLen;
         if (str == null || str.length() == 0) {
             return str;
         } else {
