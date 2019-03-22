@@ -4,7 +4,7 @@ import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 import org.excavator.boot.netty.client.NettyClient
-import org.excavator.boot.netty.component.LengthFieldRpcHandler
+import org.excavator.boot.netty.handler.LengthFieldRpcHandler
 import org.excavator.boot.netty.enums.ResponseViewMode
 import org.excavator.boot.netty.lengthField.NettyServer
 import org.junit.jupiter.api._
