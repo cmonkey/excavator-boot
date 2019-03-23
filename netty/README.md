@@ -62,3 +62,11 @@ jvm 参数
 ```
 -Xms64m -Xmx64m -XX:+PrintHeapAtGC -XX:+HeapDumpOnOutOfMemoryError
 ```
+
+## 本地测试
+
+批量对netty 进行测试容易出现
+
+ExecutionException The forked VM terminated without properly saying goodbye. VM crash or System.exit called? 错误
+
+所以在进行测试时，执行 mvn -pl '!netty' test
