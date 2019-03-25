@@ -17,7 +17,9 @@
 package org.excavator.boot.lock.autoconfigure;
 
 import io.netty.channel.nio.NioEventLoopGroup;
+import org.apache.commons.lang3.StringUtils;
 import org.excavator.boot.lock.config.LockConfig;
+import org.excavator.boot.lock.enums.RedissonMode;
 import org.excavator.boot.lock.handler.LockAspectHandler;
 import org.excavator.boot.lock.provider.BusinessKeyProvider;
 import org.excavator.boot.lock.provider.LockInfoProvider;
@@ -26,6 +28,8 @@ import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.client.codec.Codec;
 import org.redisson.config.Config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
@@ -42,28 +46,60 @@ import javax.annotation.Resource;
 @EnableConfigurationProperties(LockConfig.class)
 @Import({ LockAspectHandler.class })
 public class LockAutoConfiguration {
+    private final static Logger logger = LoggerFactory.getLogger(LockAutoConfiguration.class);
 
     @Resource
-    private LockConfig lockConfig;
+    private LockConfig          lockConfig;
 
     @Bean(destroyMethod = "shutdown")
     @ConditionalOnMissingBean
     RedissonClient redisson() throws Exception {
         Config config = new Config();
-        if (lockConfig.getRedis().getCluster().isEnabled()) {
-            config.useClusterServers().setPassword(lockConfig.getRedis().getPassword())
-                .addNodeAddress(lockConfig.getRedis().getCluster().getAddress());
-        } else {
-            config.useSingleServer().setPassword(lockConfig.getRedis().getPassword())
-                .setAddress(lockConfig.getRedis().getAddress());
+        LockConfig.Redis lockConfigRedis = lockConfig.getRedis();
+
+        RedissonMode redissonMode = getRedissonMode(lockConfigRedis.getMode());
+
+        switch (redissonMode) {
+            case SINGLE: {
+                config.useSingleServer().setPassword(lockConfigRedis.getSingle().getPassword())
+                    .setAddress(lockConfigRedis.getSingle().getAddress());
+                break;
+            }
+            case SENTINEL: {
+                config.useSentinelServers()
+                    .setMasterName(lockConfigRedis.getSentinel().getMaster())
+                    .addSentinelAddress(lockConfigRedis.getSentinel().getAddress());
+                break;
+            }
+            case CLUSTER: {
+                config.useClusterServers()
+                    .addNodeAddress(lockConfigRedis.getCluster().getAddress());
+                break;
+            }
         }
 
-        Codec codec = (Codec) ClassUtils.forName(lockConfig.getRedis().getCodec(),
+        Codec codec = (Codec) ClassUtils.forName(lockConfigRedis.getCodec(),
             ClassUtils.getDefaultClassLoader()).newInstance();
         config.setCodec(codec);
         config.setEventLoopGroup(new NioEventLoopGroup());
 
         return Redisson.create(config);
+    }
+
+    private RedissonMode getRedissonMode(String mode) {
+        if (StringUtils.isBlank(mode)) {
+            mode = "single";
+        }
+
+        try {
+            return RedissonMode.valueOf(mode.toUpperCase());
+        } catch (Exception e) {
+            logger
+                .error(
+                    "getRedissonMode support RedissonMode (single, sentinel, cluster) and support not Exception = {}",
+                    e);
+            throw new UnsupportedOperationException(e);
+        }
     }
 
     @Bean

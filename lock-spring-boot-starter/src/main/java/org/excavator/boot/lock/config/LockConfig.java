@@ -54,29 +54,38 @@ public class LockConfig {
     }
 
     public static class Redis {
-        private String  codec = "org.redisson.codec.JsonJacksonCodec";
-        private String  password;
-        private String  address;
-        private Cluster cluster;
+        private String   codec = "org.redisson.codec.JsonJacksonCodec";
+        private Cluster  cluster;
+        private Single   single;
+        private Sentinel sentinel;
+        private String   mode;
 
-        public String getPassword() {
-            return password;
+        public String getMode() {
+            return mode;
         }
 
-        public void setPassword(String password) {
-            this.password = password;
+        public void setMode(String mode) {
+            this.mode = mode;
+        }
+
+        public Single getSingle() {
+            return single;
+        }
+
+        public void setSingle(Single single) {
+            this.single = single;
+        }
+
+        public Sentinel getSentinel() {
+            return sentinel;
+        }
+
+        public void setSentinel(Sentinel sentinel) {
+            this.sentinel = sentinel;
         }
 
         public String getCodec() {
             return codec;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
         }
 
         public Cluster getCluster() {
@@ -92,16 +101,7 @@ public class LockConfig {
         }
 
         public static class Cluster {
-            private boolean  enabled;
             private String[] address;
-
-            public boolean isEnabled() {
-                return enabled;
-            }
-
-            public void setEnabled(boolean enabled) {
-                this.enabled = enabled;
-            }
 
             public String[] getAddress() {
                 return address;
@@ -109,6 +109,48 @@ public class LockConfig {
 
             public void setAddress(String[] address) {
                 this.address = address;
+            }
+        }
+
+        public static class Single {
+            private String address;
+            private String password;
+
+            public String getAddress() {
+                return address;
+            }
+
+            public void setAddress(String address) {
+                this.address = address;
+            }
+
+            public String getPassword() {
+                return password;
+            }
+
+            public void setPassword(String password) {
+                this.password = password;
+            }
+        }
+
+        public static class Sentinel {
+            private String[] address;
+            private String   master;
+
+            public String[] getAddress() {
+                return address;
+            }
+
+            public void setAddress(String[] address) {
+                this.address = address;
+            }
+
+            public String getMaster() {
+                return master;
+            }
+
+            public void setMaster(String master) {
+                this.master = master;
             }
         }
     }
