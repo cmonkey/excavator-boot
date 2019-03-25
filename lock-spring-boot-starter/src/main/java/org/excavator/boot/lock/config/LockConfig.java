@@ -58,7 +58,15 @@ public class LockConfig {
         private Cluster cluster;
         private Single single;
         private Sentinel sentinel;
+        private String mode;
 
+        public String getMode() {
+            return mode;
+        }
+
+        public void setMode(String mode) {
+            this.mode = mode;
+        }
 
         public Single getSingle() {
             return single;
