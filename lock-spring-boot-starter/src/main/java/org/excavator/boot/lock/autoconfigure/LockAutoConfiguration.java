@@ -49,7 +49,7 @@ public class LockAutoConfiguration {
     private final static Logger logger = LoggerFactory.getLogger(LockAutoConfiguration.class);
 
     @Resource
-    private LockConfig lockConfig;
+    private LockConfig          lockConfig;
 
     @Bean(destroyMethod = "shutdown")
     @ConditionalOnMissingBean
@@ -59,19 +59,21 @@ public class LockAutoConfiguration {
 
         RedissonMode redissonMode = getRedissonMode(lockConfigRedis.getMode());
 
-        switch (redissonMode){
-            case SINGLE:{
+        switch (redissonMode) {
+            case SINGLE: {
                 config.useSingleServer().setPassword(lockConfigRedis.getSingle().getPassword())
-                .setAddress(lockConfigRedis.getSingle().getAddress());
+                    .setAddress(lockConfigRedis.getSingle().getAddress());
                 break;
             }
-            case SENTINEL:{
-                config.useSentinelServers().setMasterName(lockConfigRedis.getSentinel().getMaster())
-                        .addSentinelAddress(lockConfigRedis.getSentinel().getAddress());
+            case SENTINEL: {
+                config.useSentinelServers()
+                    .setMasterName(lockConfigRedis.getSentinel().getMaster())
+                    .addSentinelAddress(lockConfigRedis.getSentinel().getAddress());
                 break;
             }
-            case CLUSTER:{
-                config.useClusterServers().addNodeAddress(lockConfigRedis.getCluster().getAddress());
+            case CLUSTER: {
+                config.useClusterServers()
+                    .addNodeAddress(lockConfigRedis.getCluster().getAddress());
                 break;
             }
         }
@@ -85,14 +87,17 @@ public class LockAutoConfiguration {
     }
 
     private RedissonMode getRedissonMode(String mode) {
-        if(StringUtils.isBlank(mode)){
+        if (StringUtils.isBlank(mode)) {
             mode = "single";
         }
 
-        try{
+        try {
             return RedissonMode.valueOf(mode.toUpperCase());
-        }catch (Exception e){
-            logger.error("getRedissonMode support RedissonMode (single, sentinel, cluster) and support not Exception = {}", e);
+        } catch (Exception e) {
+            logger
+                .error(
+                    "getRedissonMode support RedissonMode (single, sentinel, cluster) and support not Exception = {}",
+                    e);
             throw new UnsupportedOperationException(e);
         }
     }
