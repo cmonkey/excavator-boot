@@ -105,6 +105,26 @@ public class LockConfig {
                 this.password = password;
             }
         }
+        public static class Sentinel {
+            private String[] address;
+            private String master;
+
+            public String[] getAddress() {
+                return address;
+            }
+
+            public void setAddress(String[] address) {
+                this.address = address;
+            }
+
+            public String getMaster() {
+                return master;
+            }
+
+            public void setMaster(String master) {
+                this.master = master;
+            }
+        }
     }
 
 }
