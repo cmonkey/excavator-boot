@@ -55,28 +55,10 @@ public class LockConfig {
 
     public static class Redis {
         private String  codec = "org.redisson.codec.JsonJacksonCodec";
-        private String  password;
-        private String  address;
         private Cluster cluster;
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
 
         public String getCodec() {
             return codec;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
         }
 
         public Cluster getCluster() {
@@ -92,16 +74,7 @@ public class LockConfig {
         }
 
         public static class Cluster {
-            private boolean  enabled;
             private String[] address;
-
-            public boolean isEnabled() {
-                return enabled;
-            }
-
-            public void setEnabled(boolean enabled) {
-                this.enabled = enabled;
-            }
 
             public String[] getAddress() {
                 return address;
