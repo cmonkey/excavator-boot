@@ -54,11 +54,11 @@ public class LockConfig {
     }
 
     public static class Redis {
-        private String  codec = "org.redisson.codec.JsonJacksonCodec";
-        private Cluster cluster;
-        private Single single;
+        private String   codec = "org.redisson.codec.JsonJacksonCodec";
+        private Cluster  cluster;
+        private Single   single;
         private Sentinel sentinel;
-        private String mode;
+        private String   mode;
 
         public String getMode() {
             return mode;
@@ -132,9 +132,10 @@ public class LockConfig {
                 this.password = password;
             }
         }
+
         public static class Sentinel {
             private String[] address;
-            private String master;
+            private String   master;
 
             public String[] getAddress() {
                 return address;
