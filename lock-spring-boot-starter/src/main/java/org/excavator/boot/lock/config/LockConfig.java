@@ -56,6 +56,25 @@ public class LockConfig {
     public static class Redis {
         private String  codec = "org.redisson.codec.JsonJacksonCodec";
         private Cluster cluster;
+        private Single single;
+        private Sentinel sentinel;
+
+
+        public Single getSingle() {
+            return single;
+        }
+
+        public void setSingle(Single single) {
+            this.single = single;
+        }
+
+        public Sentinel getSentinel() {
+            return sentinel;
+        }
+
+        public void setSentinel(Sentinel sentinel) {
+            this.sentinel = sentinel;
+        }
 
         public String getCodec() {
             return codec;
