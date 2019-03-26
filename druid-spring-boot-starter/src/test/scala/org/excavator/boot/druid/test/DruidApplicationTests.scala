@@ -1,17 +1,15 @@
 package org.excavator.boot.druid.test
 
-import java.util.concurrent.TimeUnit
-
 import com.alibaba.druid.support.http.WebStatFilter
 import javax.annotation.Resource
-import org.junit.Test
-import org.junit.Assert._
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions._
+import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.servlet.FilterRegistrationBean
-import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.test.context.junit.jupiter.SpringExtension
 
-@RunWith(classOf[SpringRunner])
+@ExtendWith(Array(classOf[SpringExtension]))
 @SpringBootTest(classes = Array(classOf[DruidApplication]))
 class DruidApplicationTests {
 

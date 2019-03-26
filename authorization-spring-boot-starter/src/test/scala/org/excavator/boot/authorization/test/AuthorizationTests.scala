@@ -1,16 +1,16 @@
 package org.excavator.boot.authorization.test
 
 import javax.annotation.Resource
-import org.junit.Test
-import org.junit.Assert._
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.Assertions._
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.{HttpEntity, HttpHeaders, HttpMethod}
-import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.test.context.junit.jupiter.SpringExtension
 
-@RunWith(classOf[SpringRunner])
+@ExtendWith(Array(classOf[SpringExtension]))
 @SpringBootTest(classes = Array(classOf[AuthorizationApplication]), webEnvironment = WebEnvironment.RANDOM_PORT)
 class AuthorizationTests {
 
