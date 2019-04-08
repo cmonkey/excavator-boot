@@ -70,3 +70,9 @@ jvm 参数
 ExecutionException The forked VM terminated without properly saying goodbye. VM crash or System.exit called? 错误
 
 所以在进行测试时，执行 mvn -pl '!netty' test
+
+Updateing: 2019年4月8日17:15:47
+
+由于在对netty 进行测试时，添加的RepeatedTest 参数，在不同机器配置下，能够多次测试的能力不一样
+
+所以在当前直接修改为10次
