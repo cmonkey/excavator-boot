@@ -30,4 +30,19 @@ public class TestLocalAppender {
 
         LocalAppender.cleanup(localAppender);
     }
+
+    @Test
+    @ResourceLock(value = "LOGING", mode = ResourceAccessMode.READ_WRITE)
+    public void testLocalAppenderB(){
+        OtherLogProductingService service = new OtherLogProductingService();
+
+        LocalAppender localAppender = LocalAppender.initialize(new String[]{"org.excavator.boot.logging.OtherLogProductingService"});
+
+        service.writeSomeLoggingStatements("Other logging service B");
+
+        assertThat(localAppender.getEvents()).extracting("message")
+                .containsOnly("Let's a assert some logs! Other logging service B", "This message is in a separate thread");
+
+        LocalAppender.cleanup(localAppender);
+    }
 }
