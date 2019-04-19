@@ -22,4 +22,13 @@ public class TestStaticAppender {
         assertThat(StaticAppender.getEvents()).extracting("message")
                 .containsOnly("Let's assert some logs! A", "this message is in a separate thread");
     }
+
+    @Test
+    public void testAssertingLoggingStatemenetsB(){
+        LogProducingService service = new LogProducingService();
+        service.writeSomeLoggingStatemenets("B");
+
+        assertThat(StaticAppender.getEvents()).extracting("message")
+                .containsOnly("Let's assert some logs! B", "this message is in a separate thread");
+    }
 }
