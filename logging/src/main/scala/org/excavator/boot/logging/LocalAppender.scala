@@ -30,7 +30,7 @@ object LocalAppender{
 
   val events = new util.ArrayList[ILoggingEvent]()
 
-  def initialize(loggers:String*): LocalAppender = {
+  def initialize(loggers:Array[String]): LocalAppender = {
     val localAppender = new LocalAppender
 
     for(loggerName <- loggers) {
