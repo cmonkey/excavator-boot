@@ -37,6 +37,7 @@
         <module>cake-pattern</module>
         <module>json-path</module>
         <module>reactor-netty</module>
+		<module>logging</module>
 	</modules>
 
     <build>
