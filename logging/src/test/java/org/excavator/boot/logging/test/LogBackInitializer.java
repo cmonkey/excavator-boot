@@ -1,4 +1,7 @@
-package org.excavator.boot.logging;
+package org.excavator.boot.logging.test;
 
-public class LogBackInitializer {
+import org.junit.jupiter.api.extension.ExtendWith;
+
+@ExtendWith(LogBackInitializerExtension.class)
+public @interface LogBackInitializer {
 }
