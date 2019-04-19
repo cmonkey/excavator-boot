@@ -1,0 +1,6 @@
+<configuration>
+    <appender name="static-appender" class="org.excavator.boot.logging.StaticAppender"/>
+    <root level="trace">
+        <appender-ref ref="static-appender"/>
+    </root>
+</configuration>
