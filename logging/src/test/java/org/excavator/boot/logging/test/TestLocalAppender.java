@@ -45,4 +45,12 @@ public class TestLocalAppender {
 
         LocalAppender.cleanup(localAppender);
     }
+
+    @Test
+    @ResourceLock(value = "LOGING", mode = ResourceAccessMode.READ)
+    public void justAnotherTest() {
+        OtherLogProductingService service = new OtherLogProductingService();
+        service.writeSomeLoggingStatements("Local Appender");
+    }
+
 }
