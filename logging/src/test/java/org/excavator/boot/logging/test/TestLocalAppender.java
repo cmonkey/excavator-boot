@@ -53,4 +53,10 @@ public class TestLocalAppender {
         service.writeSomeLoggingStatements("Local Appender");
     }
 
+    @Test
+    @ResourceLock(value = "LOGING", mode = ResourceAccessMode.READ)
+    public void yetAnotherTest(){
+        OtherLogProductingService service = new OtherLogProductingService();
+        service.writeSomeLoggingStatements("Local Appender");
+    }
 }
