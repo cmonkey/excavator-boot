@@ -59,6 +59,7 @@
         <commons-collection.version>3.2.2</commons-collection.version>
 		<quartz.version>2.3.0</quartz.version>
 		<commons-pool2.version>2.6.1</commons-pool2.version>
+        <javaassist.version>3.25.0-GA</javaassist.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -286,6 +287,11 @@
 				<version>${quartz.version}</version>
 			</dependency>
 
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javaassist.version}</version>
+            </dependency>
 			<!-- excavator boot start -->
             <dependency>
 				<groupId>org.excavator.boot</groupId>
