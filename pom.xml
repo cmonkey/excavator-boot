@@ -38,6 +38,7 @@
         <module>json-path</module>
         <module>reactor-netty</module>
 		<module>logging</module>
+		<module>javassist</module>
 	</modules>
 
     <build>
