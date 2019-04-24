@@ -1,9 +1,11 @@
 package org.excavator.boot.javassit.test
 
+import java.lang.reflect.Field
 import java.util
+import java.util.stream.Collectors
 
 import javassist.ClassPool
-import javassist.bytecode.Mnemonic
+import javassist.bytecode.{AccessFlag, FieldInfo, Mnemonic}
 import org.excavator.boot.javassit.{ClassFileExt, ClassFileHelper}
 import org.junit.jupiter.api.{DisplayName, Test}
 import org.junit.jupiter.api.Assertions._
@@ -48,6 +50,29 @@ class JavassistTest {
     operations.forEach(operation => println(operation))
 
     assertEquals(operations, util.Arrays.asList("aload_0", "iload_1", "putfield", "aload_0", "iload_2", "putfield", "return"))
+  }
+
+  @Test
+  @DisplayName("testAddFieldToExistingClassBytecode")
+  def testAddFieldToExistingClassBytecode() = {
+    val fieldName = "id"
+    val classPool = ClassPool.getDefault
+    val classFile = classPool.get("org.excavator.boot.javassit.Point").getClassFile
+
+    val fieldInfo = new FieldInfo(classFile.getConstPool, fieldName, "I")
+    fieldInfo.setAccessFlags(AccessFlag.PUBLIC)
+    classFile.addField(fieldInfo)
+
+    val fields = ClassFileHelper.getFields(classPool, classFile)
+
+    val fieldsList = new util.ArrayList[String]()
+
+    util.stream.Stream.of(fields:_*).forEach(field => {
+      fieldsList.add(field.getName)
+    })
+
+    assertTrue(fieldsList.contains(fieldName))
+
   }
 
 }
