@@ -5,7 +5,7 @@ import java.util
 import java.util.stream.Collectors
 
 import javassist.ClassPool
-import javassist.bytecode.{AccessFlag, FieldInfo, Mnemonic}
+import javassist.bytecode.{AccessFlag, Bytecode, FieldInfo, MethodInfo, Mnemonic}
 import org.excavator.boot.javassit.{ClassFileExt, ClassFileHelper}
 import org.junit.jupiter.api.{DisplayName, Test}
 import org.junit.jupiter.api.Assertions._
@@ -73,6 +73,37 @@ class JavassistTest {
 
     assertTrue(fieldsList.contains(fieldName))
 
+  }
+
+  @Test
+  @DisplayName("testAddingConstructorToClassBytecode")
+  def testAddingConstructorToClassBytecode() = {
+    val classPool = ClassPool.getDefault
+    val classFile = classPool.get("org.excavator.boot.javassit.Point").getClassFile
+
+    val bytecode = new Bytecode(classFile.getConstPool)
+
+    bytecode.addAload(0);
+    bytecode.addInvokespecial("java/lang/Object", MethodInfo.nameInit, "()/V")
+    bytecode.addReturn(null)
+
+    val methodInfo = new MethodInfo(classFile.getConstPool, MethodInfo.nameInit, "()/V")
+    methodInfo.setCodeAttribute(bytecode.toCodeAttribute)
+
+    classFile.addMethod(methodInfo)
+
+    val codeIterator = bytecode.toCodeAttribute.iterator()
+
+    val operations = new util.LinkedList[String]()
+
+    while(codeIterator.hasNext){
+      val index = codeIterator.next()
+      val op = codeIterator.byteAt(index)
+
+      operations.add(Mnemonic.OPCODE(op))
+    }
+
+    assertEquals(operations, util.Arrays.asList("aload_0", "invokespecial", "return"))
   }
 
 }
