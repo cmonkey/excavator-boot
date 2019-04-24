@@ -106,4 +106,19 @@ class JavassistTest {
     assertEquals(operations, util.Arrays.asList("aload_0", "invokespecial", "return"))
   }
 
+  @Test
+  @DisplayName("testSetSuperClass")
+  def testSetSuperClass() = {
+    val classPool = ClassPool.getDefault
+    val ctClass = classPool.get("org.excavator.boot.javassit.Rectangle")
+    ctClass.setSuperclass(classPool.get("org.excavator.boot.javassit.Point"))
+    ctClass.writeFile()
+
+    val superClassSimpleName = ctClass.getSuperclass.getSimpleName
+    val simpleName = classPool.get("org.excavator.boot.javassit.Point").getSimpleName
+
+    assertEquals(superClassSimpleName, simpleName)
+
+  }
+
 }
