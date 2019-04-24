@@ -5,7 +5,7 @@ import org.excavator.boot.javassit.{ClassFileExt, ClassFileHelper}
 import org.junit.jupiter.api.{DisplayName, Test}
 import org.junit.jupiter.api.Assertions._
 
-class ClassFileTest {
+class JavassistTest {
 
   @Test
   @DisplayName("testPointExt")
