@@ -9,12 +9,14 @@ import net.bytebuddy.implementation.MethodDelegation
 import net.bytebuddy.matcher.ElementMatchers
 import net.bytebuddy.utility.JavaModule
 import org.excavator.boot.instrumentation.interceptor.TimeInterceptor
+import org.slf4j.LoggerFactory
 
 class ByteBuddyAgent {
 
 }
 
 object ByteBuddyAgent{
+  val logger = LoggerFactory.getLogger(classOf[ByteBuddyAgent])
 
   def transformer(instrumentation: Instrumentation) = {
     val transformer = new AgentBuilder.Transformer {
@@ -41,15 +43,23 @@ object ByteBuddyAgent{
       .`with`(listener).installOn(instrumentation)
   }
 
-  def premain(agentArgs: String, instrumentation: Instrumentation) = {
-
-    transformer(instrumentation)
+  def tail(): Unit ={
 
   }
 
+  def premain(agentArgs: String, instrumentation: Instrumentation) = {
+    logger.info(s"ByteBuddyAgent premain param agentArgs = [{${agentArgs}]")
+    transformer(instrumentation)
+
+    tail()
+  }
+
   def agentmain(agentArgs: String, instrumentation: Instrumentation) = {
+    logger.info(s"ByteBuddyAgent agentmain param agentArgs = [{${agentArgs}]")
 
     transformer(instrumentation)
+
+    tail()
   }
 
 }
