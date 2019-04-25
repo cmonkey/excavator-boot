@@ -10,7 +10,7 @@ class AgentLoader {
 
   val logger = LoggerFactory.getLogger(classOf[AgentLoader])
 
-  def runJavassist(args: Array[String]): Unit = {
+  def run(args: Array[String]): Unit = {
     val agentFilePath = "/tmp/instrumentation-2.0.0-SNAPSHOT-jar-with-dependencies.jar"
     val applicationName = "AgentLoader"
 
