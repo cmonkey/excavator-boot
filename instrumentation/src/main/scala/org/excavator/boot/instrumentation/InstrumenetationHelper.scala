@@ -51,14 +51,14 @@ object InstrumenetationHelper {
 
   def premain(agentArgs: String, instrumentation: Instrumentation) = {
     logger.info(s"[Agent] in premain method args = ${agentArgs}")
-    val className = ""
+    val className = "org.excavator.boot.instrumentation.application.MyAtm"
     transformClass(className, instrumentation)
   }
 
   def agentmain(agentArgs: String, instrumentation: Instrumentation) = {
 
     logger.info(s"[Agent] in agentmain method args = ${agentArgs}")
-    val className = ""
+    val className = "org.excavator.boot.instrumentation.application.MyAtm"
     transformClass(className, instrumentation)
   }
 }
