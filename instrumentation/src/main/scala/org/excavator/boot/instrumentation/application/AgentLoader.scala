@@ -8,12 +8,9 @@ import org.slf4j.LoggerFactory
 
 class AgentLoader {
 
-}
-
-object AgentLoader{
   val logger = LoggerFactory.getLogger(classOf[AgentLoader])
 
-  def main(args: Array[String]): Unit = {
+  def run(args: Array[String]): Unit = {
     val agentFilePath = "/tmp/instrumentation-2.0.0-SNAPSHOT-jar-with-dependencies.jar"
     val applicationName = "AgentLoader"
 
