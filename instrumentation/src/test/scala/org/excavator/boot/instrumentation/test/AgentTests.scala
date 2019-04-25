@@ -2,6 +2,7 @@ package org.excavator.boot.instrumentation.test
 
 import org.excavator.boot.instrumentation.application.AgentLoader
 import org.junit.jupiter.api.{DisplayName, Test}
+import org.junit.jupiter.api.Assertions._
 
 class AgentTests {
 
@@ -10,6 +11,6 @@ class AgentTests {
   def testAgentLoader() = {
 
     val agentLoader = new AgentLoader
-    agentLoader.run(Array(""))
+    assertThrows(classOf[RuntimeException], () => agentLoader.run(Array("")))
   }
 }
