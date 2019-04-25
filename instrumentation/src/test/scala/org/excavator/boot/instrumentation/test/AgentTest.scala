@@ -4,23 +4,23 @@ import org.excavator.boot.instrumentation.application.AgentLoader
 import org.junit.jupiter.api.{BeforeAll, DisplayName, Test}
 import org.junit.jupiter.api.Assertions._
 
-class AgentTests {
+class AgentTest {
 
   @Test
   @DisplayName("testJavassistAgentLoader")
   def testJavassistAgentLoader() = {
-    assertThrows(classOf[RuntimeException], () => AgentTests.agentLoader.run(Array("")))
+    assertThrows(classOf[RuntimeException], () => AgentTest.agentLoader.run(Array("")))
   }
 
   @Test
   @DisplayName("testByteBuddyAgentLoader")
   def testByteBuddyAgentLoader() = {
 
-    assertThrows(classOf[RuntimeException], () => AgentTests.agentLoader.run(Array("")))
+    assertThrows(classOf[RuntimeException], () => AgentTest.agentLoader.run(Array("")))
   }
 }
 
-object AgentTests{
+object AgentTest{
   var agentLoader: AgentLoader = null
 
   @BeforeAll
