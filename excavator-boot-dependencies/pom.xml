@@ -60,6 +60,7 @@
 		<quartz.version>2.3.0</quartz.version>
 		<commons-pool2.version>2.6.1</commons-pool2.version>
         <javaassist.version>3.25.0-GA</javaassist.version>
+        <byte-buddy.version>1.9.12</byte-buddy.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -292,6 +293,13 @@
                 <artifactId>javassist</artifactId>
                 <version>${javaassist.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy</artifactId>
+                <version>${byte-buddy.version}</version>
+            </dependency>
+
 			<!-- excavator boot start -->
             <dependency>
 				<groupId>org.excavator.boot</groupId>

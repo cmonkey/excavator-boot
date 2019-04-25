@@ -14,24 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.excavator.boot.instrumentation.application;
+package org.excavator.boot.instrumentation.annoation;
 
-import org.excavator.boot.instrumentation.annoation.TraceTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-import java.util.concurrent.TimeUnit;
-
-public class MyAtm {
-    private final static Logger logger = LoggerFactory.getLogger(MyAtm.class);
-
-    @TraceTime
-    public static void withdrawMoney(int amount) {
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        logger.info("[Application] successful withdrawal of [{}] units", amount);
-    }
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface TraceTime {
 }
