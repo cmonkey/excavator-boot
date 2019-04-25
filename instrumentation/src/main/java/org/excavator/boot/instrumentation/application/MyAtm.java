@@ -16,6 +16,7 @@
  */
 package org.excavator.boot.instrumentation.application;
 
+import org.excavator.boot.instrumentation.annoation.TraceTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class MyAtm {
     private final static Logger logger = LoggerFactory.getLogger(MyAtm.class);
 
+    @TraceTime
     public static void withdrawMoney(int amount) {
         try {
             TimeUnit.SECONDS.sleep(1);
