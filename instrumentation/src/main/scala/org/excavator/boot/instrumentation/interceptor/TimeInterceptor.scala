@@ -20,6 +20,7 @@ object TimeInterceptor{
                  @Origin method: Method,
                  @SuperCall callable: Callable[_]): Any = {
 
+    logger.info(s"TimeInterceptor interceptor clazz = [{${clazz}] method = [{${method}] callable = [{${callable}]")
     val traceTime = method.getAnnotation(classOf[TraceTime])
 
     if(null == traceTime){
