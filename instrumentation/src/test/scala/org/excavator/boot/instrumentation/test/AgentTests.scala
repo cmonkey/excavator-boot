@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Assertions._
 class AgentTests {
 
   @Test
-  @DisplayName("testAgentLoader")
-  def testAgentLoader() = {
+  @DisplayName("testJavassistAgentLoader")
+  def testJavassistAgentLoader() = {
 
     val agentLoader = new AgentLoader
     assertThrows(classOf[RuntimeException], () => agentLoader.run(Array("")))
