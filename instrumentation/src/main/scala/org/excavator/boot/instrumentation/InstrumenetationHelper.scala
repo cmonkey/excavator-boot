@@ -11,7 +11,33 @@ class InstrumenetationHelper{
 object InstrumenetationHelper {
   val logger = LoggerFactory.getLogger(classOf[InstrumenetationHelper])
 
-  def transformClass(className: String, instrumentation: Instrumentation) = {
+  def transform(targetClass: Class[_], targetClassLoader: ClassLoader, instrumentation: Instrumentation) = {
+
+  }
+
+  def transformClass(className: String, instrumentation: Instrumentation): Any = {
+    var targetClass: Class[_] = null
+    var targetClassLoader:ClassLoader = null
+
+    try{
+      targetClass = Class.forName(className)
+      targetClassLoader = targetClass.getClassLoader
+      transform(targetClass, targetClassLoader, instrumentation)
+      return
+    }catch{
+      case _ => logger.error("Class [{}] not found with Class.forName")
+    }
+
+    for(clazz <- instrumentation.getAllLoadedClasses){
+      if(clazz.getName.equals(className)){
+        targetClass = clazz
+        targetClassLoader = targetClass.getClassLoader
+        transform(targetClass, targetClassLoader, instrumentation)
+        return
+      }
+    }
+
+    throw new RuntimeException(s"Failed to find class [ ${className}]" )
 
   }
 
