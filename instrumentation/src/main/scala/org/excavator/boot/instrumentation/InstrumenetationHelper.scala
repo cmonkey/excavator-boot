@@ -33,7 +33,7 @@ object InstrumenetationHelper {
       transform(targetClass, targetClassLoader, instrumentation)
       return
     }catch{
-      case _ => logger.error("Class [{}] not found with Class.forName")
+      case _:Throwable => logger.error("Class [{}] not found with Class.forName")
     }
 
     for(clazz <- instrumentation.getAllLoadedClasses){
