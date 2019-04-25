@@ -16,8 +16,7 @@ class ByteBuddyAgent {
 
 object ByteBuddyAgent{
 
-  def premain(agentArgs: String, instrumentation: Instrumentation) = {
-
+  def transformer(instrumentation: Instrumentation) = {
     val transformer = new AgentBuilder.Transformer {
       override def transform(builder: DynamicType.Builder[_], typeDescription: TypeDescription, classLoader: ClassLoader, javaModule: JavaModule): DynamicType.Builder[_] = {
         builder.method(ElementMatchers.any())
@@ -40,11 +39,17 @@ object ByteBuddyAgent{
     new AgentBuilder.Default().`type`(ElementMatchers.nameStartsWith("org.excavator.boot"), ElementMatchers.any())
       .transform(transformer)
       .`with`(listener).installOn(instrumentation)
+  }
+
+  def premain(agentArgs: String, instrumentation: Instrumentation) = {
+
+    transformer(instrumentation)
 
   }
 
   def agentmain(agentArgs: String, instrumentation: Instrumentation) = {
 
+    transformer(instrumentation)
   }
 
 }
