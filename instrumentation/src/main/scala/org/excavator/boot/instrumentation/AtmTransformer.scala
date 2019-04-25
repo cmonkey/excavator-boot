@@ -14,18 +14,21 @@ class AtmTransformer(val targetClassName: String, val targetClassLoader: ClassLo
   override def transform(loader: ClassLoader, className: String, classBeingRedefined: Class[_], protectionDomain: ProtectionDomain, classfileBuffer: Array[Byte]): Array[Byte] = {
 
     var byteCode = classfileBuffer
-    val finalTragetClassName = targetClassName.replaceAll("\\.", ",")
+    val finalTargetClassName = targetClassName.replaceAll("\\.", "/")
 
-    if(!className.equals(finalTragetClassName)){
+    if(!className.equals(finalTargetClassName)){
+      logger.info(s"className not equals finalTargetClassName in className = ${className} finalTargetClassName = ${finalTargetClassName}")
       byteCode
     }else{
-      if(className.equals(finalTragetClassName) && loader.equals(targetClassLoader)){
+      if(className.equals(finalTargetClassName) && loader.equals(targetClassLoader)){
         logger.info("[Agent] Transforming class AtmTransformer")
 
         try{
           val classPool = ClassPool.getDefault
           val ctClass = classPool.get(targetClassName)
           val ctMethod = ctClass.getDeclaredMethod(WITHDRAW_MONEY_METHOD)
+
+          ctMethod.addLocalVariable("startTime", CtClass.longType)
           ctMethod.insertBefore("startTime = System.currentTimeMillis();")
 
           val endBlock = new StringBuilder
@@ -34,17 +37,16 @@ class AtmTransformer(val targetClassName: String, val targetClassLoader: ClassLo
           ctMethod.addLocalVariable("opTime", CtClass.longType)
 
           endBlock.append("endTime = System.currentTimeMillis();")
-          endBlock.append("opTime = (endTime - startTime / 1000;")
+          endBlock.append("opTime = (endTime - startTime / 1000);")
 
-          endBlock.append("logger.info(\"[Application] Withdrawal operation completed in:\" + opTime + \" seconds\");")
-
+          endBlock.append("logger.info(\"[Application] Withdrawal operation completed in:\" + opTime + \" seconds!\");")
           ctMethod.insertAfter(endBlock.toString())
 
           byteCode = ctClass.toBytecode
           ctClass.detach()
         }catch{
           case ex: NotFoundException => logger.error(s"Exception ${ex}")
-          case ex: CannotCompileException => logger.error(s"Exception ${ex}")
+          case ex: CannotCompileException => logger.error(s"Exception ${ex}", ex)
           case ex: IOException  => logger.error(s"Exception ${ex}")
         }
       }
