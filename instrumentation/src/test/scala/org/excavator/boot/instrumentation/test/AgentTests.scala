@@ -11,7 +11,7 @@ class AgentTests {
   def testJavassistAgentLoader() = {
 
     val agentLoader = new AgentLoader
-    assertThrows(classOf[RuntimeException], () => agentLoader.run(Array("")))
+    assertThrows(classOf[RuntimeException], () => agentLoader.runJavassist(Array("")))
   }
 
   @Test
