@@ -13,7 +13,7 @@ object InstrumenetationHelper {
 
   def transform(targetClass: Class[_], targetClassLoader: ClassLoader, instrumentation: Instrumentation) = {
 
-    val dt = new AtmTransFormer(targetClass.getName, targetClassLoader)
+    val dt = new AtmTransformer(targetClass.getName, targetClassLoader)
     instrumentation.addTransformer(dt, true)
     try{
       instrumentation.retransformClasses(targetClass)
