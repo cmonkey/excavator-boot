@@ -1,8 +1,0 @@
-<configuration>
-    <appender name="static-appender" class="org.excavator.boot.logging.StaticAppender"/>
-    <appender name="threadsafe-appender" class="org.excavator.boot.logging.ThreadSafeAppender"/>
-    <root level="trace">
-        <appender-ref ref="static-appender"/>
-        <appender-ref ref="threadsafe-appender"/>
-    </root>
-</configuration>
