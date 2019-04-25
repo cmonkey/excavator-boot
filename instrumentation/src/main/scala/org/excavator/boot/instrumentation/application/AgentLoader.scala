@@ -10,9 +10,8 @@ class AgentLoader {
 
   val logger = LoggerFactory.getLogger(classOf[AgentLoader])
 
-  def run(args: Array[String]): Unit = {
+  def run(args: Array[String], applicationName: String): Unit = {
     val agentFilePath = "/tmp/instrumentation-2.0.0-SNAPSHOT-jar-with-dependencies.jar"
-    val applicationName = "AgentLoader"
 
     val jvmProcessOpt = Optional.ofNullable(VirtualMachine.list().stream().filter(jvm => {
       logger.info("jvm : {}", jvm.displayName())
