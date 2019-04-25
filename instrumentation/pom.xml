@@ -170,10 +170,10 @@
                                     <addDefaultSpecificationEntries> true</addDefaultSpecificationEntries>
                                 </manifest>
                                 <manifestEntries>
-                                    <Premain-Class>org.excavator.boot.instrumentation.ByteBuddyAgent</Premain-Class>
+                                    <Premain-Class>org.excavator.boot.instrumentation.ByteBuddyHelper</Premain-Class>
                                     <Can-Redefine-Classes>false</Can-Redefine-Classes>
                                     <Can-Retransform-Classes>true</Can-Retransform-Classes>
-                                    <Agent-Class>org.excavator.boot.instrumentation.ByteBuddyAgent</Agent-Class>
+                                    <Agent-Class>org.excavator.boot.instrumentation.ByteBuddyHelper</Agent-Class>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -190,10 +190,10 @@
                                     <addClasspath>true</addClasspath>
                                 </manifest>
                                 <manifestEntries>
-                                    <Premain-Class>org.excavator.boot.instrumentation.ByteBuddyAgent</Premain-Class>
+                                    <Premain-Class>org.excavator.boot.instrumentation.ByteBuddyHelper</Premain-Class>
                                     <Can-Redefine-Classes>false</Can-Redefine-Classes>
                                     <Can-Retransform-Classes>true</Can-Retransform-Classes>
-                                    <Agent-Class>org.excavator.boot.instrumentation.ByteBuddyAgent</Agent-Class>
+                                    <Agent-Class>org.excavator.boot.instrumentation.ByteBuddyHelper</Agent-Class>
                                 </manifestEntries>
                             </archive>
                         </configuration>
