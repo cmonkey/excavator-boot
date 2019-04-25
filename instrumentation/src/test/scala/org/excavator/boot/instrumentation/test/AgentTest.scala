@@ -9,14 +9,14 @@ class AgentTest {
   @Test
   @DisplayName("testJavassistAgentLoader")
   def testJavassistAgentLoader() = {
-    assertThrows(classOf[RuntimeException], () => AgentTest.agentLoader.run(Array("")))
+    assertThrows(classOf[RuntimeException], () => AgentTest.agentLoader.run(Array(""), "AgentTest"))
   }
 
   @Test
   @DisplayName("testByteBuddyAgentLoader")
   def testByteBuddyAgentLoader() = {
 
-    assertThrows(classOf[RuntimeException], () => AgentTest.agentLoader.run(Array("")))
+    assertThrows(classOf[RuntimeException], () => AgentTest.agentLoader.run(Array(""), "AgentTest"))
   }
 }
 
