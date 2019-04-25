@@ -48,6 +48,8 @@ class AtmTransformer(val targetClassName: String, val targetClassLoader: ClassLo
           case ex: IOException  => logger.error(s"Exception ${ex}")
         }
       }
+
+      byteCode
     }
 
   }
