@@ -13,4 +13,10 @@ class AgentTests {
     val agentLoader = new AgentLoader
     assertThrows(classOf[RuntimeException], () => agentLoader.run(Array("")))
   }
+
+  @Test
+  @DisplayName("testByteBuddyAgentLoader")
+  def testByteBuddyAgentLoader() = {
+
+  }
 }
