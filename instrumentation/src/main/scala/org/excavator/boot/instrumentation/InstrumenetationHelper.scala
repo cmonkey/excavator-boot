@@ -13,6 +13,14 @@ object InstrumenetationHelper {
 
   def transform(targetClass: Class[_], targetClassLoader: ClassLoader, instrumentation: Instrumentation) = {
 
+    val dt = new AtmTransFormer(targetClass.getName, targetClassLoader)
+    instrumentation.addTransformer(dt, true)
+    try{
+      instrumentation.retransformClasses(targetClass)
+    }catch{
+      case ex:Exception => throw new RuntimeException(s"Transform failed for: [${targetClass.getName}]", ex)
+    }
+
   }
 
   def transformClass(className: String, instrumentation: Instrumentation): Any = {
