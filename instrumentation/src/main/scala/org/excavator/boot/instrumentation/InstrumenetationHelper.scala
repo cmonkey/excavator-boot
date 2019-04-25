@@ -49,15 +49,15 @@ object InstrumenetationHelper {
 
   }
 
-  def premain(agnetArgs: String, instrumentation: Instrumentation) = {
-    logger.info("[Agent] in premain method")
+  def premain(agentArgs: String, instrumentation: Instrumentation) = {
+    logger.info(s"[Agent] in premain method args = ${agentArgs}")
     val className = ""
     transformClass(className, instrumentation)
   }
 
   def agentmain(agentArgs: String, instrumentation: Instrumentation) = {
 
-    logger.info("[Agent] in agentmain method")
+    logger.info(s"[Agent] in agentmain method args = ${agentArgs}")
     val className = ""
     transformClass(className, instrumentation)
   }
