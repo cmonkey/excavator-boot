@@ -39,6 +39,7 @@
         <module>reactor-netty</module>
 		<module>logging</module>
 		<module>javassist</module>
+		<module>instrumentation</module>
 	</modules>
 
     <build>
