@@ -1,7 +1,7 @@
 package org.excavator.boot.instrumentation.test
 
 import org.excavator.boot.instrumentation.application.AgentLoader
-import org.junit.jupiter.api.{DisplayName, Test}
+import org.junit.jupiter.api.{BeforeAll, BeforeEach, DisplayName, Test}
 import org.junit.jupiter.api.Assertions._
 
 class AgentTests {
@@ -9,14 +9,21 @@ class AgentTests {
   @Test
   @DisplayName("testJavassistAgentLoader")
   def testJavassistAgentLoader() = {
-
-    val agentLoader = new AgentLoader
-    assertThrows(classOf[RuntimeException], () => agentLoader.runJavassist(Array("")))
+    assertThrows(classOf[RuntimeException], () => AgentTests.agentLoader.runJavassist(Array("")))
   }
 
   @Test
   @DisplayName("testByteBuddyAgentLoader")
   def testByteBuddyAgentLoader() = {
 
+  }
+}
+
+object AgentTests{
+  var agentLoader: AgentLoader = null
+
+  @BeforeEach
+  def initLoader() = {
+    agentLoader = new AgentLoader
   }
 }
