@@ -3,8 +3,7 @@ package org.excavator.boot.instrumentation.interceptor
 import java.lang.reflect.Method
 import java.util.concurrent.Callable
 
-import net.bytebuddy.asm.Advice.Origin
-import net.bytebuddy.implementation.bind.annotation.{RuntimeType, SuperCall}
+import net.bytebuddy.implementation.bind.annotation.{Origin, RuntimeType, SuperCall}
 import org.excavator.boot.instrumentation.annoation.TraceTime
 import org.slf4j.LoggerFactory
 
@@ -18,7 +17,7 @@ object TimeInterceptor{
   @RuntimeType
   def interceptor(@Origin clazz: Class[_],
                  @Origin method: Method,
-                 @SuperCall callable: Callable[_]): Any = {
+                 @SuperCall callable: Callable[_]) = {
 
     logger.info(s"TimeInterceptor interceptor clazz = [{${clazz}] method = [{${method}] callable = [{${callable}]")
     val traceTime = method.getAnnotation(classOf[TraceTime])
