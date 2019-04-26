@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.excavator.boot.instrumentation;
+package org.excavator.boot.instrumentation.interceptor;
 
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
@@ -26,8 +26,8 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 
-public class NewTimeInterceptor {
-    private final static Logger logger = LoggerFactory.getLogger(NewTimeInterceptor.class);
+public class TimeInterceptor {
+    private final static Logger logger = LoggerFactory.getLogger(TimeInterceptor.class);
 
     @RuntimeType
     public static Object interceptor(@Origin Class<?> clazz, @Origin Method method,

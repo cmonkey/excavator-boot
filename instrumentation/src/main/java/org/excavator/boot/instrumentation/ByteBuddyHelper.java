@@ -22,6 +22,7 @@ import net.bytebuddy.dynamic.DynamicType;
 import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.matcher.ElementMatchers;
 import net.bytebuddy.utility.JavaModule;
+import org.excavator.boot.instrumentation.interceptor.TimeInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +47,7 @@ public class ByteBuddyHelper {
 
     public static void transformer(Instrumentation instrumentation){
         AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, module) -> builder.method(ElementMatchers.any())
-                .intercept(MethodDelegation.to(NewTimeInterceptor.class));
+                .intercept(MethodDelegation.to(TimeInterceptor.class));
 
         AgentBuilder.Listener listener = new AgentBuilder.Listener() {
             @Override
