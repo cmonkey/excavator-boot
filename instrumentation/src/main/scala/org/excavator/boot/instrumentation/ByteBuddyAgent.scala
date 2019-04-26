@@ -18,7 +18,7 @@ class ByteBuddyAgent {
 object ByteBuddyAgent{
   val logger = LoggerFactory.getLogger(classOf[ByteBuddyAgent])
 
-  def transformer(instrumentation: Instrumentation) = {
+  def transformer(instrumentation: Instrumentation): Unit  = {
     val transformer = new AgentBuilder.Transformer {
       override def transform(builder: DynamicType.Builder[_], typeDescription: TypeDescription, classLoader: ClassLoader, javaModule: JavaModule): DynamicType.Builder[_] = {
         builder.method(ElementMatchers.any())
@@ -48,20 +48,17 @@ object ByteBuddyAgent{
       }
     }
 
-    new AgentBuilder.Default().`type`(ElementMatchers.nameStartsWith("org.excavator.boot"), ElementMatchers.any())
+    new AgentBuilder.Default()
+      .`type`(ElementMatchers.nameStartsWith("org.excavator.boot"), ElementMatchers.any(), ElementMatchers.any())
       .transform(transformer)
-      .`with`(listener).installOn(instrumentation)
-  }
-
-  def tail(): Unit ={
-
+      .`with`(listener)
+      .installOn(instrumentation)
   }
 
   def premain(agentArgs: String, instrumentation: Instrumentation) = {
-    logger.info(s"ByteBuddyAgent premain param agentArgs = [{${agentArgs}]")
+    logger.info(s"ByteBuddyAgent premain param agentArgs = [{${agentArgs}}]")
     transformer(instrumentation)
 
-    tail()
   }
 
   def agentmain(agentArgs: String, instrumentation: Instrumentation) = {
@@ -69,7 +66,6 @@ object ByteBuddyAgent{
 
     transformer(instrumentation)
 
-    tail()
   }
 
 }
