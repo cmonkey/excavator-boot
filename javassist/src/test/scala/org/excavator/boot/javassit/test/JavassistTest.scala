@@ -1,16 +1,12 @@
 package org.excavator.boot.javassit.test
 
-import java.lang.reflect.Field
 import java.util
-import java.util.stream.Collectors
 
 import javassist.ClassPool
 import javassist.bytecode.{AccessFlag, Bytecode, FieldInfo, MethodInfo, Mnemonic}
 import org.excavator.boot.javassit.{ClassFileExt, ClassFileHelper}
 import org.junit.jupiter.api.{DisplayName, Test}
 import org.junit.jupiter.api.Assertions._
-
-import scala.collection.mutable
 
 class JavassistTest {
 
