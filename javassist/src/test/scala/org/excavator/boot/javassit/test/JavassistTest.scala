@@ -33,7 +33,11 @@ class JavassistTest {
   @DisplayName("testLoadByteCode")
   def testLoadByteCode() = {
     val classPool = ClassPool.getDefault
-    val classFile = classPool.get("org.excavator.boot.javassit.Point").getClassFile
+    val ctClass = classPool.get("org.excavator.boot.javassit.Point")
+
+    ctClass.defrost()
+
+    val classFile = ctClass.getClassFile
 
     val methodInfo = classFile.getMethod("move")
     val codeAttribute = methodInfo.getCodeAttribute
