@@ -85,7 +85,11 @@ class JavassistTest {
   @Order(4)
   def testAddingConstructorToClassBytecode() = {
     val classPool = ClassPool.getDefault
-    val classFile = classPool.get("org.excavator.boot.javassit.Point").getClassFile
+    val ctClass = classPool.get("org.excavator.boot.javassit.Point")
+
+    ctClass.defrost()
+
+    val classFile = ctClass.getClassFile
 
     val bytecode = new Bytecode(classFile.getConstPool)
 
