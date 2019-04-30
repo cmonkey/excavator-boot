@@ -1,21 +1,20 @@
 package org.excavator.boot.javassit.test
 
-import java.lang.reflect.Field
 import java.util
-import java.util.stream.Collectors
 
 import javassist.ClassPool
 import javassist.bytecode.{AccessFlag, Bytecode, FieldInfo, MethodInfo, Mnemonic}
 import org.excavator.boot.javassit.{ClassFileExt, ClassFileHelper}
-import org.junit.jupiter.api.{DisplayName, Test}
+import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder}
 import org.junit.jupiter.api.Assertions._
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
 
-import scala.collection.mutable
-
+@TestMethodOrder(classOf[OrderAnnotation])
 class JavassistTest {
 
   @Test
   @DisplayName("testPointExt")
+  @Order(1)
   def testPointExt() = {
     val className = "org.excavator.boot.javassit.test.Test"
     val fileName = "Id"
@@ -31,9 +30,14 @@ class JavassistTest {
 
   @Test
   @DisplayName("testLoadByteCode")
+  @Order(2)
   def testLoadByteCode() = {
     val classPool = ClassPool.getDefault
-    val classFile = classPool.get("org.excavator.boot.javassit.Point").getClassFile
+    val ctClass = classPool.get("org.excavator.boot.javassit.Point")
+
+    ctClass.defrost()
+
+    val classFile = ctClass.getClassFile
 
     val methodInfo = classFile.getMethod("move")
     val codeAttribute = methodInfo.getCodeAttribute
@@ -54,6 +58,7 @@ class JavassistTest {
 
   @Test
   @DisplayName("testAddFieldToExistingClassBytecode")
+  @Order(3)
   def testAddFieldToExistingClassBytecode() = {
     val fieldName = "id"
     val classPool = ClassPool.getDefault
@@ -77,9 +82,14 @@ class JavassistTest {
 
   @Test
   @DisplayName("testAddingConstructorToClassBytecode")
+  @Order(4)
   def testAddingConstructorToClassBytecode() = {
     val classPool = ClassPool.getDefault
-    val classFile = classPool.get("org.excavator.boot.javassit.Point").getClassFile
+    val ctClass = classPool.get("org.excavator.boot.javassit.Point")
+
+    ctClass.defrost()
+
+    val classFile = ctClass.getClassFile
 
     val bytecode = new Bytecode(classFile.getConstPool)
 
@@ -108,6 +118,7 @@ class JavassistTest {
 
   @Test
   @DisplayName("testSetSuperClass")
+  @Order(5)
   def testSetSuperClass() = {
     val classPool = ClassPool.getDefault
     val ctClass = classPool.get("org.excavator.boot.javassit.Rectangle")
