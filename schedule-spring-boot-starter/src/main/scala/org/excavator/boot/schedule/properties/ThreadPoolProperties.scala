@@ -10,6 +10,6 @@ case class ThreadPoolProperties() {
   var awaitTerminaltionSeconds: Int = _
 
   @BeanProperty
-  var waitForTasksToCompleteOnShutdonw: Boolean = _
+  var waitForTasksToCompleteOnShutdown: Boolean = _
 
 }
