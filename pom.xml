@@ -33,6 +33,7 @@
 		<module>quartz-spring-boot-starter</module>
 		<module>cumulative-spring-boot-starter</module>
 		<module>processor-spring-boot-starter</module>
+		<module>schedule-spring-boot-starter</module>
         <module>lombok-simulation</module>
         <module>cake-pattern</module>
         <module>json-path</module>
