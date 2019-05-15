@@ -1,7 +1,7 @@
 package org.excavator.boot.schedule.autoconfigure
 
 import java.util.Optional
-import java.util.concurrent.{RejectedExecutionException, RejectedExecutionHandler, ThreadPoolExecutor}
+import java.util.concurrent.{RejectedExecutionException, ThreadPoolExecutor}
 
 import javax.annotation.Resource
 import org.excavator.boot.schedule.exception.StopSchedulingTaskException
@@ -58,11 +58,9 @@ class SchedulingConfiguration extends SchedulingConfigurer{
     scheduler.setWaitForTasksToCompleteOnShutdown(Optional.ofNullable(scheduleProperties.getThreadPool.getWaitForTasksToCompleteOnShutdown)
       .orElse(DEFAULT_WAIT_FOR_TASKS_TO_COMPLETE_ON_SHUTDOWN))
 
-    scheduler.setRejectedExecutionHandler(new RejectedExecutionHandler {
-      override def rejectedExecution(r: Runnable, executor: ThreadPoolExecutor): Unit = {
-        logger.error("Please increase pool size excavator.schedule.threadPool.poolSize for thread pool")
-        throw new RejectedExecutionException(s"Task ${r.toString} rejected from ${executor.toString}")
-      }
+    scheduler.setRejectedExecutionHandler((r: Runnable, executor: ThreadPoolExecutor) => {
+      logger.error("Please increase pool size excavator.schedule.threadPool.poolSize for thread pool")
+      throw new RejectedExecutionException(s"Task ${r.toString} rejected from ${executor.toString}")
     })
 
     scheduler
