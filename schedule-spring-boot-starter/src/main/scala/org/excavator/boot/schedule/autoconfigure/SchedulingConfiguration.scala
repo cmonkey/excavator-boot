@@ -23,7 +23,7 @@ class SchedulingConfiguration extends SchedulingConfigurer{
   val logger = LoggerFactory.getLogger(classOf[SchedulingConfiguration])
 
   @Configuration
-  @EnableConfigurationProperties(classOf[ScheduleProperties])
+  @EnableConfigurationProperties(Array(classOf[ScheduleProperties]))
   class ScheduleThreadPool(scheduleProperties: ScheduleProperties){
 
     def getDefaultIfNull(poolSize: Int, defaultPoolSize: Int): Int = {
