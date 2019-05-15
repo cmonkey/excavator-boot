@@ -16,12 +16,12 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar
 @Configuration
 @EnableScheduling
 @EnableConfigurationProperties(Array(classOf[ScheduleProperties]))
-class SchedulingConfiguration extends SchedulingConfigurer{
+class SchedulingAutoConfiguration extends SchedulingConfigurer{
 
   val DEFAULT_POOLSIZE = 10
   val DEFAULT_AWAIT_TERMINATION_SECONDS = 60
   val DEFAULT_WAIT_FOR_TASKS_TO_COMPLETE_ON_SHUTDOWN = true
-  val logger = LoggerFactory.getLogger(classOf[SchedulingConfiguration])
+  val logger = LoggerFactory.getLogger(classOf[SchedulingAutoConfiguration])
 
   @Resource
   val scheduleProperties: ScheduleProperties = null
