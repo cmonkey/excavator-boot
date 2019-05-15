@@ -44,7 +44,7 @@ class SchedulingAutoConfiguration extends SchedulingConfigurer{
 
       t match {
         case t:StopSchedulingTaskException => {
-          logger.error("Stop scheduling task becauss of occuring StopSchedulingTaskException in task")
+          logger.error("Stop scheduling task because of occuring StopSchedulingTaskException in task")
           throw t.asInstanceOf[StopSchedulingTaskException]
         }
 
