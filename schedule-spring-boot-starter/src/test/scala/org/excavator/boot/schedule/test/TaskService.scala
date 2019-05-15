@@ -2,6 +2,7 @@ package org.excavator.boot.schedule.test
 
 import java.util.concurrent.atomic.AtomicReference
 
+import org.excavator.boot.schedule.exception.StopSchedulingTaskException
 import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
@@ -21,6 +22,12 @@ class TaskService {
 
   def getThreadName() = {
     atomic.get()
+  }
+
+  @Scheduled(fixedRate =  1 * 60)
+  def taskErr() = {
+    logger.info("task error")
+    throw new StopSchedulingTaskException()
   }
 
 }
