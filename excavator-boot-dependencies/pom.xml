@@ -30,7 +30,7 @@
         <excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
 		<!-- 3rd lib dependency -->
-		<fastjson.version>1.2.55</fastjson.version>
+		<fastjson.version>1.2.58</fastjson.version>
         <!--
 		   -<curator.version>2.11.1</curator.version>
            -->
