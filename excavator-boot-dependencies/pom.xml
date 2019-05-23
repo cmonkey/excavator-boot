@@ -42,7 +42,7 @@
 		<mybatis.version>2.0.1</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
 		<excavator-boot.version>2.0.0-SNAPSHOT</excavator-boot.version>
-		<pack.version>0.3.0</pack.version>
+		<pack.version>0.4.0</pack.version>
 		<mysql-connector.version>8.0.11</mysql-connector.version>
 		<commons-lang3.version>3.8.1</commons-lang3.version>
 		<lombok.version>1.18.6</lombok.version>
