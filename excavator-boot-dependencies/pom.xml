@@ -70,7 +70,6 @@
 		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
 		<maven.source.plugin>3.1.0</maven.source.plugin>
 		<maven.javadoc.plugin>3.1.0</maven.javadoc.plugin>
-		<maven.staging.plugin>1.6.7</maven.staging.plugin>
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
 		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
 		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
