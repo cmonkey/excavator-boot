@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.excavator.boot.common.utils;
 
 import org.apache.commons.codec.binary.Base64;
@@ -14,7 +30,7 @@ import java.util.Optional;
 public class GeneratePublicPrivateKeys {
     private final static Logger logger = LoggerFactory.getLogger(GeneratePublicPrivateKeys.class);
 
-    public static Optional<GeneratePublicPrivateKey> generateKeys(String keyAlgorithm, int numBits){
+    public static Optional<GeneratePublicPrivateKey> generateKeys(String keyAlgorithm, int numBits) {
 
         try {
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(keyAlgorithm);
@@ -43,27 +59,31 @@ public class GeneratePublicPrivateKeys {
             logger.info("formatPrivate = {}", formatPrivate);
             logger.info("formatPublic = {}", formatPublic);
 
-            GeneratePublicPrivateKey generatePublicPrivateKey = new GeneratePublicPrivateKey(privateKeyEncodeBase64String, publicKeyEncodeBase64String);
+            GeneratePublicPrivateKey generatePublicPrivateKey = new GeneratePublicPrivateKey(
+                privateKeyEncodeBase64String, publicKeyEncodeBase64String);
 
             return Optional.of(generatePublicPrivateKey);
-        }catch(NoSuchAlgorithmException e){
+        } catch (NoSuchAlgorithmException e) {
             logger.error("generateKeys Exception = {}", e);
 
             return Optional.empty();
         }
     }
 
-    public static Optional<PublicPrivateKey> getPublicPrivateKey(String keyAlgorithm, GeneratePublicPrivateKey generatePublicPrivateKey){
+    public static Optional<PublicPrivateKey> getPublicPrivateKey(String keyAlgorithm,
+                                                                 GeneratePublicPrivateKey generatePublicPrivateKey) {
         try {
             logger.info("getPublicPrivateKey algorithm = {}", keyAlgorithm);
 
             KeyFactory keyFactory = KeyFactory.getInstance(keyAlgorithm);
 
-            byte[] privateBytes = Base64.decodeBase64(generatePublicPrivateKey.getPrivateKeyEncodeBase64String());
+            byte[] privateBytes = Base64.decodeBase64(generatePublicPrivateKey
+                .getPrivateKeyEncodeBase64String());
             EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateBytes);
             PrivateKey privateKey = keyFactory.generatePrivate(privateKeySpec);
 
-            byte[] publicBytes = Base64.decodeBase64(generatePublicPrivateKey.getPublicKeyEncodeBase64String());
+            byte[] publicBytes = Base64.decodeBase64(generatePublicPrivateKey
+                .getPublicKeyEncodeBase64String());
             EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicBytes);
             PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
 
