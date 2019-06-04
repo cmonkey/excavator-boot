@@ -27,4 +27,12 @@ public class GeneratorPublicPrivateKeyTests {
 
         assertEquals(true, optionalGeneratePublicPrivateKey.isPresent());
     }
+
+    @Test
+    @DisplayName("testGeneratorByDH")
+    public void testGeneratorByDH(){
+        Optional<GeneratePublicPrivateKey> optionalGeneratePublicPrivateKey = GeneratePublicPrivateKeys.generateKeys("DH", 512);
+
+        assertEquals(true, optionalGeneratePublicPrivateKey.isPresent());
+    }
 }
