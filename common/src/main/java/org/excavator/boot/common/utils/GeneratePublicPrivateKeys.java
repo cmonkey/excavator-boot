@@ -55,6 +55,8 @@ public class GeneratePublicPrivateKeys {
 
     public static Optional<PublicPrivateKey> getPublicPrivateKey(String keyAlgorithm, GeneratePublicPrivateKey generatePublicPrivateKey){
         try {
+            logger.info("getPublicPrivateKey algorithm = {}", keyAlgorithm);
+
             KeyFactory keyFactory = KeyFactory.getInstance(keyAlgorithm);
 
             byte[] privateBytes = Base64.decodeBase64(generatePublicPrivateKey.getPrivateKeyEncodeBase64String());
@@ -68,6 +70,7 @@ public class GeneratePublicPrivateKeys {
             PublicPrivateKey publicPrivateKey = new PublicPrivateKey(privateKey, publicKey);
 
             return Optional.of(publicPrivateKey);
+
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             logger.error("getPublicPrivateKey Exception = {}", e);
             return Optional.empty();
