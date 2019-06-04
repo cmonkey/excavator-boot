@@ -5,6 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.security.*;
+import java.security.spec.EncodedKeySpec;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Optional;
 
 public class GeneratePublicPrivateKeys {
@@ -45,6 +49,27 @@ public class GeneratePublicPrivateKeys {
         }catch(NoSuchAlgorithmException e){
             logger.error("generateKeys Exception = {}", e);
 
+            return Optional.empty();
+        }
+    }
+
+    public static Optional<PublicPrivateKey> bytesToKeys(String keyAlgorithm, GeneratePublicPrivateKey generatePublicPrivateKey){
+        try {
+            KeyFactory keyFactory = KeyFactory.getInstance(keyAlgorithm);
+
+            byte[] privateBytes = Base64.decodeBase64(generatePublicPrivateKey.getPrivateKeyEncodeBase64String());
+            EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateBytes);
+            PrivateKey privateKey = keyFactory.generatePrivate(privateKeySpec);
+
+            byte[] publicBytes = Base64.decodeBase64(generatePublicPrivateKey.getPublicKeyEncodeBase64String());
+            EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicBytes);
+            PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
+
+            PublicPrivateKey publicPrivateKey = new PublicPrivateKey(privateKey, publicKey);
+
+            return Optional.of(publicPrivateKey);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            logger.error("bytesToKeys Exception = {}", e);
             return Optional.empty();
         }
     }
