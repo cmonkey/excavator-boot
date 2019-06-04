@@ -53,7 +53,7 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    public static Optional<PublicPrivateKey> bytesToKeys(String keyAlgorithm, GeneratePublicPrivateKey generatePublicPrivateKey){
+    public static Optional<PublicPrivateKey> getPublicPrivateKey(String keyAlgorithm, GeneratePublicPrivateKey generatePublicPrivateKey){
         try {
             KeyFactory keyFactory = KeyFactory.getInstance(keyAlgorithm);
 
@@ -69,7 +69,7 @@ public class GeneratePublicPrivateKeys {
 
             return Optional.of(publicPrivateKey);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            logger.error("bytesToKeys Exception = {}", e);
+            logger.error("getPublicPrivateKey Exception = {}", e);
             return Optional.empty();
         }
     }
