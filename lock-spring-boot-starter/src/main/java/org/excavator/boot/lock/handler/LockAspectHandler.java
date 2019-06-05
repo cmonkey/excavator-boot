@@ -24,6 +24,7 @@ import org.excavator.boot.lock.service.LockFactory;
 import org.excavator.boot.lock.service.LockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -33,6 +34,7 @@ import javax.annotation.Resource;
  */
 @Aspect
 @Component
+@EnableAspectJAutoProxy(exposeProxy = true)
 public class LockAspectHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(LockAspectHandler.class);

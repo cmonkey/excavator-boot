@@ -4,7 +4,7 @@ import java.util
 import java.util.{ArrayList, List, Objects}
 import java.util.concurrent._
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.slf4j.{Logger, LoggerFactory}
@@ -48,5 +48,11 @@ class LockTests {
     executorService.shutdown()
     executorService.awaitTermination(1, TimeUnit.SECONDS)
     assertEquals(count, nThreads)
+  }
+
+  @Test
+  def testLock() = {
+    val r = testLockService.getAopService("lock")
+    assertTrue(r.contains("lock"))
   }
 }
