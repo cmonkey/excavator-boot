@@ -49,4 +49,10 @@ class LockTests {
     executorService.awaitTermination(1, TimeUnit.SECONDS)
     assertEquals(count, nThreads)
   }
+
+  @Test
+  def testLock() = {
+    val r = testLockService.getValue("lock")
+    assertTrue(r.contains("lock"))
+  }
 }
