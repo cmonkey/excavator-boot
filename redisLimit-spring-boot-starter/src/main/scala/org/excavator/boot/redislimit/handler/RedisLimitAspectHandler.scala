@@ -11,10 +11,12 @@ import org.aspectj.lang.reflect.MethodSignature
 import org.excavator.boot.redislimit.annotation.RedisLimiter
 import org.excavator.boot.redislimit.service.RedisLimitService
 import org.slf4j.LoggerFactory
+import org.springframework.context.annotation.EnableAspectJAutoProxy
 import org.springframework.stereotype.Component
 
 @Aspect
 @Component
+@EnableAspectJAutoProxy(exposeProxy = true)
 class RedisLimitAspectHandler {
   val logger = LoggerFactory.getLogger(classOf[RedisLimitAspectHandler])
 
