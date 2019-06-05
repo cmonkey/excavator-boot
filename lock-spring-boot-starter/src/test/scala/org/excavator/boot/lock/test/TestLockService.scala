@@ -1,6 +1,7 @@
 package org.excavator.boot.lock.test
 
 import org.excavator.boot.lock.annotation.{Lock, LockKey}
+import org.springframework.aop.framework.AopContext
 import org.springframework.stereotype.Service
 
 @Service
@@ -18,5 +19,10 @@ class TestLockService {
   @Lock
   def getByValue(param: String, @LockKey value: String) = {
     param + value
+  }
+
+  @Lock(waitTime = 1, leaseTime = 1)
+  def getAopService(name:String) = {
+    AopContext.currentProxy().asInstanceOf[TestLockService].getByValue(name, "value")
   }
 }
