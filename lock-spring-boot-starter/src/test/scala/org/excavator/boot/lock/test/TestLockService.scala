@@ -14,4 +14,9 @@ class TestLockService {
     Thread.sleep(60 * 1000)
     "success"
   }
+
+  @Lock
+  def getByValue(param: String, @LockKey value: String) = {
+    param + value
+  }
 }
