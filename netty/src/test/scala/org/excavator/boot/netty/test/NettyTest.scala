@@ -1,8 +1,10 @@
 package org.excavator.boot.netty.test
 
+import java.nio.charset.StandardCharsets
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 
+import org.apache.commons.io.{Charsets, IOUtils}
 import org.excavator.boot.netty.client.NettyClient
 import org.excavator.boot.netty.handler.LengthFieldRpcHandler
 import org.excavator.boot.netty.enums.ResponseViewMode
@@ -87,6 +89,18 @@ class NettyTest {
     }
 
     testBody(true)
+  }
+
+  @Test
+  @DisplayName("testNettyBlockingOperationException")
+  def testNettyBlockingOperationException(): Unit = {
+    val classLoader = classOf[NettyTest].getClassLoader
+    val stream = classLoader.getResourceAsStream("nettyBlockingOperationException.txt")
+    val lines = IOUtils.readLines(stream, StandardCharsets.UTF_8)
+
+    data += lines
+
+    testBody()
   }
 
   def testBody(isTimeout: Boolean = false) = {
