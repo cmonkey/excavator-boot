@@ -61,6 +61,7 @@
 		<commons-pool2.version>2.6.2</commons-pool2.version>
         <javassist.version>3.25.0-GA</javassist.version>
         <byte-buddy.version>1.9.12</byte-buddy.version>
+		<commons-io.version>2.6</commons-io.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -298,6 +299,12 @@
                 <artifactId>byte-buddy</artifactId>
                 <version>${byte-buddy.version}</version>
             </dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
 
 			<!-- excavator boot start -->
             <dependency>
