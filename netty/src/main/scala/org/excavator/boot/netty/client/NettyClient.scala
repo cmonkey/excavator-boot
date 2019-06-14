@@ -85,7 +85,7 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
 
       channelFuture.addListener((f: ChannelFuture) => {
         channelFuture.channel.pipeline.get(classOf[RpcHandler]).setResponseFuture(responseFuture)
-        channelFuture.channel.writeAndFlush(msg).sync
+        channelFuture.channel.writeAndFlush(msg)//.sync
       })
 
       if(isTimeout){
