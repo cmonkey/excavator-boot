@@ -1,7 +1,7 @@
 package org.excavator.boot.authorization.autoconfigure
 
 import javax.annotation.Resource
-import org.excavator.boot.authorization.interceptor.AuthorizationInterceptor
+import org.excavator.boot.authorization.interceptor.{AuthorizationInterceptor, AuthorizationResolver}
 import org.excavator.boot.authorization.config.{AuthorizationConfig, AuthorizationProperties}
 import org.excavator.boot.authorization.factory.HandlerMethodArgumentResolverFactory
 import org.excavator.boot.authorization.manager.TokenManager
@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.factory.config.ServiceLocatorFactoryBean
 import org.springframework.boot.autoconfigure.AutoConfigureAfter
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.{Bean, Configuration, Import}
@@ -36,5 +37,16 @@ class AutorizationAutoConfigure {
     val serviceLocatorFactoryBean = new ServiceLocatorFactoryBean
     serviceLocatorFactoryBean.setServiceLocatorInterface(classOf[AuthorizationResolverFactory])
     serviceLocatorFactoryBean
+  }
+
+  @ConditionalOnMissingBean
+  @Bean
+  def authorizationResolver(): AuthorizationResolver = {
+
+    val authorizationResolver = new AuthorizationResolver
+
+    logger.info("authroizationResolver init ");
+
+    authorizationResolver
   }
 }
