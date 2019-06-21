@@ -17,6 +17,9 @@ class AuthorizationInterceptor extends HandlerInterceptorAdapter {
   @Resource
   private[interceptor] val tokenManager:TokenManager = null
 
+  @Resource
+  private[interceptor] val authorizationResolver: AuthorizationResolver = null
+
   @throws[Exception]
   override def preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean = {
     var r = true
@@ -40,11 +43,11 @@ class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             request.setAttribute(TokenConstants.AUTHORIZATION, authorization)
             r = true
           }else{
-            writeResponse(response)
+            authorizationResolver.writeResponse(response)
             r = false
           }
         }else{
-          writeResponse(response)
+          authorizationResolver.writeResponse(response)
           r = false
         }
       }else{
@@ -53,18 +56,5 @@ class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     }
 
     r
-  }
-
-  private def writeResponse(response:HttpServletResponse) = {
-    val responseEntity = new ResponseEntity[String]("authorization failed", HttpStatus.UNAUTHORIZED)
-
-    response.setContentType("application/json; charset=UTF-8")
-    response.setStatus(HttpStatus.UNAUTHORIZED.value())
-
-    val printout = response.getWriter
-
-    printout.print(JSONProxy.toJSONString(responseEntity))
-
-    printout.flush()
   }
 }
