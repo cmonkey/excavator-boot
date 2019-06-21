@@ -14,19 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.excavator.boot.common.utils;
+package org.excavator.boot.common.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class GeneratePublicPrivateKey {
-    private String privateKeyEncodeHexString;
-    private String publicKeyEncodeHexString;
-    private String privateKeyEncodeBase64String;
-    private String publicKeyEncodeBase64String;
-
+public enum ResolveEnum {
+    BASE64, HEX;
 }

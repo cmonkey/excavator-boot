@@ -16,27 +16,32 @@
  */
 package org.excavator.boot.common.test;
 
+import org.bouncycastle.asn1.gm.GMObjectIdentifiers;
 import org.excavator.boot.common.enums.ResolveEnum;
 import org.excavator.boot.common.utils.GeneratePublicPrivateKey;
 import org.excavator.boot.common.utils.GeneratePublicPrivateKeys;
 import org.excavator.boot.common.utils.PublicPrivateKey;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GeneratorPublicPrivateKeyTests {
+public class SM2AsymmetricAlgorithmTests {
+    private final static Logger logger = LoggerFactory.getLogger(SM2AsymmetricAlgorithmTests.class);
 
     @Test
-    @DisplayName("testGeneratorByRSA")
-    public void testGenerator() {
+    @DisplayName("test key pair generation")
+    public void testKeyPairGeneration() {
 
-        String algorithm = "RSA";
+        String algorithm = "EC";
 
         Optional<GeneratePublicPrivateKey> optionalGeneratePublicPrivateKey = GeneratePublicPrivateKeys
-            .generateKeys(algorithm, 2048);
+            .generateKeysByEC(algorithm);
 
         assertEquals(true, optionalGeneratePublicPrivateKey.isPresent());
 
@@ -51,52 +56,86 @@ public class GeneratorPublicPrivateKeyTests {
             generatePublicPrivateKey, ResolveEnum.HEX);
 
         assertEquals(true, optionalPublicPrivateKey.isPresent());
+
     }
 
     @Test
-    @DisplayName("testGeneratorByDSA")
-    public void testGeneratorByDSA() {
-
-        String algorithm = "DSA";
+    @DisplayName("test signature by sm2")
+    public void testSignature() {
+        String data = "Hello World";
+        byte[] input = data.getBytes(StandardCharsets.UTF_8);
 
         Optional<GeneratePublicPrivateKey> optionalGeneratePublicPrivateKey = GeneratePublicPrivateKeys
-            .generateKeys(algorithm, 1024);
+            .generateKeysByEC("EC");
+
+        assertEquals(true, optionalGeneratePublicPrivateKey.isPresent());
+
+        GeneratePublicPrivateKey generatePublicPrivateKey = optionalGeneratePublicPrivateKey.get();
+
+        logger.info("generatePublicPrivateKey = {}", generatePublicPrivateKey);
+
+        Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
+            .getPublicPrivateKey("EC", generatePublicPrivateKey, ResolveEnum.BASE64);
+
+        assertEquals(true, optionalPublicPrivateKey.isPresent());
+
+        PublicPrivateKey publicPrivateKey = optionalPublicPrivateKey.get();
+
+        // Generate SM2sign with sm3 signature verification algorithm instance
+
+        Optional<byte[]> optionalSign = GeneratePublicPrivateKeys.sign(input,
+            GMObjectIdentifiers.sm2sign_with_sm3.toString(), publicPrivateKey.getPrivateKey());
+
+        assertEquals(true, optionalSign.isPresent());
+
+        byte[] signbytes = optionalSign.get();
+
+        Optional<Boolean> optionalVerifySign = GeneratePublicPrivateKeys
+            .verifySign(signbytes, input, GMObjectIdentifiers.sm2sign_with_sm3.toString(),
+                publicPrivateKey.getPublicKey());
+
+        assertEquals(true, optionalVerifySign.isPresent());
+
+        assertEquals(true, optionalVerifySign.get());
+    }
+
+    @Test
+    @DisplayName("test sm2 in cipher")
+    public void testCipher() {
+        String data = "Hello World";
+        byte[] input = data.getBytes(StandardCharsets.UTF_8);
+
+        Optional<GeneratePublicPrivateKey> optionalGeneratePublicPrivateKey = GeneratePublicPrivateKeys
+            .generateKeysByEC("EC");
 
         assertEquals(true, optionalGeneratePublicPrivateKey.isPresent());
 
         GeneratePublicPrivateKey generatePublicPrivateKey = optionalGeneratePublicPrivateKey.get();
 
         Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
-            .getPublicPrivateKey(algorithm, generatePublicPrivateKey, ResolveEnum.BASE64);
+            .getPublicPrivateKey("EC", generatePublicPrivateKey, ResolveEnum.BASE64);
 
         assertEquals(true, optionalPublicPrivateKey.isPresent());
 
-        optionalPublicPrivateKey = GeneratePublicPrivateKeys.getPublicPrivateKey(algorithm,
-            generatePublicPrivateKey, ResolveEnum.HEX);
+        PublicPrivateKey publicPrivateKey = optionalPublicPrivateKey.get();
 
-        assertEquals(true, optionalPublicPrivateKey.isPresent());
+        Optional<byte[]> optionalEncrypt = GeneratePublicPrivateKeys.encrypt(input, "SM2",
+            publicPrivateKey.getPublicKey());
+
+        assertEquals(true, optionalEncrypt.isPresent());
+
+        byte[] outputEncrypt = optionalEncrypt.get();
+
+        Optional<byte[]> optionalDecrypt = GeneratePublicPrivateKeys.decrypt(outputEncrypt, "SM2",
+            publicPrivateKey.getPrivateKey());
+
+        assertEquals(true, optionalDecrypt.isPresent());
+
+        byte[] outputDecrypt = optionalDecrypt.get();
+
+        String decStr = new String(outputDecrypt, StandardCharsets.UTF_8);
+
+        assertEquals(data, decStr);
     }
 
-    @Test
-    @DisplayName("testGeneratorByDH")
-    public void testGeneratorByDH() {
-        String algorithm = "DH";
-
-        Optional<GeneratePublicPrivateKey> optionalGeneratePublicPrivateKey = GeneratePublicPrivateKeys
-            .generateKeys(algorithm, 512);
-
-        assertEquals(true, optionalGeneratePublicPrivateKey.isPresent());
-
-        GeneratePublicPrivateKey generatePublicPrivateKey = optionalGeneratePublicPrivateKey.get();
-
-        Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
-            .getPublicPrivateKey(algorithm, generatePublicPrivateKey, ResolveEnum.BASE64);
-
-        assertEquals(true, optionalGeneratePublicPrivateKey.isPresent());
-
-        optionalPublicPrivateKey = GeneratePublicPrivateKeys.getPublicPrivateKey(algorithm,
-            generatePublicPrivateKey, ResolveEnum.HEX);
-
-        assertEquals(true, optionalPublicPrivateKey.isPresent());
-    }
 }
