@@ -24,6 +24,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GeneratePublicPrivateKey {
+    private String privateKeyEncodeHexString;
+    private String publicKeyEncodeHexString;
     private String privateKeyEncodeBase64String;
     private String publicKeyEncodeBase64String;
 
