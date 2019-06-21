@@ -21,7 +21,6 @@ import org.excavator.boot.common.enums.ResolveEnum;
 import org.excavator.boot.common.utils.GeneratePublicPrivateKey;
 import org.excavator.boot.common.utils.GeneratePublicPrivateKeys;
 import org.excavator.boot.common.utils.PublicPrivateKey;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -62,7 +61,6 @@ public class SM2AsymmetricAlgorithmTests {
 
     @Test
     @DisplayName("test signature by sm2")
-    @Disabled
     public void testSignature() {
         String data = "Hello World";
         byte[] input = data.getBytes(StandardCharsets.UTF_8);
