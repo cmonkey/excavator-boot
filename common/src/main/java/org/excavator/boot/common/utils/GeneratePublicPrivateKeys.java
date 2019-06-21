@@ -24,6 +24,7 @@ import org.bouncycastle.asn1.gm.GMObjectIdentifiers;
 import org.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
+import org.excavator.boot.common.enums.ResolveEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
