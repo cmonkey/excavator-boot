@@ -16,6 +16,10 @@
  */
 package org.excavator.boot.common.test;
 
+import org.excavator.boot.common.enums.ResolveEnum;
+import org.excavator.boot.common.utils.GeneratePublicPrivateKey;
+import org.excavator.boot.common.utils.GeneratePublicPrivateKeys;
+import org.excavator.boot.common.utils.PublicPrivateKey;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
