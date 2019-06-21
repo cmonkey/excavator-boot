@@ -16,9 +16,6 @@
  */
 package org.excavator.boot.common.test;
 
-import org.excavator.boot.common.utils.GeneratePublicPrivateKey;
-import org.excavator.boot.common.utils.GeneratePublicPrivateKeys;
-import org.excavator.boot.common.utils.PublicPrivateKey;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +39,12 @@ public class GeneratorPublicPrivateKeyTests {
         GeneratePublicPrivateKey generatePublicPrivateKey = optionalGeneratePublicPrivateKey.get();
 
         Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
-            .getPublicPrivateKey(algorithm, generatePublicPrivateKey);
+            .getPublicPrivateKey(algorithm, generatePublicPrivateKey, ResolveEnum.BASE64);
+
+        assertEquals(true, optionalPublicPrivateKey.isPresent());
+
+        optionalPublicPrivateKey = GeneratePublicPrivateKeys.getPublicPrivateKey(algorithm,
+            generatePublicPrivateKey, ResolveEnum.HEX);
 
         assertEquals(true, optionalPublicPrivateKey.isPresent());
     }
@@ -61,7 +63,12 @@ public class GeneratorPublicPrivateKeyTests {
         GeneratePublicPrivateKey generatePublicPrivateKey = optionalGeneratePublicPrivateKey.get();
 
         Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
-            .getPublicPrivateKey(algorithm, generatePublicPrivateKey);
+            .getPublicPrivateKey(algorithm, generatePublicPrivateKey, ResolveEnum.BASE64);
+
+        assertEquals(true, optionalPublicPrivateKey.isPresent());
+
+        optionalPublicPrivateKey = GeneratePublicPrivateKeys.getPublicPrivateKey(algorithm,
+            generatePublicPrivateKey, ResolveEnum.HEX);
 
         assertEquals(true, optionalPublicPrivateKey.isPresent());
     }
@@ -79,8 +86,13 @@ public class GeneratorPublicPrivateKeyTests {
         GeneratePublicPrivateKey generatePublicPrivateKey = optionalGeneratePublicPrivateKey.get();
 
         Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
-            .getPublicPrivateKey(algorithm, generatePublicPrivateKey);
+            .getPublicPrivateKey(algorithm, generatePublicPrivateKey, ResolveEnum.BASE64);
 
         assertEquals(true, optionalGeneratePublicPrivateKey.isPresent());
+
+        optionalPublicPrivateKey = GeneratePublicPrivateKeys.getPublicPrivateKey(algorithm,
+            generatePublicPrivateKey, ResolveEnum.HEX);
+
+        assertEquals(true, optionalPublicPrivateKey.isPresent());
     }
 }
