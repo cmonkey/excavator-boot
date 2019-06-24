@@ -46,8 +46,6 @@ public class GeneratePublicPrivateKeys {
     private final static int MAX_DECRYPT_BLACK = 256;
     private final static int MAX_ENCRYPT_BLACK = 128;
 
-    private final static int    MAX_BLACK = 128;
-
     public static Optional<GeneratePublicPrivateKey> generateKeys(String keyAlgorithm, int numBits) {
 
         try {
