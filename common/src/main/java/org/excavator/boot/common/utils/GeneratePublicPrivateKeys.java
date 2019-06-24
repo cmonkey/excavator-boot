@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.*;
@@ -38,12 +39,14 @@ import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Enumeration;
 import java.util.Optional;
 
 public class GeneratePublicPrivateKeys {
-    private final static Logger logger    = LoggerFactory
-                                              .getLogger(GeneratePublicPrivateKeys.class);
-    private final static int    MAX_BLACK = 128;
+    private final static Logger logger            = LoggerFactory
+                                                      .getLogger(GeneratePublicPrivateKeys.class);
+    private final static int    MAX_DECRYPT_BLACK = 256;
+    private final static int    MAX_ENCRYPT_BLACK = 128;
 
     public static Optional<GeneratePublicPrivateKey> generateKeys(String keyAlgorithm, int numBits) {
 
@@ -230,7 +233,7 @@ public class GeneratePublicPrivateKeys {
             Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
-            byte[] output = doFinalExt(input, cipher, MAX_BLACK);
+            byte[] output = doFinalExt(input, cipher, MAX_ENCRYPT_BLACK);
             return Optional.ofNullable(output);
         } catch (Exception e) {
             logger.error("encrypt Exception = {}", e);
@@ -244,7 +247,7 @@ public class GeneratePublicPrivateKeys {
             Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
 
-            byte[] output = doFinalExt(input, cipher, MAX_BLACK);
+            byte[] output = doFinalExt(input, cipher, MAX_DECRYPT_BLACK);
 
             return Optional.ofNullable(output);
         } catch (Exception e) {
@@ -280,4 +283,55 @@ public class GeneratePublicPrivateKeys {
             return Optional.empty();
         }
     }
+
+    public static Optional<PrivateKey> getPrivate(String keyAlgorithm, byte[] keyBytes) {
+        try {
+            PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
+            KeyFactory keyFactory = KeyFactory
+                .getInstance(keyAlgorithm, new BouncyCastleProvider());
+            return Optional.ofNullable(keyFactory.generatePrivate(spec));
+        } catch (Exception e) {
+            logger.error("getPrivate Exception = {}", e);
+
+            return Optional.empty();
+        }
+    }
+
+    public static Optional<PrivateKey> getPrivateByPKCS12(String keyAlgorithm, byte[] keyBytes,
+                                                          String password) {
+        try {
+            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+            try (ByteArrayInputStream inputStream = new ByteArrayInputStream(keyBytes)) {
+                keyStore.load(inputStream, password.toCharArray());
+            } catch (IOException e) {
+                logger.error("getPrivateByPKCS12 Exception = {}", e);
+                return Optional.empty();
+            }
+
+            Enumeration<String> aliases = keyStore.aliases();
+            String keyAlias = "";
+            while (aliases.hasMoreElements()) {
+                keyAlias = aliases.nextElement();
+            }
+
+            return Optional.ofNullable((PrivateKey) keyStore.getKey(keyAlias,
+                password.toCharArray()));
+        } catch (Exception e) {
+            logger.error("getPrivateByPKCS12 Exception = {}", e);
+            return Optional.empty();
+        }
+    }
+
+    public static Optional<PublicKey> getPublicKey(String keyAlgorithm, byte[] keyBytes) {
+        try {
+            X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
+            KeyFactory keyFactory = KeyFactory
+                .getInstance(keyAlgorithm, new BouncyCastleProvider());
+            return Optional.ofNullable(keyFactory.generatePublic(spec));
+        } catch (Exception e) {
+            logger.error("getPublicKey Exception = {}", e);
+            return Optional.empty();
+        }
+    }
+
 }
