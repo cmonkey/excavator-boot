@@ -247,7 +247,7 @@ public class GeneratePublicPrivateKeys {
             Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
 
-            byte[] output = doFinalExt(input, cipher, MAX_BLACK);
+            byte[] output = doFinalExt(input, cipher, MAX_DECRYPT_BLACK);
 
             return Optional.ofNullable(output);
         } catch (Exception e) {
