@@ -293,5 +293,30 @@ public class GeneratePublicPrivateKeys {
             return Optional.empty();
         }
     }
+    public static Optional<PrivateKey> getPrivateByPKCS12(String keyAlgorithm, byte[] keyBytes,
+                                                          String password) {
+        try {
+            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+            try (ByteArrayInputStream inputStream = new ByteArrayInputStream(keyBytes)) {
+                keyStore.load(inputStream, password.toCharArray());
+            } catch (IOException e) {
+                logger.error("getPrivateByPKCS12 Exception = {}", e);
+                return Optional.empty();
+            }
+
+            Enumeration<String> aliases = keyStore.aliases();
+            String keyAlias = "";
+            while (aliases.hasMoreElements()) {
+                keyAlias = aliases.nextElement();
+            }
+
+            return Optional.ofNullable((PrivateKey) keyStore.getKey(keyAlias,
+                password.toCharArray()));
+        } catch (Exception e) {
+            logger.error("getPrivateByPKCS12 Exception = {}", e);
+            return Optional.empty();
+        }
+    }
+
 
 }
