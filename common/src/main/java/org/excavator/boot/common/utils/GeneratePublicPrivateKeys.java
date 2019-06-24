@@ -43,10 +43,10 @@ import java.util.Enumeration;
 import java.util.Optional;
 
 public class GeneratePublicPrivateKeys {
-    private final static Logger logger    = LoggerFactory
-                                              .getLogger(GeneratePublicPrivateKeys.class);
-    private final static int MAX_DECRYPT_BLACK = 256;
-    private final static int MAX_ENCRYPT_BLACK = 128;
+    private final static Logger logger            = LoggerFactory
+                                                      .getLogger(GeneratePublicPrivateKeys.class);
+    private final static int    MAX_DECRYPT_BLACK = 256;
+    private final static int    MAX_ENCRYPT_BLACK = 128;
 
     public static Optional<GeneratePublicPrivateKey> generateKeys(String keyAlgorithm, int numBits) {
 
@@ -283,11 +283,12 @@ public class GeneratePublicPrivateKeys {
             return Optional.empty();
         }
     }
+
     public static Optional<PrivateKey> getPrivate(String keyAlgorithm, byte[] keyBytes) {
         try {
             PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
             KeyFactory keyFactory = KeyFactory
-                    .getInstance(keyAlgorithm, new BouncyCastleProvider());
+                .getInstance(keyAlgorithm, new BouncyCastleProvider());
             return Optional.ofNullable(keyFactory.generatePrivate(spec));
         } catch (Exception e) {
             logger.error("getPrivate Exception = {}", e);
@@ -295,6 +296,7 @@ public class GeneratePublicPrivateKeys {
             return Optional.empty();
         }
     }
+
     public static Optional<PrivateKey> getPrivateByPKCS12(String keyAlgorithm, byte[] keyBytes,
                                                           String password) {
         try {
