@@ -281,4 +281,17 @@ public class GeneratePublicPrivateKeys {
             return Optional.empty();
         }
     }
+    public static Optional<PrivateKey> getPrivate(String keyAlgorithm, byte[] keyBytes) {
+        try {
+            PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
+            KeyFactory keyFactory = KeyFactory
+                    .getInstance(keyAlgorithm, new BouncyCastleProvider());
+            return Optional.ofNullable(keyFactory.generatePrivate(spec));
+        } catch (Exception e) {
+            logger.error("getPrivate Exception = {}", e);
+
+            return Optional.empty();
+        }
+    }
+
 }
