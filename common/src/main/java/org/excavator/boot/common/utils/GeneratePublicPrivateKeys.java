@@ -318,5 +318,16 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
+    public static Optional<PublicKey> getPublicKey(String keyAlgorithm, byte[] keyBytes) {
+        try {
+            X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
+            KeyFactory keyFactory = KeyFactory
+                .getInstance(keyAlgorithm, new BouncyCastleProvider());
+            return Optional.ofNullable(keyFactory.generatePublic(spec));
+        } catch (Exception e) {
+            logger.error("getPublicKey Exception = {}", e);
+            return Optional.empty();
+        }
+    }
 
 }
