@@ -153,7 +153,7 @@ public class SM2AsymmetricAlgorithmTests {
         generatePublicPrivateKey.setPublicKeyEncodeBase64String(base64PublicKey);
 
         Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
-                .getPublicPrivateKey("EC", generatePublicPrivateKey, ResolveEnum.BASE64);
+            .getPublicPrivateKey("EC", generatePublicPrivateKey, ResolveEnum.BASE64);
 
         assertEquals(true, optionalPublicPrivateKey.isPresent());
 
@@ -162,17 +162,17 @@ public class SM2AsymmetricAlgorithmTests {
         String data = "javascript";
 
         Optional<byte[]> optionalEncrypt = GeneratePublicPrivateKeys.encrypt(
-                data.getBytes(Charsets.UTF_8), "SM2", publicPrivateKey.getPublicKey());
+            data.getBytes(Charsets.UTF_8), "SM2", publicPrivateKey.getPublicKey());
 
         assertEquals(true, optionalEncrypt.isPresent());
 
         logger.info("encrypt {} by hex = {}", data, Hex.encodeHexString(optionalEncrypt.get()));
         logger.info("encrypt {} by base64 = {}", data,
-                Base64.encodeBase64String(optionalEncrypt.get()));
+            Base64.encodeBase64String(optionalEncrypt.get()));
 
         try {
             Optional<byte[]> optionalDecrypt = GeneratePublicPrivateKeys.decrypt(
-                    Hex.decodeHex(encData), "SM2", publicPrivateKey.getPrivateKey());
+                Hex.decodeHex(encData), "SM2", publicPrivateKey.getPrivateKey());
 
             assertEquals(true, optionalDecrypt.isPresent());
 
