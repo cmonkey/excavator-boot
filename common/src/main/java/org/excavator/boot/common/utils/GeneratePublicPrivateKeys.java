@@ -284,7 +284,7 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    public static Optional<PrivateKey> getPrivate(String keyAlgorithm, byte[] keyBytes) {
+    public static Optional<PrivateKey> getPrivateKey(String keyAlgorithm, byte[] keyBytes) {
         try {
             PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
             KeyFactory keyFactory = KeyFactory
