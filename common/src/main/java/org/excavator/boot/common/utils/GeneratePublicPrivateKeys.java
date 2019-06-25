@@ -297,7 +297,7 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    public static Optional<PrivateKey> getPrivateByPKCS12(String keyAlgorithm, byte[] keyBytes,
+    public static Optional<PrivateKey> getPrivateKeyByPKCS12(String keyAlgorithm, byte[] keyBytes,
                                                           String password) {
         try {
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
