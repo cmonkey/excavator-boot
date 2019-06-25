@@ -284,7 +284,7 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    public static Optional<PrivateKey> getPrivate(String keyAlgorithm, byte[] keyBytes) {
+    public static Optional<PrivateKey> getPrivateKey(String keyAlgorithm, byte[] keyBytes) {
         try {
             PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
             KeyFactory keyFactory = KeyFactory
@@ -297,8 +297,7 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    public static Optional<PrivateKey> getPrivateByPKCS12(String keyAlgorithm, byte[] keyBytes,
-                                                          String password) {
+    public static Optional<PrivateKey> getPrivateKeyByPKCS12(byte[] keyBytes, String password) {
         try {
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
             try (ByteArrayInputStream inputStream = new ByteArrayInputStream(keyBytes)) {

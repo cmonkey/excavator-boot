@@ -16,6 +16,9 @@
  */
 package org.excavator.boot.common.test;
 
+import org.apache.commons.codec.Charsets;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
 import org.bouncycastle.asn1.gm.GMObjectIdentifiers;
 import org.excavator.boot.common.enums.ResolveEnum;
 import org.excavator.boot.common.utils.GeneratePublicPrivateKey;
@@ -136,6 +139,48 @@ public class SM2AsymmetricAlgorithmTests {
         String decStr = new String(outputDecrypt, StandardCharsets.UTF_8);
 
         assertEquals(data, decStr);
+    }
+
+    @Test
+    @DisplayName("test sm2 decrypt")
+    public void testSm2Decrypt() {
+        String encData = "04832692469562d1871a63fc2fe69ff5fc9d9a0d42c145ddf0776dbf6b6d05535fcfb6dfaef5edbf0368280eff131ce947cb8768612239368e9c12916864f77c3fb753c347864782ee0e3466d2a6fd84735a3d25ee12aa6727118ae31627c93f7fd754c083092a7a0446fc0e8b2a5a";
+        String base64PrivateKey = "MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQgACzs7q8xNRkQNX1cNuNbZJylEW27s3+njSryRHBptE6gCgYIKoEcz1UBgi2hRANCAASSBlyRGzj0NinG2FFnHesYuxmb9qztrD5IR3Mn1oiQTgDNXV/zAQpCrdWElqMss6Cnh1+6nK6W2b0PKZgqFOtU";
+        String base64PublicKey = "MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEkgZckRs49DYpxthRZx3rGLsZm/as7aw+SEdzJ9aIkE4AzV1f8wEKQq3VhJajLLOgp4dfupyultm9DymYKhTrVA==";
+
+        GeneratePublicPrivateKey generatePublicPrivateKey = new GeneratePublicPrivateKey();
+        generatePublicPrivateKey.setPrivateKeyEncodeBase64String(base64PrivateKey);
+        generatePublicPrivateKey.setPublicKeyEncodeBase64String(base64PublicKey);
+
+        Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
+            .getPublicPrivateKey("EC", generatePublicPrivateKey, ResolveEnum.BASE64);
+
+        assertEquals(true, optionalPublicPrivateKey.isPresent());
+
+        PublicPrivateKey publicPrivateKey = optionalPublicPrivateKey.get();
+
+        String data = "javascript";
+
+        Optional<byte[]> optionalEncrypt = GeneratePublicPrivateKeys.encrypt(
+            data.getBytes(Charsets.UTF_8), "SM2", publicPrivateKey.getPublicKey());
+
+        assertEquals(true, optionalEncrypt.isPresent());
+
+        logger.info("encrypt {} by hex = {}", data, Hex.encodeHexString(optionalEncrypt.get()));
+        logger.info("encrypt {} by base64 = {}", data,
+            Base64.encodeBase64String(optionalEncrypt.get()));
+
+        try {
+            Optional<byte[]> optionalDecrypt = GeneratePublicPrivateKeys.decrypt(
+                Hex.decodeHex(encData), "SM2", publicPrivateKey.getPrivateKey());
+
+            assertEquals(true, optionalDecrypt.isPresent());
+
+            assertEquals("javascript1024", new String(optionalDecrypt.get(), Charsets.UTF_8));
+            logger.info("decrypt = {}", new String(optionalDecrypt.get(), Charsets.UTF_8));
+        } catch (Exception e) {
+            logger.error("testSm2Decrypt Exception = {}", e);
+        }
     }
 
 }

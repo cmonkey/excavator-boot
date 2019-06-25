@@ -62,7 +62,7 @@
         <javassist.version>3.25.0-GA</javassist.version>
         <byte-buddy.version>1.9.12</byte-buddy.version>
 		<commons-io.version>2.6</commons-io.version>
-		<bouncycastle.version>1.61</bouncycastle.version>
+		<bouncycastle.version>1.62</bouncycastle.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
