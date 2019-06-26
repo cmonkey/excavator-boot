@@ -96,12 +96,13 @@
 		</developer>
 	</developers>
 
-	<scm>
+    <scm>
 		<!-- http://maven.apache.org/scm/git.html -->
-		<connection>scm:git:git://github.com:cmonkey/excavator-boot.git</connection>
-		<developerConnection>scm:git:ssh://github.com:cmonkey/excavator-boot.git</developerConnection>
-		<url>https://github.com/cmonkey/excavator-boot/tree/master</url>
-	</scm>
+        <connection>scm:git:https://github.com/cmonkey/excavator-boot.git</connection>
+        <developerConnection>scm:git:https://github.com/cmonkey/excavator-boot.git</developerConnection>
+        <url>https://github.com/cmonkey/excavator-boot</url>
+    </scm>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -432,11 +433,18 @@
 	</profiles>
 
 	<distributionManagement>
-		<repository>
-			<id>excavator-releases</id>
-			<name>Nexus Release Repository</name>
-			<url>http://localhost:8081/repository/maven-releases/</url>
-		</repository>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/cmonkey</url>
+        </repository>
+        <!--
+		   -<repository>
+		   -    <id>excavator-releases</id>
+		   -    <name>Nexus Release Repository</name>
+		   -    <url>http://localhost:8081/repository/maven-releases/</url>
+		   -</repository>
+           -->
 		<snapshotRepository>
 			<id>excavator-snapshot</id>
 			<name>Nexus Snapshot Repository</name>
