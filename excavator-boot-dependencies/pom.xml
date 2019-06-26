@@ -433,6 +433,11 @@
 	</profiles>
 
 	<distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/cmonkey</url>
+        </repository>
 		<repository>
 			<id>excavator-releases</id>
 			<name>Nexus Release Repository</name>
