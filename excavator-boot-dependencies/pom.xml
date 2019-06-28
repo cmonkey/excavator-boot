@@ -25,7 +25,7 @@
 		<project.encoding>UTF-8</project.encoding>
 		<project.build.encoding>UTF-8</project.build.encoding>
 
-		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
 
         <excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
