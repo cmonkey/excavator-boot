@@ -1,5 +1,11 @@
 package org.excavator.boot.helper.test
 
+import org.junit.jupiter.api.extension.ExtendWith
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.junit.jupiter.SpringExtension
+
+@ExtendWith(Array(classOf[SpringExtension]))
+@SpringBootTest(classes = Array(classOf[HelperApplication]))
 class CustomerHelperTests {
 
 }
