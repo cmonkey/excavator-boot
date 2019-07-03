@@ -78,7 +78,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.excavator.boot</groupId>
-			<artifactId>common</artifactId>
+			<artifactId>helper</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
