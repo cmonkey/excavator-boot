@@ -102,12 +102,23 @@
 		<maven.surefire.plugin>2.22.2</maven.surefire.plugin>
 
 	</properties>
+	
 	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
+
+	<developers>
+		<developer>
+			<name>cmonkey</name>
+			<email>42.codemonkey@gmail.com</email>
+			<organization>Excavator</organization>
+			<organizationUrl>https://cmonkey.github.io</organizationUrl>
+		</developer>
+	</developers>
+
     <build>
 		<plugins>
 			<plugin>
