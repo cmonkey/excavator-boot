@@ -71,6 +71,15 @@ class AuthorizationTests {
     })
   }
 
+  @Test
+  @DisplayName("test CheckToken")
+  @Order(2)
+  def testCheckToken(): Unit = {
+    val checkStatus = tokenManager.checkToken(AuthorizationTests.atomicReference.get())
+
+    assertTrue(checkStatus)
+  }
+
 }
 
 object AuthorizationTests{
