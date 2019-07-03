@@ -1,17 +1,16 @@
 package org.excavator.boot.authorization.mananger.impl
 
-import java.util.{Optional, UUID}
+import java.util.{Optional}
 import java.util.concurrent.TimeUnit
 
 import javax.annotation.Resource
-import org.apache.commons.lang3.StringUtils
 import org.excavator.boot.authorization.config.AuthorizationProperties
-import org.excavator.boot.authorization.constant.{CacheKeys, TokenConstants}
+import org.excavator.boot.authorization.constant.{CacheKeys}
 import org.excavator.boot.authorization.manager.TokenManager
 import org.excavator.boot.authorization.model.Token
 import org.excavator.boot.helper.CustomerHelper
 import org.slf4j.LoggerFactory
-import org.springframework.data.redis.core.{HashOperations, SetOperations, StringRedisTemplate, ValueOperations}
+import org.springframework.data.redis.core.{SetOperations, StringRedisTemplate}
 import org.springframework.stereotype.Component
 
 @Component
@@ -76,36 +75,17 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
       case None => Optional.empty()
     }
-    getTokenOption(authenticate) match {
-      case Some(t) => Optional.of(t)
-      case None => Optional.empty()
-    }
-  }
 
-  def getTokenOption(authorization: String): Option[Token] = {
+    customerHelper.getCustomerId(authenticate) match {
+      case Some(customerId) => {
+        val token = new Token
+        token.setCustomerId(customerId)
+        token.setToken(authenticate)
 
-    if (StringUtils.isBlank(authorization)){
-      None
-    }else {
-
-
-      val valueOperations = stringRedisTemplate.opsForValue
-
-      val cacheKey = CacheKeys.USERS_AUTH_TOKEN + authorization
-
-      val customerId = valueOperations.get(cacheKey)
-
-      if (StringUtils.isBlank(customerId)) {
-        None
-      }else {
-
-        val tokenModel = new Token
-
-        tokenModel.setCustomerId(customerId.toLong)
-        tokenModel.setToken(authorization)
-
-        Some(tokenModel)
+        Optional.of(token)
       }
+
+      case None => Optional.empty()
     }
   }
 
