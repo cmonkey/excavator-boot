@@ -476,7 +476,6 @@
 	</distributionManagement>
 
     <build>
-    <pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>com.mycila</groupId>
@@ -560,11 +559,11 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
-                        <configuration> <!-- add this to disable checking -->
-                            <additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
 					</execution>
 				</executions>
+				<configuration>
+                    <doclint>none</doclint>
+                </configuration>
 			</plugin>
 
 			<plugin>
@@ -636,7 +635,6 @@
 			</plugin>
 
 		</plugins>
-    </pluginManagement>
 	</build>
 
 </project>
