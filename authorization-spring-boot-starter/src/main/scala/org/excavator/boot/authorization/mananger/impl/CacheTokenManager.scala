@@ -75,18 +75,6 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
       case None => Optional.empty()
     }
-
-    customerHelper.getCustomerId(authenticate) match {
-      case Some(customerId) => {
-        val token = new Token
-        token.setCustomerId(customerId)
-        token.setToken(authenticate)
-
-        Optional.of(token)
-      }
-
-      case None => Optional.empty()
-    }
   }
 
   override def deleteToken(token: String): Unit = {
