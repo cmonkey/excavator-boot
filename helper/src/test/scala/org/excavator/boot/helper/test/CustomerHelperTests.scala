@@ -4,15 +4,17 @@ import java.util.concurrent.atomic.AtomicReference
 
 import javax.annotation.Resource
 import org.excavator.boot.helper.CustomerHelper
-import org.junit.jupiter.api.{DisplayName, Order, Test}
+import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder}
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.Assertions._
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
 import org.slf4j.LoggerFactory
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(Array(classOf[SpringExtension]))
 @SpringBootTest(classes = Array(classOf[HelperApplication]))
+@TestMethodOrder(classOf[OrderAnnotation])
 class CustomerHelperTests {
 
   val logger = LoggerFactory.getLogger(classOf[CustomerHelperTests])
@@ -26,7 +28,7 @@ class CustomerHelperTests {
 
   @Test
   @DisplayName("test CreateToken")
-  @Order(0)
+  @Order(1)
   def testCreateToken(): Unit = {
     customerHelper.createToken(customerId, expireSeconds) match {
       case Some(value) => {
@@ -39,7 +41,7 @@ class CustomerHelperTests {
 
   @Test
   @DisplayName("test getCustomerId")
-  @Order(1)
+  @Order(2)
   def testGetCustomerId(): Unit = {
     val token = CustomerHelperTests.atomicReference.get()
     logger.info(s"token = ${token}")
