@@ -89,11 +89,7 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
 
     logger.info(s"createToken result = ${token}")
 
-    if(StringUtils.isNotBlank(token)){
-      Some(token)
-    }else{
-      None
-    }
+    Some(token).filter(StringUtils.isNotBlank)
   }
 
   private def getCustomerIdByToken(authorization: String): Option[Long] = {
