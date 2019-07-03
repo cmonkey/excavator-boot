@@ -90,7 +90,8 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
   }
 
   override def deleteToken(token: String): Unit = {
-    getTokenOption(token).map(tokenModel => {
+    customerHelper.getCustomerId(token) match {
+      case Some(customerId) => {
 
       val cacheKey = CacheKeys.USERS_AUTH_TOKEN + token
 
@@ -98,13 +99,13 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
       val setOps:SetOperations[String, String] = stringRedisTemplate.opsForSet
 
-      val customerIdStr = tokenModel.getCustomerId.toString
+      val customerIdStr = String.valueOf(customerId)
       setOps.remove(CacheKeys.USERS_AUTH_SET, customerIdStr)
 
       val hashOps = stringRedisTemplate.opsForHash
 
       hashOps.delete(CacheKeys.USERS_AUTH_HASH, customerIdStr)
-
-    })
+    }
+    case None => logger.warn("token get customerId is null")
   }
 }
