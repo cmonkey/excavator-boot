@@ -9,6 +9,7 @@ import org.excavator.boot.authorization.config.AuthorizationProperties
 import org.excavator.boot.authorization.constant.{CacheKeys, TokenConstants}
 import org.excavator.boot.authorization.manager.TokenManager
 import org.excavator.boot.authorization.model.Token
+import org.excavator.boot.helper.CustomerHelper
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.{HashOperations, SetOperations, StringRedisTemplate, ValueOperations}
 import org.springframework.stereotype.Component
@@ -21,57 +22,24 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
   @Resource
   val authorizationProperties: AuthorizationProperties = null
 
+  @Resource
+  val customerHelper: CustomerHelper = null
+
   override def createToken(customerId: Long): Optional[Token] = {
-    logger.info(s"createToken param customerId = $customerId")
+    val token = customerHelper.createToken(customerId, authorizationProperties.getExpire_second)
 
-    val setOps = stringRedisTemplate.opsForSet
+    token match {
+      case Some(value) => {
+        val tokenModel = new Token
+        tokenModel.setCustomerId(customerId)
+        tokenModel.setToken(value)
 
-    val customerIdStr = customerId.toString
-
-    var token:Token = null
-
-    val hashOps:HashOperations[String, String, String]  = stringRedisTemplate.opsForHash[String,String]
-
-    if (setOps.isMember(CacheKeys.USERS_AUTH_SET, customerIdStr)) {
-
-      val auth = hashOps.get(CacheKeys.USERS_AUTH_HASH, customerIdStr)
-
-      logger.info(s"createToken ${customerId} isMember in auth = ${auth}")
-
-      if(StringUtils.isNotBlank(auth)){
-
-        getTokenOption(auth) match {
-
-          case Some(t) => {
-            logger.info(s"createToken getToken by ${auth} in token = ${t}")
-            token = t
-          }
-
-          case None => {
-
-            hashOps.delete(CacheKeys.USERS_AUTH_HASH, customerIdStr)
-
-            token = getNowTokenModel(customerId)
-
-            hashOps.put(CacheKeys.USERS_AUTH_HASH, customerIdStr, token.getToken)
-
-            logger.info(s"createToken getToken by ${auth} new build Token = ${token}")
-          }
-        }
-
+        Optional.of(tokenModel)
       }
-    }else {
-      setOps.add(CacheKeys.USERS_AUTH_SET, customerIdStr)
-      token = getNowTokenModel(customerId)
-      hashOps.put(CacheKeys.USERS_AUTH_HASH, customerIdStr, token.getToken)
-
-      logger.info(s"createToken ${customerId} noMember in token = ${token}")
+      case None =>{
+        Optional.empty()
+      }
     }
-
-    logger.info(s"createToken result = ${token}")
-
-    Optional.ofNullable(token)
-
   }
 
   private def getNowTokenModel(customerId: Long) = {
