@@ -16,7 +16,6 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<modules>
-		<module>excavator-boot-dependencies</module>
         <module>base</module>
         <module>common</module>
         <module>common-generator</module>
