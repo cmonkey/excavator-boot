@@ -64,7 +64,7 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
 
           case None => {
 
-            hashOps.delete(CacheKeys.USERS_AUTH_HASH, customerId)
+            hashOps.delete(CacheKeys.USERS_AUTH_HASH, String.valueOf(customerId))
 
             token = getNowToken(customerId, expireSeconds)
 
