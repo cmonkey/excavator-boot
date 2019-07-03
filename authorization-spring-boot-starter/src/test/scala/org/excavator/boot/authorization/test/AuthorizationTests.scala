@@ -5,9 +5,10 @@ import java.util.concurrent.atomic.AtomicReference
 import javax.annotation.Resource
 import org.excavator.boot.authorization.manager.TokenManager
 import org.excavator.boot.authorization.model.Token
-import org.junit.jupiter.api.{DisplayName, Order, Test}
+import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder}
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.Assertions._
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment
 import org.springframework.boot.test.web.client.TestRestTemplate
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @ExtendWith(Array(classOf[SpringExtension]))
 @SpringBootTest(classes = Array(classOf[AuthorizationApplication]), webEnvironment = WebEnvironment.RANDOM_PORT)
+@TestMethodOrder(classOf[OrderAnnotation])
 class AuthorizationTests {
 
   @Resource
@@ -29,7 +31,7 @@ class AuthorizationTests {
 
   @Test
   @DisplayName("testToken in controller")
-  @Order(0)
+  @Order(1)
   def testToken() = {
     val token = testRestTemplate.getForObject("/token", classOf[String])
 
@@ -60,7 +62,7 @@ class AuthorizationTests {
 
   @Test
   @DisplayName("test CreateToken")
-  @Order(1)
+  @Order(2)
   def testCreateToken(): Unit = {
     val option = tokenManager.createToken(customerId)
     assertTrue(option.isPresent)
@@ -73,7 +75,7 @@ class AuthorizationTests {
 
   @Test
   @DisplayName("test CheckToken")
-  @Order(2)
+  @Order(3)
   def testCheckToken(): Unit = {
     val checkStatus = tokenManager.checkToken(AuthorizationTests.atomicReference.get())
 
@@ -82,7 +84,7 @@ class AuthorizationTests {
 
   @Test
   @DisplayName("test GetToken")
-  @Order(3)
+  @Order(4)
   def testGetToken(): Unit = {
     val optional = tokenManager.getToken(AuthorizationTests.atomicReference.get().getToken)
 
@@ -94,6 +96,17 @@ class AuthorizationTests {
     })
   }
 
+  @Test
+  @DisplayName("test DelToken")
+  @Order(5)
+  def testDelToken(): Unit = {
+    val token = AuthorizationTests.atomicReference.get().getToken
+    tokenManager.deleteToken(token)
+
+    val optional = tokenManager.getToken(token)
+
+    assertNotEquals(true, optional.isPresent)
+  }
 }
 
 object AuthorizationTests{
