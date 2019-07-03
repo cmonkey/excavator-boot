@@ -1,5 +1,7 @@
 package org.excavator.boot.helper.test
 
+import java.util.concurrent.atomic.AtomicReference
+
 import javax.annotation.Resource
 import org.excavator.boot.helper.CustomerHelper
 import org.junit.jupiter.api.{DisplayName, Order, Test}
@@ -21,18 +23,37 @@ class CustomerHelperTests {
   val expireSeconds = 600
 
   val customerId = 1
-  var token = ""
 
   @Test
   @DisplayName("test CreateToken")
-  @Order(1)
+  @Order(0)
   def testCreateToken(): Unit = {
-    customerHelper.createToken(1, expireSeconds) match {
+    customerHelper.createToken(customerId, expireSeconds) match {
       case Some(value) => {
         assertNotNull(value)
-        token = value
+        CustomerHelperTests.atomicReference.set(value)
       }
       case None => logger.warn("create Token is failed")
     }
   }
+
+  @Test
+  @DisplayName("test getCustomerId")
+  @Order(1)
+  def testGetCustomerId(): Unit = {
+    val token = CustomerHelperTests.atomicReference.get()
+    logger.info(s"token = ${token}")
+    customerHelper.getCustomerId(token) match {
+      case Some(value) => {
+        assertNotNull(value)
+        assertTrue(value == customerId)
+      }
+      case None => logger.warn(s"token ${token} get customerId is null")
+    }
+  }
+
+}
+
+object CustomerHelperTests{
+  val atomicReference = new AtomicReference[String]()
 }
