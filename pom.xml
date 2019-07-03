@@ -102,7 +102,7 @@
 		<maven.surefire.plugin>2.22.2</maven.surefire.plugin>
 
 	</properties>
-	
+
 	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
@@ -118,6 +118,13 @@
 			<organizationUrl>https://cmonkey.github.io</organizationUrl>
 		</developer>
 	</developers>
+
+	<scm>
+		<!-- http://maven.apache.org/scm/git.html -->
+		<connection>scm:git:https://github.com/cmonkey/excavator-boot.git</connection>
+		<developerConnection>scm:git:https://github.com/cmonkey/excavator-boot.git</developerConnection>
+		<url>https://github.com/cmonkey/excavator-boot</url>
+	</scm>
 
     <build>
 		<plugins>
