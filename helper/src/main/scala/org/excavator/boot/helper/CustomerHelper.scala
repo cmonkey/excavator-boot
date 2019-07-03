@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit
 import org.apache.commons.lang3.StringUtils
 import org.excavator.boot.authorization.constant.CacheKeys
 import org.slf4j.LoggerFactory
-import org.springframework.data.redis.core.{HashOperations, StringRedisTemplate}
+import org.springframework.data.redis.core.{HashOperations, StringRedisTemplate, ValueOperations}
 import org.springframework.stereotype.Component
 
 @Component
@@ -14,7 +14,7 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
 
   val logger = LoggerFactory.getLogger(classOf[CustomerHelper])
 
-  def getCustomerId(token:String): Option[String] = {
+  def getCustomerId(token:String): Option[Long] = {
     getCustomerIdByToken(token)
   }
 
@@ -68,7 +68,7 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
 
             token = getNowToken(customerId, expireSeconds)
 
-            hashOps.put(CacheKeys.USERS_AUTH_HASH, customerId, token)
+            hashOps.put(CacheKeys.USERS_AUTH_HASH, String.valueOf(customerId), token)
 
             logger.info(s"createToken getToken by ${auth} new build Token = ${token}")
           }
@@ -76,11 +76,11 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
 
       }
     }else {
-      setOps.add(CacheKeys.USERS_AUTH_SET, customerId)
+      setOps.add(CacheKeys.USERS_AUTH_SET, String.valueOf(customerId))
 
       token = getNowToken(customerId, expireSeconds)
 
-      hashOps.put(CacheKeys.USERS_AUTH_HASH, customerId, token)
+      hashOps.put(CacheKeys.USERS_AUTH_HASH, String.valueOf(customerId), token)
 
       logger.info(s"createToken ${customerId} noMember in token = ${token}")
     }
@@ -94,7 +94,7 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
     }
   }
 
-  private def getCustomerIdByToken(authorization: String): Option[String] = {
+  private def getCustomerIdByToken(authorization: String): Option[Long] = {
 
     if (StringUtils.isBlank(authorization)){
       None
@@ -111,7 +111,7 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
         None
       }else {
 
-        Some(customerId)
+        Some(customerId.toLong)
       }
     }
   }
