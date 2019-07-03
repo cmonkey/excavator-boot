@@ -18,16 +18,16 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
     getCustomerIdByToken(token)
   }
 
-  private def saveBaseToken(token: String, customerId: String, expireSeconds: Long): Unit = { //存储到redis并设置过期时间
+  private def saveBaseToken(token: String, customerId: Long, expireSeconds: Long): Unit = { //存储到redis并设置过期时间
 
     val valueOperations = stringRedisTemplate.opsForValue
 
     val cacheKey = CacheKeys.USERS_AUTH_TOKEN + token
 
-    valueOperations.set(cacheKey, customerId, expireSeconds, TimeUnit.SECONDS)
+    valueOperations.set(cacheKey, String.valueOf(customerId), expireSeconds, TimeUnit.SECONDS)
   }
 
-  private def getNowToken(customerId: String, expireSeconds: Long) = {
+  private def getNowToken(customerId: Long, expireSeconds: Long) = {
 
     val token = UUID.randomUUID.toString.replace("-", "")
 
@@ -38,7 +38,7 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
     token
   }
 
-  def createToken(customerId: String, expireSeconds: Long) = {
+  def createToken(customerId: Long, expireSeconds: Long) = {
     logger.info(s"createToken param customerId = ${customerId}")
 
     val setOps = stringRedisTemplate.opsForSet
