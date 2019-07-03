@@ -80,6 +80,20 @@ class AuthorizationTests {
     assertTrue(checkStatus)
   }
 
+  @Test
+  @DisplayName("test GetToken")
+  @Order(3)
+  def testGetToken(): Unit = {
+    val optional = tokenManager.getToken(AuthorizationTests.atomicReference.get().getToken)
+
+    assertTrue(optional.isPresent)
+
+    optional.ifPresent(token => {
+      assertTrue(token.getToken == AuthorizationTests.atomicReference.get().getToken)
+      assertTrue(token.getCustomerId == AuthorizationTests.atomicReference.get().getCustomerId)
+    })
+  }
+
 }
 
 object AuthorizationTests{
