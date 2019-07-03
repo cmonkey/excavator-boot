@@ -126,6 +126,300 @@
 		<url>https://github.com/cmonkey/excavator-boot</url>
 	</scm>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			<!--pagehelper-->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>${pagehelper.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-compiler</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-reflect</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+			<!-- dom4j -->
+			<dependency>
+				<groupId>org.dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+			<!-- curator -->
+			<!--
+               -<dependency>
+               -    <groupId>org.apache.curator</groupId>
+               -    <artifactId>curator-framework</artifactId>
+               -    <version>${curator.version}</version>
+               -</dependency>
+               -<dependency>
+               -    <groupId>org.apache.curator</groupId>
+               -    <artifactId>curator-x-discovery</artifactId>
+               -    <version>${curator.version}</version>
+               -</dependency>
+               -<dependency>
+               -    <groupId>org.apache.curator</groupId>
+               -    <artifactId>curator-recipes</artifactId>
+               -    <version>${curator.version}</version>
+               -</dependency>
+               -->
+
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda.time.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${javax-servlet.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-pool2</artifactId>
+				<version>${commons-pool2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-transport-native-epoll</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-params</artifactId>
+				<version>${junit-jupiter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-text</artifactId>
+				<version>${commons-text.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-core</artifactId>
+				<version>${jmh.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-generator-annprocess</artifactId>
+				<version>${jmh.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons-collections4.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz-jobs</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.bytebuddy</groupId>
+				<artifactId>byte-buddy</artifactId>
+				<version>${byte-buddy.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcprov-jdk15on</artifactId>
+				<version>${bouncycastle.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcpkix-jdk15on</artifactId>
+				<version>${bouncycastle.version}</version>
+			</dependency>
+
+			<!-- excavator boot start -->
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>base</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>common</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>idWorker-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>kafka-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>logAspect-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>netty</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>redisLimit-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>authorization-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>lock-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>quartz-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>schedule-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
+
+			<!-- excavator boot end -->
+			<!-- pack start -->
+			<dependency>
+				<groupId>org.apache.servicecomb.pack</groupId>
+				<artifactId>omega-spring-starter</artifactId>
+				<version>${pack.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicecomb.pack</groupId>
+				<artifactId>omega-transport-resttemplate</artifactId>
+				<version>${pack.version}</version>
+			</dependency>
+			<!-- pack end -->
+
+		</dependencies>
+	</dependencyManagement>
     <build>
 		<plugins>
 			<plugin>
