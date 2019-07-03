@@ -1,7 +1,11 @@
 package org.excavator.boot.authorization.test
 
+import java.util.concurrent.atomic.AtomicReference
+
 import javax.annotation.Resource
-import org.junit.jupiter.api.Test
+import org.excavator.boot.authorization.manager.TokenManager
+import org.excavator.boot.authorization.model.Token
+import org.junit.jupiter.api.{DisplayName, Order, Test}
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.Assertions._
 import org.springframework.boot.test.context.SpringBootTest
@@ -17,7 +21,15 @@ class AuthorizationTests {
   @Resource
   val testRestTemplate: TestRestTemplate = null
 
+  @Resource
+  val tokenManager: TokenManager = null
+
+  val customerId = 1
+
+
   @Test
+  @DisplayName("testToken in controller")
+  @Order(0)
   def testToken() = {
     val token = testRestTemplate.getForObject("/token", classOf[String])
 
@@ -46,4 +58,21 @@ class AuthorizationTests {
     httpHeaders
   }
 
+  @Test
+  @DisplayName("test CreateToken")
+  @Order(1)
+  def testCreateToken(): Unit = {
+    val option = tokenManager.createToken(customerId)
+    assertTrue(option.isPresent)
+
+    option.ifPresent(token => {
+      assertNotNull(token)
+      AuthorizationTests.atomicReference.set(token)
+    })
+  }
+
+}
+
+object AuthorizationTests{
+  val atomicReference = new AtomicReference[Token]()
 }
