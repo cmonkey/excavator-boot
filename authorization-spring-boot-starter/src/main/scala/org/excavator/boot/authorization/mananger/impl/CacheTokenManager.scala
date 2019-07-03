@@ -81,19 +81,20 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
     customerHelper.getCustomerId(token) match {
       case Some(customerId) => {
 
-      val cacheKey = CacheKeys.USERS_AUTH_TOKEN + token
+        val cacheKey = CacheKeys.USERS_AUTH_TOKEN + token
 
-      stringRedisTemplate.delete(cacheKey)
+        stringRedisTemplate.delete(cacheKey)
 
-      val setOps:SetOperations[String, String] = stringRedisTemplate.opsForSet
+        val setOps: SetOperations[String, String] = stringRedisTemplate.opsForSet
 
-      val customerIdStr = String.valueOf(customerId)
-      setOps.remove(CacheKeys.USERS_AUTH_SET, customerIdStr)
+        val customerIdStr = String.valueOf(customerId)
+        setOps.remove(CacheKeys.USERS_AUTH_SET, customerIdStr)
 
-      val hashOps = stringRedisTemplate.opsForHash
+        val hashOps = stringRedisTemplate.opsForHash
 
-      hashOps.delete(CacheKeys.USERS_AUTH_HASH, customerIdStr)
+        hashOps.delete(CacheKeys.USERS_AUTH_HASH, customerIdStr)
+      }
+      case None => logger.warn("token get customerId is null")
     }
-    case None => logger.warn("token get customerId is null")
   }
 }
