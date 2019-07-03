@@ -42,15 +42,6 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
     }
   }
 
-  private def saveBaseToken(token: String, customerId: Long): Unit = { //存储到redis并设置过期时间
-
-    val valueOperations = stringRedisTemplate.opsForValue
-
-    val cacheKey = CacheKeys.USERS_AUTH_TOKEN + token
-
-    valueOperations.set(cacheKey, String.valueOf(customerId), authorizationProperties.getExpire_second, TimeUnit.SECONDS)
-  }
-
   override def checkToken(token: Token): Boolean = {
     if (token == null) {
       false
