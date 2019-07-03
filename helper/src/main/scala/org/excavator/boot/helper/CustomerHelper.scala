@@ -43,13 +43,15 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
 
     val setOps = stringRedisTemplate.opsForSet
 
+    val customerIdStr = String.valueOf(customerId)
+
     var token: String = null
 
     val hashOps:HashOperations[String, String, String]  = stringRedisTemplate.opsForHash[String,String]
 
-    if (setOps.isMember(CacheKeys.USERS_AUTH_SET, customerId)) {
+    if (setOps.isMember(CacheKeys.USERS_AUTH_SET, customerIdStr)) {
 
-      val auth = hashOps.get(CacheKeys.USERS_AUTH_HASH, customerId)
+      val auth = hashOps.get(CacheKeys.USERS_AUTH_HASH, customerIdStr)
 
       logger.info(s"createToken ${customerId} isMember in auth = ${auth}")
 
@@ -64,11 +66,11 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
 
           case None => {
 
-            hashOps.delete(CacheKeys.USERS_AUTH_HASH, String.valueOf(customerId))
+            hashOps.delete(CacheKeys.USERS_AUTH_HASH, customerIdStr)
 
             token = getNowToken(customerId, expireSeconds)
 
-            hashOps.put(CacheKeys.USERS_AUTH_HASH, String.valueOf(customerId), token)
+            hashOps.put(CacheKeys.USERS_AUTH_HASH, customerIdStr, token)
 
             logger.info(s"createToken getToken by ${auth} new build Token = ${token}")
           }
@@ -76,11 +78,11 @@ class CustomerHelper(stringRedisTemplate: StringRedisTemplate) {
 
       }
     }else {
-      setOps.add(CacheKeys.USERS_AUTH_SET, String.valueOf(customerId))
+      setOps.add(CacheKeys.USERS_AUTH_SET, customerIdStr)
 
       token = getNowToken(customerId, expireSeconds)
 
-      hashOps.put(CacheKeys.USERS_AUTH_HASH, String.valueOf(customerId), token)
+      hashOps.put(CacheKeys.USERS_AUTH_HASH, customerIdStr, token)
 
       logger.info(s"createToken ${customerId} noMember in token = ${token}")
     }
