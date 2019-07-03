@@ -39,6 +39,7 @@
 		<module>logging</module>
 		<module>javassist</module>
 		<module>instrumentation</module>
+		<module>helper</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
@@ -401,6 +402,11 @@
 				<groupId>org.excavator.boot</groupId>
 				<artifactId>schedule-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>helper</artifactId>
+                <version>${excavator.boot.version}</version>
 			</dependency>
 
 			<!-- excavator boot end -->

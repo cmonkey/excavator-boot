@@ -24,7 +24,6 @@ public interface TokenConstants {
      * 存储当前登录用户id的字段名
      */
     String CURRENT_USER_ID = "CURRENT_USER_ID";
-
     /**
      * 存放Authorization的header字段
      */
