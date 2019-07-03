@@ -42,22 +42,6 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
     }
   }
 
-  private def getNowTokenModel(customerId: Long) = {
-
-    val token = UUID.randomUUID.toString.replace("-", "")
-
-    val model = new Token
-
-    model.setCustomerId(customerId)
-    model.setToken(token)
-
-    saveBaseToken(token, customerId)
-
-    logger.info(s"getNowTokenModel by ${customerId} in model = ${model}")
-
-    model
-  }
-
   private def saveBaseToken(token: String, customerId: Long): Unit = { //存储到redis并设置过期时间
 
     val valueOperations = stringRedisTemplate.opsForValue
