@@ -116,15 +116,15 @@ public class GeneratePublicPrivateKeys {
 
     }
 
-    public static Optional<GeneratePublicPrivateKey> generateKeysByEC(){
+    public static Optional<GeneratePublicPrivateKey> generateKeysByEC() {
         return generateKeysByEC("EC", false);
     }
 
-    public static Optional<GeneratePublicPrivateKey> generateKeysByEC(String keyAlgorithm){
+    public static Optional<GeneratePublicPrivateKey> generateKeysByEC(String keyAlgorithm) {
         return generateKeysByEC(keyAlgorithm, false);
     }
 
-    private static Optional<KeyPairGenerator>  generatorByEC(){
+    private static Optional<KeyPairGenerator> generatorByEC() {
         try {
             // Get the SM2 elliptic curve recommended parameters
             X9ECParameters x9ECParameters = GMNamedCurves.getByName("sm2p256v1");
@@ -150,17 +150,18 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    private static Optional<KeyPairGenerator> generator(){
-        try{
+    private static Optional<KeyPairGenerator> generator() {
+        try {
             // 获取SM2椭圆曲线的参数
             final ECGenParameterSpec sm2Spec = new ECGenParameterSpec("sm2p256v1");
             // 获取一个椭圆曲线类型的密钥对生成器
-            final KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC", new BouncyCastleProvider());
+            final KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC",
+                new BouncyCastleProvider());
             // 使用SM2参数初始化生成器
             keyPairGenerator.initialize(sm2Spec);
 
             return Optional.of(keyPairGenerator);
-        }catch(NoSuchAlgorithmException | InvalidAlgorithmParameterException e){
+        } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
             logger.error("generator Exception = [{}]", e);
             return Optional.empty();
         }
