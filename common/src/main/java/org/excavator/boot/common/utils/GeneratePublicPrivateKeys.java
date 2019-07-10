@@ -35,10 +35,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.*;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
+import java.security.spec.*;
 import java.util.Enumeration;
 import java.util.Optional;
 
@@ -101,13 +98,38 @@ public class GeneratePublicPrivateKeys {
         return generatePublicPrivateKey;
     }
 
+    public static Optional<GeneratePublicPrivateKey> generateKeysByEC(String keyAlgorithm, boolean isGenerator) {
+        Optional<KeyPairGenerator> optionalKeyPairGenerator = isGenerator? generator(): generatorByEC();
+
+        GeneratePublicPrivateKey generatePublicPrivateKey = optionalKeyPairGenerator.map(keyPairGenerator -> {
+
+            KeyPair keyPair = keyPairGenerator.generateKeyPair();
+
+            PublicKey publicKey = keyPair.getPublic();
+            PrivateKey privateKey = keyPair.getPrivate();
+
+            return generatePublicPrivateKey(
+                    privateKey, publicKey);
+        }).orElse(null);
+
+        return Optional.ofNullable(generatePublicPrivateKey);
+
+    }
+
+    public static Optional<GeneratePublicPrivateKey> generateKeysByEC() {
+        return generateKeysByEC("EC", false);
+    }
+
     public static Optional<GeneratePublicPrivateKey> generateKeysByEC(String keyAlgorithm) {
+        return generateKeysByEC(keyAlgorithm, false);
+    }
+
+    private static Optional<KeyPairGenerator> generatorByEC() {
         try {
             // Get the SM2 elliptic curve recommended parameters
             X9ECParameters x9ECParameters = GMNamedCurves.getByName("sm2p256v1");
 
             // Construct EC algorithm parameters
-
             ECNamedCurveParameterSpec ecNamedCurveParameterSpec = new ECNamedCurveParameterSpec(
             // Set the OID of the sm2 algorithm
                 GMObjectIdentifiers.sm2p256v1.toString(), x9ECParameters.getCurve(),
@@ -120,21 +142,29 @@ public class GeneratePublicPrivateKeys {
             // Initialize the key generator using the algorithm are of SM2
             keyPairGenerator.initialize(ecNamedCurveParameterSpec, new SecureRandom());
 
-            KeyPair keyPair = keyPairGenerator.generateKeyPair();
-
-            PublicKey publicKey = keyPair.getPublic();
-            PrivateKey privateKey = keyPair.getPrivate();
-
-            GeneratePublicPrivateKey generatePublicPrivateKey = generatePublicPrivateKey(
-                privateKey, publicKey);
-
-            return Optional.of(generatePublicPrivateKey);
+            return Optional.of(keyPairGenerator);
 
         } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
-            logger.error("generateKeysByEC Exception = {}", e);
+            logger.error("generateKeysByEC Exception = [{}]", e);
             return Optional.empty();
         }
+    }
 
+    private static Optional<KeyPairGenerator> generator() {
+        try {
+            // 获取SM2椭圆曲线的参数
+            final ECGenParameterSpec sm2Spec = new ECGenParameterSpec("sm2p256v1");
+            // 获取一个椭圆曲线类型的密钥对生成器
+            final KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC",
+                new BouncyCastleProvider());
+            // 使用SM2参数初始化生成器
+            keyPairGenerator.initialize(sm2Spec);
+
+            return Optional.of(keyPairGenerator);
+        } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
+            logger.error("generator Exception = [{}]", e);
+            return Optional.empty();
+        }
     }
 
     public static Optional<PublicPrivateKey> getPublicPrivateKey(String keyAlgorithm,
