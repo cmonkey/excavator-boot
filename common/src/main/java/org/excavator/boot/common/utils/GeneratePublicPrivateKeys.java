@@ -134,6 +134,32 @@ public class GeneratePublicPrivateKeys {
 
     }
 
+    private static Optional<KeyPairGenerator>  generatorByEC(){
+        try {
+            // Get the SM2 elliptic curve recommended parameters
+            X9ECParameters x9ECParameters = GMNamedCurves.getByName("sm2p256v1");
+
+            // Construct EC algorithm parameters
+            ECNamedCurveParameterSpec ecNamedCurveParameterSpec = new ECNamedCurveParameterSpec(
+            // Set the OID of the sm2 algorithm
+                GMObjectIdentifiers.sm2p256v1.toString(), x9ECParameters.getCurve(),
+                x9ECParameters.getG(), x9ECParameters.getN());
+
+            // Create a key pair generator
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC",
+                new BouncyCastleProvider());
+
+            // Initialize the key generator using the algorithm are of SM2
+            keyPairGenerator.initialize(ecNamedCurveParameterSpec, new SecureRandom());
+
+            return Optional.of(keyPairGenerator);
+
+        } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
+            logger.error("generateKeysByEC Exception = [{}]", e);
+            return Optional.empty();
+        }
+    }
+
     private static Optional<KeyPairGenerator> generator(){
         try{
             // 获取SM2椭圆曲线的参数
