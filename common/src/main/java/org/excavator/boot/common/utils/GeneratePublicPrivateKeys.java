@@ -116,6 +116,10 @@ public class GeneratePublicPrivateKeys {
 
     }
 
+    public static Optional<GeneratePublicPrivateKey> generateKeysByEC(){
+        return generateKeysByEC("EC", false);
+    }
+
     public static Optional<GeneratePublicPrivateKey> generateKeysByEC(String keyAlgorithm){
         return generateKeysByEC(keyAlgorithm, false);
     }
