@@ -16,6 +16,7 @@ class Worker(val outputScraper: List[String], val countDownLatch: CountDownLatch
   override def run(): Unit = {
     doSomeWork()
     outputScraper + "Counted down"
+    logger.info(s"outputScraper = ${outputScraper}")
     countDownLatch.countDown();
   }
 }
