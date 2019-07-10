@@ -116,6 +116,10 @@ public class GeneratePublicPrivateKeys {
 
     }
 
+    public static Optional<GeneratePublicPrivateKey> generateKeysByEC(String keyAlgorithm){
+        return generateKeysByEC(keyAlgorithm, false);
+    }
+
     private static Optional<KeyPairGenerator>  generatorByEC(){
         try {
             // Get the SM2 elliptic curve recommended parameters
