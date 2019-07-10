@@ -35,10 +35,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.*;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
+import java.security.spec.*;
 import java.util.Enumeration;
 import java.util.Optional;
 
@@ -135,6 +132,22 @@ public class GeneratePublicPrivateKeys {
             return Optional.empty();
         }
 
+    }
+
+    private static Optional<KeyPairGenerator> generator(){
+        try{
+            // 获取SM2椭圆曲线的参数
+            final ECGenParameterSpec sm2Spec = new ECGenParameterSpec("sm2p256v1");
+            // 获取一个椭圆曲线类型的密钥对生成器
+            final KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC", new BouncyCastleProvider());
+            // 使用SM2参数初始化生成器
+            keyPairGenerator.initialize(sm2Spec);
+
+            return Optional.of(keyPairGenerator);
+        }catch(NoSuchAlgorithmException | InvalidAlgorithmParameterException e){
+            logger.error("generator Exception = [{}]", e);
+            return Optional.empty();
+        }
     }
 
     public static Optional<PublicPrivateKey> getPublicPrivateKey(String keyAlgorithm,
