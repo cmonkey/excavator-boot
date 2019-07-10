@@ -98,39 +98,21 @@ public class GeneratePublicPrivateKeys {
         return generatePublicPrivateKey;
     }
 
-    public static Optional<GeneratePublicPrivateKey> generateKeysByEC(String keyAlgorithm) {
-        try {
-            // Get the SM2 elliptic curve recommended parameters
-            X9ECParameters x9ECParameters = GMNamedCurves.getByName("sm2p256v1");
+    public static Optional<GeneratePublicPrivateKey> generateKeysByEC(String keyAlgorithm, boolean isGenerator) {
+        Optional<KeyPairGenerator> optionalKeyPairGenerator = isGenerator? generator(): generatorByEC();
 
-            // Construct EC algorithm parameters
-
-            ECNamedCurveParameterSpec ecNamedCurveParameterSpec = new ECNamedCurveParameterSpec(
-            // Set the OID of the sm2 algorithm
-                GMObjectIdentifiers.sm2p256v1.toString(), x9ECParameters.getCurve(),
-                x9ECParameters.getG(), x9ECParameters.getN());
-
-            // Create a key pair generator
-            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC",
-                new BouncyCastleProvider());
-
-            // Initialize the key generator using the algorithm are of SM2
-            keyPairGenerator.initialize(ecNamedCurveParameterSpec, new SecureRandom());
+        GeneratePublicPrivateKey generatePublicPrivateKey = optionalKeyPairGenerator.map(keyPairGenerator -> {
 
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
             PublicKey publicKey = keyPair.getPublic();
             PrivateKey privateKey = keyPair.getPrivate();
 
-            GeneratePublicPrivateKey generatePublicPrivateKey = generatePublicPrivateKey(
-                privateKey, publicKey);
+            return generatePublicPrivateKey(
+                    privateKey, publicKey);
+        }).orElse(null);
 
-            return Optional.of(generatePublicPrivateKey);
-
-        } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
-            logger.error("generateKeysByEC Exception = {}", e);
-            return Optional.empty();
-        }
+        return Optional.ofNullable(generatePublicPrivateKey);
 
     }
 
