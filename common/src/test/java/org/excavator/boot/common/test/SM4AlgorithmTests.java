@@ -65,4 +65,33 @@ public class SM4AlgorithmTests {
         assertEquals(true, encryptOptional.isPresent());
     }
 
+    @Test
+    @DisplayName("test sm4 decrypt")
+    @Order(4)
+    public void testDecrypt() {
+
+        SecretKey secretKey = atomicReference.get();
+
+        Optional<byte[]> encryptOptional = GenerateSymmetricencryption.encrypt(
+            DATA.getBytes(StandardCharsets.UTF_8), ALGORITHM, secretKey);
+
+        assertEquals(true, encryptOptional.isPresent());
+
+        byte[] encryptData = encryptOptional.get();
+
+        Optional<byte[]> decryptOptional = GenerateSymmetricencryption.decrypt(encryptData,
+            ALGORITHM, secretKey);
+
+        assertEquals(true, decryptOptional.isPresent());
+
+        byte[] decryptData = decryptOptional.get();
+
+        String decryptText = new String(decryptData, StandardCharsets.UTF_8);
+
+        logger.info("decryptTest = [{}]", decryptText);
+
+        assertEquals(DATA, decryptText);
+    }
+
+
 }
