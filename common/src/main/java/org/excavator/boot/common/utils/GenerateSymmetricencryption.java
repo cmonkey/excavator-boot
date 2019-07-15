@@ -50,4 +50,20 @@ public class GenerateSymmetricencryption {
             return Optional.empty();
         }
     }
+
+    public static Optional<byte[]> decrypt(byte[] input, String algorithm, SecretKey secretKey) {
+        try {
+            Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+
+            byte[] output = cipher.doFinal(input);
+
+            return Optional.of(output);
+        } catch (NoSuchAlgorithmException | InvalidKeyException | NoSuchPaddingException
+                | IllegalBlockSizeException | BadPaddingException e) {
+            logger.error("decrypt Exception = [{}]", e);
+
+            return Optional.empty();
+        }
+    }
 }
