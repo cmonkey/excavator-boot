@@ -10,3 +10,8 @@ jdk:
 
 install:
 - mvn clean install -DskipTests=true -B -V
+
+script:
+- sh ./check_format.sh
+
+
