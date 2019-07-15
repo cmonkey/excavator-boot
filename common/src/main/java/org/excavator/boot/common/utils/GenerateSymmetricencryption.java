@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.excavator.boot.common.utils;
 
 import org.apache.commons.codec.binary.Base64;
@@ -17,7 +33,7 @@ public class GenerateSymmetricencryption {
     public static Optional<SecretKey> getSecretKey(String algorithm, int numBits) {
         try {
             KeyGenerator keyGenerator = KeyGenerator.getInstance(algorithm,
-                    new BouncyCastleProvider());
+                new BouncyCastleProvider());
             keyGenerator.init(numBits, new SecureRandom());
 
             SecretKey secretKey = keyGenerator.generateKey();
@@ -26,7 +42,7 @@ public class GenerateSymmetricencryption {
             byte[] encoded = secretKey.getEncoded();
             String base64Encoded = Base64.encodeBase64String(encoded);
             logger.info("getSecretKey format = [{}] algorithm = [{}] base64Encoded = [{}]", format,
-                    secretKeyAlgorithm, base64Encoded);
+                secretKeyAlgorithm, base64Encoded);
 
             return Optional.of(secretKey);
         } catch (NoSuchAlgorithmException e) {
