@@ -37,4 +37,15 @@ public class SM4AlgorithmTests {
         });
     }
 
+    @Test
+    @DisplayName("test sm4 encrypt")
+    @Order(2)
+    public void testEncrypt() {
+        SecretKey secretKey = atomicReference.get();
+
+        Optional<byte[]> encryptOptional = GenerateSymmetricencryption.encrypt(
+            DATA.getBytes(StandardCharsets.UTF_8), ALGORITHM, secretKey);
+
+        assertEquals(true, encryptOptional.isPresent());
+    }
 }
