@@ -5,8 +5,8 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
+import javax.crypto.*;
+import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Optional;
@@ -32,6 +32,21 @@ public class GenerateSymmetricencryption {
         } catch (NoSuchAlgorithmException e) {
             logger.error("getSecretKey Exception = [{}]", e);
 
+            return Optional.empty();
+        }
+    }
+
+    public static Optional<byte[]> encrypt(byte[] input, String algorithm, SecretKey secretKey) {
+        try {
+            Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] output = cipher.doFinal(input);
+
+            return Optional.of(output);
+
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException
+                | IllegalBlockSizeException | BadPaddingException e) {
+            logger.error("encrypt Exception = [{}]", e);
             return Optional.empty();
         }
     }
