@@ -1,4 +1,4 @@
-# excavator-boot [Build Status](https://api.travis-ci.org/cmonkey/excavator-boot.svg?branch=master)
+# excavator-boot [![Build Status](https://travis-ci.org/cmonkey/excavator-boot.svg?branch=master)](https://travis-ci.org/cmonkey/excavator-boot)
   
    excavator-boot 在spring-boot 框架上，提供常用的基础能力
 
