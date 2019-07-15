@@ -48,4 +48,21 @@ public class SM4AlgorithmTests {
 
         assertEquals(true, encryptOptional.isPresent());
     }
+
+    @Test
+    @DisplayName("test sm4 long block encrypt")
+    @Order(3)
+    public void testLongBlockEncrypt(){
+        SecretKey secretKey = atomicReference.get();
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, 10000).forEach(i -> {
+            builder.append("AAA");
+        });
+
+        Optional<byte[]> encryptOptional = GenerateSymmetricencryption
+                .encrypt(builder.toString().getBytes(StandardCharsets.UTF_8), ALGORITHM, secretKey);
+
+        assertEquals(true, encryptOptional.isPresent());
+    }
+
 }
