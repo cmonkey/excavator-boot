@@ -140,5 +140,4 @@ public class SM4AlgorithmTests {
         assertEquals(data, decryptTest);
 
     }
-
 }
