@@ -93,5 +93,37 @@ public class SM4AlgorithmTests {
         assertEquals(DATA, decryptText);
     }
 
+    @Test
+    @DisplayName("test sm4 long block decrypt")
+    @Order(5)
+    public void testLongBlockDecrypt(){
+        SecretKey secretKey = atomicReference.get();
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, 10000).forEach(i -> {
+            builder.append("AAA");
+        });
+
+        String data = builder.toString();
+        Optional<byte[]> encryptOptional = GenerateSymmetricencryption
+                .encrypt(data.getBytes(StandardCharsets.UTF_8), ALGORITHM, secretKey);
+
+        assertEquals(true, encryptOptional.isPresent());
+
+        byte[] encryptData = encryptOptional.get();
+
+        Optional<byte[]> decryptOptional = GenerateSymmetricencryption.decrypt(encryptData, ALGORITHM, secretKey);
+
+        assertEquals(true, decryptOptional.isPresent());
+
+        byte[] decryptData = decryptOptional.get();
+
+        String decryptTest = new String(decryptData, StandardCharsets.UTF_8);
+
+        logger.info("decryptText = [{}]", decryptTest);
+
+        assertEquals(data, decryptTest);
+
+    }
+
 
 }
