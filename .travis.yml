@@ -1,6 +1,11 @@
 language: java
 sudo: false
 
+addons:
+  hosts:
+    - www.excavator.boot
+    - www.excavator.com
+
 cache:
   directories:
   - $HOME/.m2
