@@ -45,5 +45,5 @@ script:
 
 after_script:
   - docker ps
-  - docker stop zookeeper
-  - docker rm -f zookeeper
+  - docker stop zookeeper kafka
+  - docker rm -f zookeeper kafka
