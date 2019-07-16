@@ -3,7 +3,7 @@ excavator:
     dirverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://www.excavator.boot:3306/excavator?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
     username: root
-    password: excavator
+    password: 
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -42,8 +42,8 @@ spring :
     type : com.alibaba.druid.pool.DruidDataSource
     driverClassName : com.mysql.cj.jdbc.Driver
     url : jdbc:mysql://www.excavator.boot:3306/excavator?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
-    username : excavator
-    password : excavator
+    username : root
+    password : 
     initialSize : 5
     minIdle : 5
     maxActive : 20
