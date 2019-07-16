@@ -3,7 +3,7 @@ sudo: false
 
 services:
   - redis-server
-
+  - docker
 addons:
   hosts:
     - www.excavator.boot
