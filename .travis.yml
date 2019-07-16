@@ -40,7 +40,7 @@ install:
   - mvn clean install -DskipTests=true -B -V
 
 script:
-  - mvn -pl kafka-spring-boot-starter test
+  - mvn test
   - sh ./check_format.sh
 
 
