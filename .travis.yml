@@ -9,7 +9,12 @@ addons:
   hosts:
     - www.excavator.boot
     - www.excavator.com
-
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
 cache:
   directories:
   - $HOME/.m2
@@ -22,6 +27,7 @@ before_install:
   - sudo mysql_upgrade -u root -proot
   - sudo service mysql restart
   - mysql -u root --password="root" < dockerfiles/travis.sql
+  - mysql -u root -proot -e "show databases"
 
 install:
 - mvn clean install -DskipTests=true -B -V
