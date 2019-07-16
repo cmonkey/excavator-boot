@@ -1,11 +1,20 @@
 language: java
 sudo: false
 
+services:
+  - redis-server
+  - docker
+  - mysql
 addons:
   hosts:
     - www.excavator.boot
     - www.excavator.com
-
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
 cache:
   directories:
   - $HOME/.m2
@@ -13,10 +22,29 @@ cache:
 jdk:
 - oraclejdk8
 
+before_install:
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('root') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade -u root -proot
+  - cat "$TRAVIS_BUILD_DIR/_travis/mysql.cnf" | sudo tee -a /etc/mysql/my.cnf
+  - sudo service mysql restart
+  - mysql -u root --password="root" < dockerfiles/travis.sql
+  - mysql -u root -proot -e "show databases"
+  - mysql -u root -proot -e "use excavator; show tables"
+  - mysql -u root -proot -e "use quartz; show tables"
+  - docker run --restart=always --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 -d zookeeper:3.4.10 
+  - docker build -t kafka kafka-docker
+  - docker run --name kafka --link zookeeper -p 9092:9092 -d kafka
+  - docker ps
+
 install:
-- mvn clean install -DskipTests=true -B -V
+  - mvn clean install -DskipTests=true -B -V
 
 script:
-- sh ./check_format.sh
+  - mvn -q test
+  - sh ./check_format.sh
 
 
+after_script:
+  - docker ps
+  - docker stop zookeeper kafka
+  - docker rm -f zookeeper kafka
