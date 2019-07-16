@@ -31,14 +31,14 @@ before_install:
   - mysql -u root -proot -e "show databases"
   - mysql -u root -proot -e "use excavator; show tables"
   - mysql -u root -proot -e "use quartz; show tables"
+  - docker run --restart=always --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 -d zookeeper:3.4.10 
 
 install:
-    #- mvn clean install -DskipTests=true -B -V
+  - mvn clean install -DskipTests=true -B -V
 
 script:
-    #- mvn -pl redisLimit-spring-boot-starter,helper,authorization-spring-boot-starter,cumulative-spring-boot-starter,lock-spring-boot-starter test
-- mvn -pl quartz-spring-boot-starter test
-- sh ./check_format.sh
+  - mvn -pl idWorker-spring-boot-starter test
+  - sh ./check_format.sh
 
 
 after_script:
