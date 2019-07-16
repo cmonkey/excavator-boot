@@ -42,9 +42,9 @@ public class CodeGenTest {
         Builder.getInstance().codegen(System.getProperty("user.dir") + "/src/test/resources/",
             null, null, null, null);
 
-        String user = "bsc";
-        String password = "bsc";
-        String database = "bsc";
+        String user = "root";
+        String password = "root";
+        String database = "excavator";
         String host = "www.excavator.boot";
         int port = 3306;
         String driverClass = "com.mysql.cj.jdbc.Driver";
