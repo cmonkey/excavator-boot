@@ -1,9 +1,9 @@
 excavator:
   quartz:
     dirverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://www.excavator.boot:3306/quartz?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
-    username: quartz
-    password: quartz
+    url: jdbc:mysql://www.excavator.boot:3306/excavator?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
+    username: root
+    password: excavator
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -41,9 +41,9 @@ spring :
   datasource :
     type : com.alibaba.druid.pool.DruidDataSource
     driverClassName : com.mysql.cj.jdbc.Driver
-    url : jdbc:mysql://www.excavator.boot:3306/bsc?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
-    username : bsc
-    password : bsc
+    url : jdbc:mysql://www.excavator.boot:3306/excavator?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
+    username : excavator
+    password : excavator
     initialSize : 5
     minIdle : 5
     maxActive : 20
