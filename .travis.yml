@@ -18,9 +18,10 @@ jdk:
 - oraclejdk8
 
 before_install:
-  - mysql -e 'CREATE DATABASE excavator;'
-  - mysql excavator < dockerfiles/bsc.sql
-  - mysql excavator < dockerfiles/quartz.sql
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('root') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade -u root -proot
+  - sudo service mysql restart
+  - mysql -u root --password="root" < dockerfiles/travis.sql
 
 install:
 - mvn clean install -DskipTests=true -B -V
