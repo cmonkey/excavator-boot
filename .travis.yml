@@ -29,6 +29,7 @@ before_install:
   - mysql -u root --password="root" < dockerfiles/travis.sql
   - mysql -u root -proot -e "show databases"
   - mysql -u root -proot -e "use excavator; show tables"
+  - mysql -u root -proot -e "use quartz; show tables"
 
 install:
 - mvn clean install -DskipTests=true -B -V
