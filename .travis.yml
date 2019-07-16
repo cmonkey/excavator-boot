@@ -25,6 +25,7 @@ jdk:
 before_install:
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('root') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   - sudo mysql_upgrade -u root -proot
+  - cat "$TRAVIS_BUILD_DIR/_travis/mysql.cnf" | sudo tee -a /etc/mysql/my.cnf
   - sudo service mysql restart
   - mysql -u root --password="root" < dockerfiles/travis.sql
   - mysql -u root -proot -e "show databases"
