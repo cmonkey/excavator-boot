@@ -16,11 +16,23 @@ cache:
 jdk:
 - oraclejdk8
 
+before_install:
+  - cd dockerfiles
+  - ls
+  - docker-compose up -d
+  - cd ..
+  - ls
+
 install:
 - mvn clean install -DskipTests=true -B -V
-- mvn -pl redisLimit-spring-boot-starter,helper,authorization-spring-boot-starter,cumulative-spring-boot-starter,lock-spring-boot-starter test
 
 script:
+- mvn -pl redisLimit-spring-boot-starter,helper,authorization-spring-boot-starter,cumulative-spring-boot-starter,lock-spring-boot-starter test
+- mvn -pl quartz-spring-boot-starter test
 - sh ./check_format.sh
 
 
+after_script:
+  - docker-compose stop
+  - docker-compose rm -f
+  - docker-compose ps
