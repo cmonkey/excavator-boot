@@ -1,6 +1,6 @@
 # Create DB
-CREATE DATABASE IF NOT EXISTS `excavator` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `excavator`;
+CREATE DATABASE IF NOT EXISTS `quartz` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `quartz`;
 
 /*
 Navicat MySQL Data Transfer
@@ -233,21 +233,8 @@ CREATE TABLE `qrtz_triggers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : uat_bsc
-Source Server Version : 50722
-Source Host           : 10.150.251.92:3306
-Source Database       : bsc
-
-Target Server Type    : MYSQL
-Target Server Version : 50722
-File Encoding         : 65001
-
-Date: 2019-05-14 16:47:05
-*/
+CREATE DATABASE IF NOT EXISTS `excavator` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `excavator`;
 
 SET FOREIGN_KEY_CHECKS=0;
 
