@@ -4,6 +4,7 @@ sudo: false
 services:
   - redis-server
   - docker
+  - mysql
 addons:
   hosts:
     - www.excavator.boot
@@ -17,11 +18,9 @@ jdk:
 - oraclejdk8
 
 before_install:
-  - cd dockerfiles
-  - ls
-  - docker-compose up -d
-  - cd ..
-  - ls
+  - mysql -e 'CREATE DATABASE excavator;'
+  - mysql excavator < dockerfiles/bsc.sql
+  - mysql excavator < dockerfiles/quartz.sql
 
 install:
 - mvn clean install -DskipTests=true -B -V
@@ -33,6 +32,7 @@ script:
 
 
 after_script:
+  - docker-compose ps
   - docker-compose stop
   - docker-compose rm -f
   - docker-compose ps
