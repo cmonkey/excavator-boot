@@ -1,7 +1,7 @@
 excavator:
   quartz:
     dirverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://www.excavator.boot:3306/quarzt?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
+    url: jdbc:mysql://www.excavator.boot:3306/quartz?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&writeBatchedStatements=true
     username: root
     password: root
     initialSize: 5
