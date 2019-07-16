@@ -42,7 +42,6 @@ script:
 
 
 after_script:
-  - docker-compose ps
-  - docker-compose stop
-  - docker-compose rm -f
-  - docker-compose ps
+  - docker ps
+  - docker stop zookeeper
+  - docker rm -f zookeeper
