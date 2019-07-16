@@ -32,6 +32,8 @@ before_install:
   - mysql -u root -proot -e "use excavator; show tables"
   - mysql -u root -proot -e "use quartz; show tables"
   - docker run --restart=always --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 -d zookeeper:3.4.10 
+  - docker build -t kafka kafka-docker
+  - docker run --name kafka --link zookeeper -p 9092:9092 kafka
 
 install:
   - mvn clean install -DskipTests=true -B -V
