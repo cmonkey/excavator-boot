@@ -18,6 +18,7 @@ jdk:
 
 install:
 - mvn clean install -DskipTests=true -B -V
+- mvn -pl redisLimit-spring-boot-starter test
 
 script:
 - sh ./check_format.sh
