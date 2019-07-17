@@ -15,6 +15,6 @@ public class MyIntFunctionTest {
     public void testIntFunction(){
         MyIntFunction myIntFunction = new MyIntFunction();
 
-        assertEquals("1", myIntFunction.apply(1));
+        assertEquals("10", myIntFunction.apply(1));
     }
 }
