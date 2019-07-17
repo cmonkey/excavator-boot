@@ -37,10 +37,10 @@
     </appender>
 
 
-    <logger name="org.excavator.boot.netty" level="DEBUG"/>
-    <logger name="org.excavator.boot.netty.test" level="INFO"/>
+    <logger name="org.excavator.boot.netty" level="ERROR"/>
+    <logger name="org.excavator.boot.netty.test" level="ERROR"/>
 
-    <root level="INFO">
+    <root level="ERROR">
         <appender-ref ref="ROLLING-FILE"/>
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
