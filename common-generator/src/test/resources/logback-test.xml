@@ -49,7 +49,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.excavator.boot.common.generator" level="info"/>
+    <logger name="org.excavator.boot.common.generator" level="ERROR"/>
 
     <root level="ERROR">
         <appender-ref ref="ROLLING-FILE"/>
