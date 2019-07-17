@@ -1,4 +1,10 @@
 package org.excavator.boot.lambda.expression;
 
-public class MyBiFunction implements BiFunction<>{
+import java.util.function.BiFunction;
+
+public class MyBiFunction implements BiFunction<String, Integer, Double> {
+    @Override
+    public Double apply(String s, Integer i) {
+        return (s.length() * 10d) / i;
+    }
 }
