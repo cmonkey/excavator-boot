@@ -41,6 +41,7 @@
 		<module>instrumentation</module>
 		<module>helper</module>
 		<module>concurrent</module>
+		<module>lambda-expression</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
