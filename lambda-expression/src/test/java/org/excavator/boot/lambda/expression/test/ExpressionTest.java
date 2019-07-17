@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
-public class ExpressionTests {
+public class ExpressionTest {
 
     @Test
     @DisplayName("test lambda expression")
