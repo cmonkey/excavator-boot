@@ -1,4 +1,10 @@
 package org.excavator.boot.lambda.expression;
 
-public class MyIntFunction {
+import java.util.function.IntFunction;
+
+public class MyIntFunction implements IntFunction<String> {
+    @Override
+    public String apply(int i) {
+        return String.valueOf(i);
+    }
 }
