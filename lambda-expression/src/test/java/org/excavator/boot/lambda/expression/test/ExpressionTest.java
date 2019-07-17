@@ -33,5 +33,17 @@ public class ExpressionTest {
         IntFunction<String> intFunction = i -> String.valueOf(i * 10);
 
         assertEquals("10", intFunction.apply(1));
+
+        BiFunction<String, Integer, Double> biFunction = (s, i) -> (s.length() * 10.d) / i;
+
+        assertEquals(biFunction.apply("foo", 10), 3);
+
+        BinaryOperator<Integer> binaryOperator = (i, j) -> i > j ? i:j;
+
+        assertEquals(binaryOperator.apply(1, 2), 2);
+
+        IntBinaryOperator intBinaryOperator = (i, j) -> i > j ? i: j;
+
+        assertEquals(intBinaryOperator.applyAsInt(1, 2), 2);
     }
 }
