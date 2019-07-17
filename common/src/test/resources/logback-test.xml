@@ -37,10 +37,10 @@
     </appender>
 
 
-    <logger name="org.excavator.boot.helper" level="DEBUG"/>
-    <logger name="org.excavator.boot.helper.test" level="INFO"/>
+    <logger name="org.excavator.boot.common" level="ERROR"/>
+    <logger name="org.excavator.boot.common.test" level="ERROR"/>
 
-    <root level="INFO">
+    <root level="ERROR">
         <appender-ref ref="ROLLING-FILE"/>
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
