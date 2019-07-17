@@ -4,10 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,5 +29,9 @@ public class ExpressionTest {
         Predicate<Double> predicate = num -> num == 10.0;
 
         assertEquals(true, predicate.test(10.0));
+
+        IntFunction<String> intFunction = i -> String.valueOf(i * 10);
+
+        assertEquals("10", intFunction.apply(1));
     }
 }
