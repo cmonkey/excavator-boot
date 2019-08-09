@@ -1,6 +1,8 @@
 language: java
 sudo: false
 
+dist: xenial
+
 services:
   - redis-server
   - docker
