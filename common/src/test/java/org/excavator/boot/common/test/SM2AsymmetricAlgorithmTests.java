@@ -177,7 +177,15 @@ public class SM2AsymmetricAlgorithmTests {
             assertEquals(true, optionalDecrypt.isPresent());
 
             assertEquals("javascript1024", new String(optionalDecrypt.get(), Charsets.UTF_8));
-            logger.info("decrypt = {}", new String(optionalDecrypt.get(), Charsets.UTF_8));
+
+            Optional<byte[]> optionalDecryptBySM2 = GeneratePublicPrivateKeys.decryptBySM2(
+                Hex.decodeHex(encData), publicPrivateKey.getPrivateKey());
+
+            assertEquals(true, optionalDecryptBySM2.isPresent());
+            logger.info("decrypt = {}", new String(optionalDecrypt.get(), StandardCharsets.UTF_8));
+
+            logger.info("decrypt By SM2 = [{}]", new String(optionalDecryptBySM2.get(),
+                StandardCharsets.UTF_8));
         } catch (Exception e) {
             logger.error("testSm2Decrypt Exception = {}", e);
         }
