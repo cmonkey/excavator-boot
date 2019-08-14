@@ -46,7 +46,7 @@ public class GenerateSymmetricencryption {
 
             return Optional.of(secretKey);
         } catch (NoSuchAlgorithmException e) {
-            logger.error("getSecretKey Exception = [{}]", e);
+            logger.error("getSecretKey Exception = [{}]", e.getMessage(), e);
 
             return Optional.empty();
         }
@@ -62,7 +62,7 @@ public class GenerateSymmetricencryption {
 
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException
                 | IllegalBlockSizeException | BadPaddingException e) {
-            logger.error("encrypt Exception = [{}]", e);
+            logger.error("encrypt Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -77,7 +77,7 @@ public class GenerateSymmetricencryption {
             return Optional.of(output);
         } catch (NoSuchAlgorithmException | InvalidKeyException | NoSuchPaddingException
                 | IllegalBlockSizeException | BadPaddingException e) {
-            logger.error("decrypt Exception = [{}]", e);
+            logger.error("decrypt Exception = [{}]", e.getMessage(), e);
 
             return Optional.empty();
         }
