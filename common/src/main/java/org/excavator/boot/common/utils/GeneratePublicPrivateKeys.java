@@ -22,6 +22,10 @@ import org.apache.commons.codec.binary.Hex;
 import org.bouncycastle.asn1.gm.GMNamedCurves;
 import org.bouncycastle.asn1.gm.GMObjectIdentifiers;
 import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.engines.SM2Engine;
+import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.crypto.util.PrivateKeyFactory;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.excavator.boot.common.enums.ResolveEnum;
@@ -272,12 +276,13 @@ public class GeneratePublicPrivateKeys {
 
     }
 
-    public static Optional<byte[]> decrypt(byte[] input, String algorithm, PrivateKey privateKey) {
+    public static Optional<byte[]> decrypt(byte[] input, String algorithm, PrivateKey privateKey, boolean isBlockDecrypt) {
         try {
             Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
 
-            byte[] output = doFinalExt(input, cipher, MAX_DECRYPT_BLACK);
+            byte[] output = isBlockDecrypt ? doFinalExt(input, cipher, MAX_DECRYPT_BLACK) : 
+                cipher.doFinal(input);
 
             return Optional.ofNullable(output);
         } catch (Exception e) {
