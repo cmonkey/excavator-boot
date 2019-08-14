@@ -279,6 +279,10 @@ public class GeneratePublicPrivateKeys {
 
     }
 
+    public static Optional<byte[]> encrypt(byte[] input, String algorithm, PublicKey publicKey) {
+        return encrypt(input, algorithm, publicKey, false);
+    }
+
     public static Optional<byte[]> encryptBySM2(byte[] input, PublicKey publicKey) {
 
         try {
