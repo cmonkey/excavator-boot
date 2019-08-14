@@ -286,6 +286,24 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
+
+    public static Optional<byte[]> decryptBySM2(byte[] input, PrivateKey privateKey) {
+        try {
+            AsymmetricKeyParameter asymmetricKeyParameter = PrivateKeyFactory.createKey(privateKey
+                .getEncoded());
+            SM2Engine sm2Engine = new SM2Engine();
+            sm2Engine.init(false, asymmetricKeyParameter);
+
+            byte[] dec = sm2Engine.processBlock(input, 0, input.length);
+
+            return Optional.ofNullable(dec);
+        } catch (IOException | InvalidCipherTextException e) {
+            logger.error("decryptBySM2 Exception = [{}]", e.getMessage(), e);
+            return Optional.empty();
+        }
+
+    }
+
     public static Optional<byte[]> sign(byte[] input, String algorithm, PrivateKey privateKey) {
 
         try {
