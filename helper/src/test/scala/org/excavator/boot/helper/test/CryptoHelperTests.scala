@@ -3,9 +3,9 @@ package org.excavator.boot.helper.test
 import java.nio.charset.StandardCharsets
 
 import javax.annotation.Resource
-import org.apache.commons.codec.binary.Hex
+import org.apache.commons.codec.binary.{Base64, Hex}
 import org.excavator.boot.common.enums.ResolveEnum
-import org.excavator.boot.common.utils.GeneratePublicPrivateKeys
+import org.excavator.boot.common.utils.{GeneratePublicPrivateKeys, GenerateSymmetricencryption}
 import org.excavator.boot.helper.CryptoHelper
 import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.extension.ExtendWith
@@ -67,6 +67,30 @@ class CryptoHelperTests {
       })
     })
 
+  }
+
+
+  @Test
+  @DisplayName("test saveCryptoSM4")
+  def testSaveCryptoSM4(): Unit = {
+    val algorithm = "sm4"
+    val customerId = "1"
+    val secretKeyOptional = GenerateSymmetricencryption.getSecretKey(algorithm, 128)
+
+    assertEquals(true, secretKeyOptional.isPresent)
+
+    val encoded = secretKeyOptional.get().getEncoded
+
+    val base64Encoded = Base64.encodeBase64String(encoded)
+    val hexEncoded = Hex.encodeHexString(encoded)
+
+    var sm4Optional = cryptoHelper.saveCryptoBySM4(customerId, base64Encoded)
+
+    assertEquals(true, sm4Optional.isPresent)
+
+    sm4Optional = cryptoHelper.saveCryptoBySM4(customerId, hexEncoded)
+
+    assertEquals(true, sm4Optional.isPresent)
   }
 
 }
