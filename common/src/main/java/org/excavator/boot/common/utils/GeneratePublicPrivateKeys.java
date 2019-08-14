@@ -291,6 +291,9 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
+    public static Optional<byte[]> decrypt(byte[] input, String algorithm, PrivateKey privateKey) {
+        return decrypt(input, algorithm, privateKey, false);
+    }
 
     public static Optional<byte[]> decryptBySM2(byte[] input, PrivateKey privateKey) {
         try {
