@@ -17,6 +17,7 @@ class CryptoHelper(stringRedisTemplate: StringRedisTemplate) {
   val crypto_member_resolve: String = "resolve"
   val crypto_member_private: String = "private"
   val crypto_member_public: String = "public"
+  val crypt_member_encoded = "encoded"
 
   def saveUserCryptoInfo(customerId: String, generatePublicPrivateKey: GeneratePublicPrivateKey, resolveEnum: ResolveEnum): Optional[Boolean]= {
     if(StringUtils.isNotBlank(customerId)) {
@@ -88,6 +89,22 @@ class CryptoHelper(stringRedisTemplate: StringRedisTemplate) {
 
         optionalPublicPrivateKey
       }
+    }else{
+      Optional.empty()
+    }
+  }
+
+  def saveCryptoBySM4(customerId: String, encoded: String):Optional[Boolean] = {
+
+    if(StringUtils.isNotBlank(customerId) && StringUtils.isNotBlank(encoded)) {
+
+      val cacheKey = USERS_CRYPTO_SETS+customerId
+      val hashOperations = stringRedisTemplate.opsForHash[String, String]()
+
+      hashOperations.put(cacheKey, crypt_member_encoded, encoded)
+
+      Optional.of(true)
+
     }else{
       Optional.empty()
     }
