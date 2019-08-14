@@ -25,7 +25,9 @@ import org.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.crypto.engines.SM2Engine;
 import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
+import org.bouncycastle.crypto.params.ParametersWithRandom;
 import org.bouncycastle.crypto.util.PrivateKeyFactory;
+import org.bouncycastle.crypto.util.PublicKeyFactory;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.excavator.boot.common.enums.ResolveEnum;
@@ -274,6 +276,23 @@ public class GeneratePublicPrivateKeys {
             return Optional.empty();
         }
 
+    }
+
+    public static Optional<byte[]> encryptBySM2(byte[] input, PublicKey publicKey) {
+
+        try {
+            AsymmetricKeyParameter asymmetricKeyParameter = PublicKeyFactory.createKey(publicKey
+                .getEncoded());
+
+            SM2Engine sm2Engine = new SM2Engine();
+            sm2Engine.init(true, new ParametersWithRandom(asymmetricKeyParameter,
+                new SecureRandom()));
+            byte[] enc = sm2Engine.processBlock(input, 0, input.length);
+            return Optional.ofNullable(enc);
+        } catch (IOException | InvalidCipherTextException e) {
+            logger.error("encryptBySM2 Exception = [{}]", e.getMessage(), e);
+            return Optional.empty();
+        }
     }
 
     public static Optional<byte[]> decrypt(byte[] input, String algorithm, PrivateKey privateKey, boolean isBlockDecrypt) {
