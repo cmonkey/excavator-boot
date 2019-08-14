@@ -95,7 +95,7 @@ class CryptoHelper(stringRedisTemplate: StringRedisTemplate) {
     }
   }
 
-  def saveCryptoBySM4(customerId: String, encoded: String):Optional[Boolean] = {
+  def saveSecretKeyEncoded(customerId: String, encoded: String):Optional[Boolean] = {
 
     if(StringUtils.isNotBlank(customerId) && StringUtils.isNotBlank(encoded)) {
 

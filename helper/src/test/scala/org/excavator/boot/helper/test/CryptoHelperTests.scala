@@ -84,11 +84,11 @@ class CryptoHelperTests {
     val base64Encoded = Base64.encodeBase64String(encoded)
     val hexEncoded = Hex.encodeHexString(encoded)
 
-    var sm4Optional = cryptoHelper.saveCryptoBySM4(customerId, base64Encoded)
+    var sm4Optional = cryptoHelper.saveSecretKeyEncoded(customerId, base64Encoded)
 
     assertEquals(true, sm4Optional.isPresent)
 
-    sm4Optional = cryptoHelper.saveCryptoBySM4(customerId, hexEncoded)
+    sm4Optional = cryptoHelper.saveSecretKeyEncoded(customerId, hexEncoded)
 
     assertEquals(true, sm4Optional.isPresent)
   }
@@ -109,7 +109,7 @@ class CryptoHelperTests {
     val base64Encoded = Base64.encodeBase64String(encoded)
     val hexEncoded = Hex.encodeHexString(encoded)
 
-    val base64SaveOptional = cryptoHelper.saveCryptoBySM4(customerId, base64Encoded)
+    val base64SaveOptional = cryptoHelper.saveSecretKeyEncoded(customerId, base64Encoded)
 
     assertEquals(true, base64SaveOptional.isPresent)
 
@@ -119,7 +119,7 @@ class CryptoHelperTests {
 
     assertEquals(base64Encoded, Base64.encodeBase64String(base64SecretKeyOptional.get().getEncoded))
 
-    val hexSaveOptional = cryptoHelper.saveCryptoBySM4(customerId, hexEncoded)
+    val hexSaveOptional = cryptoHelper.saveSecretKeyEncoded(customerId, hexEncoded)
 
     assertEquals(true, hexSaveOptional.isPresent)
 
