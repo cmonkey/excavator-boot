@@ -93,4 +93,41 @@ class CryptoHelperTests {
     assertEquals(true, sm4Optional.isPresent)
   }
 
+
+  @Test
+  @DisplayName("test getSecretKey")
+  def testGetSecretKey(): Unit = {
+    val algorithm = "SM4"
+    val customerId = "1"
+
+    val secretKeyOptional = GenerateSymmetricencryption.getSecretKey(algorithm, 128)
+
+    assertEquals(true, secretKeyOptional.isPresent)
+
+    val encoded = secretKeyOptional.get().getEncoded
+
+    val base64Encoded = Base64.encodeBase64String(encoded)
+    val hexEncoded = Hex.encodeHexString(encoded)
+
+    val base64SaveOptional = cryptoHelper.saveCryptoBySM4(customerId, base64Encoded)
+
+    assertEquals(true, base64SaveOptional.isPresent)
+
+    val base64SecretKeyOptional = cryptoHelper.getSecretKey(customerId, algorithm, ResolveEnum.BASE64)
+
+    assertEquals(true,base64SecretKeyOptional.isPresent)
+
+    assertEquals(base64Encoded, Base64.encodeBase64String(base64SecretKeyOptional.get().getEncoded))
+
+    val hexSaveOptional = cryptoHelper.saveCryptoBySM4(customerId, hexEncoded)
+
+    assertEquals(true, hexSaveOptional.isPresent)
+
+    val hexSecretKeyOptional = cryptoHelper.getSecretKey(customerId, algorithm, ResolveEnum.HEX)
+
+    assertEquals(true, hexSecretKeyOptional.isPresent)
+
+    assertEquals(hexEncoded, Hex.encodeHexString(hexSecretKeyOptional.get().getEncoded))
+  }
+
 }
