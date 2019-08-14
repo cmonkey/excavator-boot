@@ -130,4 +130,9 @@ class CryptoHelper(stringRedisTemplate: StringRedisTemplate) {
       Optional.empty()
     }
   }
+
+
+  def getSecretKeyBySM4(customerId: String, resolveEnum: ResolveEnum): Optional[SecretKey] = {
+    getSecretKey(customerId, "SM4", resolveEnum)
+  }
 }
