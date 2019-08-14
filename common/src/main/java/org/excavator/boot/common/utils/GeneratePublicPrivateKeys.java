@@ -264,12 +264,13 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    public static Optional<byte[]> encrypt(byte[] input, String algorithm, PublicKey publicKey) {
+    public static Optional<byte[]> encrypt(byte[] input, String algorithm, PublicKey publicKey, boolean isBlockDecrypt) {
         try {
             Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
-            byte[] output = doFinalExt(input, cipher, MAX_ENCRYPT_BLACK);
+            byte[] output = isBlockDecrypt ? doFinalExt(input, cipher, MAX_ENCRYPT_BLACK) : 
+                cipher.doFinal(input);
             return Optional.ofNullable(output);
         } catch (Exception e) {
             logger.error("encrypt Exception = {}", e);
