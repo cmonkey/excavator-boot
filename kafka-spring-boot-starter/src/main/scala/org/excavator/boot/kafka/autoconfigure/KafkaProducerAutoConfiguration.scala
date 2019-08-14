@@ -23,7 +23,7 @@ class KafkaProducerAutoConfiguration {
       ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG -> classOf[StringSerializer], 
       ProducerConfig.RETRIES_CONFIG -> 0, 
       ProducerConfig.BATCH_SIZE_CONFIG ->16384,
-      ProducerConfig.BUFFER_MEMORY_CONFIG -> 33354432
+      ProducerConfig.BUFFER_MEMORY_CONFIG -> 33554432
       )
 
     logger.info(s"init producerFactory in properties = $map")
