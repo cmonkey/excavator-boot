@@ -122,7 +122,6 @@ public class SM2AsymmetricAlgorithmTests {
         testCipher(builder.toString());
     }
 
-
     private void testCipher(String data) {
         byte[] input = data.getBytes(StandardCharsets.UTF_8);
 
@@ -176,7 +175,6 @@ public class SM2AsymmetricAlgorithmTests {
 
         assertEquals(data, decSm2Str);
     }
-
 
     @Test
     @DisplayName("test sm2 decrypt")

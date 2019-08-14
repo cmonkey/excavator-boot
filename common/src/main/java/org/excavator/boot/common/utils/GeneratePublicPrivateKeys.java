@@ -264,13 +264,14 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    public static Optional<byte[]> encrypt(byte[] input, String algorithm, PublicKey publicKey, boolean isBlockDecrypt) {
+    public static Optional<byte[]> encrypt(byte[] input, String algorithm, PublicKey publicKey,
+                                           boolean isBlockDecrypt) {
         try {
             Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
-            byte[] output = isBlockDecrypt ? doFinalExt(input, cipher, MAX_ENCRYPT_BLACK) : 
-                cipher.doFinal(input);
+            byte[] output = isBlockDecrypt ? doFinalExt(input, cipher, MAX_ENCRYPT_BLACK) : cipher
+                .doFinal(input);
             return Optional.ofNullable(output);
         } catch (Exception e) {
             logger.error("encrypt Exception = [{}]", e.getMessage(), e);
@@ -300,13 +301,14 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
-    public static Optional<byte[]> decrypt(byte[] input, String algorithm, PrivateKey privateKey, boolean isBlockDecrypt) {
+    public static Optional<byte[]> decrypt(byte[] input, String algorithm, PrivateKey privateKey,
+                                           boolean isBlockDecrypt) {
         try {
             Cipher cipher = Cipher.getInstance(algorithm, new BouncyCastleProvider());
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
 
-            byte[] output = isBlockDecrypt ? doFinalExt(input, cipher, MAX_DECRYPT_BLACK) : 
-                cipher.doFinal(input);
+            byte[] output = isBlockDecrypt ? doFinalExt(input, cipher, MAX_DECRYPT_BLACK) : cipher
+                .doFinal(input);
 
             return Optional.ofNullable(output);
         } catch (Exception e) {

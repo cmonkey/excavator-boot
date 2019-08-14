@@ -155,15 +155,15 @@ public class SM4AlgorithmTests {
         String hexEncode = Hex.encodeHexString(encoded);
 
         Optional<SecretKey> base64DecodeOptional = GenerateSymmetricencryption.decodeKeyFromString(
-                base64Encode, ALGORITHM, ResolveEnum.BASE64);
+            base64Encode, ALGORITHM, ResolveEnum.BASE64);
         Optional<SecretKey> hexDecodeOptional = GenerateSymmetricencryption.decodeKeyFromString(
-                hexEncode, ALGORITHM, ResolveEnum.HEX);
+            hexEncode, ALGORITHM, ResolveEnum.HEX);
 
         assertEquals(true, base64DecodeOptional.isPresent());
         assertEquals(true, hexDecodeOptional.isPresent());
 
         assertEquals(base64Encode,
-                Base64.encodeBase64String(base64DecodeOptional.get().getEncoded()));
+            Base64.encodeBase64String(base64DecodeOptional.get().getEncoded()));
         assertEquals(hexEncode, Hex.encodeHexString(hexDecodeOptional.get().getEncoded()));
 
     }
