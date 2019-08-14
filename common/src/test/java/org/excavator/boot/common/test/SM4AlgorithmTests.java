@@ -16,6 +16,9 @@
  */
 package org.excavator.boot.common.test;
 
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
+import org.excavator.boot.common.enums.ResolveEnum;
 import org.excavator.boot.common.utils.GenerateSymmetricencryption;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
@@ -140,4 +143,29 @@ public class SM4AlgorithmTests {
         assertEquals(data, decryptTest);
 
     }
+
+    @Test
+    @DisplayName("test decodeKeyFromString")
+    @Order(6)
+    public void testDecodeKeyFromString() {
+        SecretKey secretKey = atomicReference.get();
+        byte[] encoded = secretKey.getEncoded();
+
+        String base64Encode = Base64.encodeBase64String(encoded);
+        String hexEncode = Hex.encodeHexString(encoded);
+
+        Optional<SecretKey> base64DecodeOptional = GenerateSymmetricencryption.decodeKeyFromString(
+                base64Encode, ALGORITHM, ResolveEnum.BASE64);
+        Optional<SecretKey> hexDecodeOptional = GenerateSymmetricencryption.decodeKeyFromString(
+                hexEncode, ALGORITHM, ResolveEnum.HEX);
+
+        assertEquals(true, base64DecodeOptional.isPresent());
+        assertEquals(true, hexDecodeOptional.isPresent());
+
+        assertEquals(base64Encode,
+                Base64.encodeBase64String(base64DecodeOptional.get().getEncoded()));
+        assertEquals(hexEncode, Hex.encodeHexString(hexDecodeOptional.get().getEncoded()));
+
+    }
+
 }

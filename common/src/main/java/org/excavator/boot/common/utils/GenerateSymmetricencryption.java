@@ -16,12 +16,16 @@
  */
 package org.excavator.boot.common.utils;
 
+import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.excavator.boot.common.enums.ResolveEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -78,6 +82,34 @@ public class GenerateSymmetricencryption {
         } catch (NoSuchAlgorithmException | InvalidKeyException | NoSuchPaddingException
                 | IllegalBlockSizeException | BadPaddingException e) {
             logger.error("decrypt Exception = [{}]", e.getMessage(), e);
+
+            return Optional.empty();
+        }
+    }
+    public static Optional<SecretKey> decodeKeyFromString(String key, String algorithm,
+                                                          ResolveEnum resolveEnum) {
+
+        try {
+            byte[] decodeKey = null;
+            switch (resolveEnum) {
+                case HEX:
+                    decodeKey = Hex.decodeHex(key);
+                    break;
+                case BASE64:
+                    decodeKey = Base64.decodeBase64(key);
+                default:
+                    break;
+            }
+
+            if (null != decodeKey) {
+                SecretKey secretKey = new SecretKeySpec(decodeKey, 0, decodeKey.length, algorithm);
+
+                return Optional.ofNullable(secretKey);
+            } else {
+                return Optional.empty();
+            }
+        } catch (DecoderException e) {
+            logger.error("decodeKeyFromString Exception = [{}]", e.getMessage(), e);
 
             return Optional.empty();
         }
