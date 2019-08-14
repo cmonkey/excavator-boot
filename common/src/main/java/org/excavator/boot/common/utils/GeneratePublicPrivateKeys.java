@@ -69,7 +69,7 @@ public class GeneratePublicPrivateKeys {
             return Optional.of(generatePublicPrivateKey);
 
         } catch (NoSuchAlgorithmException e) {
-            logger.error("generateKeys Exception = {}", e);
+            logger.error("generateKeys Exception = [{}]", e.getMessage(), e);
 
             return Optional.empty();
         }
@@ -151,7 +151,7 @@ public class GeneratePublicPrivateKeys {
             return Optional.of(keyPairGenerator);
 
         } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
-            logger.error("generateKeysByEC Exception = [{}]", e);
+            logger.error("generateKeysByEC Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -168,7 +168,7 @@ public class GeneratePublicPrivateKeys {
 
             return Optional.of(keyPairGenerator);
         } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
-            logger.error("generator Exception = [{}]", e);
+            logger.error("generator Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -193,7 +193,7 @@ public class GeneratePublicPrivateKeys {
             return Optional.ofNullable(publicPrivateKey);
 
         } catch (NoSuchAlgorithmException | InvalidKeySpecException | DecoderException e) {
-            logger.error("getPublicPrivateKey Exception = {}", e);
+            logger.error("getPublicPrivateKey Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -273,7 +273,7 @@ public class GeneratePublicPrivateKeys {
                 cipher.doFinal(input);
             return Optional.ofNullable(output);
         } catch (Exception e) {
-            logger.error("encrypt Exception = {}", e);
+            logger.error("encrypt Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
 
@@ -310,7 +310,7 @@ public class GeneratePublicPrivateKeys {
 
             return Optional.ofNullable(output);
         } catch (Exception e) {
-            logger.error("decrypt Exception = {}", e);
+            logger.error("decrypt Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -344,7 +344,7 @@ public class GeneratePublicPrivateKeys {
             signature.update(input);
             return Optional.ofNullable(signature.sign());
         } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
-            logger.error("sign Exception = {}", e);
+            logger.error("sign Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -359,7 +359,7 @@ public class GeneratePublicPrivateKeys {
 
             return Optional.ofNullable(verify);
         } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
-            logger.error("verifySign Exception = {}", e);
+            logger.error("verifySign Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -371,7 +371,7 @@ public class GeneratePublicPrivateKeys {
                 .getInstance(keyAlgorithm, new BouncyCastleProvider());
             return Optional.ofNullable(keyFactory.generatePrivate(spec));
         } catch (Exception e) {
-            logger.error("getPrivate Exception = {}", e);
+            logger.error("getPrivate Exception = [{}]", e.getMessage(), e);
 
             return Optional.empty();
         }
@@ -383,7 +383,7 @@ public class GeneratePublicPrivateKeys {
             try (ByteArrayInputStream inputStream = new ByteArrayInputStream(keyBytes)) {
                 keyStore.load(inputStream, password.toCharArray());
             } catch (IOException e) {
-                logger.error("getPrivateByPKCS12 Exception = {}", e);
+                logger.error("getPrivateByPKCS12 Exception = [{}]", e.getMessage(), e);
                 return Optional.empty();
             }
 
@@ -396,7 +396,7 @@ public class GeneratePublicPrivateKeys {
             return Optional.ofNullable((PrivateKey) keyStore.getKey(keyAlias,
                 password.toCharArray()));
         } catch (Exception e) {
-            logger.error("getPrivateByPKCS12 Exception = {}", e);
+            logger.error("getPrivateByPKCS12 Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -408,7 +408,7 @@ public class GeneratePublicPrivateKeys {
                 .getInstance(keyAlgorithm, new BouncyCastleProvider());
             return Optional.ofNullable(keyFactory.generatePublic(spec));
         } catch (Exception e) {
-            logger.error("getPublicKey Exception = {}", e);
+            logger.error("getPublicKey Exception = [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
