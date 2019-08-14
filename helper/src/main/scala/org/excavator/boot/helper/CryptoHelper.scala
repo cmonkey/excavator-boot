@@ -2,9 +2,10 @@ package org.excavator.boot.helper
 
 import java.util.Optional
 
+import javax.crypto.SecretKey
 import org.apache.commons.lang3.StringUtils
 import org.excavator.boot.common.enums.ResolveEnum
-import org.excavator.boot.common.utils.{GeneratePublicPrivateKey, GeneratePublicPrivateKeys, PublicPrivateKey}
+import org.excavator.boot.common.utils.{GeneratePublicPrivateKey, GeneratePublicPrivateKeys, GenerateSymmetricencryption, PublicPrivateKey}
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.stereotype.Component
@@ -17,6 +18,7 @@ class CryptoHelper(stringRedisTemplate: StringRedisTemplate) {
   val crypto_member_resolve: String = "resolve"
   val crypto_member_private: String = "private"
   val crypto_member_public: String = "public"
+  val crypt_member_encoded = "encoded"
 
   def saveUserCryptoInfo(customerId: String, generatePublicPrivateKey: GeneratePublicPrivateKey, resolveEnum: ResolveEnum): Optional[Boolean]= {
     if(StringUtils.isNotBlank(customerId)) {
@@ -91,5 +93,46 @@ class CryptoHelper(stringRedisTemplate: StringRedisTemplate) {
     }else{
       Optional.empty()
     }
+  }
+
+  def saveSecretKeyEncoded(customerId: String, encoded: String):Optional[Boolean] = {
+
+    if(StringUtils.isNotBlank(customerId) && StringUtils.isNotBlank(encoded)) {
+
+      val cacheKey = USERS_CRYPTO_SETS+customerId
+      val hashOperations = stringRedisTemplate.opsForHash[String, String]()
+
+      hashOperations.put(cacheKey, crypt_member_encoded, encoded)
+
+      Optional.of(true)
+
+    }else{
+      Optional.empty()
+    }
+  }
+
+
+  def getSecretKey(customerId: String, algorithm: String, resolveEnum: ResolveEnum): Optional[SecretKey] = {
+    if(StringUtils.isNotBlank(customerId)) {
+
+      val hashOperations = stringRedisTemplate.opsForHash[String, String]()
+
+      val cacheKey = USERS_CRYPTO_SETS + customerId
+
+      val encoded = hashOperations.get(cacheKey, crypt_member_encoded)
+
+      if(StringUtils.isBlank(encoded)){
+        Optional.empty()
+      }else {
+        GenerateSymmetricencryption.decodeKeyFromString(encoded, algorithm, resolveEnum)
+      }
+    }else{
+      Optional.empty()
+    }
+  }
+
+
+  def getSecretKeyBySM4(customerId: String, resolveEnum: ResolveEnum): Optional[SecretKey] = {
+    getSecretKey(customerId, "SM4", resolveEnum)
   }
 }

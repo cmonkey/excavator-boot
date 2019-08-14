@@ -86,6 +86,7 @@ public class GenerateSymmetricencryption {
             return Optional.empty();
         }
     }
+
     public static Optional<SecretKey> decodeKeyFromString(String key, String algorithm,
                                                           ResolveEnum resolveEnum) {
 
