@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -106,6 +107,23 @@ public class SM2AsymmetricAlgorithmTests {
     @DisplayName("test sm2 in cipher")
     public void testCipher() {
         String data = "Hello World";
+        testCipher(data);
+    }
+
+    @Test
+    @DisplayName("test sm2 in cipher by long block")
+    public void testSm2CipherByLongBlock(){
+        StringBuilder builder = new StringBuilder();
+
+        IntStream.range(0, 100000).forEach(i -> {
+            builder.append("Abcd");
+        });
+
+        testCipher(builder.toString());
+    }
+
+
+    private void testCipher(String data) {
         byte[] input = data.getBytes(StandardCharsets.UTF_8);
 
         Optional<GeneratePublicPrivateKey> optionalGeneratePublicPrivateKey = GeneratePublicPrivateKeys
@@ -139,7 +157,26 @@ public class SM2AsymmetricAlgorithmTests {
         String decStr = new String(outputDecrypt, StandardCharsets.UTF_8);
 
         assertEquals(data, decStr);
+
+        Optional<byte[]> optionalEncryptBySm2 = GeneratePublicPrivateKeys.encryptBySM2(input,
+            publicPrivateKey.getPublicKey());
+
+        assertEquals(true, optionalEncryptBySm2.isPresent());
+
+        byte[] outputEncryptBySm2 = optionalEncryptBySm2.get();
+
+        Optional<byte[]> optionalDecryptBySm2 = GeneratePublicPrivateKeys.decryptBySM2(
+            outputEncryptBySm2, publicPrivateKey.getPrivateKey());
+
+        assertEquals(true, optionalDecryptBySm2.isPresent());
+
+        byte[] outputDecryptBySm2 = optionalDecryptBySm2.get();
+
+        String decSm2Str = new String(outputDecryptBySm2, StandardCharsets.UTF_8);
+
+        assertEquals(data, decSm2Str);
     }
+
 
     @Test
     @DisplayName("test sm2 decrypt")
