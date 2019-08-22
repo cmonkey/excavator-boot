@@ -10,8 +10,7 @@ docker run --restart=always --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3
 
 ### init mysql 
 
-docker run --name mysql -v ${PWD}/dockerfiles:/docker-entrypoint-initdb.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7 
-##--default-authentication-plugin=mysql_native_password
+docker run --name mysql -v ${PWD}/dockerfiles:/docker-entrypoint-initdb.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7 --collation-server=utf8_unicode_ci --character-set-server=utf8 --lower_case_table_names=1
 
 
 ### init kafk
