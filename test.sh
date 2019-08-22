@@ -7,3 +7,8 @@
 ## install 
 mvn clean install -DskipTests=true -B -V
 
+## script 
+mvn -q test 
+sh ./check_format.sh
+
+
