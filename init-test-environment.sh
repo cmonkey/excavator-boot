@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ### define host 
-
-sudo echo "127.0.0.1  www.excavator.boot" > /etc/hosts
-sudo echo "127.0.0.1  www.excavator.com" > /etc/hosts
+echo '127.0.0.1 www.excavator.boot' | sudo tee -a /etc/hosts
+echo '127.0.0.1 www.excavator.com' | sudo tee -a /etc/hosts
 
 ### init zookeeper 
 
