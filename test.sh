@@ -4,4 +4,6 @@
 
 ./init-test-environment.sh
 
-mvn test
+## install 
+mvn clean install -DskipTests=true -B -V
+
