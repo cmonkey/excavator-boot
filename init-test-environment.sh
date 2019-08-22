@@ -14,3 +14,7 @@ docker run --restart=always --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3
 docker run --name mysql -v ${PWD}/dockerfiles:/docker-entrypoint-initdb.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
 
 
+### init kafk
+docker build -t kafka kafka-docker 
+
+docker run --name kafka --link zookeeper -p 9002:9002 -d kafka
