@@ -17,3 +17,7 @@ docker run --name mysql -v ${PWD}/dockerfiles:/docker-entrypoint-initdb.d -p 330
 docker build -t kafka kafka-docker 
 
 docker run --name kafka --link zookeeper -p 9002:9002 -d kafka
+
+### init redis 
+
+docker run --restart=always --name redis -d redis redis-server --appendonly yes
