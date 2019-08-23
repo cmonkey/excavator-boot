@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 echo "pre change server.properties in $1"
 export ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
