@@ -36,7 +36,7 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
       logger.debug(s"decode headLength = $headLength to IntLength = $length")
     }
 
-    if((in.readableBytes() + 1 ) < length){
+    if((in.readableBytes() + 1 ) <= length){
       in.readerIndex(beginIndex)
       return null
     }
