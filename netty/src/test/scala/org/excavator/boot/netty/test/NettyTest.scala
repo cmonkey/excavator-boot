@@ -92,6 +92,17 @@ class NettyTest {
   }
 
   @Test
+  @DisplayName("test1017")
+  @RepeatedTest(10)
+  def test1017() = {
+    for(i <- 0 until 1017-8){
+      data += "a"
+    }
+
+    testBody(true)
+  }
+
+  @Test
   @DisplayName("testNettyBlockingOperationException")
   def testNettyBlockingOperationException(): Unit = {
     val classLoader = classOf[NettyTest].getClassLoader
