@@ -13,7 +13,7 @@ import reactor.core.publisher.{Flux, Mono}
 import reactor.netty.resources.LoopResources
 import reactor.netty.tcp.TcpServer
 
-class TcpServer{
+class ReactorTcpServer{
 
   val DEFAULT_PORT: Int = 8080
 
