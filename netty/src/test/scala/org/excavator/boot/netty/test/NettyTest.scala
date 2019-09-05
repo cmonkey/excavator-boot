@@ -28,7 +28,6 @@ class NettyTest {
     data = requestId
   }
 
-  @Test
   @DisplayName("testMinBody")
   @RepeatedTest(10)
   def testMinBody() = {
@@ -37,7 +36,6 @@ class NettyTest {
     testBody()
   }
 
-  @Test
   @DisplayName("testInBody")
   @RepeatedTest(10) 
   def testInBody(): Unit = {
@@ -48,7 +46,6 @@ class NettyTest {
     testBody()
   }
 
-  @Test
   @DisplayName("testMaxBody")
   @RepeatedTest(10) 
   def testMaxBody(): Unit = {
@@ -58,7 +55,6 @@ class NettyTest {
     testBody()
   }
 
-  @Test
   @DisplayName("test1013")
   @RepeatedTest(10)
   def test1013() = {
@@ -69,7 +65,6 @@ class NettyTest {
     testBody()
   }
 
-  @Test
   @DisplayName("test90040")
   @RepeatedTest(2)
   def test90040() = {
@@ -80,7 +75,6 @@ class NettyTest {
     testBody()
   }
 
-  @Test
   @DisplayName("testTimeout")
   @RepeatedTest(10)
   def testTimeout() = {
@@ -91,7 +85,6 @@ class NettyTest {
     testBody(true)
   }
 
-  @Test
   @DisplayName("test1017")
   @RepeatedTest(10)
   def test1017() = {
