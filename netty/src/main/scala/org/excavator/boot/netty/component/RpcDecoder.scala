@@ -17,16 +17,19 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
   }
 
   override def decode(ctx: ChannelHandlerContext, in: ByteBuf): AnyRef = {
+    decodeFrame(in)
+  }
 
-    if(in.readableBytes() < position){
+  private def decodeFrame(frame: ByteBuf): AnyRef  = {
+    if(frame.readableBytes() < position){
       return null
     }
 
-    val beginIndex = in.readerIndex()
+    val beginIndex = frame.readerIndex()
 
     val headLengthByte = Array.fill[Byte](position)(0)
 
-    in.readBytes(headLengthByte)
+    frame.readBytes(headLengthByte)
 
     val headLength = new String(headLengthByte, charset)
 
@@ -36,14 +39,14 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
       logger.debug(s"decode headLength = $headLength to IntLength = $length")
     }
 
-    if((in.readableBytes() + 1 ) <= length){
-      in.readerIndex(beginIndex)
+    if((frame.readableBytes() + 1 ) <= length){
+      frame.readerIndex(beginIndex)
       return null
     }
 
-    in.readerIndex(beginIndex + position + length)
+    frame.readerIndex(beginIndex + position + length)
 
-    val dataByte = in.slice(position, length)
+    val dataByte = frame.slice(position, length)
     dataByte.retain()
 
     val bodyByte = Array.fill[Byte](length)(0)
@@ -64,10 +67,6 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
     }
 
     msg
-  }
-
-  private def decodeFrame(frame: ByteBuf): AnyRef  = {
-
   }
 
 }
