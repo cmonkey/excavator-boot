@@ -47,26 +47,31 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
     frame.readerIndex(beginIndex + position + length)
 
     val dataByte = frame.slice(position, length)
-    dataByte.retain()
 
-    val bodyByte = Array.fill[Byte](length)(0)
-    dataByte.readBytes(bodyByte)
+    try {
+      dataByte.retain()
 
-    var msg = new String(bodyByte, charset)
+      val bodyByte = Array.fill[Byte](length)(0)
+      dataByte.readBytes(bodyByte)
 
-    if(responseViewMode == ResponseViewMode.FULL){
-      msg = headLength + msg
+      var msg = new String(bodyByte, charset)
 
-      if(logger.isDebugEnabled()){
-        logger.debug(s"decode responseViewMode = $responseViewMode, fullMsg = $msg")
+      if (responseViewMode == ResponseViewMode.FULL) {
+        msg = headLength + msg
+
+        if (logger.isDebugEnabled()) {
+          logger.debug(s"decode responseViewMode = $responseViewMode, fullMsg = $msg")
+        }
+      } else {
+        if (logger.isDebugEnabled()) {
+          logger.debug(s"decode responseViewMode = $responseViewMode, bodyMsg = $msg")
+        }
       }
-    }else{
-      if(logger.isDebugEnabled()){
-        logger.debug(s"decode responseViewMode = $responseViewMode, bodyMsg = $msg")
-      }
+
+      msg
+    }finally{
+      dataByte.release()
     }
-
-    msg
   }
 
 }
