@@ -74,7 +74,7 @@
 		<druid.version>1.1.20</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
 		<redisson.version>3.11.3</redisson.version>
-		<commons-codec.version>1.12</commons-codec.version>
+		<commons-codec.version>1.13</commons-codec.version>
 		<netty.version>4.1.36.Final</netty.version>
 		<junit-jupiter.version>5.4.2</junit-jupiter.version>
 		<commons-logging.version>1.2</commons-logging.version>
