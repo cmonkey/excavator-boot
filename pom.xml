@@ -71,7 +71,7 @@
 		<mysql-connector.version>8.0.16</mysql-connector.version>
 		<commons-lang3.version>3.9</commons-lang3.version>
 		<lombok.version>1.18.8</lombok.version>
-		<druid.version>1.1.16</druid.version>
+		<druid.version>1.1.20</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
 		<redisson.version>3.10.7</redisson.version>
 		<commons-codec.version>1.12</commons-codec.version>
