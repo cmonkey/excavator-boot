@@ -42,7 +42,7 @@ install:
   - mvn clean install -DskipTests=true -B -V
 
 script:
-  - mvn -q test
+  - mvn -q test -Dio.netty.leakDetection.level=paranoid
   - sh ./check_format.sh
 
 

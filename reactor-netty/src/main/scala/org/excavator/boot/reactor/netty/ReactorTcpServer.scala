@@ -13,7 +13,7 @@ import reactor.core.publisher.{Flux, Mono}
 import reactor.netty.resources.LoopResources
 import reactor.netty.tcp.TcpServer
 
-class TcpServer{
+class ReactorTcpServer{
 
   val DEFAULT_PORT: Int = 8080
 
@@ -43,15 +43,15 @@ class TcpServer{
       .option[java.lang.Integer](ChannelOption.CONNECT_TIMEOUT_MILLIS, 10000)
       .wiretap(true)
       .runOn(loopResources)
-      .secure(spec => {
-        SslContextBuilder.forServer(new File("cert.crt"), new File("cert.key"))
-      })
+      //.secure(spec => {
+        //SslContextBuilder.forServer(new File("cert.crt"), new File("cert.key"))
+      //})
       .doOnConnection(conn => {
         conn.addHandler(new ReadTimeoutHandler(10, TimeUnit.SECONDS))
       })
       .handle((inbound, outbound) => {
         inbound.receive().then()
-        outbound.options(o => o.flushOnEach(false))
+        //outbound.options(o => o.flushOnEach(false))
         outbound.sendString(Flux.just("Hello", "World", "!"))
       })
       .bindNow()

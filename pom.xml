@@ -55,37 +55,37 @@
 		<excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
 		<!-- 3rd lib dependency -->
-		<fastjson.version>1.2.58</fastjson.version>
+		<fastjson.version>1.2.59</fastjson.version>
 		<!--
            -<curator.version>2.11.1</curator.version>
            -->
 		<zookeeper.version>3.4.14</zookeeper.version>
-		<joda.time.version>2.10.2</joda.time.version>
+		<joda.time.version>2.10.3</joda.time.version>
 		<scala.major-version>2.12</scala.major-version>
 		<scala.version>${scala.major-version}.9</scala.version>
-		<pagehelper.version>1.2.10</pagehelper.version>
-		<mybatis.version>2.0.1</mybatis.version>
+		<pagehelper.version>1.2.12</pagehelper.version>
+		<mybatis.version>2.1.0</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
 		<excavator-boot.version>2.0.0-SNAPSHOT</excavator-boot.version>
-		<pack.version>0.4.0</pack.version>
+		<pack.version>0.5.0</pack.version>
 		<mysql-connector.version>8.0.16</mysql-connector.version>
 		<commons-lang3.version>3.9</commons-lang3.version>
 		<lombok.version>1.18.8</lombok.version>
-		<druid.version>1.1.16</druid.version>
+		<druid.version>1.1.20</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
-		<redisson.version>3.10.7</redisson.version>
-		<commons-codec.version>1.12</commons-codec.version>
-		<netty.version>4.1.36.Final</netty.version>
-		<junit-jupiter.version>5.4.2</junit-jupiter.version>
+		<redisson.version>3.11.3</redisson.version>
+		<commons-codec.version>1.13</commons-codec.version>
+		<netty.version>4.1.39.Final</netty.version>
+		<junit-jupiter.version>5.5.1</junit-jupiter.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<guava.version>20.0</guava.version>
-		<commons-text.version>1.6</commons-text.version>
+		<commons-text.version>1.8</commons-text.version>
 		<jmh.version>1.21</jmh.version>
-		<commons-collections4.version>4.3</commons-collections4.version>
+		<commons-collections4.version>4.4</commons-collections4.version>
 		<quartz.version>2.3.1</quartz.version>
-		<commons-pool2.version>2.6.2</commons-pool2.version>
+		<commons-pool2.version>2.7.0</commons-pool2.version>
 		<javassist.version>3.25.0-GA</javassist.version>
-		<byte-buddy.version>1.9.12</byte-buddy.version>
+		<byte-buddy.version>1.10.1</byte-buddy.version>
 		<commons-io.version>2.6</commons-io.version>
 		<bouncycastle.version>1.62</bouncycastle.version>
 
@@ -96,11 +96,11 @@
 		<maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
 		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
 		<maven.source.plugin>3.1.0</maven.source.plugin>
-		<maven.javadoc.plugin>3.1.0</maven.javadoc.plugin>
+		<maven.javadoc.plugin>3.1.1</maven.javadoc.plugin>
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
 		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
 		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
-		<alchim31.scala.plugin>4.1.1</alchim31.scala.plugin>
+		<alchim31.scala.plugin>4.2.0</alchim31.scala.plugin>
 		<maven.surefire.plugin>2.22.2</maven.surefire.plugin>
 
 	</properties>
