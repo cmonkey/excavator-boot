@@ -66,4 +66,8 @@ class RpcDecoder(maxFrameLength: Int, position: Int, charset: Charset, responseV
     msg
   }
 
+  private def decodeFrame(frame: ByteBuf): AnyRef  = {
+
+  }
+
 }
