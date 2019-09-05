@@ -14,6 +14,5 @@ class TcpTest {
     tcpServer.start(host, port)
     val tcpClient = new ReactorTcpClient()
     tcpClient.connect(host, port)
-    Thread.sleep(10000)
   }
 }
