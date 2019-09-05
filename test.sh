@@ -24,7 +24,7 @@ docker run --restart=always --name redis -p 6379:6379 -d redis redis-server --ap
 mvn clean install -DskipTests=true -B -V
 
 ## script 
-mvn -q test 
+mvn -q test -Dio.netty.leakDetection.level=paranoid
 sh ./check_format.sh
 
 ## after_script
