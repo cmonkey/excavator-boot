@@ -59,7 +59,7 @@
 		<!--
            -<curator.version>2.11.1</curator.version>
            -->
-		<zookeeper.version>3.5.5</zookeeper.version>
+		<zookeeper.version>3.4.14</zookeeper.version>
 		<joda.time.version>2.10.3</joda.time.version>
 		<scala.major-version>2.12</scala.major-version>
 		<scala.version>${scala.major-version}.9</scala.version>
