@@ -110,7 +110,7 @@ public class GeneratorPublicPrivateKeyTests {
         InputStream inputStream = classLoader.getResourceAsStream("open.cer");
 
         Optional<PublicKey> optionalPublicKey = GeneratePublicPrivateKeys
-                .getX509PublicKey(inputStream);
+            .getX509PublicKey(inputStream);
 
         assertEquals(true, optionalPublicKey.isPresent());
     }

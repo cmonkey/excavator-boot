@@ -418,6 +418,7 @@ public class GeneratePublicPrivateKeys {
             return Optional.empty();
         }
     }
+
     public static Optional<PublicKey> getX509PublicKey(InputStream inputStream) {
         try {
             CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
