@@ -425,6 +425,15 @@
 			</dependency>
 			<!-- pack end -->
 
+			<!-- ext start -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+			<!-- ext end -->
+
+
 		</dependencies>
 	</dependencyManagement>
 
