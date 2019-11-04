@@ -23,6 +23,9 @@ import org.excavator.boot.common.utils.PublicPrivateKey;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.InputStream;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -98,5 +101,17 @@ public class GeneratorPublicPrivateKeyTests {
             generatePublicPrivateKey, ResolveEnum.HEX);
 
         assertEquals(true, optionalPublicPrivateKey.isPresent());
+    }
+
+    @Test
+    @DisplayName("testGetX509PublicKey")
+    public void testGetX509PublicKey() {
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("open.cer");
+
+        Optional<PublicKey> optionalPublicKey = GeneratePublicPrivateKeys
+            .getX509PublicKey(inputStream);
+
+        assertEquals(true, optionalPublicKey.isPresent());
     }
 }
