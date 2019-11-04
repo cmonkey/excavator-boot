@@ -5,10 +5,8 @@
 
 # 快速开始
 
-spring boot项目接入
 
-
-1.添加lock starter组件依赖，目前还没上传到公共仓库，需要自己下源码build
+1.添加druid starter组件依赖
 ```
         <dependency>
             <groupId>org.excavator.boot</groupId>
