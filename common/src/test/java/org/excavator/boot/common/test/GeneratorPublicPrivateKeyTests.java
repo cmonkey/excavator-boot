@@ -114,4 +114,15 @@ public class GeneratorPublicPrivateKeyTests {
 
         assertEquals(true, optionalPublicKey.isPresent());
     }
+
+    @Test
+    @DisplayName("tesGetPrivateKeyByPKCS12")
+    public void testGetPrivateKeyByPKCS12() {
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("open.pfx");
+        Optional<PrivateKey> optionalPrivateKey = GeneratePublicPrivateKeys.getPrivateKeyByPKCS12(
+            inputStream, "1111test");
+
+        assertEquals(true, optionalPrivateKey.isPresent());
+    }
 }
