@@ -32,3 +32,6 @@ docker ps
 docker stop zookeeper kafka redis mysql
 docker rm -f zookeeper kafka redis mysql
 
+sed '/127.0.0.1 www.excavator.boot/d' /etc/hosts | sudo tee /etc/hosts
+sed '/127.0.0.1 www.excavator.com/d' /etc/hosts | sudo tee /etc/hosts
+
