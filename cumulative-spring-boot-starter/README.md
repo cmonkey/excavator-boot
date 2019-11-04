@@ -2,9 +2,7 @@
 
 ### 快速开始
 
-spring boot项目接入
-
-添加cumulative starter组件依赖，目前还没上传到公共仓库，需要自己下源码build
+添加cumulative starter组件依赖
 
 ```
         <dependency>
