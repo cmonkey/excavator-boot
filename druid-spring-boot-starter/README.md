@@ -1,7 +1,15 @@
 # druid-spring-boot-starter
 
+
 基于druid的数据库连接spring-boot starter组件
-使得项目配置druid能力变得异常简单
+
+Update: 2019年11月4日14:48:37
+
+由于druid 官方版本的druid-spring-boot-starter 相对各类自有实现比较晚
+
+但目前这个时间点来看，官方的版本已经在同步维护并天然的支持多数据源
+
+所以在尽可能的情况下直接使用官方实现的druid-spring-boot-starter
 
 # 快速开始
 
