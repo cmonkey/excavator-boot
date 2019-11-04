@@ -40,7 +40,11 @@ import javax.crypto.IllegalBlockSizeException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.*;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.Certificate;
 import java.security.spec.*;
 import java.util.Enumeration;
 import java.util.Optional;
@@ -411,6 +415,20 @@ public class GeneratePublicPrivateKeys {
             return Optional.ofNullable(keyFactory.generatePublic(spec));
         } catch (Exception e) {
             logger.error("getPublicKey Exception = [{}]", e.getMessage(), e);
+            return Optional.empty();
+        }
+    }
+    public static Optional<PublicKey> getX509PublicKey(InputStream inputStream) {
+        try {
+            CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+            Certificate certificate = certificateFactory.generateCertificate(inputStream);
+            PublicKey publicKey = certificate.getPublicKey();
+            String type = certificate.getType();
+            logger.info("type = {} ", type);
+
+            return Optional.ofNullable(publicKey);
+        } catch (CertificateException e) {
+            logger.error("getX509PublicKey Exception [{}]", e.getMessage(), e);
             return Optional.empty();
         }
     }
