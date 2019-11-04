@@ -383,6 +383,28 @@ public class GeneratePublicPrivateKeys {
         }
     }
 
+    public static Optional<PrivateKey> getPrivateKeyByPKCS12(InputStream inputStream,
+                                                             String password) {
+        try {
+
+            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+
+            keyStore.load(inputStream, password.toCharArray());
+
+            Enumeration<String> aliases = keyStore.aliases();
+            String keyAlias = "";
+            while (aliases.hasMoreElements()) {
+                keyAlias = aliases.nextElement();
+            }
+
+            return Optional.ofNullable((PrivateKey) keyStore.getKey(keyAlias,
+                password.toCharArray()));
+        } catch (Exception e) {
+            logger.error("getPrivateKeyByPKCS12 Exception = [{}]", e.getMessage(), e);
+            return Optional.empty();
+        }
+    }
+
     public static Optional<PrivateKey> getPrivateKeyByPKCS12(byte[] keyBytes, String password) {
         try {
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
