@@ -62,4 +62,9 @@ class ConfigController(configService: ConfigService, fileService: FileService) {
 
   }
 
+  @GetMapping(Array("/download/{filename}"))
+  def download(@PathVariable("filename") filename: String) = {
+    ResponseEntity.ok(fileService.readFile(filename))
+  }
+
 }
