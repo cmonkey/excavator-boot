@@ -1,5 +1,6 @@
 package org.excavator.boot.config.test
 
+import java.io.File
 import java.nio.file.{Files, Paths}
 import java.util
 
@@ -7,6 +8,7 @@ import com.google.common.collect.{Lists, Maps}
 import javax.annotation.Resource
 import org.assertj.core.api.Assertions
 import org.excavator.boot.config.test.controller.ConfigController
+import org.excavator.boot.config.test.service.FileService
 import org.junit.jupiter.api.{DisplayName, Test}
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.Assertions._
@@ -14,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.io.FileSystemResource
-import org.springframework.http.{HttpEntity, HttpHeaders, MediaType}
+import org.springframework.http.{HttpEntity, HttpHeaders, HttpMethod, MediaType}
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.util.LinkedMultiValueMap
 
@@ -31,6 +33,9 @@ class ConfigTests {
 
   @Resource
   val configController: ConfigController = null
+
+  @Resource
+  val fileService: FileService = null
 
   @Test
   @DisplayName("check configController is not null ")
@@ -132,5 +137,25 @@ class ConfigTests {
     println(s"uploads status = ${r}")
 
     Assertions.assertThat(r).isTrue
+  }
+
+  @Test
+  @DisplayName("testDownload")
+  def testDownload(): Unit = {
+    val filedir = System.getProperty("user.dir")
+
+    val headers = new HttpHeaders()
+    val requestEntity = new HttpEntity[LinkedMultiValueMap[String, Any]](headers)
+
+    val params = Maps.newHashMap[String, String]()
+
+    Files.list(Paths.get(filedir)).filter(path => !Files.isDirectory(path)).findFirst().ifPresent(path => {
+      val fileName = path.getFileName.toString
+      params.put("filename", fileName)
+      val r = restTemplate.exchange("http://localhost:" + port + "/v1/download/{filename}",HttpMethod.GET, requestEntity, classOf[Array[Byte]], params)
+      println(s"download status= ${r}")
+      fileService.storeDownloadFile(r.getBody, fileName)
+      Assertions.assertThat(r.getStatusCodeValue).isEqualTo(200)
+    })
   }
 }
