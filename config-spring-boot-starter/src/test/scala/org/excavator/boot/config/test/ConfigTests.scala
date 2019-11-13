@@ -31,9 +31,10 @@ class ConfigTests {
   }
 
   @Test
-  @DisplayName("test resource home")
-  def testHome(): Unit = {
-    val r = restTemplate.getForObject("http://localhost:" + port + "/v1/", classOf[String])
-    Assertions.assertThat(r).contains("Hello")
+  @DisplayName("test findAll")
+  def testFindAll(): Unit = {
+    val r = restTemplate.getForObject("http://localhost:" + port + "/v1/users", classOf[java.util.List[String]])
+    println(s"test findAll r = ${r}")
+    Assertions.assertThat[String](r).contains("foo")
   }
 }
