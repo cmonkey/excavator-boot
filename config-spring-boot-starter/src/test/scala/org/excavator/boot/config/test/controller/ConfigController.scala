@@ -4,7 +4,7 @@ import io.swagger.annotations.{Api, ApiOperation, ApiResponse, ApiResponses}
 import org.excavator.boot.config.test.service.ConfigService
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.{GetMapping, PathVariable, RequestMapping, RestController}
+import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestMapping, RequestParam, RestController}
 
 @RestController
 @RequestMapping(Array("/v1"))
@@ -28,6 +28,11 @@ class ConfigController(configService: ConfigService) {
   @GetMapping(Array("/users/{userName}"))
   def getUserName(@PathVariable("userName") userName: String) = {
     ResponseEntity.ok(configService.getUserName(userName))
+  }
+
+  @PostMapping(Array("/users"))
+  def addUserName(@RequestParam("userName") userName: String) = {
+    ResponseEntity.ok(configService.addUserName(userName))
   }
 
 }
