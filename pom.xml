@@ -89,6 +89,7 @@
 		<byte-buddy.version>1.10.1</byte-buddy.version>
 		<commons-io.version>2.6</commons-io.version>
 		<bouncycastle.version>1.62</bouncycastle.version>
+		<springswagger.version>2.9.2</springswagger.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -343,6 +344,16 @@
 				<groupId>org.bouncycastle</groupId>
 				<artifactId>bcpkix-jdk15on</artifactId>
 				<version>${bouncycastle.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${springswagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${springswagger.version}</version>
 			</dependency>
 
 			<!-- excavator boot start -->
