@@ -90,6 +90,7 @@
 		<commons-io.version>2.6</commons-io.version>
 		<bouncycastle.version>1.62</bouncycastle.version>
 		<springswagger.version>2.9.2</springswagger.version>
+        <jsch.version>0.1.55</jsch.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -355,7 +356,11 @@
 				<artifactId>springfox-swagger-ui</artifactId>
 				<version>${springswagger.version}</version>
 			</dependency>
-
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${jsch.version}</version>
+            </dependency>
 			<!-- excavator boot start -->
 			<dependency>
 				<groupId>org.excavator.boot</groupId>
