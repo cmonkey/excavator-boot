@@ -29,4 +29,10 @@ class FileService {
 
     Files.copy(multipartFile.getInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
   }
+
+  def readFile(fileName: String) = {
+    val location = Paths.get(uploadFile + File.separator + StringUtils.cleanPath(fileName))
+
+    Files.readAllBytes(location)
+  }
 }
