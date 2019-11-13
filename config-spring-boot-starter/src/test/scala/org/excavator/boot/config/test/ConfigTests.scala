@@ -1,5 +1,7 @@
 package org.excavator.boot.config.test
 
+import java.util
+
 import com.google.common.collect.Maps
 import javax.annotation.Resource
 import org.assertj.core.api.Assertions
@@ -10,6 +12,7 @@ import org.junit.jupiter.api.Assertions._
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.http.HttpEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.util.LinkedMultiValueMap
 
@@ -64,6 +67,21 @@ class ConfigTests {
 
     val r = restTemplate.postForObject("http://localhost:"+port+"v1/users?userName={userName}", null, classOf[Boolean], params)
     println(s"addUserName = ${r}")
+
+    Assertions.assertThat(r).isTrue
+  }
+
+  @Test
+  @DisplayName("testAddUserNameByBody")
+  def testAddUserNameByBody: Unit = {
+    val userName = "42"
+
+    val params = new util.HashMap[String, String]()
+    params.put("userName", userName)
+
+    val r = restTemplate.postForObject("http://localhost:"+port+"v1/users/body", params, classOf[Boolean])
+
+    println(s"addUserNameByBody = ${r}")
 
     Assertions.assertThat(r).isTrue
   }
