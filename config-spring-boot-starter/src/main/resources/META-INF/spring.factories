@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.excavator.boot.config.autoconfigure.SwaggerAutoConfiguration, \
+  org.excavator.boot.config.autoconfigure.FtpAutoConfiguration
