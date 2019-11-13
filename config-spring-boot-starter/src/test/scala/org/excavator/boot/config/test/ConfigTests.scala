@@ -1,5 +1,6 @@
 package org.excavator.boot.config.test
 
+import com.google.common.collect.Maps
 import javax.annotation.Resource
 import org.assertj.core.api.Assertions
 import org.excavator.boot.config.test.controller.ConfigController
@@ -36,5 +37,20 @@ class ConfigTests {
     val r = restTemplate.getForObject("http://localhost:" + port + "/v1/users", classOf[java.util.List[String]])
     println(s"test findAll r = ${r}")
     Assertions.assertThat[String](r).contains("foo")
+  }
+
+  @Test
+  @DisplayName("test getUserName")
+  def testGetUserName(): Unit = {
+    val userName = "cmonkey"
+    val params = Maps.newHashMap[String, String]()
+
+    params.put("userName", userName)
+
+    val r = restTemplate.getForObject("http://localhost:" + port + "/v1/users/{userName}", classOf[String], params)
+
+    println(s"getUserName = ${r}")
+
+    Assertions.assertThat(r).contains(userName)
   }
 }
