@@ -177,4 +177,18 @@ class ConfigTests {
 
     Assertions.assertThat(r.getBody).contains(token)
   }
+
+  @Test
+  @DisplayName("testPut")
+  def testUpdate(): Unit = {
+    val headers = new HttpHeaders()
+    val requestEntity = new HttpEntity[String](headers)
+    val urlVariables = Maps.newHashMap[String, String]()
+    urlVariables.put("originName", "foo")
+    urlVariables.put("newName", "foo2")
+    val r = restTemplate.exchange("http://localhost:" + port + "/v1/users/{originName}/{newName}", HttpMethod.PUT, requestEntity, classOf[String], urlVariables)
+    println(s"update = ${r}")
+
+    Assertions.assertThat(r.getBody).contains("foo2")
+  }
 }
