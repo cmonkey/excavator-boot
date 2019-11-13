@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestMapping, RequestParam, RestController}
 import org.springframework.web.multipart.MultipartFile
 
+import scala.collection.mutable.ArrayBuffer
+
 @RestController
 @RequestMapping(Array("/v1"))
 @Api(value = "Config info Api", description = "Config Service")
@@ -50,10 +52,10 @@ class ConfigController(configService: ConfigService, fileService: FileService) {
   def upload(@RequestParam("userName") userName: String,
              @RequestParam("files") multipartFile: Array[MultipartFile]) = {
 
-    println(s"userName = ${userName}")
+    println(s"userName = ${userName} and multipartFile size = ${multipartFile.size}")
 
-    multipartFile.foreach(multipartFile => {
-      fileService.storeFile(multipartFile)
+    multipartFile.foreach(file => {
+      fileService.storeFile(file)
     })
 
     ResponseEntity.ok(configService.addUserName(userName))
