@@ -32,6 +32,8 @@
 
   13. redisLimit (通过redis + lua 实现的redis limit , 可用于对资源进行额度限制)
 
+  14. config (对Swaggger/sftp 自动化配置)
+
 
 
 # 快速开始
