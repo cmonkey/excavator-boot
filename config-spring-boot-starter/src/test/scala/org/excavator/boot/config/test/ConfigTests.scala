@@ -1,5 +1,6 @@
 package org.excavator.boot.config.test
 
+import java.nio.file.{Files, Paths}
 import java.util
 
 import com.google.common.collect.Maps
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Assertions._
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.core.io.FileSystemResource
 import org.springframework.http.HttpEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.util.LinkedMultiValueMap
@@ -84,5 +86,25 @@ class ConfigTests {
     println(s"addUserNameByBody = ${r}")
 
     Assertions.assertThat(r).isTrue
+  }
+
+  @Test
+  @DisplayName("testUpload")
+  def testUpload(): Unit = {
+    val file = System.getProperty("user.dir")
+    Files.list(Paths.get(file)).findFirst().ifPresent(p => {
+      val resource = new FileSystemResource(p.toUri.getPath)
+
+      val params = new LinkedMultiValueMap[String, Any]()
+
+      params.add("userName", "42")
+      params.add("files", resource)
+
+      val r = restTemplate.postForObject("http://localhost:"+port+"/v1/upload", params, classOf[Boolean])
+
+      println(s"upload status = ${r}")
+
+      Assertions.assertThat(r).isTrue
+    })
   }
 }
