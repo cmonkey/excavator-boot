@@ -125,9 +125,9 @@ class ConfigTests {
     val httpHeaders = new HttpHeaders
     httpHeaders.setContentType(MediaType.MULTIPART_FORM_DATA)
 
-    val httpEntity = new HttpEntity[LinkedMultiValueMap[String, Any]](params, httpHeaders)
+    val requestEntity = new HttpEntity[LinkedMultiValueMap[String, Any]](params, httpHeaders)
 
-    val r = restTemplate.postForObject("http://localhost:"+port+"/v1/upload", httpEntity, classOf[Boolean])
+    val r = restTemplate.postForObject("http://localhost:"+port+"/v1/upload", requestEntity, classOf[Boolean])
 
     println(s"uploads status = ${r}")
 
