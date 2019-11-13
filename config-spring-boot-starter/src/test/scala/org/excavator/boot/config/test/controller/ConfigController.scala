@@ -35,4 +35,11 @@ class ConfigController(configService: ConfigService) {
     ResponseEntity.ok(configService.addUserName(userName))
   }
 
+  @PostMapping(Array("/users/body"))
+  def addUserNameByBody(@RequestBody msg:java.util.Map[String, String]) = {
+    println(s"body = ${msg}")
+    msg.forEach((k, v) => configService.addUserName(v))
+    ResponseEntity.ok(true)
+  }
+
 }
