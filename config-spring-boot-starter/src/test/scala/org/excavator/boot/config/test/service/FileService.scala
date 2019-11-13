@@ -1,6 +1,6 @@
 package org.excavator.boot.config.test.service
 
-import java.io.File
+import java.io.{ByteArrayInputStream, File}
 import java.nio.file.{Files, Paths, StandardCopyOption}
 
 import javax.annotation.PostConstruct
@@ -14,10 +14,17 @@ class FileService {
   val log = LoggerFactory.getLogger(classOf[FileService])
   val uploadFile = System.getProperty("java.io.tmpdir") + "/uploadDir/"
 
+  val downloadFile = System.getProperty("java.io.tmpdir") + "/downloadDir/"
+
   @PostConstruct
   def init(): Unit = {
-    val file = new File(uploadFile)
+    var file = new File(uploadFile)
 
+    if(!file.exists()){
+      file.mkdir()
+    }
+
+    file = new File(downloadFile)
     if(!file.exists()){
       file.mkdir()
     }
@@ -34,5 +41,11 @@ class FileService {
     val location = Paths.get(uploadFile + File.separator + StringUtils.cleanPath(fileName))
 
     Files.readAllBytes(location)
+  }
+
+  def storeDownloadFile(bytes: Array[Byte], fileName:String) : Unit = {
+    val copyLocation = Paths.get(downloadFile + File.separator + StringUtils.cleanPath(fileName))
+    val byteInputStream = new ByteArrayInputStream(bytes)
+    Files.copy(byteInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
   }
 }
