@@ -1,0 +1,15 @@
+sftp:
+  enabled: true
+  items:
+    supervise:
+      name: supervise
+      ip: 10.150.251.231
+      port: 22
+      path: /data/backup
+      model: 0
+      user: ftpuser
+      password: ftppassword
+      controlEncodeing: UTF-8
+swagger:
+  enabled: true
+  basePackage: org.excavator.boot.config.test.controller
