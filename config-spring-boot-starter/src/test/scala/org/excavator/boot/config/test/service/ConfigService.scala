@@ -1,5 +1,7 @@
 package org.excavator.boot.config.test.service
 
+import java.util.stream.IntStream
+
 import com.google.common.collect.Lists
 import javax.annotation.PostConstruct
 import org.slf4j.LoggerFactory
@@ -39,6 +41,17 @@ class ConfigService {
         synchronized(iterator.remove())
       }
     }
+  }
+
+  def update(originName:String, newName:String) = {
+    list.forEach(elem => println(s"origin elem = ${elem}"))
+    IntStream.range(0, list.size()).filter(i => list.get(i).equals(originName)).findFirst().ifPresent(i => {
+      list.set(i, newName)
+    })
+
+    println(s"replace ${originName} to ${newName}")
+
+    list.forEach(elem => println(s"new elem = ${elem}"))
   }
 
 }
