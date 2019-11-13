@@ -42,6 +42,7 @@
 		<module>helper</module>
 		<module>concurrent</module>
 		<module>lambda-expression</module>
+		<module>config-spring-boot-starter</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
