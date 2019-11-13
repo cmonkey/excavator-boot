@@ -5,10 +5,8 @@ import io.swagger.annotations.{Api, ApiOperation, ApiResponse, ApiResponses}
 import org.excavator.boot.config.test.service.{ConfigService, FileService}
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestHeader, RequestMapping, RequestParam, RestController}
+import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, PutMapping, RequestBody, RequestHeader, RequestMapping, RequestParam, RestController}
 import org.springframework.web.multipart.MultipartFile
-
-import scala.collection.mutable.ArrayBuffer
 
 @RestController
 @RequestMapping(Array("/v1"))
@@ -72,6 +70,12 @@ class ConfigController(configService: ConfigService, fileService: FileService) {
     println(s"userName = ${userName} token = ${token}")
 
     ResponseEntity.ok(token)
+  }
+
+  @PutMapping(Array("/users/{originName}/{newName}"))
+  def updateUserName(@PathVariable("originName") originName: String, @PathVariable("newName") newName: String) = {
+    configService.update(originName, newName)
+    ResponseEntity.ok(newName)
   }
 
 }
