@@ -165,7 +165,7 @@ class ConfigTests {
   def testHeaders(): Unit = {
     val headers = new HttpHeaders()
     val token = UUID.randomUUID().toString.replaceAll("-", "")
-    headers.put("token",token)
+    headers.set("token",token)
 
     val requestEntity = new HttpEntity[String](headers)
 
