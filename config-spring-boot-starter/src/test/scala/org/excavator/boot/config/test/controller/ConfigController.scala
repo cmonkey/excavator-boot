@@ -1,15 +1,17 @@
 package org.excavator.boot.config.test.controller
 
+
 import io.swagger.annotations.{Api, ApiOperation, ApiResponse, ApiResponses}
-import org.excavator.boot.config.test.service.ConfigService
+import org.excavator.boot.config.test.service.{ConfigService, FileService}
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestMapping, RequestParam, RestController}
+import org.springframework.web.multipart.MultipartFile
 
 @RestController
 @RequestMapping(Array("/v1"))
 @Api(value = "Config info Api", description = "Config Service")
-class ConfigController(configService: ConfigService) {
+class ConfigController(configService: ConfigService, fileService: FileService) {
   val log = LoggerFactory.getLogger(classOf[ConfigController])
 
   @ApiOperation(value = "首页", response = classOf[ResponseEntity[String]], notes = "首页详情")
@@ -40,6 +42,22 @@ class ConfigController(configService: ConfigService) {
     println(s"body = ${msg}")
     msg.forEach((k, v) => configService.addUserName(v))
     ResponseEntity.ok(true)
+  }
+
+
+
+  @PostMapping(Array("/upload"))
+  def upload(@RequestParam("userName") userName: String,
+             @RequestParam("files") multipartFile: Array[MultipartFile]) = {
+
+    println(s"userName = ${userName}")
+
+    multipartFile.foreach(multipartFile => {
+      fileService.storeFile(multipartFile)
+    })
+
+    ResponseEntity.ok(configService.addUserName(userName))
+
   }
 
 }
