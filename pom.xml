@@ -427,6 +427,11 @@
 				<artifactId>helper</artifactId>
                 <version>${excavator.boot.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.excavator.boot</groupId>
+				<artifactId>config-spring-boot-starter</artifactId>
+				<version>${excavator.boot.version}</version>
+			</dependency>
 
 			<!-- excavator boot end -->
 			<!-- pack start -->
