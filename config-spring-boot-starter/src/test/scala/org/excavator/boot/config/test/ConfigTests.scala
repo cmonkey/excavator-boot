@@ -149,7 +149,7 @@ class ConfigTests {
 
     val params = Maps.newHashMap[String, String]()
 
-    Files.list(Paths.get(filedir)).filter(path => !Files.isDirectory(path)).findFirst().ifPresent(path => {
+    Files.list(Paths.get(filedir)).filter(path => !Files.isDirectory(path)).forEach(path => {
       val fileName = path.getFileName.toString
       params.put("filename", fileName)
       val r = restTemplate.exchange("http://localhost:" + port + "/v1/download/{filename}",HttpMethod.GET, requestEntity, classOf[Array[Byte]], params)
