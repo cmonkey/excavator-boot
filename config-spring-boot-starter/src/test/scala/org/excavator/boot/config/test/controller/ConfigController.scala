@@ -68,7 +68,7 @@ class ConfigController(configService: ConfigService, fileService: FileService) {
   }
 
   @GetMapping(Array("/headers/{userName}"))
-  def getHeader(@RequestParam("userName") userName: String, @RequestHeader("token") token: String) = {
+  def getHeader(@PathVariable("userName") userName: String, @RequestHeader("token") token: String) = {
     println(s"userName = ${userName} token = ${token}")
 
     ResponseEntity.ok(token)
