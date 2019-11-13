@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.springframework.util.LinkedMultiValueMap
 
 @ExtendWith(Array(classOf[SpringExtension]))
 @SpringBootTest(classes = Array(classOf[ConfigApplication]),webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -52,5 +53,18 @@ class ConfigTests {
     println(s"getUserName = ${r}")
 
     Assertions.assertThat(r).contains(userName)
+  }
+
+  @Test
+  @DisplayName("testAddUserName")
+  def testAddUserName(): Unit = {
+    val userName = "42"
+    val params = Maps.newHashMap[String, String]()
+    params.put("userName", userName)
+
+    val r = restTemplate.postForObject("http://localhost:"+port+"v1/users?userName={userName}", null, classOf[Boolean], params)
+    println(s"addUserName = ${r}")
+
+    Assertions.assertThat(r).isTrue
   }
 }
