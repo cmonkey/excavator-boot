@@ -5,7 +5,7 @@ import io.swagger.annotations.{Api, ApiOperation, ApiResponse, ApiResponses}
 import org.excavator.boot.config.test.service.{ConfigService, FileService}
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestMapping, RequestParam, RestController}
+import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestHeader, RequestMapping, RequestParam, RestController}
 import org.springframework.web.multipart.MultipartFile
 
 import scala.collection.mutable.ArrayBuffer
@@ -65,6 +65,13 @@ class ConfigController(configService: ConfigService, fileService: FileService) {
   @GetMapping(Array("/download/{filename}"))
   def download(@PathVariable("filename") filename: String) = {
     ResponseEntity.ok(fileService.readFile(filename))
+  }
+
+  @GetMapping(Array("/headers/{userName}"))
+  def getHeader(@RequestParam("userName") userName: String, @RequestHeader("token") token: String) = {
+    println(s"userName = ${userName} token = ${token}")
+
+    ResponseEntity.ok(token)
   }
 
 }
