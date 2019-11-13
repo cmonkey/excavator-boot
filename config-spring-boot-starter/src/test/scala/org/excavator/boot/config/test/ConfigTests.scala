@@ -2,7 +2,6 @@ package org.excavator.boot.config.test
 
 import java.nio.file.{Files, Paths}
 import java.util
-import java.util.stream.Collectors
 
 import com.google.common.collect.{Lists, Maps}
 import javax.annotation.Resource
@@ -15,11 +14,10 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.io.FileSystemResource
-import org.springframework.http.HttpEntity
+import org.springframework.http.{HttpEntity, HttpHeaders, MediaType}
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.util.LinkedMultiValueMap
 
-import scala.collection.mutable.ArrayBuffer
 
 @ExtendWith(Array(classOf[SpringExtension]))
 @SpringBootTest(classes = Array(classOf[ConfigApplication]),webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -124,7 +122,12 @@ class ConfigTests {
       params.add("files", resource)
     })
 
-    val r = restTemplate.postForObject("http://localhost:"+port+"/v1/upload", params, classOf[Boolean])
+    val httpHeaders = new HttpHeaders
+    httpHeaders.setContentType(MediaType.MULTIPART_FORM_DATA)
+
+    val httpEntity = new HttpEntity[LinkedMultiValueMap[String, Any]](params, httpHeaders)
+
+    val r = restTemplate.postForObject("http://localhost:"+port+"/v1/upload", httpEntity, classOf[Boolean])
 
     println(s"uploads status = ${r}")
 
