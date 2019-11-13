@@ -3,6 +3,7 @@ package org.excavator.boot.config.test
 import java.io.File
 import java.nio.file.{Files, Paths}
 import java.util
+import java.util.UUID
 
 import com.google.common.collect.{Lists, Maps}
 import javax.annotation.Resource
@@ -157,5 +158,23 @@ class ConfigTests {
       fileService.storeDownloadFile(r.getBody, fileName)
       Assertions.assertThat(r.getStatusCodeValue).isEqualTo(200)
     })
+  }
+
+  @Test
+  @DisplayName("testHeaders")
+  def testHeaders(): Unit = {
+    val headers = new HttpHeaders()
+    val token = UUID.randomUUID().toString.replaceAll("-", "")
+    headers.put("token",token)
+
+    val requestEntity = new HttpEntity[String](headers)
+
+    val urlVariables = Array[String]("cmonkey")
+
+    val r = restTemplate.exchange("http://localhost:" + port + "/v1/headers/{userName}", HttpMethod.GET, requestEntity, classOf[String], urlVariables)
+
+    println(s"headers r = ${r}")
+
+    Assertions.assertThat(r.getBody).contains(token)
   }
 }
