@@ -191,4 +191,15 @@ class ConfigTests {
 
     Assertions.assertThat(r.getBody).contains("foo2")
   }
+
+  @Test
+  @DisplayName("testDelete")
+  def testDelete(): Unit = {
+    val requestEntity = new HttpEntity[String](new HttpHeaders())
+    val urlVariables = Maps.newHashMap[String, String]()
+    urlVariables.put("userName", "foo")
+    val r = restTemplate.exchange("http://localhost:" + port + "/v1/users/{userName}", HttpMethod.DELETE, requestEntity, classOf[Boolean], urlVariables)
+    println(s"delete r = ${r}")
+    Assertions.assertThat(r.getBody).isTrue
+  }
 }
