@@ -2,8 +2,9 @@ package org.excavator.boot.config.test
 
 import java.nio.file.{Files, Paths}
 import java.util
+import java.util.stream.Collectors
 
-import com.google.common.collect.Maps
+import com.google.common.collect.{Lists, Maps}
 import javax.annotation.Resource
 import org.assertj.core.api.Assertions
 import org.excavator.boot.config.test.controller.ConfigController
@@ -17,6 +18,8 @@ import org.springframework.core.io.FileSystemResource
 import org.springframework.http.HttpEntity
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.util.LinkedMultiValueMap
+
+import scala.collection.mutable.ArrayBuffer
 
 @ExtendWith(Array(classOf[SpringExtension]))
 @SpringBootTest(classes = Array(classOf[ConfigApplication]),webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -106,5 +109,25 @@ class ConfigTests {
 
       Assertions.assertThat(r).isTrue
     })
+  }
+
+  @Test
+  @DisplayName("testUploads")
+  def testUploads(): Unit = {
+    val file = System.getProperty("user.dir")
+
+    val params = new LinkedMultiValueMap[String, Any]()
+    params.add("userName", "42")
+
+    Files.list(Paths.get(file)).filter(path => !Files.isDirectory(path)).forEach(path => {
+      val resource = new FileSystemResource(path.toUri.getPath)
+      params.add("files", resource)
+    })
+
+    val r = restTemplate.postForObject("http://localhost:"+port+"/v1/upload", params, classOf[Boolean])
+
+    println(s"uploads status = ${r}")
+
+    Assertions.assertThat(r).isTrue
   }
 }
