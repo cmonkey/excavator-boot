@@ -1,6 +1,5 @@
 package org.excavator.boot.config.test
 
-import java.io.File
 import java.nio.file.{Files, Paths}
 import java.util
 import java.util.UUID
@@ -12,7 +11,7 @@ import org.excavator.boot.config.test.controller.ConfigController
 import org.excavator.boot.config.test.service.FileService
 import org.junit.jupiter.api.{DisplayName, Test}
 import org.junit.jupiter.api.extension.ExtendWith
-import org.junit.jupiter.api.Assertions._
+import org.slf4j.LoggerFactory
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.web.server.LocalServerPort
@@ -25,6 +24,7 @@ import org.springframework.util.LinkedMultiValueMap
 @ExtendWith(Array(classOf[SpringExtension]))
 @SpringBootTest(classes = Array(classOf[ConfigApplication]),webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ConfigTests {
+  val log = LoggerFactory.getLogger(classOf[ConfigTests])
 
   @LocalServerPort
   val port: Int = 0
@@ -99,8 +99,11 @@ class ConfigTests {
   @DisplayName("testUpload")
   def testUpload(): Unit = {
     val file = System.getProperty("user.dir")
-    Files.list(Paths.get(file)).findFirst().ifPresent(p => {
-      val resource = new FileSystemResource(p.toUri.getPath)
+    Files.list(Paths.get(file)).filter(path => !Files.isDirectory(path)).findFirst().ifPresent(p => {
+      val path = p.toUri.getPath
+      log.info("path = [{}]", path)
+
+      val resource = new FileSystemResource(path)
 
       val params = new LinkedMultiValueMap[String, Any]()
 
