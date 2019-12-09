@@ -34,18 +34,38 @@ class FileService {
 
     val copyLocation = Paths.get(uploadFile + File.separator + StringUtils.cleanPath(multipartFile.getOriginalFilename))
 
-    Files.copy(multipartFile.getInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
+    log.info("storeFile copyLocation = [{}]", copyLocation)
+
+    try{
+      Files.copy(multipartFile.getInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
+    }catch{
+      case ex:Throwable => log.error("storeFile Exception = [{}]", ex.getMessage():Any, ex:Any)
+    }
   }
 
   def readFile(fileName: String) = {
     val location = Paths.get(uploadFile + File.separator + StringUtils.cleanPath(fileName))
 
-    Files.readAllBytes(location)
+    log.info("readFile location = [{}]", location)
+
+    try{
+      Files.readAllBytes(location)
+    }catch{
+      case ex:Throwable => log.error("readFile Exception = [{}]", ex.getMessage():Any, ex:Any)
+    }
   }
 
   def storeDownloadFile(bytes: Array[Byte], fileName:String) : Unit = {
     val copyLocation = Paths.get(downloadFile + File.separator + StringUtils.cleanPath(fileName))
+
+    log.info("storeDownloadFile copyLocation = [{}]", copyLocation)
+
     val byteInputStream = new ByteArrayInputStream(bytes)
-    Files.copy(byteInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
+
+    try{
+      Files.copy(byteInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
+    }catch{
+      case ex:Throwable => log.error("storeDownloadFile Exception = [{}]", ex.getMessage():Any, ex:Any)
+    }
   }
 }
