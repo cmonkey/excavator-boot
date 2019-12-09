@@ -39,7 +39,7 @@ class FileService {
     try{
       Files.copy(multipartFile.getInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
     }catch{
-      case ex:Throwable => log.error("storeFile Exception = [{}]", ex.getMessage(), ex)
+      case ex:Throwable => log.error("storeFile Exception = [{}]", ex.getMessage():Any, ex:Any)
     }
   }
 
@@ -51,7 +51,7 @@ class FileService {
     try{
       Files.readAllBytes(location)
     }catch{
-      case ex:Throwable => log.error("readFile Exception = [{}]", ex.getMessage(), ex)
+      case ex:Throwable => log.error("readFile Exception = [{}]", ex.getMessage():Any, ex:Any)
     }
   }
 
@@ -65,7 +65,7 @@ class FileService {
     try{
       Files.copy(byteInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
     }catch{
-      case ex:Throwable => log.error("storeDownloadFile Exception = [{}]", ex.getMessage(), ex)
+      case ex:Throwable => log.error("storeDownloadFile Exception = [{}]", ex.getMessage():Any, ex:Any)
     }
   }
 }
