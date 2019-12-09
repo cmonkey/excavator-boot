@@ -46,7 +46,13 @@ class FileService {
   def readFile(fileName: String) = {
     val location = Paths.get(uploadFile + File.separator + StringUtils.cleanPath(fileName))
 
-    Files.readAllBytes(location)
+    log.info("readFile location = [{}]", location)
+
+    try{
+      Files.readAllBytes(location)
+    }catch{
+      ex: Throwable => log.error("readFile Exception = [{}]", ex.getMessage(), ex)
+    }
   }
 
   def storeDownloadFile(bytes: Array[Byte], fileName:String) : Unit = {
