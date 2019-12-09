@@ -51,13 +51,21 @@ class FileService {
     try{
       Files.readAllBytes(location)
     }catch{
-      ex: Throwable => log.error("readFile Exception = [{}]", ex.getMessage(), ex)
+      case ex:Throwable => log.error("readFile Exception = [{}]", ex.getMessage(), ex)
     }
   }
 
   def storeDownloadFile(bytes: Array[Byte], fileName:String) : Unit = {
     val copyLocation = Paths.get(downloadFile + File.separator + StringUtils.cleanPath(fileName))
+
+    log.info("storeDownloadFile copyLocation = [{}]", copyLocation)
+
     val byteInputStream = new ByteArrayInputStream(bytes)
-    Files.copy(byteInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
+
+    try{
+      Files.copy(byteInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
+    }catch{
+      case ex:Throwable => log.error("storeDownloadFile Exception = [{}]", ex.getMessage(), ex)
+    }
   }
 }
