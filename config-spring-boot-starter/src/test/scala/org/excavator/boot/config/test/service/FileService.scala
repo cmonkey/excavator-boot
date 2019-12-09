@@ -34,6 +34,8 @@ class FileService {
 
     val copyLocation = Paths.get(uploadFile + File.separator + StringUtils.cleanPath(multipartFile.getOriginalFilename))
 
+    log.info("storeFile copyLocation = [{}]", copyLocation)
+
     Files.copy(multipartFile.getInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
   }
 
