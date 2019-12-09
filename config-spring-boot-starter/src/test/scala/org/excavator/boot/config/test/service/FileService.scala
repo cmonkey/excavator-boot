@@ -36,7 +36,11 @@ class FileService {
 
     log.info("storeFile copyLocation = [{}]", copyLocation)
 
-    Files.copy(multipartFile.getInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
+    try{
+      Files.copy(multipartFile.getInputStream, copyLocation, StandardCopyOption.REPLACE_EXISTING)
+    }catch{
+      case ex:Throwable => log.error("storeFile Exception = [{}]", ex.getMessage(), ex)
+    }
   }
 
   def readFile(fileName: String) = {
