@@ -56,39 +56,36 @@
 		<excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
 		<!-- 3rd lib dependency -->
-		<fastjson.version>1.2.59</fastjson.version>
-		<!--
-           -<curator.version>2.11.1</curator.version>
-           -->
+		<fastjson.version>1.2.62</fastjson.version>
 		<zookeeper.version>3.4.14</zookeeper.version>
-		<joda.time.version>2.10.3</joda.time.version>
+		<joda.time.version>2.10.5</joda.time.version>
 		<scala.major-version>2.12</scala.major-version>
 		<scala.version>${scala.major-version}.10</scala.version>
-		<pagehelper.version>1.2.12</pagehelper.version>
-		<mybatis.version>2.1.0</mybatis.version>
+		<pagehelper.version>1.2.13</pagehelper.version>
+		<mybatis.version>2.1.1</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
 		<excavator-boot.version>2.0.0-SNAPSHOT</excavator-boot.version>
 		<pack.version>0.5.0</pack.version>
-		<mysql-connector.version>8.0.16</mysql-connector.version>
+		<mysql-connector.version>8.0.18</mysql-connector.version>
 		<commons-lang3.version>3.9</commons-lang3.version>
-		<lombok.version>1.18.8</lombok.version>
+		<lombok.version>1.18.10</lombok.version>
 		<druid.version>1.1.21</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
-		<redisson.version>3.11.3</redisson.version>
+		<redisson.version>3.11.6</redisson.version>
 		<commons-codec.version>1.13</commons-codec.version>
-		<netty.version>4.1.42.Final</netty.version>
-		<junit-jupiter.version>5.5.1</junit-jupiter.version>
+		<netty.version>4.1.43.Final</netty.version>
+		<junit-jupiter.version>5.5.2</junit-jupiter.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<guava.version>20.0</guava.version>
 		<commons-text.version>1.8</commons-text.version>
-		<jmh.version>1.21</jmh.version>
+		<jmh.version>1.22</jmh.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
-		<quartz.version>2.3.1</quartz.version>
+		<quartz.version>2.3.2</quartz.version>
 		<commons-pool2.version>2.7.0</commons-pool2.version>
-		<javassist.version>3.25.0-GA</javassist.version>
-		<byte-buddy.version>1.10.1</byte-buddy.version>
+		<javassist.version>3.26.0-GA</javassist.version>
+		<byte-buddy.version>1.10.4</byte-buddy.version>
 		<commons-io.version>2.6</commons-io.version>
-		<bouncycastle.version>1.62</bouncycastle.version>
+		<bouncycastle.version>1.64</bouncycastle.version>
 		<springswagger.version>2.9.2</springswagger.version>
         <jsch.version>0.1.55</jsch.version>
 
