@@ -5,7 +5,7 @@ jobs:
   build:
     name: compile excavator boot
     runs-on: ubuntu-latest
-    step:
+    steps:
       - name: maven build
         uses: qcastel/github-actions-maven/actions/maven@master
         with:
