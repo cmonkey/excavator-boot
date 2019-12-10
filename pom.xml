@@ -78,7 +78,7 @@
 		<commons-logging.version>1.2</commons-logging.version>
 		<guava.version>20.0</guava.version>
 		<commons-text.version>1.8</commons-text.version>
-		<jmh.version>1.21</jmh.version>
+		<jmh.version>1.22</jmh.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
 		<quartz.version>2.3.1</quartz.version>
 		<commons-pool2.version>2.7.0</commons-pool2.version>
