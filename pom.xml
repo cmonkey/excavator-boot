@@ -85,7 +85,7 @@
 		<javassist.version>3.26.0-GA</javassist.version>
 		<byte-buddy.version>1.10.4</byte-buddy.version>
 		<commons-io.version>2.6</commons-io.version>
-		<bouncycastle.version>1.62</bouncycastle.version>
+		<bouncycastle.version>1.64</bouncycastle.version>
 		<springswagger.version>2.9.2</springswagger.version>
         <jsch.version>0.1.55</jsch.version>
 
