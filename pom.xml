@@ -80,7 +80,7 @@
 		<commons-text.version>1.8</commons-text.version>
 		<jmh.version>1.22</jmh.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
-		<quartz.version>2.3.1</quartz.version>
+		<quartz.version>2.3.2</quartz.version>
 		<commons-pool2.version>2.7.0</commons-pool2.version>
 		<javassist.version>3.25.0-GA</javassist.version>
 		<byte-buddy.version>1.10.1</byte-buddy.version>
