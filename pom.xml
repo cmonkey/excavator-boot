@@ -83,7 +83,7 @@
 		<quartz.version>2.3.2</quartz.version>
 		<commons-pool2.version>2.7.0</commons-pool2.version>
 		<javassist.version>3.26.0-GA</javassist.version>
-		<byte-buddy.version>1.10.1</byte-buddy.version>
+		<byte-buddy.version>1.10.4</byte-buddy.version>
 		<commons-io.version>2.6</commons-io.version>
 		<bouncycastle.version>1.62</bouncycastle.version>
 		<springswagger.version>2.9.2</springswagger.version>
