@@ -13,7 +13,7 @@ jobs:
       - name: maven build
         uses: qcastel/github-actions-maven/actions/maven@master
         with:
-          maven-args: "clean install"
+          maven-args: "clean install -DskipTests"
       - name: view container directory 
         run: |
           pwd
