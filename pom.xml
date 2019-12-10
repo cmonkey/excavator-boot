@@ -61,7 +61,7 @@
 		<joda.time.version>2.10.5</joda.time.version>
 		<scala.major-version>2.12</scala.major-version>
 		<scala.version>${scala.major-version}.10</scala.version>
-		<pagehelper.version>1.2.12</pagehelper.version>
+		<pagehelper.version>1.2.13</pagehelper.version>
 		<mybatis.version>2.1.0</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
 		<excavator-boot.version>2.0.0-SNAPSHOT</excavator-boot.version>
