@@ -1,0 +1,11 @@
+name: Excavator Boot on Github Actions
+on: [push]
+
+jobs:
+  build:
+    name: compile excavator boot
+    runs-on: ubuntu-latest
+    step:
+      - name: maven compile
+        uses: actions/
+
