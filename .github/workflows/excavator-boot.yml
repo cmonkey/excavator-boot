@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: maven build
+        uses: actions/checkout@v1
         uses: qcastel/github-actions-maven/actions/maven@master
         with:
           maven-args: "clean install"
