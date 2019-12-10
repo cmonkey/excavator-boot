@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: git pull repo
         uses: actions/checkout@v1
+        with:
+          ref: feature/adaptive-jdk11
       - name: maven build
         uses: qcastel/github-actions-maven/actions/maven@master
         with:
