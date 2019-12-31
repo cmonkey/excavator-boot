@@ -1,8 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <property name="LOG_FILE" value="/tmp"/>
+    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread%X{sourceThread}]%logger{24} - %msg%n"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{MM/dd/yyyy HH:mm:ss} %-5level [%thread%X{sourceThread}]%logger{24} - %msg%n</pattern>
+        </encoder>
+    </appender>
     <appender name="static-appender" class="org.excavator.boot.logging.StaticAppender"/>
     <appender name="threadsafe-appender" class="org.excavator.boot.logging.ThreadSafeAppender"/>
-    <root level="trace">
+    <logger name="org.excavator.boot.logging" level="debug"/>
+    <logger name="org.excavator.boot.logging.test" level="debug"/>
+    <root level="info">
         <appender-ref ref="static-appender"/>
         <appender-ref ref="threadsafe-appender"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
