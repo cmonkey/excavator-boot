@@ -1,6 +1,8 @@
 package org.excavator.boot.logging.test
 
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.{Calendar, Date, Locale, TimeZone}
 
 import org.junit.jupiter.api.{DisplayName, Test}
@@ -23,6 +25,13 @@ class TestISO8601 {
     logger.info("simpleDateFormat = [{}]", simpleDateFormat.format(date))
 
     assertEquals(2019, calendar.get(Calendar.YEAR))
+
+    val localDateTime = LocalDateTime.of(2019, 12 ,31, 14, 40, 3, 0)
+    val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+    val localDateTimeFormat = dateTimeFormatter.format(localDateTime)
+    logger.info("localDateTimeFormat = [{}]", localDateTimeFormat)
+
+    assertEquals("2019", localDateTimeFormat.split("-").head)
 
   }
 
