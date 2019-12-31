@@ -33,6 +33,13 @@ class TestISO8601 {
 
     assertEquals("2019", localDateTimeFormat.split("-").head)
 
+    val localDateTimeIso8601 = LocalDateTime.of(2019, 12, 31, 14 , 43, 52, 0)
+    val dateTimeFormatterIso8601 = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss")
+    val localDateTimeFormatIso8601 = dateTimeFormatterIso8601.format(localDateTimeIso8601)
+    logger.info("localDatetimeFormat ISO 8601 = [{}]", localDateTimeFormatIso8601)
+
+    assertEquals("2020", localDateTimeFormatIso8601.split("-").head)
+
   }
 
 }
