@@ -39,14 +39,14 @@ class AuthorizationTests {
 
     val headers = setHeaders("Authorization", token)
 
-    val httpEntiry = new HttpEntity[String]("", headers)
+    val httpEntity = new HttpEntity[String]("", headers)
 
-    val auth = testRestTemplate.exchange("/auth", HttpMethod.GET, httpEntiry, classOf[Boolean])
+    val auth = testRestTemplate.exchange("/auth", HttpMethod.GET, httpEntity, classOf[Boolean])
 
     assertEquals(200, auth.getStatusCodeValue)
     assertEquals(true,auth.getBody)
 
-    val msg = testRestTemplate.exchange("/msg", HttpMethod.GET, httpEntiry, classOf[String])
+    val msg = testRestTemplate.exchange("/msg", HttpMethod.GET, httpEntity, classOf[String])
 
     assertEquals(200, msg.getStatusCodeValue)
 
