@@ -1,1 +1,13 @@
-{ "properties": [ ] }
+{
+  "properties": [
+    {
+      "name": "excavator.authorization.expire_second",
+      "type": "java.lang.String",
+      "description": "Description for excavator.authorization.expire_second."
+    },
+    {
+      "name": "excavator.authorization.resolvers",
+      "type": "java.lang.String",
+      "description": "Description for excavator.authorization.resolvers."
+    }
+  ] }
