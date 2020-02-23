@@ -44,7 +44,7 @@ public class MysqlDao extends AbstractDaoSupport {
         try {
             checkDriver();
             Connection conn = getConn();
-            ResultSet rs = createQuary(conn, "show full fields from " + tableName);
+            ResultSet rs = createQuery(conn, "show full fields from " + tableName);
             while (rs.next()) {
                 String type = typesConvert(rs.getString(2));
                 String javaStyle = StringUtil.javaStyle(rs.getString(1));

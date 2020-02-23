@@ -48,7 +48,7 @@ public class OracleDao extends AbstractDaoSupport {
                          + " from  user_col_comments  t2  left  join  user_tab_columns  t1 "
                          + " on  t1.table_name  =  t2.table_name  and  t1.column_name  =  t2.column_name "
                          + " where  t1.table_name  =  upper('" + tableName + "')";
-            ResultSet rs = createQuary(conn, sql);
+            ResultSet rs = createQuery(conn, sql);
             while (rs.next()) {
                 String type = typesConvert(rs.getString(2));
                 String javaStyle = StringUtil.javaStyle(rs.getString(1));

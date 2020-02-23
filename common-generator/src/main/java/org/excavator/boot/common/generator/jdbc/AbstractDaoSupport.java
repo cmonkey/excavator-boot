@@ -54,7 +54,7 @@ public abstract class AbstractDaoSupport {
         try {
             checkDriver();
             Connection conn = getConn();
-            ResultSet rs = createQuary(conn, nativeSql);
+            ResultSet rs = createQuery(conn, nativeSql);
             while (rs.next()) {
                 list.add(rs.getString(1));
             }
@@ -72,7 +72,7 @@ public abstract class AbstractDaoSupport {
 
     public abstract String typesConvert(String sqlType);
 
-    protected ResultSet createQuary(Connection conn, String sql) throws SQLException {
+    protected ResultSet createQuery(Connection conn, String sql) throws SQLException {
         return conn.createStatement().executeQuery(sql);
     }
 
