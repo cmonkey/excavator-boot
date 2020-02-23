@@ -50,7 +50,7 @@ class ConfigController(configService: ConfigService, fileService: FileService) {
   def upload(@RequestParam("userName") userName: String,
              @RequestParam("files") multipartFile: Array[MultipartFile]) = {
 
-    println(s"userName = ${userName} and multipartFile size = ${multipartFile.size}")
+    println(s"userName = ${userName} and multipartFile size = ${multipartFile.length}")
 
     multipartFile.foreach(file => {
       fileService.storeFile(file)

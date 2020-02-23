@@ -21,13 +21,14 @@ import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.util.Assert;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class LongRedisSerializer implements RedisSerializer<Long> {
 
     private final Charset charset;
 
     public LongRedisSerializer() {
-        this(Charset.forName("UTF8"));
+        this(StandardCharsets.UTF_8);
     }
 
     public LongRedisSerializer(Charset charset) {
