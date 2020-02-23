@@ -1,0 +1,123 @@
+{
+  "properties": [
+    {
+      "name": "spring.datasource.useGlobalDataSourceStat",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.useGlobalDataSourceStat."
+    },
+    {
+      "name": "spring.datasource.connectionProperties",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.connectionProperties."
+    },
+    {
+      "name": "spring.datasource.filters",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.filters."
+    },
+    {
+      "name": "spring.datasource.maxPoolPreparedStatementPerConnectionSize",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.maxPoolPreparedStatementPerConnectionSize."
+    },
+    {
+      "name": "spring.datasource.poolPreparedStatements",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.poolPreparedStatements."
+    },
+    {
+      "name": "spring.datasource.testOnReturn",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.testOnReturn."
+    },
+    {
+      "name": "spring.datasource.testOnBorrow",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.testOnBorrow."
+    },
+    {
+      "name": "spring.datasource.testWhileIdle",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.testWhileIdle."
+    },
+    {
+      "name": "spring.datasource.validationQuery",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.validationQuery."
+    },
+    {
+      "name": "spring.datasource.minEvictableIdleTimeMillis",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.minEvictableIdleTimeMillis."
+    },
+    {
+      "name": "spring.datasource.timeBetweenEvictionRunsMillis",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.timeBetweenEvictionRunsMillis."
+    },
+    {
+      "name": "spring.datasource.maxWait",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.maxWait."
+    },
+    {
+      "name": "spring.datasource.maxActive",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.maxActive."
+    },
+    {
+      "name": "spring.datasource.minIdle",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.minIdle."
+    },
+    {
+      "name": "spring.datasource.initialSize",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.initialSize."
+    },
+    {
+      "name": "excavator.druid.monitor.exclusions",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.exclusions."
+    },
+    {
+      "name": "excavator.druid.monitor.url-patterns",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.url-patterns."
+    },
+    {
+      "name": "excavator.druid.monitor.reset-enable",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.reset-enable."
+    },
+    {
+      "name": "excavator.druid.monitor.login-password",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.login-password."
+    },
+    {
+      "name": "excavator.druid.monitor.login-name",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.login-name."
+    },
+    {
+      "name": "excavator.druid.monitor.deny",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.deny."
+    },
+    {
+      "name": "excavator.druid.monitor.stat-view",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.stat-view."
+    },
+    {
+      "name": "excavator.druid.monitor.allow",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.allow."
+    },
+    {
+      "name": "excavator.druid.monitor.enabled",
+      "type": "java.lang.String",
+      "description": "Description for excavator.druid.monitor.enabled."
+    }
+  ] }

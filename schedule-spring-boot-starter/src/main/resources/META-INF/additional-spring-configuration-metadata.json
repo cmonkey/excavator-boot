@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "excavator.schedule.threadNamePrefix",
+      "type": "java.lang.String",
+      "description": "Description for excavator.schedule.threadNamePrefix."
+    },
+    {
+      "name": "excavator.schedule.threadPool.waitForTaskToCompleteOnShutdown",
+      "type": "java.lang.String",
+      "description": "Description for excavator.schedule.threadPool.waitForTaskToCompleteOnShutdown."
+    },
+    {
+      "name": "excavator.schedule.threadPool.awaitTerminaltionSeconds",
+      "type": "java.lang.String",
+      "description": "Description for excavator.schedule.threadPool.awaitTerminaltionSeconds."
+    },
+    {
+      "name": "excavator.schedule.threadPool.poolSize",
+      "type": "java.lang.String",
+      "description": "Description for excavator.schedule.threadPool.poolSize."
+    }
+  ] }
