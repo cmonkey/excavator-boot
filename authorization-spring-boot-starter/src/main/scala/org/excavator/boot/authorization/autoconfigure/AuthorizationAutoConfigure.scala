@@ -1,6 +1,5 @@
 package org.excavator.boot.authorization.autoconfigure
 
-import javax.annotation.Resource
 import org.excavator.boot.authorization.interceptor.{AuthorizationInterceptor, AuthorizationResolver}
 import org.excavator.boot.authorization.config.{AuthorizationConfig, AuthorizationProperties}
 import org.excavator.boot.authorization.factory.HandlerMethodArgumentResolverFactory
