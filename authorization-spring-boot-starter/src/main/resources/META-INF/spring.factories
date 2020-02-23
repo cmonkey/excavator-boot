@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.excavator.boot.authorization.autoconfigure.AutorizationAutoConfigure
+  org.excavator.boot.authorization.autoconfigure.AuthorizationAutoConfigure
