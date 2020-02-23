@@ -1,1 +1,43 @@
-{ "properties": [ ] }
+{
+  "properties": [
+    {
+      "name": "excavator.idWorker.connectionTimeoutMillisSeconds",
+      "type": "java.lang.String",
+      "description": "Description for excavator.idWorker.connectionTimeoutMillisSeconds."
+    },
+    {
+      "name": "excavator.idWorker.sessionTimeoutMillisSeconds",
+      "type": "java.lang.String",
+      "description": "Description for excavator.idWorker.sessionTimeoutMillisSeconds."
+    },
+    {
+      "name": "excavator.idWorker.maxRetries",
+      "type": "java.lang.String",
+      "description": "Description for excavator.idWorker.maxRetries."
+    },
+    {
+      "name": "excavator.idWorker.maxSleepTimeMillisSeconds",
+      "type": "java.lang.String",
+      "description": "Description for excavator.idWorker.maxSleepTimeMillisSeconds."
+    },
+    {
+      "name": "excavator.idWorker.baseSleepTimeMillisSeconds",
+      "type": "java.lang.String",
+      "description": "Description for excavator.idWorker.baseSleepTimeMillisSeconds."
+    },
+    {
+      "name": "excavator.idWorker.namespace",
+      "type": "java.lang.String",
+      "description": "Description for excavator.idWorker.namespace."
+    },
+    {
+      "name": "excavator.idWorker.serverList",
+      "type": "java.lang.String",
+      "description": "Description for excavator.idWorker.serverList."
+    },
+    {
+      "name": "excavator.idWorker.group",
+      "type": "java.lang.String",
+      "description": "Description for excavator.idWorker.group."
+    }
+  ] }
