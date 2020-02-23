@@ -1,6 +1,5 @@
 package org.excavator.boot.authorization.autoconfigure
 
-import javax.annotation.Resource
 import org.excavator.boot.authorization.interceptor.{AuthorizationInterceptor, AuthorizationResolver}
 import org.excavator.boot.authorization.config.{AuthorizationConfig, AuthorizationProperties}
 import org.excavator.boot.authorization.factory.HandlerMethodArgumentResolverFactory
@@ -23,8 +22,8 @@ import org.springframework.data.redis.core.StringRedisTemplate
 @AutoConfigureAfter(Array(classOf[RedisAutoConfiguration]))
 @EnableConfigurationProperties(Array(classOf[AuthorizationProperties]))
 @Import(Array(classOf[AuthorizationInterceptor], classOf[AuthorizationConfig], classOf[HandlerMethodArgumentResolverFactory], classOf[CustomerHelper]))
-class AutorizationAutoConfigure {
-  private val logger = LoggerFactory.getLogger(classOf[AutorizationAutoConfigure])
+class AuthorizationAutoConfigure {
+  private val logger = LoggerFactory.getLogger(classOf[AuthorizationAutoConfigure])
 
   @Bean
   def tokenManager(@Qualifier("stringRedisTemplate") stringRedisTemplate: StringRedisTemplate): TokenManager = {
@@ -46,7 +45,7 @@ class AutorizationAutoConfigure {
 
     val authorizationResolver = new AuthorizationResolver
 
-    logger.info("authroizationResolver init ");
+    logger.info("authorizationResolver init ");
 
     authorizationResolver
   }
