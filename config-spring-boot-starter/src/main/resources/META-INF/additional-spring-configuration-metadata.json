@@ -1,0 +1,58 @@
+{
+  "properties": [
+    {
+      "name": "sftp.items.supervise.port",
+      "type": "java.lang.String",
+      "description": "Description for sftp.items.supervise.port."
+    },
+    {
+      "name": "sftp.enabled",
+      "type": "java.lang.String",
+      "description": "Description for sftp.enabled."
+    },
+    {
+      "name": "sftp.items.supervise.name",
+      "type": "java.lang.String",
+      "description": "Description for sftp.items.supervise.name."
+    },
+    {
+      "name": "sftp.items.supervise.ip",
+      "type": "java.lang.String",
+      "description": "Description for sftp.items.supervise.ip."
+    },
+    {
+      "name": "sftp.items.supervise.model",
+      "type": "java.lang.String",
+      "description": "Description for sftp.items.supervise.model."
+    },
+    {
+      "name": "sftp.items.supervise.path",
+      "type": "java.lang.String",
+      "description": "Description for sftp.items.supervise.path."
+    },
+    {
+      "name": "sftp.items.supervise.user",
+      "type": "java.lang.String",
+      "description": "Description for sftp.items.supervise.user."
+    },
+    {
+      "name": "sftp.items.supervise.password",
+      "type": "java.lang.String",
+      "description": "Description for sftp.items.supervise.password."
+    },
+    {
+      "name": "sftp.items.supervise.controlEncodeing",
+      "type": "java.lang.String",
+      "description": "Description for sftp.items.supervise.controlEncodeing."
+    },
+    {
+      "name": "swagger.enabled",
+      "type": "java.lang.String",
+      "description": "Description for swagger.enabled."
+    },
+    {
+      "name": "swagger.basePackage",
+      "type": "java.lang.String",
+      "description": "Description for swagger.basePackage."
+    }
+  ] }
