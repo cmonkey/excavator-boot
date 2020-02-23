@@ -1,1 +1,8 @@
-{ "properties": [ ] }
+{
+  "properties": [
+    {
+      "name": "excavator.logAspect.enabled",
+      "type": "java.lang.String",
+      "description": "Description for excavator.logAspect.enabled."
+  }
+] }
