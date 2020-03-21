@@ -29,9 +29,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
     token match {
       case Some(value) => {
-        val tokenModel = new Token
-        tokenModel.setCustomerId(customerId)
-        tokenModel.setToken(value)
+        val tokenModel = buildTokenModel(customerId, value)
 
         Optional.of(tokenModel)
       }
@@ -66,9 +64,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
   override def getToken(authenticate: String): Optional[Token] = {
     customerHelper.getCustomerId(authenticate) match {
       case Some(customerId) => {
-        val token = new Token
-        token.setCustomerId(customerId)
-        token.setToken(authenticate)
+        val token = buildTokenModel(customerId, authenticate)
 
         Optional.of(token)
       }
@@ -96,5 +92,13 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
       }
       case None => logger.warn("token get customerId is null")
     }
+  }
+
+  def buildTokenModel(customerId: Long, token:String): Token = {
+    val tokenModel = new Token
+    tokenModel.setCustomerId(customerId)
+    tokenModel.setToken(token)
+
+    tokenModel
   }
 }
