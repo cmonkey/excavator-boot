@@ -64,9 +64,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
   override def getToken(authenticate: String): Optional[Token] = {
     customerHelper.getCustomerId(authenticate) match {
       case Some(customerId) => {
-        val token = new Token
-        token.setCustomerId(customerId)
-        token.setToken(authenticate)
+        val token = buildTokenModel(customerId, authenticate)
 
         Optional.of(token)
       }
