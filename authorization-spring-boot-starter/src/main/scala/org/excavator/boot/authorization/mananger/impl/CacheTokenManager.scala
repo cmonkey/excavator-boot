@@ -97,4 +97,12 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
       case None => logger.warn("token get customerId is null")
     }
   }
+
+  def buildTokenModel(customerId: Long, token:String): Token = {
+    val tokenModel = new Token
+    tokenModel.setCustomerId(customerId)
+    tokenModel.setToken(token)
+
+    tokenModel
+  }
 }
