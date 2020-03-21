@@ -29,9 +29,7 @@ class CacheTokenManager(stringRedisTemplate: StringRedisTemplate) extends TokenM
 
     token match {
       case Some(value) => {
-        val tokenModel = new Token
-        tokenModel.setCustomerId(customerId)
-        tokenModel.setToken(value)
+        val tokenModel = buildTokenModel(customerId, value)
 
         Optional.of(tokenModel)
       }
