@@ -26,7 +26,7 @@ public class UnmodifiableCollectionBenchmark {
     }
 
     @Benchmark
-    public void interator(Blackhole hole){
+    public void iterator(Blackhole hole){
         for (Integer i : unmodifiableCollection) {
             hole.consume(i);
         }
