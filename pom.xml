@@ -497,18 +497,10 @@
 			<name>GitHub OWNER Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/cmonkey</url>
 		</repository>
-		<!--
-           -<repository>
-           -    <id>excavator-releases</id>
-           -    <name>Nexus Release Repository</name>
-           -    <url>http://localhost:8081/repository/maven-releases/</url>
-           -</repository>
-           -->
-		<snapshotRepository>
-			<id>excavator-snapshot</id>
-			<name>Nexus Snapshot Repository</name>
-			<url>http://localhost:8081/repository/maven-snapshots/</url>
-		</snapshotRepository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
 	</distributionManagement>
 
     <build>
