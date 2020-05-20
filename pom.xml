@@ -59,8 +59,8 @@
 		<fastjson.version>1.2.62</fastjson.version>
 		<zookeeper.version>3.4.14</zookeeper.version>
 		<joda.time.version>2.10.5</joda.time.version>
-		<scala.major-version>2.13</scala.major-version>
-		<scala.version>${scala.major-version}.2</scala.version>
+		<scala.major-version>2.12</scala.major-version>
+		<scala.version>${scala.major-version}.11</scala.version>
 		<pagehelper.version>1.2.13</pagehelper.version>
 		<mybatis.version>2.1.1</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
