@@ -572,7 +572,7 @@
 					</execution>
 				</executions>
                 <configuration>
-					<skipSource>true</skipSource>
+					<skipSource>false</skipSource>
                 </configuration>
 			</plugin>
 
