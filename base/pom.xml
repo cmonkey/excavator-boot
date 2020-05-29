@@ -101,12 +101,12 @@
 			<artifactId>commons-codec</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.excavator.boot</groupId>
+			<groupId>com.github.cmonkey</groupId>
 			<artifactId>idWorker-spring-boot-starter</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.excavator.boot</groupId>
+			<groupId>com.github.cmonkey</groupId>
 			<artifactId>common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
