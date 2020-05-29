@@ -59,8 +59,8 @@
 		<fastjson.version>1.2.62</fastjson.version>
 		<zookeeper.version>3.4.14</zookeeper.version>
 		<joda.time.version>2.10.5</joda.time.version>
-		<scala.major-version>2.12</scala.major-version>
-		<scala.version>${scala.major-version}.11</scala.version>
+		<scala.major-version>2.13</scala.major-version>
+		<scala.version>${scala.major-version}.2</scala.version>
 		<pagehelper.version>1.2.13</pagehelper.version>
 		<mybatis.version>2.1.1</mybatis.version>
 		<dom4j.version>2.1.1</dom4j.version>
@@ -100,7 +100,7 @@
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
 		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
 		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
-		<alchim31.scala.plugin>4.3.1</alchim31.scala.plugin>
+		<alchim31.scala.plugin>4.4.0</alchim31.scala.plugin>
 		<maven.surefire.plugin>2.22.2</maven.surefire.plugin>
 
 	</properties>
