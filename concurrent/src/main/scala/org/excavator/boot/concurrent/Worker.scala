@@ -17,6 +17,6 @@ class Worker(val outputScraper: List[String], val countDownLatch: CountDownLatch
     doSomeWork()
     outputScraper.add("Counted down")
     logger.info(s"outputScraper = ${outputScraper}")
-    countDownLatch.countDown();
+    countDownLatch.countDown()
   }
 }
