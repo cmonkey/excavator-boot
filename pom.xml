@@ -360,72 +360,72 @@
             </dependency>
 			<!-- excavator boot start -->
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>base</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>common</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>idWorker-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>kafka-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>logAspect-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>netty</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>redisLimit-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>authorization-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>lock-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>quartz-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>schedule-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>helper</artifactId>
                 <version>${excavator.boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.excavator.boot</groupId>
+				<groupId>com.github.cmonkey</groupId>
 				<artifactId>config-spring-boot-starter</artifactId>
 				<version>${excavator.boot.version}</version>
 			</dependency>
