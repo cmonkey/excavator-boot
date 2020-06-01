@@ -47,8 +47,8 @@ class DruidDataSourceAutoConfiguration{
 
     try {
           druidDataSource.setFilters(properties.getFilters())
-          druidDataSource.init();
-      } catch {
+          druidDataSource.init()
+    } catch {
         case e:SQLException => e.printStackTrace()
       }
 
