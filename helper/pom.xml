@@ -99,7 +99,7 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.excavator.boot</groupId>
+			<groupId>com.github.cmonkey</groupId>
 			<artifactId>common</artifactId>
 		</dependency>
 		<dependency>
