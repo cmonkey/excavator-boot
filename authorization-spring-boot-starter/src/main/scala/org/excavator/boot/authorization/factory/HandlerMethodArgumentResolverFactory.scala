@@ -1,7 +1,6 @@
 package org.excavator.boot.authorization.factory
 
 import java.util
-import java.util.List
 
 import com.google.common.collect.Lists
 import javax.annotation.Resource
@@ -11,7 +10,7 @@ import org.excavator.boot.authorization.resolver.AuthorizationResolverFactory
 import org.springframework.stereotype.Component
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 @Component
 class HandlerMethodArgumentResolverFactory {
