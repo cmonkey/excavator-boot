@@ -84,7 +84,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.excavator.boot</groupId>
+            <groupId>com.github.cmonkey</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
