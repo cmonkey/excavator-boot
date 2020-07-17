@@ -34,7 +34,7 @@ public class ForkJoinCountTask extends RecursiveTask<Integer> {
         boolean canCompute = (end - start) <= THRESHOLD;
         if (canCompute) {
             System.out.println(String.format("start to compute from %d to %d", start, end));
-            for (int i = 0; i < end; i++) {
+            for (int i = start; i <= end; ++i) {
                 sum += i;
             }
         } else {
