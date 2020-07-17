@@ -33,7 +33,8 @@ class ForkJoinCountTaskTest {
         ForkJoinPool pool = new ForkJoinPool();
         ForkJoinCountTask task = new ForkJoinCountTask(1, 100);
         ForkJoinTask<Integer> result = pool.submit(task);
-        assertEquals(5050, result);
+        assertDoesNotThrow(() -> {
+            assertEquals(5050, result.get());
+        });
     }
-
 }
