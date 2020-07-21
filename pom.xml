@@ -58,6 +58,7 @@
 		<!-- 3rd lib dependency -->
 		<fastjson.version>1.2.72</fastjson.version>
 		<zookeeper.version>3.6.1</zookeeper.version>
+        <curator.version>5.1.0</curator.version>
 		<joda.time.version>2.10.6</joda.time.version>
 		<scala.major-version>2.13</scala.major-version>
 		<scala.version>${scala.major-version}.3</scala.version>
@@ -179,23 +180,21 @@
 				<version>${commons-lang3.version}</version>
 			</dependency>
 			<!-- curator -->
-			<!--
-               -<dependency>
-               -    <groupId>org.apache.curator</groupId>
-               -    <artifactId>curator-framework</artifactId>
-               -    <version>${curator.version}</version>
-               -</dependency>
-               -<dependency>
-               -    <groupId>org.apache.curator</groupId>
-               -    <artifactId>curator-x-discovery</artifactId>
-               -    <version>${curator.version}</version>
-               -</dependency>
-               -<dependency>
-               -    <groupId>org.apache.curator</groupId>
-               -    <artifactId>curator-recipes</artifactId>
-               -    <version>${curator.version}</version>
-               -</dependency>
-               -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-x-discovery</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
 
 			<dependency>
 				<groupId>org.apache.zookeeper</groupId>
