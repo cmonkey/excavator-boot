@@ -58,7 +58,7 @@
 		<!-- 3rd lib dependency -->
 		<fastjson.version>1.2.72</fastjson.version>
 		<zookeeper.version>3.6.0</zookeeper.version>
-		<joda.time.version>2.10.5</joda.time.version>
+		<joda.time.version>2.10.6</joda.time.version>
 		<scala.major-version>2.13</scala.major-version>
 		<scala.version>${scala.major-version}.3</scala.version>
 		<pagehelper.version>1.2.13</pagehelper.version>
