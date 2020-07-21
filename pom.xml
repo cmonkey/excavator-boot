@@ -67,7 +67,7 @@
 		<excavator-boot.version>2.0.0-SNAPSHOT</excavator-boot.version>
 		<pack.version>0.5.0</pack.version>
 		<mysql-connector.version>8.0.21</mysql-connector.version>
-		<commons-lang3.version>3.9</commons-lang3.version>
+		<commons-lang3.version>3.11</commons-lang3.version>
 		<lombok.version>1.18.10</lombok.version>
 		<druid.version>1.1.21</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
