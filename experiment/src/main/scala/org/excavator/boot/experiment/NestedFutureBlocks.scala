@@ -1,3 +1,4 @@
+package org.excavator.boot.experiment
 import scala.concurrent._,ExecutionContext.Implicits._,duration.Duration.Inf
 
 object NestedFutureBlocks{
@@ -12,6 +13,5 @@ object NestedFutureBlocks{
     a => Future.sequence(Seq(slow("B"), slow("C"), slow("D")))
   }
 
-  Await.result(runAsyncSerial(), Inf)
 }
 
