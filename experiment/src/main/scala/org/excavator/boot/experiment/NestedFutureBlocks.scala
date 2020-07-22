@@ -1,6 +1,6 @@
 import scala.concurrent._,ExecutionContext.Implicits._,duration.Duration.Inf
 
-object NestedFutureBlocksApp extends App{
+object NestedFutureBlocks{
   def slow(key: String) = Future{
     println(s"$key start")
     Thread.sleep(1000)
