@@ -9,9 +9,9 @@ import scala.concurrent.duration._
 
 class MonixIOscheduler {
 
-  def run() = {
+  def run(msg:String) = {
 
-    val bio = IO{println("Hello, World!"); "Hi"}
+    val bio = IO{println("Hello, World!"); msg}
 
     val scalaFuture: Future[String] = bio.runToFuture
 
