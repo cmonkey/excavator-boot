@@ -452,6 +452,12 @@
             </dependency>
 			<!-- ext end -->
 
+			<!-- https://mvnrepository.com/artifact/io.monix/monix-bio -->
+			<dependency>
+				<groupId>io.monix</groupId>
+				<artifactId>monix-bio_2.13</artifactId>
+				<version>1.0.0</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
