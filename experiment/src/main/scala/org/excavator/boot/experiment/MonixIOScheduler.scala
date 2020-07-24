@@ -7,7 +7,7 @@ import monix.execution.Scheduler.Implicits.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 
-class MonixIOscheduler {
+class MonixIOScheduler {
 
   def run(msg:String) = {
 
