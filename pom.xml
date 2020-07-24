@@ -90,6 +90,7 @@
 		<bouncycastle.version>1.66</bouncycastle.version>
 		<springswagger.version>3.0.0</springswagger.version>
         <jsch.version>0.1.55</jsch.version>
+		<monix.io.version>1.0.0</monix.io.version>
 
 		<main.user.dir>${user.dir}</main.user.dir>
 
@@ -452,6 +453,12 @@
             </dependency>
 			<!-- ext end -->
 
+			<!-- https://mvnrepository.com/artifact/io.monix/monix-bio -->
+			<dependency>
+				<groupId>io.monix</groupId>
+				<artifactId>monix-bio_2.13</artifactId>
+				<version>${monix.io.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
