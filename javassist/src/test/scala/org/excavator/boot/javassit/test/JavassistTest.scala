@@ -93,7 +93,7 @@ class JavassistTest {
 
     val bytecode = new Bytecode(classFile.getConstPool)
 
-    bytecode.addAload(0);
+    bytecode.addAload(0)
     bytecode.addInvokespecial("java/lang/Object", MethodInfo.nameInit, "()/V")
     bytecode.addReturn(null)
 
