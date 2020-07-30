@@ -21,4 +21,18 @@ class TryWithResources{
 
   }
 
+  private def closeAndAddSuppressed(e:Throwable, resource:AutoCloseable): Unit = {
+    if(e != null){
+      try{
+        resource.close()
+      }catch{
+        case NonFatal(suppressed) => 
+          e.addSuppressed(suppressed)
+      }
+    }else{
+      resource.close()
+    }
+
+  }
+
 }
