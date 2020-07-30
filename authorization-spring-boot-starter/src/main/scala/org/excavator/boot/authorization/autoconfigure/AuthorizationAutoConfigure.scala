@@ -45,7 +45,7 @@ class AuthorizationAutoConfigure {
 
     val authorizationResolver = new AuthorizationResolver
 
-    logger.info("authorizationResolver init ");
+    logger.info("authorizationResolver init ")
 
     authorizationResolver
   }
