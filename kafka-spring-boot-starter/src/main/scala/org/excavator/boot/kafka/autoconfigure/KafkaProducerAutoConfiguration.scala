@@ -1,5 +1,7 @@
 package org.excavator.boot.kafka.autoconfigure
 
+import java.util
+
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 import org.slf4j.LoggerFactory
@@ -18,20 +20,17 @@ class KafkaProducerAutoConfiguration {
   @Bean
   @ConditionalOnMissingBean
   def producerFactory(): ProducerFactory[String, String] = {
-    val map = Map(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG -> bootstrapServers, 
-      ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG -> classOf[StringSerializer], 
-      ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG -> classOf[StringSerializer], 
-      ProducerConfig.RETRIES_CONFIG -> 0, 
-      ProducerConfig.BATCH_SIZE_CONFIG ->16384,
-      ProducerConfig.BUFFER_MEMORY_CONFIG -> 33554432
-      )
+    val map = new util.HashMap[String, Any]()
+    map.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers)
+    map.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer])
+    map.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer])
+    map.put(ProducerConfig.RETRIES_CONFIG , 0)
+    map.put(ProducerConfig.BATCH_SIZE_CONFIG ,16384)
+    map.put(ProducerConfig.BUFFER_MEMORY_CONFIG , 33554432)
 
     logger.info(s"init producerFactory in properties = $map")
 
-    import scala.jdk.CollectionConverters._
-    val javaMap = map.map{case (k, v) => k -> v.asInstanceOf[Object]}.asJava
-
-    new DefaultKafkaProducerFactory[String, String](javaMap)
+    new DefaultKafkaProducerFactory[String, String](map)
   }
 
   @Bean
