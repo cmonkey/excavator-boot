@@ -1,5 +1,7 @@
 package org.excavator.boot.kafka.autoconfigure
 
+import java.util
+
 import org.apache.commons.lang3.StringUtils
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -32,22 +34,18 @@ class KafkaConsumerAutoConfiguration {
   def consumerFactory() = {
     val groupName = if(StringUtils.isBlank(groupId)) applicationName else groupId
 
-    val map = Map(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> bootstrapServers, 
-      ConsumerConfig.GROUP_ID_CONFIG -> groupName, 
-      ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
-      ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG -> classOf[StringDeserializer],
-      ConsumerConfig.AUTO_OFFSET_RESET_CONFIG ->  "earliest",
-      ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG -> true,
-      ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG -> "100"
-      )
+    val map = new util.HashMap[String, Any]()
+    map.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG , bootstrapServers)
+    map.put(ConsumerConfig.GROUP_ID_CONFIG , groupName)
+    map.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG , classOf[StringDeserializer])
+    map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG , classOf[StringDeserializer])
+    map.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG ,  "earliest")
+    map.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG , true)
+    map.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG , "100")
 
     logger.info(s"init consumerFactory param = $map")
 
-    import scala.collection.JavaConverters._
-
-    val javaMap = map.map{case (k, v) => k -> v.asInstanceOf[Object]}.asJava
-
-    new DefaultKafkaConsumerFactory[String, String](javaMap)
+    new DefaultKafkaConsumerFactory[String, String](map)
   }
 
   @Bean

@@ -20,6 +20,9 @@ docker run --name kafka --link zookeeper -p 9092:9092 -d kafka
 ### init redis 
 docker run --restart=always --name redis -p 6379:6379 -d redis redis-server --appendonly yes
 
+### change default JAVA_HOME
+export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
+
 ## install 
 mvn clean install -DskipTests=true -B -V
 

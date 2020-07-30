@@ -1,11 +1,11 @@
 package org.excavator.boot.authorization.mananger.impl
 
-import java.util.{Optional}
+import java.util.Optional
 import java.util.concurrent.TimeUnit
 
 import javax.annotation.Resource
 import org.excavator.boot.authorization.config.AuthorizationProperties
-import org.excavator.boot.authorization.constant.{CacheKeys}
+import org.excavator.boot.authorization.constant.CacheKeys
 import org.excavator.boot.authorization.manager.TokenManager
 import org.excavator.boot.authorization.model.Token
 import org.excavator.boot.helper.CustomerHelper
