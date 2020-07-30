@@ -28,7 +28,7 @@ class KafkaProducerAutoConfiguration {
 
     logger.info(s"init producerFactory in properties = $map")
 
-    import scala.collection.JavaConverters._
+    import scala.jdk.CollectionConverters._
     val javaMap = map.map{case (k, v) => k -> v.asInstanceOf[Object]}.asJava
 
     new DefaultKafkaProducerFactory[String, String](javaMap)
