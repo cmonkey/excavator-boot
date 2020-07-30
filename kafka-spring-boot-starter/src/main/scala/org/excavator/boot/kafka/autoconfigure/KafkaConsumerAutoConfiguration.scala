@@ -43,7 +43,7 @@ class KafkaConsumerAutoConfiguration {
 
     logger.info(s"init consumerFactory param = $map")
 
-    import scala.collection.JavaConverters._
+    import scala.jdk.CollectionConverters._
 
     val javaMap = map.map{case (k, v) => k -> v.asInstanceOf[Object]}.asJava
 
