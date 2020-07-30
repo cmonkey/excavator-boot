@@ -1,5 +1,7 @@
 package org.excavator.boot.experiment
 
+import scala.util.control.NonFatal
+
 class TryWithResources{
 
   def withResources[T <: AutoCloseable, V] (r: => T)(f: T => V) :V = {
