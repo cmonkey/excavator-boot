@@ -1,7 +1,7 @@
 package org.excavator.boot.experiment.test
 
 import java.io.File
-import java.nio.file.{Files, Path}
+import java.nio.file.Path
 
 import org.junit.jupiter.api.{DisplayName, Test}
 import org.junit.jupiter.api.Assertions._
