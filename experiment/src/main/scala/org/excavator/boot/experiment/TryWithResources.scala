@@ -38,3 +38,7 @@ class TryWithResources{
   }
 
 }
+
+object TryWithResources{
+  def apply() = new TryWithResources
+}
