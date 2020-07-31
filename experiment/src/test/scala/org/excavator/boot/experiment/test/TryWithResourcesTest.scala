@@ -17,7 +17,7 @@ class TryWithResourcesTest {
 
   @Test
   @DisplayName("testWithResources")
-  def testWithResources() = {
+  def testWithResources():Unit = {
     val redisClient = TryWithResourcesTest.redisClient
     TryWithResources.apply().withResources(redisClient.connect())(connection => {
       val reactiveRedisCommands = connection.reactive()
@@ -37,7 +37,7 @@ object TryWithResourcesTest{
   var redisClient: RedisClient = _
 
   @BeforeAll
-  def init() = {
+  def init():Unit = {
     Using(getClass.getClassLoader.getResourceAsStream("application.properties")){inputStream => {
       val properties = new Properties()
       properties.load(inputStream)
