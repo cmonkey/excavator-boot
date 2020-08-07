@@ -4,3 +4,4 @@
 4. 2020年7月22日09:21:05 upgrade dom4j version by CVE-2018-1000632 CVE-2020-10683
 5. 2020年7月22日09:50:00 change dom4j groupId to quartz-spring-boot-starter
 6. 2020年7月25日09:47:16 upgrade spring version 2.3.1 to 2.3.2
+7. 2020年8月6日13:13:49 upgrade spring cloud version Hoxton.SR6 to Hoxton.SR7
