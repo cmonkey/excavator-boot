@@ -9,7 +9,7 @@ jobs:
       - name: git pull repo
         uses: actions/checkout@v2
         with:
-          java-version: 11
+          java-version: 14
       - name: maven build
         run: 
           mvn clean package -DskipTests 
