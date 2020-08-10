@@ -7,15 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: git pull repo
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+      - name: Set up Jdk 14-ea
+        uses: actions/setup-java@v1
         with:
-          ref: feature/adaptive-jdk11
+          java-version: 14-ea
       - name: maven build
-        uses: qcastel/github-actions-maven/actions/maven@master
-        with:
-          maven-args: "clean install -DskipTests"
-      - name: view container directory 
-        run: |
-          pwd
-          ls -rlth 
+        run: 
+          mvn clean package -DskipTests 
 
