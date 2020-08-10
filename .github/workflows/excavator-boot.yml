@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: git pull repo
         uses: actions/checkout@v2
+      - name: Set up Jdk 14-ea
         uses: actions/setup-java@v1
         with:
           java-version: 14-ea
