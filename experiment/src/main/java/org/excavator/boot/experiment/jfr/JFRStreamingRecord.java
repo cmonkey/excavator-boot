@@ -20,7 +20,10 @@ import jdk.jfr.Configuration;
 import jdk.jfr.consumer.EventStream;
 import jdk.jfr.consumer.RecordingStream;
 import lombok.SneakyThrows;
+import lombok.val;
 
+import javax.management.MBeanConstructorInfo;
+import javax.management.MBeanServerConnection;
 import java.time.Duration;
 
 public class JFRStreamingRecord {
@@ -76,4 +79,18 @@ public class JFRStreamingRecord {
             es.awaitTermination(duration);
         }
     }
+
+    public static void recordingByJMS(){
+        var host = "127.0.0.1";
+        var port = 9999;
+        //FIXME future api call remoteRecordingStream
+        /*
+        var con = connect(host, port);
+
+        try(var es = new RemoteRecordingStream(conn)){
+
+        }
+         */
+    }
+
 }
