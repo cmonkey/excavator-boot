@@ -20,10 +20,7 @@ import jdk.jfr.Configuration;
 import jdk.jfr.consumer.EventStream;
 import jdk.jfr.consumer.RecordingStream;
 import lombok.SneakyThrows;
-import lombok.val;
 
-import javax.management.MBeanConstructorInfo;
-import javax.management.MBeanServerConnection;
 import java.time.Duration;
 
 public class JFRStreamingRecord {
