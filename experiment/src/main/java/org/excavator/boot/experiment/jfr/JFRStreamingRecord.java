@@ -17,6 +17,7 @@
 package org.excavator.boot.experiment.jfr;
 
 import jdk.jfr.Configuration;
+import jdk.jfr.consumer.EventStream;
 import jdk.jfr.consumer.RecordingStream;
 import lombok.SneakyThrows;
 
@@ -50,6 +51,28 @@ public class JFRStreamingRecord {
             rs.onEvent("jdk.JVMInformation", System.out::println);
             rs.start();
             rs.awaitTermination(duration);
+        }
+    }
+
+    @SneakyThrows
+    public static void openRepository(){
+        try(var es = EventStream.openRepository()){
+            es.onEvent("jdk.CPULoad", recordedEvent -> {
+                System.out.println("CPU Load " + recordedEvent.getEndTime());
+                System.out.println(" Machine total: " + 100 * recordedEvent.getFloat("machineTotal") + "%");
+                System.out.println(" Jvm User: " + 100 * recordedEvent.getFloat("jvmUser") + "%");
+                System.out.println(" Jvm System: " + 100 * recordedEvent.getFloat("jvmSystem") + "%");;
+                System.out.println();
+            });
+            es.onEvent("jdk.GarbageCollection", recordedEvent -> {
+                System.out.println("Garbage collection: " + recordedEvent.getLong("gcId"));
+                System.out.println(" Cause: " + recordedEvent.getString("cause"));
+                System.out.println(" Total pause: " + recordedEvent.getDuration("sumOfPause"));
+                System.out.println(" Longest pause: " + recordedEvent.getDuration("longestPause"));
+                System.out.println();
+            });
+
+            es.startAsync();
         }
     }
 }
