@@ -11,7 +11,6 @@ class JFRStreamingRecordTest {
   @DisplayName("testRecordingStream")
   def testRecordingStream(): Unit = {
     JFRStreamingRecord.recodingStream()
-    TimeUnit.SECONDS.sleep(10)
   }
 
 }
