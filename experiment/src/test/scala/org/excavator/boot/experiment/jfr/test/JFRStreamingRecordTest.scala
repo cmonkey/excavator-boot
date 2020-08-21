@@ -1,7 +1,6 @@
 package org.excavator.boot.experiment.jfr.test
 
 import java.time.Duration
-import java.util.concurrent.TimeUnit
 
 import org.excavator.boot.experiment.jfr.JFRStreamingRecord
 import org.junit.jupiter.api.{DisplayName, Test}
