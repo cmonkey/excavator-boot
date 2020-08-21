@@ -16,4 +16,11 @@ class JFRStreamingRecordTest {
     JFRStreamingRecord.recodingStream(Duration.ofSeconds(seconds))
   }
 
+  @DisplayName("testRecordingConfiguration")
+  @ParameterizedTest
+  @ValueSource(inits = Array(10))
+  def testRecordingConfiguration(): Unit = {
+    JFRStreamingRecord.recordingConfiguration()
+  }
+
 }
