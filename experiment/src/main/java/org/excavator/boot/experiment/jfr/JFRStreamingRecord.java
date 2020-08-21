@@ -6,10 +6,6 @@ import java.time.Duration;
 
 public class JFRStreamingRecord {
 
-    public static void main(String[] args) {
-        recodingStream();
-    }
-
     public static void recodingStream(){
         try(var rs = new RecordingStream()){
             rs.enable("jdk.CPULoad").withPeriod(Duration.ofSeconds(1));
