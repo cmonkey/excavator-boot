@@ -77,7 +77,7 @@ public class JFRStreamingRecord {
         }
     }
 
-    public static void recordingByJMS(){
+    public static void recordingByJMS() {
         var host = "127.0.0.1";
         var port = 9999;
         //FIXME future api call remoteRecordingStream
