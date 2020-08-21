@@ -23,4 +23,10 @@ class JFRStreamingRecordTest {
     JFRStreamingRecord.recordingConfiguration()
   }
 
+  @DisplayName("testOpenRepository")
+  @ParameterizedTest
+  @ValueSource(inits = Array(10))
+  def testOpenRepository(): Unit = {
+    JFRStreamingRecord.openRepository()
+  }
 }
