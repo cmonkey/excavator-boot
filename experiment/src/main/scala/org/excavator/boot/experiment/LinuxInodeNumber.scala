@@ -5,8 +5,8 @@ import java.nio.file.{Files, Paths}
 
 class LinuxInodeNumber {
 
-  def getLinuxInodeNumber(path:String) = {
-    val path = Paths.get(path)
+  def getLinuxInodeNumber(uri:String) = {
+    val path = Paths.get(uri)
     val attr = Files.readAttributes(path, classOf[BasicFileAttributes])
     val fileKey = attr.fileKey()
     val s = fileKey.toString()
@@ -14,4 +14,10 @@ class LinuxInodeNumber {
     inode
   }
 
+}
+
+object LinuxInodeNumber{
+  def apply(path:String) = {
+    new LinuxInodeNumber().getLinuxInodeNumber(path)
+  }
 }
