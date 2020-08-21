@@ -16,13 +16,16 @@
  */
 package org.excavator.boot.experiment.jfr;
 
+import jdk.jfr.Configuration;
 import jdk.jfr.consumer.RecordingStream;
+import lombok.SneakyThrows;
 
 import java.time.Duration;
 
 public class JFRStreamingRecord {
 
-    public static void recodingStream(){
+    @SneakyThrows
+    public static void recodingStream(Duration duration){
         try(var rs = new RecordingStream()){
             rs.enable("jdk.CPULoad").withPeriod(Duration.ofSeconds(1));
             rs.enable("jdk.JavaMonitorEnter").withThreshold(Duration.ofMillis(10));
@@ -34,6 +37,19 @@ public class JFRStreamingRecord {
             });
 
             rs.start();
+            rs.awaitTermination(duration);
+        }
+    }
+
+    @SneakyThrows
+    public static void recordingConfiguration(Duration duration){
+        var configuration = Configuration.getConfiguration("default");
+        try(var rs = new RecordingStream(configuration)){
+            rs.onEvent("jdk.GarbageCollection", System.out::println);
+            rs.onEvent("jdk.CPULoad", System.out::println);
+            rs.onEvent("jdk.JVMInformation", System.out::println);
+            rs.start();
+            rs.awaitTermination(duration);
         }
     }
 }
