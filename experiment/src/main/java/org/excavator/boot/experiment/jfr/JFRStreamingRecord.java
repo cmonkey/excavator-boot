@@ -55,7 +55,7 @@ public class JFRStreamingRecord {
     }
 
     @SneakyThrows
-    public static void openRepository(){
+    public static void openRepository(Duration duration){
         try(var es = EventStream.openRepository()){
             es.onEvent("jdk.CPULoad", recordedEvent -> {
                 System.out.println("CPU Load " + recordedEvent.getEndTime());
@@ -73,6 +73,7 @@ public class JFRStreamingRecord {
             });
 
             es.startAsync();
+            es.awaitTermination(duration);
         }
     }
 }
