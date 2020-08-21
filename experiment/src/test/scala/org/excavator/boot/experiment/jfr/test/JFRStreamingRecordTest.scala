@@ -1,6 +1,7 @@
 package org.excavator.boot.experiment.jfr.test
 
 import java.time.Duration
+import java.util.concurrent.TimeUnit
 
 import org.excavator.boot.experiment.jfr.JFRStreamingRecord
 import org.junit.jupiter.api.{DisplayName, Test}
@@ -18,15 +19,15 @@ class JFRStreamingRecordTest {
 
   @DisplayName("testRecordingConfiguration")
   @ParameterizedTest
-  @ValueSource(inits = Array(10))
-  def testRecordingConfiguration(): Unit = {
-    JFRStreamingRecord.recordingConfiguration()
+  @ValueSource(ints = Array(10))
+  def testRecordingConfiguration(seconds: Int): Unit = {
+    JFRStreamingRecord.recordingConfiguration(Duration.ofSeconds(seconds))
   }
 
   @DisplayName("testOpenRepository")
   @ParameterizedTest
-  @ValueSource(inits = Array(10))
-  def testOpenRepository(): Unit = {
-    JFRStreamingRecord.openRepository()
+  @ValueSource(ints = Array(10))
+  def testOpenRepository(seconds: Int): Unit = {
+    JFRStreamingRecord.openRepository(Duration.ofSeconds(seconds))
   }
 }
