@@ -20,6 +20,9 @@ docker run --name kafka --link zookeeper -p 9092:9092 -d kafka
 ### init redis 
 docker run --restart=always --name redis -p 6379:6379 -d redis redis-server --appendonly yes
 
+### run clickhouse container
+docker run -d --name clickhouse-server --ulimit nofile=262144:262144 -p 7123:8123 -p 9000:9000 yandex/clickhouse-server
+
 ### change default JAVA_HOME
 export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
 
@@ -32,8 +35,8 @@ sh ./check_format.sh
 
 ## after_script
 docker ps
-docker stop zookeeper kafka redis mysql
-docker rm -f zookeeper kafka redis mysql
+docker stop zookeeper kafka redis mysql clickhouse-server
+docker rm -f zookeeper kafka redis mysql clickhouse-server
 
 sed '/127.0.0.1 www.excavator.boot/d' /etc/hosts | sudo tee /etc/hosts
 sed '/127.0.0.1 www.excavator.com/d' /etc/hosts | sudo tee /etc/hosts
