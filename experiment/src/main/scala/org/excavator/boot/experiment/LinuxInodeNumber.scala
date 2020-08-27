@@ -6,6 +6,7 @@ import java.nio.file.{Files, Paths}
 class LinuxInodeNumber {
 
   def getLinuxInodeNumber(uri:String) = {
+    println(s"uri = ${uri}")
     val path = Paths.get(uri)
     val attr = Files.readAttributes(path, classOf[BasicFileAttributes])
     val fileKey = attr.fileKey()
