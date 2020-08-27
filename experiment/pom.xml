@@ -115,6 +115,10 @@
 			<artifactId>lettuce-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.github.housepower</groupId>
+			<artifactId>clickhouse-native-jdbc</artifactId>
+		</dependency>
     </dependencies>
 	<build>
 		<plugins>

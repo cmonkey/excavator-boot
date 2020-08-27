@@ -91,7 +91,7 @@
 		<springswagger.version>3.0.0</springswagger.version>
         <jsch.version>0.1.55</jsch.version>
 		<monix.io.version>1.0.0</monix.io.version>
-
+        <clickhouse-native-jdbc.version>2.2-stable</clickhouse-native-jdbc.version>
 		<main.user.dir>${user.dir}</main.user.dir>
 		<!-- adapted high version jdk start -->
 		<jaxb.version>2.3.0</jaxb.version>
@@ -463,6 +463,12 @@
 				<groupId>io.monix</groupId>
 				<artifactId>monix-bio_2.13</artifactId>
 				<version>${monix.io.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.github.housepower/clickhouse-native-jdbc -->
+			<dependency>
+				<groupId>com.github.housepower</groupId>
+				<artifactId>clickhouse-native-jdbc</artifactId>
+				<version>${clickhouse-native-jdbc.version}</version>
 			</dependency>
 
 		</dependencies>

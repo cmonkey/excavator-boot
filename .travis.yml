@@ -35,6 +35,7 @@ before_install:
   - docker run --restart=always --name zookeeper -p 2181:2181 -p 2888:2888 -p 3888:3888 -d zookeeper:3.6.1 
   - docker build -t kafka kafka-docker
   - docker run --name kafka --link zookeeper -p 9092:9092 -d kafka
+  - docker run -d --name clickhouse-server --ulimit nofile=262144:262144 -p 7123:8123 -p 9000:9000 yandex/clickhouse-server
   - docker ps
 
 install:
@@ -47,5 +48,5 @@ script:
 
 after_script:
   - docker ps
-  - docker stop zookeeper kafka
-  - docker rm -f zookeeper kafka
+  - docker stop zookeeper kafka clickhouse-server
+  - docker rm -f zookeeper kafka clickhouse-server
