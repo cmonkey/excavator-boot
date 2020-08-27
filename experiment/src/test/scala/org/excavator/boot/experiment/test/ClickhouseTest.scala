@@ -1,13 +1,15 @@
 package org.excavator.boot.experiment.test
 
-import java.sql.{Connection, DriverManager}
+import java.sql.{Connection, Date, DriverManager}
 
-import org.junit.jupiter.api.{BeforeAll, DisplayName, Test}
+import org.junit.jupiter.api.{AfterAll, BeforeAll, DisplayName, MethodOrderer, Order, Test, TestMethodOrder}
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ClickhouseTest {
 
   @Test
   @DisplayName("testSimpleQuery")
+  @Order(1)
   def testSimpleQuery(): Unit = {
     val statement = ClickhouseTest.connection.createStatement()
     val rs = statement.executeQuery("select (number % 3 + 1) as n, sum(number) from numbers(10000000) group by n")
@@ -18,6 +20,7 @@ class ClickhouseTest {
 
   @Test
   @DisplayName("testExecuteQuery")
+  @Order(2)
   def testExecuteQuery(): Unit = {
 
     val stmt = ClickhouseTest.connection.createStatement()
@@ -50,6 +53,30 @@ class ClickhouseTest {
 
     pstmt.executeBatch()
   }
+
+  @Test
+  @DisplayName("testBatch")
+  @Order(3)
+  def testBatch(): Unit = {
+    val stmt = ClickhouseTest.connection.createStatement()
+    stmt.executeQuery("drop table if exists test_log")
+    stmt.executeQuery("create table test_log(day default toDate(toDateTime(tiemstamp)), name String, age UInt8) Engine=Log")
+    val pstmt = ClickhouseTest.connection.prepareStatement("insert into test_log values(?, ?, ?)")
+    for(i <-0 until 10000){
+
+      val day = new Date(System.currentTimeMillis())
+      val name = "cmonkey-"+ i
+      val age = i.toByte
+
+      pstmt.setDate(1, day)
+      pstmt.setString(2, name)
+      pstmt.setByte(3, age)
+
+      pstmt.addBatch()
+    }
+
+    pstmt.executeBatch()
+  }
 }
 
 object ClickhouseTest{
@@ -57,5 +84,12 @@ object ClickhouseTest{
   @BeforeAll
   def init(): Unit = {
     connection = DriverManager.getConnection("jdbc:clickhouse://127.0.0.1:9000")
+  }
+
+  @AfterAll
+  def destroy(): Unit = {
+    if(connection != null){
+      connection.close()
+    }
   }
 }
