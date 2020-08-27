@@ -4,7 +4,7 @@ import java.sql.{Connection, Date, DriverManager}
 
 import org.junit.jupiter.api.{AfterAll, BeforeAll, DisplayName, MethodOrderer, Order, Test, TestMethodOrder}
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(classOf[MethodOrderer.OrderAnnotation])
 class ClickhouseTest {
 
   @Test
@@ -60,7 +60,7 @@ class ClickhouseTest {
   def testBatch(): Unit = {
     val stmt = ClickhouseTest.connection.createStatement()
     stmt.executeQuery("drop table if exists test_log")
-    stmt.executeQuery("create table test_log(day default toDate(toDateTime(tiemstamp)), name String, age UInt8) Engine=Log")
+    stmt.executeQuery("create table test_log(day Date, name String, age UInt8) Engine=Log")
     val pstmt = ClickhouseTest.connection.prepareStatement("insert into test_log values(?, ?, ?)")
     for(i <-0 until 10000){
 
