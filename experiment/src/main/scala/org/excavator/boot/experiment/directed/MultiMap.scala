@@ -27,4 +27,11 @@ class MultiMap {
 
   def keySet() = map.keySet
 
+  def removeAll(key: Any) = {
+    map.remove(key) match {
+      case Some(value) => value
+      case None => Collections.EMPTY_SET[Any]
+    }
+  }
+
 }
