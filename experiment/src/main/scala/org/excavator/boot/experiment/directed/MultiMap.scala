@@ -7,7 +7,7 @@ class MultiMap {
   // not key, but not null values
   val map = new mutable.LinkedHashMap[Any, Any]
 
-  def pub(key: Any, value: Any) = {
+  def put(key: Any, value: Any) = {
     var set = map.get(key).asInstanceOf[mutable.LinkedHashSet[Any]]
     if(set.isEmpty){
       set = new mutable.LinkedHashSet[Any]
