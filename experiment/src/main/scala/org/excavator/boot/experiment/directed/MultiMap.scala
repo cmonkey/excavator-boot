@@ -22,15 +22,15 @@ class MultiMap {
   }
 
   def get(key: Any) = {
-    map.getOrElse(key, Collections.EMPTY_SET[Any]).asInstanceOf[mutable.LinkedHashSet[Any]]
+    map.getOrElse(key, mutable.LinkedHashSet.empty[Any]).asInstanceOf[mutable.LinkedHashSet[Any]]
   }
 
   def keySet() = map.keySet
 
-  def removeAll(key: Any) = {
+  def removeAll(key: Any):mutable.LinkedHashSet[Any] = {
     map.remove(key) match {
-      case Some(value) => value
-      case None => Collections.EMPTY_SET[Any]
+      case Some(value) => value.asInstanceOf[mutable.LinkedHashSet[Any]]
+      case None => mutable.LinkedHashSet.empty[Any]
     }
   }
 
