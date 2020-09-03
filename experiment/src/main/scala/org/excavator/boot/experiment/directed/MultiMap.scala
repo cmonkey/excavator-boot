@@ -34,4 +34,11 @@ class MultiMap {
     }
   }
 
+  def remove(key:Any, value:Any) = {
+    val values = map.get(key).asInstanceOf[mutable.LinkedHashSet[Any]]
+    if(null != values){
+      values.remove(value)
+    }
+  }
+
 }
