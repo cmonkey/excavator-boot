@@ -40,7 +40,9 @@ class GraphTest {
     graph.addEdge(node1, node2)
     graph.addEdge(node2, node3)
 
-    println(s"node1 children = ${graph.getChildren(node1)}")
+    graph.getChildren(node2).foreach(elem => {
+      println(s"children = ${elem}")
+    })
 
     println(s"sources = ${graph.getSources()}")
     println(s"sinks = ${graph.getSinks()}")
