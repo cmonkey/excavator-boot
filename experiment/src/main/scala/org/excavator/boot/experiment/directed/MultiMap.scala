@@ -25,4 +25,6 @@ class MultiMap {
     map.getOrElse(key, Collections.EMPTY_SET[Any]).asInstanceOf[mutable.LinkedHashSet[Any]]
   }
 
+  def keySet() = map.keySet
+
 }
