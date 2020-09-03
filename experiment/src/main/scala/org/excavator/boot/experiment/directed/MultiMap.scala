@@ -25,7 +25,14 @@ class MultiMap {
   }
 
   def get(key: Any) = {
-    map.getOrElse(key, mutable.LinkedHashSet.empty[Any]).asInstanceOf[mutable.LinkedHashSet[Any]]
+    map.get(key) match {
+      case Some(v) => {
+        v.asInstanceOf[mutable.LinkedHashSet[Any]]
+      }
+      case None => {
+        mutable.LinkedHashSet.empty[Any]
+      }
+    }
   }
 
   def keySet() = map.keySet
