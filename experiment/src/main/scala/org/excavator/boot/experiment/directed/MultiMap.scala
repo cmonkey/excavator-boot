@@ -1,5 +1,7 @@
 package org.excavator.boot.experiment.directed
 
+import java.util.Collections
+
 import scala.collection.mutable
 
 class MultiMap {
@@ -17,6 +19,10 @@ class MultiMap {
     if(null != value){
       set.add(value)
     }
+  }
+
+  def get(key: Any) = {
+    map.getOrElse(key, Collections.EMPTY_SET[Any]).asInstanceOf[mutable.LinkedHashSet[Any]]
   }
 
 }
