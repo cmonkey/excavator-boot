@@ -41,4 +41,6 @@ class MultiMap {
     }
   }
 
+  override def toString: String = map.toString()
+
 }
