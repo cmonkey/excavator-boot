@@ -10,14 +10,17 @@ class MultiMap {
   val map = new mutable.LinkedHashMap[Any, Any]
 
   def put(key: Any, value: Any) = {
-    var set = map.get(key).asInstanceOf[mutable.LinkedHashSet[Any]]
-    if(set.isEmpty){
-      set = new mutable.LinkedHashSet[Any]
-      map.put(key, set)
-    }
-
-    if(null != value){
-      set.add(value)
+    map.get(key) match {
+      case Some(set:mutable.LinkedHashSet[Any]) => {
+        if(null != value){
+          set.add(value)
+        }
+      }
+      case None => {
+        val set = new mutable.LinkedHashSet[Any]
+        set.add(value)
+        map.put(key, set)
+      }
     }
   }
 
