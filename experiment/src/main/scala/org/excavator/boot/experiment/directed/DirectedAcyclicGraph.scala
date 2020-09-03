@@ -12,7 +12,7 @@ class DirectedAcyclicGraph {
       true
     }else{
       val set = fout.get(key)
-      if(set.exists(elem => {hasPath(elem, value)})){
+      if(set.filter(elem => {hasPath(elem, value)}).nonEmpty){
         true
       }else{
         false
@@ -69,7 +69,7 @@ class DirectedAcyclicGraph {
     roots
   }
   def getChildren(vertex:Any)={
-    fout.get(vertex).toSet
+    fout.get(vertex)
   }
 
 }
