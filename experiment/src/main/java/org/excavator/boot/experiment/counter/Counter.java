@@ -6,4 +6,8 @@ public abstract class Counter {
     public void add() {
         add(1);
     }
+
+    public Counter getThreadLocalView(){
+        return this;
+    }
 }
