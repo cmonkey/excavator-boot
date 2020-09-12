@@ -119,7 +119,13 @@
 			<groupId>com.github.housepower</groupId>
 			<artifactId>clickhouse-native-jdbc</artifactId>
 		</dependency>
-    </dependencies>
+		<!-- https://mvnrepository.com/artifact/dev.zio/zio -->
+		<dependency>
+			<groupId>dev.zio</groupId>
+			<artifactId>zio_2.13</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
