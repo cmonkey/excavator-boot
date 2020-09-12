@@ -39,12 +39,21 @@ public class CounterTest {
     }
     @Test
     @DisplayName("counter test by SynchronizedCounter")
-    @Order(3)
+    @Order(4)
     public void testSynchronizedCounter(){
         counterTest(new SynchronizedCounter(), Runtime.getRuntime().availableProcessors(), 0);
         counterTest(new SynchronizedCounter(), Runtime.getRuntime().availableProcessors(), 10);
         counterTest(new SynchronizedCounter(), Runtime.getRuntime().availableProcessors(), 50);
         counterTest(new SynchronizedCounter(), Runtime.getRuntime().availableProcessors(), 100);
+    }
+    @Test
+    @DisplayName("counter test by AtomicCounter")
+    @Order(5)
+    public void testAtomicCounter(){
+        counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 0);
+        counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 10);
+        counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 50);
+        counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 100);
     }
     @SneakyThrows
     public static void counterTest(ServerCounter counter, int nThreads, int delayFactor){
