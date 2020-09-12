@@ -3,7 +3,7 @@ package org.excavator.boot.experiment.zio
 import zio.console.{getStrLn, putStrLn}
 import zio.{IO, Task, UIO, URIO, ZIO}
 
-class ZIOApp extends App{
+object ZIOApp extends App{
 
   val s1 = ZIO.succeed(42)
 
