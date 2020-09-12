@@ -1,10 +1,7 @@
 package org.excavator.boot.experiment.counter.test;
 
 import lombok.SneakyThrows;
-import org.excavator.boot.experiment.counter.CounterThread;
-import org.excavator.boot.experiment.counter.EmptyCounter;
-import org.excavator.boot.experiment.counter.ServerCounter;
-import org.excavator.boot.experiment.counter.TrivialCounter;
+import org.excavator.boot.experiment.counter.*;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -31,7 +28,15 @@ public class CounterTest {
         counterTest(new TrivialCounter(), Runtime.getRuntime().availableProcessors(), 50);
         counterTest(new TrivialCounter(), Runtime.getRuntime().availableProcessors(), 100);
     }
-
+    @Test
+    @DisplayName("counter test by VolatileCounter")
+    @Order(3)
+    public void testVolatileCounter(){
+        counterTest(new VolatileCounter(), Runtime.getRuntime().availableProcessors(), 0);
+        counterTest(new VolatileCounter(), Runtime.getRuntime().availableProcessors(), 10);
+        counterTest(new VolatileCounter(), Runtime.getRuntime().availableProcessors(), 50);
+        counterTest(new VolatileCounter(), Runtime.getRuntime().availableProcessors(), 100);
+    }
     @SneakyThrows
     public static void counterTest(ServerCounter counter, int nThreads, int delayFactor){
         AtomicBoolean atomicBoolean = new AtomicBoolean(true);
