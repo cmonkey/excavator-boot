@@ -1,5 +1,6 @@
 package org.excavator.boot.experiment.zio
 
+import zio.console.{getStrLn, putStrLn}
 import zio.{IO, Task, UIO, URIO, ZIO}
 
 class ZIOApp extends App{
@@ -86,6 +87,31 @@ class ZIOApp extends App{
 
   def safeDownload(url:String) =
     blocking(download(url))
+
+  val succeeded: UIO[Int] = IO.succeed(21).map(_ * 2)
+
+  val failed: IO[Exception, Unit] = 
+    IO.fail("No no").mapError(msg => new Exception(msg))
+
+  val sequenced = 
+    getStrLn.flatMap(input => putStrLn(s"You entered: $input"))
+
+  val program = 
+    for {
+      _ <- putStrLn("hello! What is your name?")
+      name <- getStrLn
+      _ <- putStrLn(s"Hello, ${name}, welcome to ZIO!")
+    } yield()
+
+  val zipped: UIO[(String, Int)] = 
+    ZIO.succeed("4").zip(ZIO.succeed(2))
+
+  val zipRight1 = 
+    putStrLn("What is your name?").zipRight(getStrLn)
+
+  val zipRight2 = 
+    putStrLn("What is your name?") *>
+    getStrLn
 
 }
 
