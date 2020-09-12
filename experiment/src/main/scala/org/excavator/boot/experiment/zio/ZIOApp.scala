@@ -1,7 +1,9 @@
 package org.excavator.boot.experiment.zio
 
+import java.io.{FileNotFoundException, IOException}
+
 import zio.console.{getStrLn, putStrLn}
-import zio.{IO, Task, UIO, URIO, ZIO}
+import zio.{IO, Schedule, Task, UIO, URIO, ZIO}
 
 object ZIOApp extends App{
 
@@ -54,8 +56,9 @@ object ZIOApp extends App{
     ZIO.effectTotal(println(line))
 
   import java.io.IOException
-  val getStrin2: IO[IOException, String] =
-    ZIO.effect(StdIn.readLine()).refineOrDie[IOException]
+
+  //val getStrin2: IO[IOException, String] =
+    //ZIO.effect(StdIn.readLine()).refineOrDie[IOException]
 
   object legacy{
     def login(onSuccess: User => Unit,
@@ -113,7 +116,60 @@ object ZIOApp extends App{
     putStrLn("What is your name?") *>
     getStrLn
 
+  val zeither1: UIO[Either[String, Int]] =
+      IO.fail("Uh oh!").either
+  def sqrt(io: UIO[Double]): IO[String, Double] = 
+    ZIO.absolve(
+      io.map(value => 
+          if(value < 0.0) Left("Value must be >= 0.0")
+          else Right(Math.sqrt(value))
+          )
+      )
+
+  def openFile(value:String): IO[IOException, Array[Byte]] = ???
+
+  val z: IO[IOException, Array[Byte]] = 
+    openFile("primary.json").catchAll(_ => 
+        openFile("backup.json"))
+
+  val data: IO[IOException, Array[Byte]] = 
+    openFile("primary.data").catchSome {
+      case _:FileNotFoundException => 
+        openFile("backup.data")
+    }
+
+  val primaryOrBackupData: IO[IOException, Array[Byte]] = 
+    openFile("primary.data").orElse(openFile("backup.data"))
+
+  lazy val DefaultData: Array[Byte] = Array(0, 0)
+
+  val primaryOrDefaultData: UIO[Array[Byte]] = 
+    openFile("primary.data").fold(
+      _ => DefaultData,
+      data => data
+      )
+
+  val primaryOrSecondaryData: IO[IOException, Array[Byte]] = 
+    openFile("primary.data").foldM(
+      _ => openFile("secondary.data"),
+      data => ZIO.succeed(data)
+      )
+
+
+  import zio.clock._
+  val retriedOpenFile: ZIO[Clock, IOException, Array[Byte]] = 
+    openFile("primary.data").retry(Schedule.recurs(5))
+
+  /*
+  openFile("primary.data").retryOrElse(
+    Schedule.recurs(5)
+    (_, _) => ZIO.succeed(DefaultData)
+    )
+   */
+
 }
+case class Content()
+case class NoContent(error: IOException)
 
 case class AuthError() extends RuntimeException
 case class User(teamId:String)
