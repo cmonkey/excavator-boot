@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.excavator.boot.experiment.counter.*;
 import org.junit.jupiter.api.*;
 
+import java.text.spi.CollatorProvider;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -55,12 +56,36 @@ public class CounterTest {
         counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 50);
         counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 100);
     }
+    @Test
+    @DisplayName("counter test by CompoundCounter")
+    @Order(6)
+    public void testCompoundCounter(){
+        counterTest(new CompoundCounter(TrivialCounter.class), Runtime.getRuntime().availableProcessors(), 0);
+        counterTest(new CompoundCounter(TrivialCounter.class), Runtime.getRuntime().availableProcessors(), 10);
+        counterTest(new CompoundCounter(TrivialCounter.class), Runtime.getRuntime().availableProcessors(), 50);
+        counterTest(new CompoundCounter(TrivialCounter.class), Runtime.getRuntime().availableProcessors(), 100);
+
+        counterTest(new CompoundCounter(VolatileCounter.class), Runtime.getRuntime().availableProcessors(), 0);
+        counterTest(new CompoundCounter(VolatileCounter.class), Runtime.getRuntime().availableProcessors(), 10);
+        counterTest(new CompoundCounter(VolatileCounter.class), Runtime.getRuntime().availableProcessors(), 50);
+        counterTest(new CompoundCounter(VolatileCounter.class), Runtime.getRuntime().availableProcessors(), 100);
+
+        counterTest(new CompoundCounter(SynchronizedCounter.class), Runtime.getRuntime().availableProcessors(), 0);
+        counterTest(new CompoundCounter(SynchronizedCounter.class), Runtime.getRuntime().availableProcessors(), 10);
+        counterTest(new CompoundCounter(SynchronizedCounter.class), Runtime.getRuntime().availableProcessors(), 50);
+        counterTest(new CompoundCounter(SynchronizedCounter.class), Runtime.getRuntime().availableProcessors(), 100);
+
+        counterTest(new CompoundCounter(AtomicCounter.class), Runtime.getRuntime().availableProcessors(), 0);
+        counterTest(new CompoundCounter(AtomicCounter.class), Runtime.getRuntime().availableProcessors(), 10);
+        counterTest(new CompoundCounter(AtomicCounter.class), Runtime.getRuntime().availableProcessors(), 50);
+        counterTest(new CompoundCounter(AtomicCounter.class), Runtime.getRuntime().availableProcessors(), 100);
+    }
     @SneakyThrows
     public static void counterTest(ServerCounter counter, int nThreads, int delayFactor){
         AtomicBoolean atomicBoolean = new AtomicBoolean(true);
         ArrayList<CounterThread> threads = new ArrayList<>();
         for (int i = 0; i < nThreads; i++) {
-            threads.add(new CounterThread(counter, delayFactor, atomicBoolean));
+            threads.add(new CounterThread(counter.getThreadLocalView(), delayFactor, atomicBoolean));
         }
 
         threads.forEach(CounterThread::start);
