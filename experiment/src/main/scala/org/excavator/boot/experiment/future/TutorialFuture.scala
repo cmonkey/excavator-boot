@@ -1,5 +1,7 @@
 package org.excavator.boot.experiment.future
 
+import java.lang.Thread.sleep
+
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Await
@@ -37,5 +39,14 @@ class TutorialFuture {
   }yield println(s" Buying vanilla donut was successful = $isSuccess")
 
   dountStock("vanilla donut").map(someQty => println(s"Buying ${someQty.getOrElse(0)} vanilla donuts"))
+
+  def getStockPrice(stockSymbol:String) :Future[Double] = Future {
+    val r = scala.util.Random
+    val randomSleepTime = r.nextInt(3000)
+    val randomPrice = r.nextDouble * 1000
+    sleep(randomSleepTime)
+
+    randomPrice
+  }
 
 }
