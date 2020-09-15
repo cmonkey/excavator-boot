@@ -49,4 +49,14 @@ class TutorialFuture {
     randomPrice
   }
 
+  val result = Future{
+    println("Long running computation started.")
+    val result = {
+      Thread.sleep(5000)
+      5
+    }
+    println("Our computation, finally finished.")
+    result
+  }
+
 }
