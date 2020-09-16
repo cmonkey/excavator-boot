@@ -1,0 +1,14 @@
+** 进行中 Upgrade Spring Boot Version [#B] [0/1]                  :excavator:
+   SCHEDULED: <2020-09-16 Wed +1w>
+   - State "进行中"     from              [2020-09-16 Wed 16:28]
+   - [ ] Upgrade Spring Boot Version
+     
+** 进行中 Upgrade Spring Cloud Version [#B] [0/1]                 :excavator:
+   SCHEDULED: <2020-09-16 Wed +1w>
+   - State "进行中"     from              [2020-09-16 Wed 16:29]
+   - [ ] Upgrade Spring Cloud Version
+
+** 进行中 Upgrade Dependency Version [#B] [0/1]                   :excavator:
+   SCHEDULED: <2020-09-16 Wed +1m>
+   - State "进行中"     from              [2020-09-16 Wed 16:33]
+   - [ ] Upgrade Dependenc Version
