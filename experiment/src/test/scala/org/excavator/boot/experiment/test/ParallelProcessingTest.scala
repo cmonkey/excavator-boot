@@ -1,20 +1,23 @@
 package org.excavator.boot.experiment.test;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions._
 
 class ParallelProcessingTest {
 
     @Test
-    void theNaiveWay() {
+    @DisplayName("test theNaivWay")
+    def theNaiveWay():Unit {
+
     }
 
     @Test
-    void imposingAParallelismLimit() {
+    def imposingAParallelismLimit():Unit {
     }
 
     @Test
-    void batchedObservables() {
+    def batchedObservables():Unit {
     }
 }
