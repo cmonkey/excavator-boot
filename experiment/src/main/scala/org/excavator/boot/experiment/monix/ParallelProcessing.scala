@@ -25,4 +25,18 @@ class ParallelProcessing {
     aggregate.foreach(println)
   }
 
+  def batchedObservables(): Unit = {
+    val source = Observable.range(0, 1000).bufferIntrospective(256)
+
+    val batched = source.flatMap{items => 
+      val tasks = items.map(i => Task(i * 2))
+      val batches = tasks.sliding(10, 10).map(b => Task.parSequence(b)).iterator.to(Iterator)
+      val aggregate = Task.sequence(batches).map(_.flatten.toIterator)
+
+      Observable.fromIterator(aggregate)
+    }
+
+    batched.toListL.foreach(println)
+  }
+
 }
