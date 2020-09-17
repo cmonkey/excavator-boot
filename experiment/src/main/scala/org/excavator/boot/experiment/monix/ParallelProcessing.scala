@@ -15,4 +15,14 @@ class ParallelProcessing {
     aggregate.foreach(println)
   }
 
+  def imposingAParallelismLimit():Unit = {
+    val items = 0 until 1000
+    val tasks = items.map(i => Task(i * 2))
+    val batches = tasks.sliding(10, 10).map(b => Task.parSequence(b)).iterator.to(Iterator)
+
+    val aggregate = Task.sequence(batches).map(_.flatten.toList)
+
+    aggregate.foreach(println)
+  }
+
 }
