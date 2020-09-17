@@ -12,15 +12,24 @@ import org.tribuo.classification.sgd.linear.LogisticRegressionTrainer;
 import org.tribuo.data.csv.CSVLoader;
 import org.tribuo.evaluation.TrainTestSplitter;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class MLIris {
+    @SneakyThrows
+    private static Path getCurrentPath(String fileName) {
+        var classLoader = MLIris.class.getClassLoader();
+        var uri = classLoader.getResource(fileName).toURI();
+        var path = Paths.get(uri);
+        return path;
+    }
     @SneakyThrows
     public static void main(String[] args) {
         // Load labelled iris data
         var irisHeaders = new String[]{"sepalLength", "sepalWidth", "petalLength", "petalWidth", "species"};
         DataSource<Label> irisesSource =
-                new CSVLoader<>(new LabelFactory()).loadDataSource(Paths.get("/home/cmonkey/project/excavator-boot/experiment/src/main/resources/bezdekIris.data"),
+                new CSVLoader<>(new LabelFactory()).loadDataSource(
+                        getCurrentPath("bezdekIris.data"),
                         /* Output column   */ irisHeaders[4],
                         /* Column headers  */ irisHeaders);
 
