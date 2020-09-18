@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.excavator.boot.experiment.tribuo;
 
 import lombok.SneakyThrows;
@@ -23,20 +39,21 @@ public class MLIris {
         var path = Paths.get(uri);
         return path;
     }
+
     @SneakyThrows
     public static void main(String[] args) {
         // Load labelled iris data
-        var irisHeaders = new String[]{"sepalLength", "sepalWidth", "petalLength", "petalWidth", "species"};
-        DataSource<Label> irisesSource =
-                new CSVLoader<>(new LabelFactory()).loadDataSource(
-                        getCurrentPath("bezdekIris.data"),
-                        /* Output column   */ irisHeaders[4],
-                        /* Column headers  */ irisHeaders);
+        var irisHeaders = new String[] { "sepalLength", "sepalWidth", "petalLength", "petalWidth",
+                "species" };
+        DataSource<Label> irisesSource = new CSVLoader<>(new LabelFactory()).loadDataSource(
+            getCurrentPath("bezdekIris.data"),
+            /* Output column   */irisHeaders[4],
+            /* Column headers  */irisHeaders);
 
         // Split iris data into training set (70%) and test set (30%)
         var splitIrisData = new TrainTestSplitter<>(irisesSource,
-                /* Train fraction */ 0.7,
-                /* RNG seed */ 1L);
+        /* Train fraction */0.7,
+        /* RNG seed */1L);
         var trainData = new MutableDataset<>(splitIrisData.getTrain());
         var testData = new MutableDataset<>(splitIrisData.getTest());
 
@@ -52,7 +69,7 @@ public class MLIris {
         //Prediction<Label> prediction = linear.predict(testData.get(0));
 
         // Or we can evaluate the full test dataset, calculating the accuracy, F1 etc.
-        var evaluation = new LabelEvaluator().evaluate(linear,testData);
+        var evaluation = new LabelEvaluator().evaluate(linear, testData);
         // we can inspect the evaluation manually
         double acc = evaluation.accuracy();
         System.out.printf("acc = %f", acc);
