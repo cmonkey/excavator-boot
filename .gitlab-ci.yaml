@@ -13,7 +13,7 @@ cache:
 build: 
   stage: build
   script:
-    - mvn $MAVEN_CLI_OPTS compile
+    - mvn $MAVEN_CLI_OPTS clean package -DskipTests
 
 test:
   stage: test
