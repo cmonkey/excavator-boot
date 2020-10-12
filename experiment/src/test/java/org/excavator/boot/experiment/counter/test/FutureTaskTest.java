@@ -30,6 +30,7 @@ public class FutureTaskTest {
 
     @Test
     @DisplayName("testFutureTaskIsDone")
+    // https://bugs.openjdk.java.net/browse/JDK-8073704
     public void  testFutureTaskIsDone(){
 
         AtomicReference<FutureTask<Integer>> a = new AtomicReference<>();
