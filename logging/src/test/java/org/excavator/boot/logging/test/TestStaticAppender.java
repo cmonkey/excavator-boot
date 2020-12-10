@@ -33,7 +33,7 @@ public class TestStaticAppender {
     @Test
     public void testAssertingLoggingStatemenetsA() {
         LogProducingService service = new LogProducingService();
-        service.writeSomeLoggingStatemenets("A");
+        service.writeSomeLoggingStatements("A");
 
         assertThat(StaticAppender.getEvents()).extracting("message").containsOnly(
             "Let's assert some logs! A", "this message is in a separate thread");
@@ -42,7 +42,7 @@ public class TestStaticAppender {
     @Test
     public void testAssertingLoggingStatemenetsB() {
         LogProducingService service = new LogProducingService();
-        service.writeSomeLoggingStatemenets("B");
+        service.writeSomeLoggingStatements("B");
 
         assertThat(StaticAppender.getEvents()).extracting("message").containsOnly(
             "Let's assert some logs! B", "this message is in a separate thread");
