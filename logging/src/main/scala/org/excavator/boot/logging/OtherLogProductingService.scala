@@ -1,15 +1,15 @@
 package org.excavator.boot.logging
 
-import java.util.concurrent.{Executor, Executors}
-
 import org.slf4j.LoggerFactory
+
+import java.util.concurrent.Executors
 
 class OtherLogProductingService {
 
-  val logger = LoggerFactory.getLogger(classOf[OtherLogProductingService])
+  private val logger = LoggerFactory.getLogger(classOf[OtherLogProductingService])
 
   def writeSomeLoggingStatements(message: String) : Unit = {
-    logger.info(s"Let's a assert some logs! ${message}")
+    logger.info(s"Let's a assert some logs! $message")
 
     val executor = Executors.newSingleThreadExecutor()
 
