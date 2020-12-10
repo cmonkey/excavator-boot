@@ -25,7 +25,7 @@ class ThreadSafeAppender extends AppenderBase[ILoggingEvent]{
 object ThreadSafeAppender{
   val threadLocal = new ThreadLocal[java.util.List[ILoggingEvent]]
 
-  def getEvents(): util.List[ILoggingEvent] = {
+  def getEvents: util.List[ILoggingEvent] = {
     threadLocal.get()
   }
 

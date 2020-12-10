@@ -6,10 +6,10 @@ import org.slf4j.LoggerFactory
 
 class LogProducingService {
 
-  val logger = LoggerFactory.getLogger(classOf[LogProducingService])
+  private val logger = LoggerFactory.getLogger(classOf[LogProducingService])
 
-  def writeSomeLoggingStatemenets(message:String): Unit = {
-    logger.info(s"Let's assert some logs! ${message}")
+  def writeSomeLoggingStatements(message:String): Unit = {
+    logger.info(s"Let's assert some logs! $message")
 
     val executor = Executors.newSingleThreadExecutor()
 
@@ -17,7 +17,7 @@ class LogProducingService {
 
     do{
 
-    }while(!future.isDone())
+    }while(!future.isDone)
   }
 
 }

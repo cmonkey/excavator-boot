@@ -16,7 +16,7 @@ class StaticAppender extends AppenderBase[ILoggingEvent]{
 object StaticAppender{
   val events = new util.ArrayList[ILoggingEvent]()
 
-  def getEvents(): util.List[ILoggingEvent] = {
+  def getEvents: util.List[ILoggingEvent] = {
     events
   }
 

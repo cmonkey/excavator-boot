@@ -39,7 +39,7 @@ public class TestThreadSafeAppender {
     @Test
     public void testAssertingLoggingStatementsA() {
         LogProducingService service = new LogProducingService();
-        service.writeSomeLoggingStatemenets("A");
+        service.writeSomeLoggingStatements("A");
         assertThat(ThreadSafeAppender.getEvents()).extracting("message").containsOnly(
             "Let's assert some logs! A");
     }
@@ -47,7 +47,7 @@ public class TestThreadSafeAppender {
     @Test
     public void testAssertingLoggingStatementsB() {
         LogProducingService service = new LogProducingService();
-        service.writeSomeLoggingStatemenets("B");
+        service.writeSomeLoggingStatements("B");
         assertThat(ThreadSafeAppender.getEvents()).extracting("message").containsOnly(
             "Let's assert some logs! B");
     }
