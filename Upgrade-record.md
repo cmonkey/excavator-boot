@@ -10,3 +10,4 @@
 10. 2020年10月30日09:21:00 upgrade spring boot version 2.3.4 to 2.3.5
 11. 2020年11月15日11:33:13 upgrade spring boot version 2.3.5 to 2.3.6
 12. 2020年11月15日11:33:47 upgrade spring cloude version Hoxton.SR8 to Hoxton.SR9 
+13. 2020年12月12日17:01:07 upgrade spring boot version 2.3.6 to 2.3.7
