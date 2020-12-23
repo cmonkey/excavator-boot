@@ -1,4 +1,16 @@
-package org.excavator.boot.experiment.test;
+package org.excavator.boot.experiment.test
 
-public class ByteBufferTest {
+import org.junit.jupiter.api.{DisplayName, Test}
+
+import java.nio.ByteBuffer
+
+class ByteBufferTest {
+
+  @Test
+  @DisplayName("test buffer")
+  def testBuffer(): Unit = {
+    val buffer = ByteBuffer.wrap(Array[Byte](1,2,3))
+    buffer.position(1)
+    println(s"buffer = ${buffer.get()}")
+  }
 }
