@@ -14,7 +14,7 @@ class ClickhouseTest {
     val statement = ClickhouseTest.connection.createStatement()
     val rs = statement.executeQuery("select (number % 3 + 1) as n, sum(number) from numbers(10000000) group by n")
     while(rs.next()){
-      println(rs.getInt(1) + "\t" + rs.getLong(2))
+      println(s"${rs.getInt(1)} \t ${rs.getLong(2)}")
     }
   }
 

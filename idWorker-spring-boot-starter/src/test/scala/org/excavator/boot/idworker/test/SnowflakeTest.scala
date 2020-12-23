@@ -3,8 +3,8 @@ package org.excavator.boot.idworker.test
 import org.excavator.boot.common.helper.JSONProxy
 import org.excavator.boot.idworker.algorithm.Snowflake
 import org.excavator.boot.idworker.storage.SnowflakeNodeInfo
-import org.junit.Test
-import org.junit.Assert._
+import org.junit.jupiter.api.Assertions.{assertEquals, assertNotNull}
+import org.junit.jupiter.api.Test
 class SnowflakeTest{
 
   @Test
