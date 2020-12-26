@@ -32,14 +32,14 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 @BenchmarkMode(Mode.Throughput)
 @Warmup(iterations = 3)
-@Measurement(iterations = 10, time = 5, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 10, time = 5)
 @Threads(8)
 @Fork(2)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class UnmodifiableCollectionBenchmark {
 
     private static final long size = 10;
-    final static Set<Integer> underlyingCollection = new Random().ints(size).mapToObj(i -> i )
+    final static Set<Integer> underlyingCollection = new Random().ints(size).boxed()
             .collect(Collectors.toCollection(HashSet::new));
     final static Set<Integer> unmodifiableCollection = underlyingCollection;
     @Benchmark
@@ -62,8 +62,8 @@ public class UnmodifiableCollectionBenchmark {
     @Benchmark
     public void linearAccess(Blackhole hole){
         List<Integer> list =  unmodifiableCollection();
-        for (int i = 0; i < list.size(); i++) {
-            hole.consume(list.get(i));
+        for (Integer integer : list) {
+            hole.consume(integer);
         }
     }
 
