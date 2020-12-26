@@ -2,6 +2,7 @@ package org.excavator.boot.redislimit.autoconfigure
 
 import com.fasterxml.jackson.annotation.{JsonAutoDetect, PropertyAccessor}
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator
 import org.excavator.boot.redislimit.config.RedisLimitServiceConfigFactory
 import org.excavator.boot.redislimit.factory.RedisLimitServiceFactory
 import org.excavator.boot.redislimit.handler.{RedisLimitAspectHandler, RedisLimitExecute}
@@ -49,7 +50,6 @@ class RedisLimitAutoConfiguration{
     val mapper = new ObjectMapper()
 
     mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY)
-    mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL)
 
     serializer.setObjectMapper(mapper)
 
