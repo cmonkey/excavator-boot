@@ -49,7 +49,7 @@ object LocalAppender{
       true
     }catch{
       case e: ClassCastException => false
-      case _ => false
+      case _:Throwable => false
     }
 
   }
