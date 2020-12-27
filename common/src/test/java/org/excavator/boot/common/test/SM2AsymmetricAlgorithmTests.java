@@ -197,7 +197,7 @@ public class SM2AsymmetricAlgorithmTests {
         String data = "javascript";
 
         Optional<byte[]> optionalEncrypt = GeneratePublicPrivateKeys.encrypt(
-            data.getBytes(Charsets.UTF_8), "SM2", publicPrivateKey.getPublicKey());
+            data.getBytes(StandardCharsets.UTF_8), "SM2", publicPrivateKey.getPublicKey());
 
         assertEquals(true, optionalEncrypt.isPresent());
 
@@ -211,7 +211,8 @@ public class SM2AsymmetricAlgorithmTests {
 
             assertEquals(true, optionalDecrypt.isPresent());
 
-            assertEquals("javascript1024", new String(optionalDecrypt.get(), Charsets.UTF_8));
+            assertEquals("javascript1024",
+                new String(optionalDecrypt.get(), StandardCharsets.UTF_8));
 
             Optional<byte[]> optionalDecryptBySM2 = GeneratePublicPrivateKeys.decryptBySM2(
                 Hex.decodeHex(encData), publicPrivateKey.getPrivateKey());
