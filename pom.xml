@@ -630,24 +630,26 @@
 					<skipSource>true</skipSource>
                 </configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${maven.javadoc.plugin}</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-                    <doclint>none</doclint>
-                    <source>1.8</source>
-                </configuration>
-			</plugin>
+<!--
+   -
+   -            <plugin>
+   -                <groupId>org.apache.maven.plugins</groupId>
+   -                <artifactId>maven-javadoc-plugin</artifactId>
+   -                <version>${maven.javadoc.plugin}</version>
+   -                <executions>
+   -                    <execution>
+   -                        <id>attach-javadocs</id>
+   -                        <goals>
+   -                            <goal>jar</goal>
+   -                        </goals>
+   -                    </execution>
+   -                </executions>
+   -                <configuration>
+   -                    <doclint>none</doclint>
+   -                    <source>1.8</source>
+   -                </configuration>
+   -            </plugin>
+   -->
 
 			<plugin>
 				<groupId>org.eluder.coveralls</groupId>
@@ -729,19 +731,21 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <executions>
-                    <execution>
-                    <id>attach-javadocs</id>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--
+               -<plugin>
+               -    <groupId>org.apache.maven.plugins</groupId>
+               -    <artifactId>maven-javadoc-plugin</artifactId>
+               -    <version>2.9.1</version>
+               -    <executions>
+               -        <execution>
+               -        <id>attach-javadocs</id>
+               -        <goals>
+               -            <goal>jar</goal>
+               -        </goals>
+               -        </execution>
+               -    </executions>
+               -</plugin>
+               -->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
