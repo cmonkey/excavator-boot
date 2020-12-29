@@ -78,8 +78,9 @@ public class LockAutoConfiguration {
             }
         }
 
-        Codec codec = (Codec) ClassUtils.forName(lockConfigRedis.getCodec(),
-            ClassUtils.getDefaultClassLoader()).newInstance();
+        Codec codec = (Codec) ClassUtils
+            .forName(lockConfigRedis.getCodec(), ClassUtils.getDefaultClassLoader())
+            .getDeclaredConstructor().newInstance();
         config.setCodec(codec);
         config.setEventLoopGroup(new NioEventLoopGroup());
 

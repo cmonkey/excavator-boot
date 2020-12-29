@@ -6,14 +6,12 @@ import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
 import org.excavator.boot.authorization.annotation.Authorization
 import org.excavator.boot.authorization.constant.TokenConstants
 import org.excavator.boot.authorization.manager.TokenManager
-import org.excavator.boot.common.helper.JSONProxy
-import org.springframework.http.{HttpStatus, ResponseEntity}
 import org.springframework.stereotype.Component
 import org.springframework.web.method.HandlerMethod
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter
+import org.springframework.web.servlet.AsyncHandlerInterceptor
 
 @Component
-class AuthorizationInterceptor extends HandlerInterceptorAdapter {
+class AuthorizationInterceptor extends AsyncHandlerInterceptor {
   @Resource
   private[interceptor] val tokenManager:TokenManager = null
 

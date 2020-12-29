@@ -34,7 +34,7 @@ class NettyClient(host:String, port:Int,maxFrameLength:Int, position: Int, chars
     this(host, port, 10 * 1024 * 1024, 8, charset, ResponseViewMode.BODY)
   }
 
-  def this(host: String, port:Int, maxFrameLength: Int, position: Int){
+  def this(host: String, port:Int, maxFrameLength: Int, position: Int) = {
     this(host, port, maxFrameLength, position, Charsets.UTF_8, ResponseViewMode.BODY)
   }
 
