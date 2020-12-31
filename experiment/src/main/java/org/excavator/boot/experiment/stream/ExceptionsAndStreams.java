@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Function;
 
 import static java.util.Arrays.asList;
@@ -11,13 +12,15 @@ import static java.util.stream.Collectors.toList;
 
 public class ExceptionsAndStreams {
 
-    public void convertingCheckedIntoRuntimeExceptions(){
+    public List<Date> convertingCheckedIntoRuntimeExceptions(){
         var format = new SimpleDateFormat("yyyy-MM-dd") ;
         var dateList = asList("2020-10-11", "2020-nov-12", "2020-12-01");
         //ThrowingFunction<String, Date> p = s -> format.parse(s);
         ThrowingFunction<String, Date> p = format::parse;
         var f = wrapAsRuntime(p);
         var dates = dateList.stream().map(f).collect(toList());
+
+        return dates;
     }
     @SneakyThrows
     private static Date uglyParse(SimpleDateFormat format, String s){
@@ -31,6 +34,6 @@ public class ExceptionsAndStreams {
             }catch(Exception e){
                 throw new RuntimeException(e);
             }
-        }
+        };
     }
 }
