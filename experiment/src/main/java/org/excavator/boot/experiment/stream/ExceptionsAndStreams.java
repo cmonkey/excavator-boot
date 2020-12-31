@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.function.Function;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
@@ -18,5 +19,15 @@ public class ExceptionsAndStreams {
     @SneakyThrows
     private static Date uglyParse(SimpleDateFormat format, String s){
         return format.parse(s);
+    }
+
+    private static <T, R> Function<T, R> wrapAsRuntime(ThrowingFunction<T, R> p){
+        return t -> {
+            try{
+                return p.apply(t);
+            }catch(Exception e){
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
