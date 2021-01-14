@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.excavator.boot.experiment.reflection;
 
 import scala.Tuple2;
@@ -10,25 +26,28 @@ import java.util.function.Function;
 public class JavaBeanUtil {
     private static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
 
-    public static Tuple2<? extends Class, Function> createTupleWithReturnTypeAndGetter(Method getterMethod){
+    public static Tuple2<? extends Class, Function> createTupleWithReturnTypeAndGetter(Method getterMethod) {
         try {
-            return Tuple2.apply(getterMethod.getReturnType(),
-                    (Function) createCallSite(LOOKUP.unreflect(getterMethod)).getTarget().invokeExact());
-        }catch(Throwable e){
-            throw new IllegalArgumentException("lambda creation failed for getterMethod ( " + getterMethod.getName() + ").", e);
+            return Tuple2
+                .apply(getterMethod.getReturnType(),
+                    (Function) createCallSite(LOOKUP.unreflect(getterMethod)).getTarget()
+                        .invokeExact());
+        } catch (Throwable e) {
+            throw new IllegalArgumentException("lambda creation failed for getterMethod ( "
+                                               + getterMethod.getName() + ").", e);
         }
     }
-    private static CallSite createCallSite(MethodHandle getterMethodHandle) throws LambdaConversionException {
+
+    private static CallSite createCallSite(MethodHandle getterMethodHandle)
+                                                                           throws LambdaConversionException {
         return LambdaMetafactory.metafactory(LOOKUP, "apply",
-                MethodType.methodType(Function.class),
-                MethodType.methodType(Object.class, Object.class),
-                getterMethodHandle, getterMethodHandle.type());
+            MethodType.methodType(Function.class),
+            MethodType.methodType(Object.class, Object.class), getterMethodHandle,
+            getterMethodHandle.type());
     }
 
     public static boolean isGetterMethod(Method method) {
-        return method.getParameterCount() == 0 &&
-                !Modifier.isStatic(method.getModifiers()) &&
-                method.getName().startsWith("get") &&
-                !method.getName().endsWith("Class");
+        return method.getParameterCount() == 0 && !Modifier.isStatic(method.getModifiers())
+               && method.getName().startsWith("get") && !method.getName().endsWith("Class");
     }
 }
