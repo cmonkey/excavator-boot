@@ -16,3 +16,5 @@
 16. 2021年1月16日00:24:49 upgrade spring boot version 2.4.1 to the 2.4.2
 17. 2021年2月19日16:16:40 upgrade spring boot version 2.4.2 to the 2.4.3
 18. 2021年2月19日16:16:51 upgrade spring cloud version 2020.0.0 to 2020.0.1
+19. 2021年3月19日22:09:08 upgrade spring boot version 2.4.3 to the 2.4.4
+20. 2021年3月19日22:09:21 upgrade spring cloud version 2020.0.1 to 2020.0.2
