@@ -5,7 +5,7 @@ import java.util
 import javassist.ClassPool
 import javassist.bytecode.{AccessFlag, Bytecode, FieldInfo, MethodInfo, Mnemonic}
 import org.excavator.boot.javassit.{ClassFileExt, ClassFileHelper}
-import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder}
+import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder, Disabled}
 import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
 
