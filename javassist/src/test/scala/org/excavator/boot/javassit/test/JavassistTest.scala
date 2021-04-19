@@ -15,6 +15,7 @@ class JavassistTest {
   @Test
   @DisplayName("testPointExt")
   @Order(1)
+  @Disabled
   def testPointExt() = {
     val className = "org.excavator.boot.javassit.test.Test"
     val fileName = "Id"
@@ -59,6 +60,7 @@ class JavassistTest {
   @Test
   @DisplayName("testAddFieldToExistingClassBytecode")
   @Order(3)
+  @Disabled
   def testAddFieldToExistingClassBytecode() = {
     val fieldName = "id"
     val classPool = ClassPool.getDefault
