@@ -18,3 +18,5 @@
 18. 2021年2月19日16:16:51 upgrade spring cloud version 2020.0.0 to 2020.0.1
 19. 2021年3月19日22:09:08 upgrade spring boot version 2.4.3 to the 2.4.4
 20. 2021年3月19日22:09:21 upgrade spring cloud version 2020.0.1 to 2020.0.2
+21. 2021年4月19日11:29:20 upgrade spring boot version 2.4.4 to the 2.4.5
+22. 2021年4月19日11:46:09 upgrade lombok version 1.18.18 to the 1.18.20
