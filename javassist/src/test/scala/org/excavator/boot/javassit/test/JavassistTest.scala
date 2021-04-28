@@ -5,7 +5,7 @@ import java.util
 import javassist.ClassPool
 import javassist.bytecode.{AccessFlag, Bytecode, FieldInfo, MethodInfo, Mnemonic}
 import org.excavator.boot.javassit.{ClassFileExt, ClassFileHelper}
-import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder, Disabled}
+import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder}
 import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
 
@@ -15,7 +15,6 @@ class JavassistTest {
   @Test
   @DisplayName("testPointExt")
   @Order(1)
-  @Disabled
   def testPointExt() = {
     val className = "org.excavator.boot.javassit.test.Test"
     val fileName = "Id"
@@ -60,7 +59,6 @@ class JavassistTest {
   @Test
   @DisplayName("testAddFieldToExistingClassBytecode")
   @Order(3)
-  @Disabled
   def testAddFieldToExistingClassBytecode() = {
     val fieldName = "id"
     val classPool = ClassPool.getDefault
