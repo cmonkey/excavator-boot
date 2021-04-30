@@ -16,7 +16,7 @@ class JavassistTest {
   @DisplayName("testPointExt")
   @Order(1)
   def testPointExt() = {
-    val className = "org.excavator.boot.javassit.test.Test"
+    val className = "org.excavator.boot.javassist.test.Test"
     val fileName = "Id"
 
     val classFile = ClassFileExt.createClass(className, fileName)
@@ -33,7 +33,7 @@ class JavassistTest {
   @Order(2)
   def testLoadByteCode() = {
     val classPool = ClassPool.getDefault
-    val ctClass = classPool.get("org.excavator.boot.javassit.Point")
+    val ctClass = classPool.get("org.excavator.boot.javassist.Point")
 
     ctClass.defrost()
 
@@ -62,7 +62,7 @@ class JavassistTest {
   def testAddFieldToExistingClassBytecode() = {
     val fieldName = "id"
     val classPool = ClassPool.getDefault
-    val classFile = classPool.get("org.excavator.boot.javassit.Point").getClassFile
+    val classFile = classPool.get("org.excavator.boot.javassist.Point").getClassFile
 
     val fieldInfo = new FieldInfo(classFile.getConstPool, fieldName, "I")
     fieldInfo.setAccessFlags(AccessFlag.PUBLIC)
@@ -85,7 +85,7 @@ class JavassistTest {
   @Order(4)
   def testAddingConstructorToClassBytecode() = {
     val classPool = ClassPool.getDefault
-    val ctClass = classPool.get("org.excavator.boot.javassit.Point")
+    val ctClass = classPool.get("org.excavator.boot.javassist.Point")
 
     ctClass.defrost()
 
@@ -121,7 +121,7 @@ class JavassistTest {
   @Order(5)
   def testSetSuperClass() = {
     val classPool = ClassPool.getDefault
-    val ctClass = classPool.get("org.excavator.boot.javassit.Rectangle")
+    val ctClass = classPool.get("org.excavator.boot.javassist.Rectangle")
     ctClass.setSuperclass(classPool.get("org.excavator.boot.javassit.Point"))
     ctClass.writeFile()
 
