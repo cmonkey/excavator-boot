@@ -14,10 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.excavator.boot.javassit;
+package org.excavator.boot.javassist;
 
-public class Rectangle {
-    private int width;
+public class Point {
+    private int x;
+    private int y;
 
-    private int height;
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }
