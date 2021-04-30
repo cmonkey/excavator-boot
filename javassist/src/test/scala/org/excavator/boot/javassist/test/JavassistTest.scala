@@ -1,10 +1,10 @@
-package org.excavator.boot.javassit.test
+package org.excavator.boot.javassist.test
 
 import java.util
 
 import javassist.ClassPool
 import javassist.bytecode.{AccessFlag, Bytecode, FieldInfo, MethodInfo, Mnemonic}
-import org.excavator.boot.javassit.{ClassFileExt, ClassFileHelper}
+import org.excavator.boot.javassist.{ClassFileExt, ClassFileHelper}
 import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder}
 import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
@@ -122,11 +122,11 @@ class JavassistTest {
   def testSetSuperClass() = {
     val classPool = ClassPool.getDefault
     val ctClass = classPool.get("org.excavator.boot.javassist.Rectangle")
-    ctClass.setSuperclass(classPool.get("org.excavator.boot.javassit.Point"))
+    ctClass.setSuperclass(classPool.get("org.excavator.boot.javassist.Point"))
     ctClass.writeFile()
 
     val superClassSimpleName = ctClass.getSuperclass.getSimpleName
-    val simpleName = classPool.get("org.excavator.boot.javassit.Point").getSimpleName
+    val simpleName = classPool.get("org.excavator.boot.javassist.Point").getSimpleName
 
     assertEquals(superClassSimpleName, simpleName)
 

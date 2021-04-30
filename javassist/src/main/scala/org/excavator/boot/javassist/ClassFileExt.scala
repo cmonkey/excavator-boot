@@ -1,4 +1,4 @@
-package org.excavator.boot.javassit
+package org.excavator.boot.javassist
 
 import javassist.bytecode.{AccessFlag, ClassFile, FieldInfo}
 

@@ -14,19 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.excavator.boot.javassit;
+package org.excavator.boot.javassist;
 
-import javassist.CannotCompileException;
-import javassist.ClassPool;
-import javassist.bytecode.ClassFile;
+public class Rectangle {
+    private int width;
 
-import java.lang.reflect.Field;
-
-public class ClassFileHelper {
-
-    public static Field[] getFields(ClassPool classPool, ClassFile classFile)
-                                                                             throws CannotCompileException {
-
-        return classPool.makeClass(classFile).toClass().getFields();
-    }
+    private int height;
 }

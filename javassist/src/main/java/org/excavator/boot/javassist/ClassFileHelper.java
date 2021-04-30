@@ -14,14 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.excavator.boot.javassit;
+package org.excavator.boot.javassist;
 
-public class Point {
-    private int x;
-    private int y;
+import javassist.CannotCompileException;
+import javassist.ClassPool;
+import javassist.bytecode.ClassFile;
 
-    public void move(int x, int y) {
-        this.x = x;
-        this.y = y;
+import java.lang.reflect.Field;
+
+public class ClassFileHelper {
+
+    public static Field[] getFields(ClassPool classPool, ClassFile classFile)
+                                                                             throws CannotCompileException {
+
+        return classPool.makeClass(classFile).toClass().getFields();
     }
 }
