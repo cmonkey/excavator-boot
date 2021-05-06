@@ -24,7 +24,7 @@ docker run --restart=always --name redis -p 6379:6379 -d redis redis-server --ap
 docker run -d --name clickhouse-server --ulimit nofile=262144:262144 -p 7123:8123 -p 9000:9000 yandex/clickhouse-server
 
 ### change default JAVA_HOME
-export JAVA_HOME=/usr/lib/jvm/java-15-jdk
+export JAVA_HOME=/usr/lib/jvm/java-16-jdk
 
 ## install 
 mvn clean install -DskipTests=true -B -V
