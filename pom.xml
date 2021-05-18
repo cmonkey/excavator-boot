@@ -108,7 +108,7 @@
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
 		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
 		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
-		<alchim31.scala.plugin>4.5.1</alchim31.scala.plugin>
+		<alchim31.scala.plugin>4.5.0</alchim31.scala.plugin>
 		<maven.surefire.plugin>3.0.0-M5</maven.surefire.plugin>
 
 	</properties>
