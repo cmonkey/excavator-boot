@@ -2,6 +2,7 @@ package org.excavator.boot.experiment.test
 
 import org.junit.jupiter.api.{DisplayName, Test}
 
+import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.time.{Duration, Instant, LocalDate, LocalDateTime, LocalTime, Month, Period, ZoneId, ZonedDateTime}
 
@@ -137,6 +138,24 @@ class DateTimeApiTest {
     val localDateTimeRome = LocalDateTime.now(zoneIdRome)
 
     println(s"between = ${ChronoUnit.MINUTES.between(localDateTimeRome, localDateTimeSystem)}")
+  }
+
+  @Test
+  @DisplayName("test format DateTimeFormatter")
+  def testDateTimeFormatter():Unit = {
+    val localDate = LocalDate.now()
+    val dateTimeFormatter = DateTimeFormatter.ofPattern("dd MM yyyy")
+    val dateTimeFormatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+    val dateTimeFormatter2 = DateTimeFormatter.ofPattern("EEE-dd/MM/yyyy")
+
+    println(s" localDate = ${localDate}")
+    println(s" dateTimeFormatter = ${dateTimeFormatter.format(localDate)}")
+    println(s" dateTimeFormatter1 = ${dateTimeFormatter1.format(localDate)}")
+    println(s" dateTimeFormatter2 = ${dateTimeFormatter2.format(localDate)}")
+
+    val localTime = LocalTime.now()
+    val dateTimeFormatter3 = DateTimeFormatter.ofPattern("hh--mm--ss")
+    println(s" dateTimeFormatter3 = ${dateTimeFormatter3.format(localTime)}")
   }
 
 }
