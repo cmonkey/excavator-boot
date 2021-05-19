@@ -2,7 +2,7 @@ package org.excavator.boot.experiment.test
 
 import org.junit.jupiter.api.{DisplayName, Test}
 
-import java.time.{Instant, LocalDate, LocalDateTime, LocalTime, Month, ZoneId, ZonedDateTime}
+import java.time.{Instant, LocalDate, LocalDateTime, LocalTime, Month, Period, ZoneId, ZonedDateTime}
 
 class DateTimeApiTest {
 
@@ -82,6 +82,21 @@ class DateTimeApiTest {
 
     val zonedDateTime = ZonedDateTime.now()
     println(s"zonedDateTime instant = ${zonedDateTime.toInstant()}")
+  }
+
+  @Test
+  @DisplayName("test Period")
+  def testPeriod():Unit = {
+
+    val localDate = LocalDate.of(2019, Month.APRIL, 15)
+    val localDateNow = LocalDate.now()
+
+    println(s"period between = ${Period.between(localDate, localDateNow)}")
+
+    val oneYearPeriod = Period.ofYears(1)
+    val oneYearAfter = LocalDate.now().plus(oneYearPeriod)
+    
+    println(s"oneYearAfter = ${oneYearAfter}")
   }
 
 }
