@@ -2,7 +2,7 @@ package org.excavator.boot.experiment.test
 
 import org.junit.jupiter.api.{DisplayName, Test}
 
-import java.time.{Instant, LocalDate, LocalDateTime, LocalTime, Month, Period, ZoneId, ZonedDateTime}
+import java.time.{Duration, Instant, LocalDate, LocalDateTime, LocalTime, Month, Period, ZoneId, ZonedDateTime}
 
 class DateTimeApiTest {
 
@@ -97,6 +97,17 @@ class DateTimeApiTest {
     val oneYearAfter = LocalDate.now().plus(oneYearPeriod)
     
     println(s"oneYearAfter = ${oneYearAfter}")
+  }
+
+  @Test
+  @DisplayName("test Duration")
+  def testDuration():Unit = {
+    val localTimeOf = LocalTime.of(22, 34)
+    val localTimeNow = LocalTime.now()
+
+    val duration = Duration.between(localTimeNow, localTimeOf)
+
+    println(s"duration = ${duration}")
   }
 
 }
