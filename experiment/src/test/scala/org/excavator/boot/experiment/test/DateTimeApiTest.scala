@@ -53,6 +53,11 @@ class DateTimeApiTest {
 
     val availableZoneIds = ZoneId.getAvailableZoneIds
     println(s"availableZoneIds = ${availableZoneIds}")
+
+    val romeZoneId = ZoneId.of("Europe/Rome")
+    val localDateTime = LocalDateTime.now(romeZoneId)
+
+    println(s"localDateTime = ${localDateTime}")
   }
 
 }
