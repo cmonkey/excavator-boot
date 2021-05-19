@@ -2,6 +2,7 @@ package org.excavator.boot.experiment.test
 
 import org.junit.jupiter.api.{DisplayName, Test}
 
+import java.time.temporal.ChronoUnit
 import java.time.{Duration, Instant, LocalDate, LocalDateTime, LocalTime, Month, Period, ZoneId, ZonedDateTime}
 
 class DateTimeApiTest {
@@ -108,6 +109,23 @@ class DateTimeApiTest {
     val duration = Duration.between(localTimeNow, localTimeOf)
 
     println(s"duration = ${duration}")
+  }
+
+  @Test
+  @DisplayName("test temporal ChronoUnit")
+  def testTemporalChronoUnit(): Unit = {
+    val localDateNow = LocalDate.now()
+    val localDateNextWeek = localDateNow.plus(1, ChronoUnit.WEEKS)
+    val localDate2MonthsLater = localDateNow.plus(2, ChronoUnit.YEARS)
+
+    println(s"localDateNow = ${localDateNow}")
+    println(s"localDateNextWeek = ${localDateNextWeek}")
+    println(s"localDate2MonthsLater = ${localDate2MonthsLater}")
+
+    val localTime1 = LocalTime.of(22, 15)
+    val localTime2 = LocalTime.of(15,12)
+
+    println(s"between = ${ChronoUnit.MINUTES.between(localTime1, localTime2)}")
   }
 
 }
