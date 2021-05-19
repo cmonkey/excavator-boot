@@ -2,7 +2,7 @@ package org.excavator.boot.experiment.test
 
 import org.junit.jupiter.api.{DisplayName, Test}
 
-import java.time.{LocalDate, LocalDateTime, LocalTime, Month, ZoneId}
+import java.time.{LocalDate, LocalDateTime, LocalTime, Month, ZoneId, ZonedDateTime}
 
 class DateTimeApiTest {
 
@@ -58,6 +58,20 @@ class DateTimeApiTest {
     val localDateTime = LocalDateTime.now(romeZoneId)
 
     println(s"localDateTime = ${localDateTime}")
+  }
+
+  @Test
+  @DisplayName("testZonedDateTime")
+  def testZonedDateTime(): Unit = {
+    val currentLocationZonedDateTime = ZonedDateTime.now()
+    println(s"currentLocationZonedDateTime = ${currentLocationZonedDateTime}")
+
+    val localDateTime = LocalDateTime.now()
+    val currentLoationZoneId = ZoneId.systemDefault()
+    val zonedDateTime = ZonedDateTime.of(localDateTime,currentLoationZoneId
+      )
+    
+    println(s"zonedDateTime = ${zonedDateTime}")
   }
 
 }
