@@ -2,7 +2,7 @@ package org.excavator.boot.experiment.test
 
 import org.junit.jupiter.api.{DisplayName, Test}
 
-import java.time.{LocalDate, Month, LocalTime}
+import java.time.{LocalDate, Month, LocalTime, LocalDateTime}
 
 class DateTimeApiTest {
 
@@ -30,6 +30,19 @@ class DateTimeApiTest {
     println(s"localTimeNow = ${localTimeOf}")
     println(s"localTimeNow = ${localTimeOf2}")
     println(s"localTimeNow = ${localTimeParsed}")
+  }
+
+  @Test
+  @DisplayName("test LocalDateTime")
+  def testLocalDateTime():Unit = {
+    val localDate = LocalDate.now()
+    val localTime = LocalTime.now()
+
+    val localDateTimeNow = LocalDateTime.of(localDate, localTime)
+    val specificLocalDateTime = LocalDateTime.of(2011, Month.JANUARY, 15, 15, 33, 22)
+    
+    println(s"localDateTimeNow = ${localDateTimeNow}")
+    println(s"specificLocalDateTimeNow = ${specificLocalDateTime}")
   }
 
 }
