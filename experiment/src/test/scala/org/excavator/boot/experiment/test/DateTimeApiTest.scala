@@ -128,4 +128,15 @@ class DateTimeApiTest {
     println(s"between = ${ChronoUnit.MINUTES.between(localTime1, localTime2)}")
   }
 
+  @Test
+  @DisplayName("test localDateTimeSystem")
+  def testLocalDateTimeSystem(): Unit = {
+    val localDateTimeSystem = LocalDateTime.now()
+
+    val zoneIdRome = ZoneId.of("Europe/Rome")
+    val localDateTimeRome = LocalDateTime.now(zoneIdRome)
+
+    println(s"between = ${ChronoUnit.MINUTES.between(localDateTimeRome, localDateTimeSystem)}")
+  }
+
 }
