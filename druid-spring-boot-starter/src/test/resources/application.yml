@@ -11,6 +11,9 @@ excavator:
       url-patterns: /*
       exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 spring :
+  sql:
+    init:
+      enabled: false
   datasource :
     type : com.alibaba.druid.pool.DruidDataSource
     driverClassName : com.mysql.cj.jdbc.Driver
