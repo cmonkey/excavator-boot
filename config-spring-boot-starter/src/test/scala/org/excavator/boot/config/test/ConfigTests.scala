@@ -74,7 +74,7 @@ class ConfigTests {
     val params = Maps.newHashMap[String, String]()
     params.put("userName", userName)
 
-    val r = restTemplate.postForObject("http://localhost:"+port+"v1/users?userName={userName}", null, classOf[Boolean], params)
+    val r = restTemplate.postForObject("http://localhost:"+port+"/v1/users?userName={userName}", null, classOf[Boolean], params)
     println(s"addUserName = ${r}")
 
     Assertions.assertThat(r).isTrue
@@ -88,7 +88,7 @@ class ConfigTests {
     val params = new util.HashMap[String, String]()
     params.put("userName", userName)
 
-    val r = restTemplate.postForObject("http://localhost:"+port+"v1/users/body", params, classOf[Boolean])
+    val r = restTemplate.postForObject("http://localhost:"+port+"/v1/users/body", params, classOf[Boolean])
 
     println(s"addUserNameByBody = ${r}")
 
