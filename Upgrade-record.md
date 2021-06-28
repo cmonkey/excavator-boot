@@ -22,3 +22,4 @@
 22. 2021年4月19日11:46:09 upgrade lombok version 1.18.18 to the 1.18.20
 23. 2021年4月28日14:15:59 upgrade kafka version 2.6.1 to the 2.6.2 
 24. 2021年6月13日12:40:24 upgrade spring boot version 2.5.0 to 2.5.1
+25. 2021年6月28日17:19:30 upgrade spring boot version 2.5.1 to 2.5.2
