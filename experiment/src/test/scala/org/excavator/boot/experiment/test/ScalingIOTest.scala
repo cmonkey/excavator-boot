@@ -3,7 +3,7 @@ package org.excavator.boot.experiment.test
 import org.excavator.boot.experiment.scaling.ScalingIO
 import org.junit.jupiter.api.{DisplayName, Test}
 
-import java.util.concurrent.{CompletableFuture, ForkJoinPool, TimeUnit}
+import java.util.concurrent.{CompletableFuture, Executors, ForkJoinPool, TimeUnit}
 
 class ScalingIOTest {
   @Test
@@ -39,5 +39,30 @@ class ScalingIOTest {
     }
     ForkJoinPool.commonPool().awaitTermination(2, TimeUnit.MINUTES)
     println(s"completed Async IO calls in ${System.currentTimeMillis() - startTime} ms")
+  }
+
+  @Test
+  @DisplayName("test Async with dedicated ThreadPool")
+  def testAsyncWithDediatedThreadPool():Unit = {
+    val scalableIO = new ScalingIO 
+    val startTime = System.currentTimeMillis()
+
+    val executor = Executors.newFixedThreadPool(Runtime.getRuntime.availableProcessors())
+
+    for(i <- 0 until 5){
+      CompletableFuture.runAsync(() => {
+        scalableIO.dbCall1()
+      }, executor)
+      CompletableFuture.runAsync(() => {
+        scalableIO.dbCall1()
+      }, executor)
+      CompletableFuture.runAsync(() => {
+        scalableIO.dbCall1()
+      }, executor)
+    }
+
+    executor.shutdown()
+    executor.awaitTermination(2, TimeUnit.MINUTES)
+    println(s"Completed IO calls in ${System.currentTimeMillis() - startTime}")
   }
 }
