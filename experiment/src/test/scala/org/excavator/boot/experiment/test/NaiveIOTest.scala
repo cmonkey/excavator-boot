@@ -3,7 +3,7 @@ package org.excavator.boot.experiment.test
 import org.excavator.boot.experiment.scaling.NaiveIO
 import org.junit.jupiter.api.{DisplayName, Test}
 
-object NaiveIOTest {
+class NaiveIOTest {
 
   @Test
   @DisplayName("test naiveIO")
