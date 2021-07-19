@@ -11,7 +11,7 @@ class TripleDataEncryptionAlgorithm {
 
   val secretKey = "9mng65v8jf4lxn93nabf981m".getBytes(StandardCharsets.UTF_8)
 
-  val secretKeySpec = new SecretKeySpec((secretKey, "TripleDES"))
+  val secretKeySpec = TripleDataEncryptionAlgorithmHelper.buildSecretKeySpec(secretKey, "TripleDES")
 
   val iv = "a76nb5h9".getBytes(StandardCharsets.UTF_8)
 
