@@ -147,6 +147,11 @@
 			<groupId>org.openjdk.jmh</groupId>
 			<artifactId>jmh-generator-annprocess</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>com.github.moditect</groupId>
+            <artifactId>jfrunit</artifactId>
+            <version>main-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<plugins>
