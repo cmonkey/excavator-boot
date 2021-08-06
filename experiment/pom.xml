@@ -161,6 +161,8 @@
 					<compilerArgs>
 						<arg>--add-exports</arg>
 						<arg>jdk.incubator.foreign/jdk.incubator.foreign=ALL-UNNAMED</arg>
+						<arg>--add-modules</arg>
+						<arg>jdk.incubator.foreign</arg>
 					</compilerArgs>
 				</configuration>
 			</plugin>
@@ -171,7 +173,21 @@
 					<javacArgs>
 						<arg>--add-exports</arg>
 						<arg>jdk.incubator.foreign/jdk.incubator.foreign=ALL-UNNAMED</arg>
+						<arg>--add-modules</arg>
+						<arg>jdk.incubator.foreign</arg>
 					</javacArgs>
+					<jvmArgs>
+						<arg>--add-modules</arg>
+						<arg>jdk.incubator.foreign</arg>
+					</jvmArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin}</version>
+				<configuration>
+					<argLine>--add-modules=jdk.incubator.foreign</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
