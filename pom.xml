@@ -110,6 +110,7 @@
 		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
 		<alchim31.scala.plugin>4.5.3</alchim31.scala.plugin>
 		<maven.surefire.plugin>3.0.0-M5</maven.surefire.plugin>
+        <enforcer.plugin>3.0.0</enforcer.plugin>
 
 	</properties>
 
@@ -761,7 +762,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${enforcer.plugin}</version>
             </plugin>
 		</plugins>
 	</build>
