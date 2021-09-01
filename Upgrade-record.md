@@ -25,3 +25,4 @@
 25. 2021年6月28日17:19:30 upgrade spring boot version 2.5.1 to 2.5.2
 26. 2021年7月2日18:43:51 upgrade alchim31 scala compiler plugin version 4.5.0 to 4.5.3
 27. 2021年7月27日22:46:10 upgrade spring boot version 2.5.2 to 2.5.3
+28. 2021年9月1日09:28:27 upgrade spring boot version 2.5.3 to 2.5.4
