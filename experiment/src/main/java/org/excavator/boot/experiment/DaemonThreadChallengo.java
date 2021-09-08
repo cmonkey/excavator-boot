@@ -18,17 +18,17 @@ package org.excavator.boot.experiment;
 
 public class DaemonThreadChallengo implements Runnable {
 
-    public static void main(String... doYourBest){
-     var thread = new Thread(new DaemonThreadChallengo());
-     thread.setDaemon(true);
-     thread.start();
+    public static void main(String... doYourBest) {
+        var thread = new Thread(new DaemonThreadChallengo());
+        thread.setDaemon(true);
+        thread.start();
     }
 
     @Override
-    public void run(){
-        for(;;){
-         System.out.println("For ever");
+    public void run() {
+        for (;;) {
+            System.out.println("For ever");
         }
     }
-     
+
 }
