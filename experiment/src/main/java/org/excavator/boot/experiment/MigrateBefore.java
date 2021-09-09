@@ -33,12 +33,13 @@ public class MigrateBefore {
         Integer i = new Integer(1);
 
     }
-    void divide(){
+
+    void divide() {
         BigDecimal bd = BigDecimal.valueOf(10);
         BigDecimal bd2 = BigDecimal.valueOf(2);
         bd.divide(bd2, 1, BigDecimal.ROUND_DOWN);
         bd.divide(bd2, 1);
-        bd.divide(bd2,1, BigDecimal.ROUND_CEILING);
+        bd.divide(bd2, 1, BigDecimal.ROUND_CEILING);
         bd.divide(bd2, 1, 1);
         bd.setScale(2, 1);
     }

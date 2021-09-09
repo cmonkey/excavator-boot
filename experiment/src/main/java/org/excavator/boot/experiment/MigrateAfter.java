@@ -34,12 +34,13 @@ public class MigrateAfter {
         Integer i = Integer.valueOf(1);
 
     }
-    void divide(){
+
+    void divide() {
         BigDecimal bd = BigDecimal.valueOf(10);
         BigDecimal bd2 = BigDecimal.valueOf(2);
         bd.divide(bd2, RoundingMode.DOWN);
         bd.divide(bd2, RoundingMode.DOWN);
-        bd.divide(bd2,1, RoundingMode.CEILING);
+        bd.divide(bd2, 1, RoundingMode.CEILING);
         bd.divide(bd2, 1, RoundingMode.DOWN);
         bd.setScale(2, RoundingMode.DOWN);
     }
