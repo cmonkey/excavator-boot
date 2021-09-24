@@ -28,6 +28,8 @@ public class Amber {
     }
 
     static String format(Object o){
+        return o.toString();
+        /*
         return switch (o){
             case Integer i -> String.format("int %d", i);
             case Long l -> String.format("long %d", l);
@@ -35,5 +37,6 @@ public class Amber {
             case String s -> String.format("String %s", s);
             default ->  o.toString();
         };
+         */
     }
 }
