@@ -27,7 +27,7 @@ public class Amber {
         out.println(format(Long.MAX_VALUE));
     }
 
-    static String format(Object o){
+    static String format(Object o) {
         return o.toString();
         /*
         return switch (o){
