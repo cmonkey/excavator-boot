@@ -13,4 +13,17 @@ class InterproceduralAnalysis {
     }
   }
 
+  private def absoluteDifferencePlusOffset(x: Int, y:Int, offset:Int = 5): Int = {
+    if (y > x) y - x + offset else x - y + offset
+  }
+
+  def analyzeV2(): Unit = {
+    val x = absoluteDifferencePlusOffset(y = 15, x = 12) + 
+    absoluteDifferencePlusOffset(y = 2, x = 9, offset = 10)
+    if (x == 25){
+      println(x)
+    }
+  }
+
+
 }
