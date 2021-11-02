@@ -25,7 +25,7 @@ public class GithubCopilotTest {
     }
 }
 
-class Example(String name) {
+class Example {
     private String name;
     public Example(String name) {
         this.name = name;
