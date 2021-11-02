@@ -23,22 +23,22 @@ public class WordsTyping {
     public static void main(String[] args) {
     }
 
-    public int wordsTyping(String[] sentence, int rows, int cols){
-        var s = String.join(" ", sentence)  +  " ";
+    public int wordsTyping(String[] sentence, int rows, int cols) {
+        var s = String.join(" ", sentence) + " ";
         var len = s.length();
         var count = 0;
         var map = new int[len];
 
-        for(int i = 1; i<len; ++i){
-            map[i] = s.charAt(i)  == ' ' ? 1 : map[i - 1] - 1;
+        for (int i = 1; i < len; ++i) {
+            map[i] = s.charAt(i) == ' ' ? 1 : map[i - 1] - 1;
         }
 
-        for (int i = 0;  i < rows; ++i) {
+        for (int i = 0; i < rows; ++i) {
             count += cols;
             count += map[count % len];
         }
 
-        return count /len;
+        return count / len;
     }
 
 }
