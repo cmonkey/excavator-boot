@@ -33,12 +33,12 @@ public class GroupCount {
 
     @Benchmark
     public void fused(Blackhole bb){
-        int newGroups = 0;
+        int numGroups = 0;
         for (int i = 0; i < source.length & i < dest.length; i++) {
             dest[i] = source[i];
-            if(newGroups < groups && !presence[source[i]]){
+            if(numGroups < groups && !presence[source[i]]){
                 presence[source[i] & 0xFF] = true;
-                newGroups++;
+                numGroups++;
             }
         }
         bb.consume(presence);
