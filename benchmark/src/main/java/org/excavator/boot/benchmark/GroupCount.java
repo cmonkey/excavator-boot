@@ -2,6 +2,10 @@ package org.excavator.boot.benchmark;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.Arrays;
 import java.util.SplittableRandom;
@@ -58,5 +62,14 @@ public class GroupCount {
         }
         bh.consume(presence);
         Arrays.fill(presence, true);
+    }
+
+    public static void main(String[] args) throws RunnerException {
+        Options opts = new OptionsBuilder().include(GroupCount.class.getSimpleName())
+                .forks(1)
+                .warmupIterations(5)
+                .measurementIterations(5)
+                .build();
+        new Runner(opts).run();
     }
 }
