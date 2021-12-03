@@ -2,7 +2,7 @@ FROM anapsix/alpine-java:8_jdk_unlimited
 
 MAINTAINER cmonkey <42.codemonkey at gmail.com>
 
-ARG kafka_version=2.6.2
+ARG kafka_version=2.6.3
 ARG scala_version=2.12
 #ARG host=http://192.168.2.27:8000
 #ARG host=http://mirrors.tuna.tsinghua.edu.cn/apache/kafka
