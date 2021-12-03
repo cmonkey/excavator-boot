@@ -27,3 +27,4 @@
 27. 2021年7月27日22:46:10 upgrade spring boot version 2.5.2 to 2.5.3
 28. 2021年9月1日09:28:27 upgrade spring boot version 2.5.3 to 2.5.4
 29. 2021年10月22日10:13:48 upgrade spring boot version 2.5.5 to 2.5.6
+30. 2021年12月3日16:56:46 upgrade spring boot version 2.5.6 to 2.5.7
