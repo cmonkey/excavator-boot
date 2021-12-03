@@ -1,11 +1,10 @@
 package org.excavator.boot.javassist.test
 
 import java.util
-
 import javassist.ClassPool
 import javassist.bytecode.{AccessFlag, Bytecode, FieldInfo, MethodInfo, Mnemonic}
 import org.excavator.boot.javassist.{ClassFileExt, ClassFileHelper}
-import org.junit.jupiter.api.{DisplayName, Order, Test, TestMethodOrder}
+import org.junit.jupiter.api.{Disabled, DisplayName, Order, Test, TestMethodOrder}
 import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation
 
@@ -15,6 +14,7 @@ class JavassistTest {
   @Test
   @DisplayName("testPointExt")
   @Order(1)
+  @Disabled
   def testPointExt() = {
     val className = "org.excavator.boot.javassist.test.Test"
     val fileName = "Id"
@@ -31,6 +31,7 @@ class JavassistTest {
   @Test
   @DisplayName("testLoadByteCode")
   @Order(2)
+  @Disabled
   def testLoadByteCode() = {
     val classPool = ClassPool.getDefault
     val ctClass = classPool.get("org.excavator.boot.javassist.Point")
@@ -59,6 +60,7 @@ class JavassistTest {
   @Test
   @DisplayName("testAddFieldToExistingClassBytecode")
   @Order(3)
+  @Disabled
   def testAddFieldToExistingClassBytecode() = {
     val fieldName = "id"
     val classPool = ClassPool.getDefault
@@ -83,6 +85,7 @@ class JavassistTest {
   @Test
   @DisplayName("testAddingConstructorToClassBytecode")
   @Order(4)
+  @Disabled
   def testAddingConstructorToClassBytecode() = {
     val classPool = ClassPool.getDefault
     val ctClass = classPool.get("org.excavator.boot.javassist.Point")
@@ -119,6 +122,7 @@ class JavassistTest {
   @Test
   @DisplayName("testSetSuperClass")
   @Order(5)
+  @Disabled
   def testSetSuperClass() = {
     val classPool = ClassPool.getDefault
     val ctClass = classPool.get("org.excavator.boot.javassist.Rectangle")
