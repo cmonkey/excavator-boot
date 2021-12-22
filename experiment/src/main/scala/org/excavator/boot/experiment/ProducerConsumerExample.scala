@@ -51,5 +51,4 @@ object ProducerConsumerExample {
   private def getRandomItem() = {
     random.nextInt()
   }
-
 }

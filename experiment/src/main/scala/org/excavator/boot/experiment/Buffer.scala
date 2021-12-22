@@ -18,5 +18,4 @@ class Buffer {
     queue.take()
   }
 
-
 }
