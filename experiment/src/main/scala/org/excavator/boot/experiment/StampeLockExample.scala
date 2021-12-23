@@ -27,5 +27,4 @@ object StampeLockExample extends App{
     executor.submit(w)
     executor.submit(r)
   }
-
 }
