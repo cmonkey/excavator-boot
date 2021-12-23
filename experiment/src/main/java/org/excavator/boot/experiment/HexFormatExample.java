@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+=======
+>>>>>>> ee6e329e (implement HexFormatExample)
 package org.excavator.boot.experiment;
 
 import java.util.Arrays;
