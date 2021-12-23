@@ -1,5 +1,7 @@
 package org.excavator.boot.experiment
 
-class Balance {
+import scala.beans.BeanProperty
+
+class Balance(@BeanProperty var amount: Int) {
 
 }
