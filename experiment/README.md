@@ -9,8 +9,10 @@
     A-->C;
  ```
 
+## mermaid loginUser
+
  ```mermaid 
-  graph p;
+  graph TD;
     loginUser-->queryUser;
     loginUser-->notifyUserLogin;
     loginUser-->changeLastUserTime;
