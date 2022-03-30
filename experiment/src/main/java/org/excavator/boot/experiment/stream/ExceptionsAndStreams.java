@@ -16,7 +16,6 @@
  */
 package org.excavator.boot.experiment.stream;
 
-import lombok.SneakyThrows;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,7 +38,6 @@ public class ExceptionsAndStreams {
         return dates;
     }
 
-    @SneakyThrows
     private static Date uglyParse(SimpleDateFormat format, String s) {
         return format.parse(s);
     }
