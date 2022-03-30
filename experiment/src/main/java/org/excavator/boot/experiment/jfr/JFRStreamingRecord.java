@@ -19,13 +19,13 @@ package org.excavator.boot.experiment.jfr;
 import jdk.jfr.Configuration;
 import jdk.jfr.consumer.EventStream;
 import jdk.jfr.consumer.RecordingStream;
-import lombok.SneakyThrows;
 
 import java.time.Duration;
+import java.io.IOException;
+import java.text.ParseException;
 
 public class JFRStreamingRecord {
 
-    @SneakyThrows
     public static void recodingStream(Duration duration){
         try(var rs = new RecordingStream()){
             rs.enable("jdk.CPULoad").withPeriod(Duration.ofSeconds(1));
@@ -38,24 +38,31 @@ public class JFRStreamingRecord {
             });
 
             rs.start();
-            rs.awaitTermination(duration);
+            try{
+                rs.awaitTermination(duration);
+            }catch(InterruptedException e){
+                //ignore
+            }
         }
     }
 
-    @SneakyThrows
     public static void recordingConfiguration(Duration duration){
-        var configuration = Configuration.getConfiguration("default");
-        try(var rs = new RecordingStream(configuration)){
-            rs.onEvent("jdk.GarbageCollection", System.out::println);
-            rs.onEvent("jdk.CPULoad", System.out::println);
-            rs.onEvent("jdk.JVMInformation", System.out::println);
-            rs.start();
-            rs.awaitTermination(duration);
+        try{
+            var configuration = Configuration.getConfiguration("default");
+            try(var rs = new RecordingStream(configuration)){
+                rs.onEvent("jdk.GarbageCollection", System.out::println);
+                rs.onEvent("jdk.CPULoad", System.out::println);
+                rs.onEvent("jdk.JVMInformation", System.out::println);
+                rs.start();
+                rs.awaitTermination(duration);
+            }
+        }catch(IOException | ParseException | InterruptedException e){
+            //ignore
         }
     }
 
-    @SneakyThrows
     public static void openRepository(Duration duration){
+        try{
         try(var es = EventStream.openRepository()){
             es.onEvent("jdk.CPULoad", recordedEvent -> {
                 System.out.println("CPU Load " + recordedEvent.getEndTime());
@@ -74,6 +81,10 @@ public class JFRStreamingRecord {
 
             es.startAsync();
             es.awaitTermination(duration);
+
+        }
+        }catch(IOException | InterruptedException e){
+            //ignore
         }
     }
 
