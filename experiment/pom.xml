@@ -158,13 +158,6 @@
 					<encoding>${project.encoding}</encoding>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
-					<compilerArgs>
-						<arg>--enable-preview</arg>
-						<arg>--add-exports</arg>
-						<arg>jdk.incubator.foreign/jdk.incubator.foreign=ALL-UNNAMED</arg>
-						<arg>--add-modules</arg>
-						<arg>jdk.incubator.foreign</arg>
-					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>
