@@ -21,16 +21,16 @@ import java.math.BigDecimal;
 public class MigrateBefore {
 
     public static void main(String[] args) {
-        Boolean bool = new Boolean(true);
-        Byte b = new Byte("1");
-        Character c = new Character('c');
-        Double d = new Double(1.0);
-        Float f = new Float(1.1f);
-        Long l = new Long(1);
-        Short sh = new Short("12");
+        Boolean bool = Boolean.valueOf(true);
+        Byte b = Byte.valueOf("1");
+        Character c = Character.valueOf('c');
+        Double d = Double.valueOf(1.0);
+        Float f = Float.valueOf(1.1f);
+        Long l = Long.valueOf(1);
+        Short sh = Short.valueOf("12");
         short s3 = 3;
-        Short sh3 = new Short(s3);
-        Integer i = new Integer(1);
+        Short sh3 = Short.valueOf(s3);
+        Integer i = Integer.valueOf(1);
 
     }
 
