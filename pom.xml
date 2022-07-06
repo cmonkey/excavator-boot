@@ -73,7 +73,7 @@
 		<lombok.version>1.18.24</lombok.version>
 		<druid.version>1.2.11</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
-		<redisson.version>3.14.1</redisson.version>
+		<redisson.version>3.17.3</redisson.version>
 		<commons-codec.version>1.15</commons-codec.version>
 		<netty.version>4.1.58.Final</netty.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
