@@ -84,7 +84,7 @@
 		<commons-collections4.version>4.4</commons-collections4.version>
 		<quartz.version>2.3.2</quartz.version>
 		<commons-pool2.version>2.11.1</commons-pool2.version>
-		<javassist.version>3.27.0-GA</javassist.version>
+		<javassist.version>3.29.0-GA</javassist.version>
 		<byte-buddy.version>1.10.19</byte-buddy.version>
 		<commons-io.version>2.11.0</commons-io.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
