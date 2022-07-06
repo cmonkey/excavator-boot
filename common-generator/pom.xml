@@ -13,7 +13,7 @@
 		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
 	<properties>
-		<freemarker.version>2.3.20</freemarker.version>
+		<freemarker.version>2.3.31</freemarker.version>
 		<start-class>org.excavator.boot.common.generator.Launcher</start-class>
 	</properties>
 	
