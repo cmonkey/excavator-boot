@@ -79,7 +79,7 @@
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<guava.version>31.1-jre</guava.version>
-		<commons-text.version>1.9</commons-text.version>
+		<commons-text.version>1.10.0</commons-text.version>
 		<jmh.version>1.35</jmh.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
 		<quartz.version>2.3.2</quartz.version>
