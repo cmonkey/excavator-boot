@@ -13,7 +13,7 @@
 	<artifactId>experiment</artifactId>
 	<packaging>jar</packaging>
 	<properties>
-		<rescala.version>2.12.12</rescala.version>
+		<!--<rescala.version>2.12.12</rescala.version>-->
 	</properties>
     <dependencies>
         <dependency>
@@ -163,26 +163,11 @@
 			<plugin>
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
-				<configuration>
-					<javacArgs>
-						<arg>--add-exports</arg>
-						<arg>jdk.incubator.foreign/jdk.incubator.foreign=ALL-UNNAMED</arg>
-						<arg>--add-modules</arg>
-						<arg>jdk.incubator.foreign</arg>
-					</javacArgs>
-					<jvmArgs>
-						<arg>--add-modules</arg>
-						<arg>jdk.incubator.foreign</arg>
-					</jvmArgs>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.plugin}</version>
-				<configuration>
-					<argLine>--add-modules=jdk.incubator.foreign</argLine>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
