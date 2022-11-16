@@ -1,6 +1,6 @@
 package org.excavator.boot.experiment.test
 
-import jdk.incubator.foreign.{MemoryHandles, MemorySegment}
+import java.lang.foreign.{MemoryHandles, MemorySegment}
 import org.junit.jupiter.api.{DisplayName, Test}
 
 import java.nio.{ByteBuffer, ByteOrder}
