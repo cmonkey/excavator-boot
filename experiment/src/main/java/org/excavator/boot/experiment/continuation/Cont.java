@@ -1,2 +1,6 @@
-package org.excavator.boot.experiment.continuation;public class Cont {
+package org.excavator.boot.experiment.continuation;
+
+@FunctionalInterface
+public interface Cont<R> {
+    void apply(R result);
 }
