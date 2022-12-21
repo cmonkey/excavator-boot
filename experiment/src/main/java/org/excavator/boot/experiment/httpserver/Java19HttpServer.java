@@ -1,5 +1,7 @@
 package org.excavator.boot.experiment.httpserver;
 
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -15,5 +17,14 @@ public class Java19HttpServer {
         httpServer.setExecutor(Executors.newVirtualThreadPerTaskExecutor());
 
         httpServer.start();
+    }
+}
+class MyHandler implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        var headers = exchange.getResponseHeaders();
+        var remoteAddress = exchange.getRemoteAddress();
+        System.out.println(headers);
+        System.out.println(remoteAddress);
     }
 }
