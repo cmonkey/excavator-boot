@@ -10,7 +10,8 @@ public class Outer {
 
     }
 
-    public static void invoke(Inner.Supplier supplier){
-
+    public static int invoke(Inner.Supplier supplier){
+        var v = supplier.getInt();
+        return v;
     }
 }
