@@ -14,7 +14,7 @@ public class Java19HttpServer {
 
         var httpServer = HttpServer.create(new InetSocketAddress(8080), 0);
         httpServer.createContext("/persons", new MyHandler());
-        httpServer.setExecutor(Executors.newVirtualThreadPerTaskExecutor());
+        //httpServer.setExecutor(Executors.newVirtualThreadPerTaskExecutor());
 
         httpServer.start();
     }
