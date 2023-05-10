@@ -60,7 +60,7 @@
 		<fastjson.version>1.2.83</fastjson.version>
 		<zookeeper.version>3.6.2</zookeeper.version>
         <curator.version>5.1.0</curator.version>
-		<joda.time.version>2.10.14</joda.time.version>
+		<joda.time.version>2.12.2</joda.time.version>
 		<scala.major-version>2.13</scala.major-version>
 		<scala.version>${scala.major-version}.10</scala.version>
 		<pagehelper.version>1.4.6</pagehelper.version>
