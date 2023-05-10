@@ -59,23 +59,23 @@
 		<!-- 3rd lib dependency -->
 		<fastjson.version>1.2.83</fastjson.version>
 		<zookeeper.version>3.6.2</zookeeper.version>
-        <curator.version>5.1.0</curator.version>
-		<joda.time.version>2.10.14</joda.time.version>
+        <curator.version>5.3.0</curator.version>
+		<joda.time.version>2.12.2</joda.time.version>
 		<scala.major-version>2.13</scala.major-version>
-		<scala.version>${scala.major-version}.10</scala.version>
-		<pagehelper.version>1.4.2</pagehelper.version>
-		<mybatis.version>2.2.2</mybatis.version>
-		<dom4j.version>2.1.3</dom4j.version>
+		<scala.version>${scala.major-version}.11-M1</scala.version>
+		<pagehelper.version>1.4.6</pagehelper.version>
+		<mybatis.version>3.0.1</mybatis.version>
+		<dom4j.version>2.1.4</dom4j.version>
 		<excavator-boot.version>2.0.0-SNAPSHOT</excavator-boot.version>
 		<pack.version>0.5.0</pack.version>
-		<mysql-connector.version>8.0.29</mysql-connector.version>
+		<mysql-connector.version>8.0.32</mysql-connector.version>
 		<commons-lang3.version>3.12.0</commons-lang3.version>
 		<lombok.version>1.18.24</lombok.version>
 		<druid.version>1.2.16</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
-		<redisson.version>3.17.3</redisson.version>
+		<redisson.version>3.20.0</redisson.version>
 		<commons-codec.version>1.15</commons-codec.version>
-		<netty.version>4.1.78.Final</netty.version>
+		<netty.version>4.1.90.Final</netty.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<guava.version>31.1-jre</guava.version>
@@ -84,14 +84,14 @@
 		<commons-collections4.version>4.4</commons-collections4.version>
 		<quartz.version>2.3.2</quartz.version>
 		<commons-pool2.version>2.11.1</commons-pool2.version>
-		<javassist.version>3.29.0-GA</javassist.version>
-		<byte-buddy.version>1.12.10</byte-buddy.version>
+		<javassist.version>3.29.2-GA</javassist.version>
+		<byte-buddy.version>1.14.2</byte-buddy.version>
 		<commons-io.version>2.11.0</commons-io.version>
 		<bouncycastle.version>1.70</bouncycastle.version>
 		<springswagger.version>3.0.0</springswagger.version>
         <jsch.version>0.1.55</jsch.version>
 		<monix.io.version>1.0.0</monix.io.version>
-        <clickhouse-native-jdbc.version>2.5.2</clickhouse-native-jdbc.version>
+        <clickhouse-native-jdbc.version>2.6.5</clickhouse-native-jdbc.version>
         <log4j2.version>2.16.0</log4j2.version>
 		<main.user.dir>${user.dir}</main.user.dir>
 		<!-- adapted high version jdk start -->
