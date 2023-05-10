@@ -91,7 +91,7 @@
 		<springswagger.version>3.0.0</springswagger.version>
         <jsch.version>0.1.55</jsch.version>
 		<monix.io.version>1.0.0</monix.io.version>
-        <clickhouse-native-jdbc.version>2.5.2</clickhouse-native-jdbc.version>
+        <clickhouse-native-jdbc.version>2.6.5</clickhouse-native-jdbc.version>
         <log4j2.version>2.16.0</log4j2.version>
 		<main.user.dir>${user.dir}</main.user.dir>
 		<!-- adapted high version jdk start -->
