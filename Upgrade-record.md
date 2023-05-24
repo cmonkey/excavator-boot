@@ -52,3 +52,4 @@
 52. 2023年3月29日10:20:51 upgrade spring boot version from 3.0.4 to 3.0.5
 53. 2023年4月12日10:15:58 upgrade spring cloud version from 2022.0.1 to 2022.0.2
 54. 2023年4月26日10:06:57 upgrade spring boot version from 3.0.5 to 3.0.6
+55. 2023年5月24日18:32:42 upgrade spring boot version from 3.0.6 to 3.0.7
