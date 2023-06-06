@@ -4,7 +4,9 @@ import cats.effect.{ExitCode, IO}
 import org.excavator.boot.experiment.executeShell.{OSUtils, OSUtilsScala}
 import org.junit.jupiter.api.{DisplayName, Test}
 
-class OSUtilsTest {
+import scala.concurrent.duration.DurationInt
+
+class OSUtilsTestScala {
 
   @Test
   @DisplayName("test os Utils")
