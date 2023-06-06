@@ -147,6 +147,12 @@
 			<groupId>org.openjdk.jmh</groupId>
 			<artifactId>jmh-generator-annprocess</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.typelevel/cats-effect -->
+		<dependency>
+			<groupId>org.typelevel</groupId>
+			<artifactId>cats-effect_2.13</artifactId>
+			<version>3.3.12</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
