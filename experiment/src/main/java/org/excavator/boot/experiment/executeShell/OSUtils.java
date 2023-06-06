@@ -47,7 +47,7 @@ public class OSUtils {
                 .map(StringEscapeUtils::escapeXSI)
                 .collect(Collectors.joining(" "));
 
-        return executecommand(es, Path.of("/bin/sh"), "-c", shellCommand);
+        return executeCommand(es, Path.of("/bin/sh"), "-c", shellCommand);
     }
 
     private static String[] prepend(String elem, String[] array){
