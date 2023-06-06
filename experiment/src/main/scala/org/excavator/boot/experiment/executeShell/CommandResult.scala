@@ -1,5 +1,6 @@
 package org.excavator.boot.experiment.executeShell
 
-class CommandResult {
-
-}
+final case class CommandResult (exitCode: Int,
+                                stdout:String,
+                                stderr:String
+                               )
