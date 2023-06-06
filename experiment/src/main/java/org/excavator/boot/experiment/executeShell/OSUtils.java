@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class OSUtils {
 
-    public static CommandResult executecommand(ExecutorService es, Path executable, String... args) throws IOException {
+    public static CommandResult executeCommand(ExecutorService es, Path executable, String... args) throws IOException {
         Objects.requireNonNull(executable);
         Objects.requireNonNull(args);
 
