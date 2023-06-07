@@ -93,6 +93,7 @@
 		<monix.io.version>1.0.0</monix.io.version>
         <clickhouse-native-jdbc.version>2.6.5</clickhouse-native-jdbc.version>
         <log4j2.version>2.16.0</log4j2.version>
+		<httpclient.version>4.5.14</httpclient.version>
 		<main.user.dir>${user.dir}</main.user.dir>
 		<!-- adapted high version jdk start -->
 		<jaxb.version>2.3.1</jaxb.version>
@@ -472,7 +473,11 @@
 				<artifactId>clickhouse-native-jdbc</artifactId>
 				<version>${clickhouse-native-jdbc.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
