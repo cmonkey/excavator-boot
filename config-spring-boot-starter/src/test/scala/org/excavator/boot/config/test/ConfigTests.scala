@@ -3,8 +3,8 @@ package org.excavator.boot.config.test
 import java.nio.file.{Files, Paths}
 import java.util
 import java.util.UUID
-
 import com.google.common.collect.{Lists, Maps}
+
 import javax.annotation.Resource
 import org.assertj.core.api.Assertions
 import org.excavator.boot.config.test.controller.ConfigController
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.slf4j.LoggerFactory
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.core.io.FileSystemResource
 import org.springframework.http.{HttpEntity, HttpHeaders, HttpMethod, MediaType}
 import org.springframework.test.context.junit.jupiter.SpringExtension

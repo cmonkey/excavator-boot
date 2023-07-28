@@ -2,7 +2,7 @@ package org.excavator.boot.authorization.interceptor
 
 
 import javax.annotation.Resource
-import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
+import jakarta.servlet.http.{HttpServletRequest, HttpServletResponse}
 import org.excavator.boot.authorization.annotation.Authorization
 import org.excavator.boot.authorization.constant.TokenConstants
 import org.excavator.boot.authorization.manager.TokenManager

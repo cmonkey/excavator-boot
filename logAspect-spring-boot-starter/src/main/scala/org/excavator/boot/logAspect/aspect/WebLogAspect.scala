@@ -3,7 +3,7 @@ package org.excavator.boot.logAspect.aspect
 import java.util
 import java.util.stream.Collectors
 
-import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
+import jakarta.servlet.http.{HttpServletRequest, HttpServletResponse}
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.{AfterReturning, Aspect, Before, Pointcut}
 import org.excavator.boot.common.helper.RemoteIpHelper
