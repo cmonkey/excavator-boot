@@ -16,7 +16,7 @@
  */
 package org.excavator.boot.common.helper;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import static org.excavator.boot.common.helper.HttpHeader.*;
 
