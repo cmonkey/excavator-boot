@@ -46,7 +46,7 @@ public class ByteBuddyHelper {
     }
 
     public static void transformer(Instrumentation instrumentation){
-        AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, module) -> builder.method(ElementMatchers.any())
+        AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader, module, protectionDomain) -> builder.method(ElementMatchers.any())
                 .intercept(MethodDelegation.to(TimeInterceptor.class));
 
         AgentBuilder.Listener listener = new AgentBuilder.Listener() {

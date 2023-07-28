@@ -1,7 +1,6 @@
 package org.excavator.boot.instrumentation
 
 import java.lang.instrument.Instrumentation
-
 import net.bytebuddy.agent.builder.AgentBuilder
 import net.bytebuddy.description.`type`.TypeDescription
 import net.bytebuddy.dynamic.DynamicType
@@ -10,6 +9,8 @@ import net.bytebuddy.matcher.ElementMatchers
 import net.bytebuddy.utility.JavaModule
 import org.excavator.boot.instrumentation.interceptor.TimeInterceptor
 import org.slf4j.LoggerFactory
+
+import java.security.ProtectionDomain
 
 class ByteBuddyAgent {
 
@@ -20,7 +21,7 @@ object ByteBuddyAgent{
 
   def transformer(instrumentation: Instrumentation): Unit  = {
     val transformer = new AgentBuilder.Transformer {
-      override def transform(builder: DynamicType.Builder[_], typeDescription: TypeDescription, classLoader: ClassLoader, javaModule: JavaModule): DynamicType.Builder[_] = {
+      override def transform(builder: DynamicType.Builder[_], typeDescription: TypeDescription, classLoader: ClassLoader, javaModule: JavaModule, protectionDomain: ProtectionDomain): DynamicType.Builder[_] = {
         builder.method(ElementMatchers.any())
           .intercept(MethodDelegation.to(classOf[TimeInterceptor]))
       }
