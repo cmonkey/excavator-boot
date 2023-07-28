@@ -8,11 +8,11 @@ jobs:
     steps:
       - name: git pull repo
         uses: actions/checkout@v3
-      - name: Set up Jdk 17
+      - name: Set up Jdk 20
         uses: actions/setup-java@v3
         with:
           distribution: 'oracle'
-          java-version: 17
+          java-version: 20
       - name: maven build
         run: 
           mvn clean package -DskipTests 
