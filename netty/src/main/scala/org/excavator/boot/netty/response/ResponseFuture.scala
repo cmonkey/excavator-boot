@@ -9,11 +9,11 @@ import scala.concurrent.TimeoutException
 
 class ResponseFuture extends Future[String]{
 
-  @volatile private var state = State.WAITING
+  @volatile private var waitingState = State.WAITING
 
   private val blockingQueue = new ArrayBlockingQueue[String](1)
 
-  override def isSuccess: Boolean = state == State.DONE
+  override def isSuccess: Boolean = waitingState == State.DONE
 
   override def isCancellable: Boolean = false
 
@@ -52,7 +52,7 @@ class ResponseFuture extends Future[String]{
   override def isCancelled: Boolean = false
 
   override def isDone: Boolean = {
-    state == State.DONE
+    waitingState == State.DONE
   }
 
   override def get(): String = {
@@ -72,12 +72,12 @@ class ResponseFuture extends Future[String]{
   }
 
   def set(msg: String) = {
-    if (state == State.DONE) {
+    if (waitingState == State.DONE) {
       ""
     } else {
       blockingQueue.put(msg)
 
-      state = State.DONE
+      waitingState = State.DONE
     }
   }
 }
