@@ -8,10 +8,10 @@ jobs:
     steps:
       - name: git pull repo
         uses: actions/checkout@v2
-      - name: Set up Jdk 15-ea
+      - name: Set up Jdk 17-ea
         uses: actions/setup-java@v1
         with:
-          java-version: 15-ea
+          java-version: 17-ea
       - name: maven build
         run: 
           mvn clean package -DskipTests 
