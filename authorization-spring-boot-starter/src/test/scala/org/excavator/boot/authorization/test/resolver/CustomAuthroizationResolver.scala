@@ -1,6 +1,6 @@
 package org.excavator.boot.authorization.test.resolver
 
-import javax.servlet.http.HttpServletResponse
+import jakarta.servlet.http.HttpServletResponse
 import org.excavator.boot.authorization.interceptor.AuthorizationResolver
 import org.excavator.boot.common.helper.JSONProxy
 import org.springframework.http.{HttpStatus, ResponseEntity}
