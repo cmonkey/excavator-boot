@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.AutoConfigureAfter
 import org.springframework.boot.autoconfigure.condition.{ConditionalOnClass, ConditionalOnProperty}
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration
-import com.alibaba.druid.support.http.StatViewServlet
-import com.alibaba.druid.support.http.WebStatFilter
+import com.alibaba.druid.support.jakarta.StatViewServlet
+import com.alibaba.druid.support.jakarta.WebStatFilter
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.web.servlet.FilterRegistrationBean
@@ -27,7 +27,9 @@ class DruidMonitorAutoConfiguration{
   @Bean
   @ConditionalOnMissingBean
   def druidServlet(properties: DruidMonitorProperties): ServletRegistrationBean[StatViewServlet] = {
-    val servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet, properties.getStatView)
+    val servletRegistrationBean = new ServletRegistrationBean[StatViewServlet]()
+    servletRegistrationBean.setServlet(new StatViewServlet)
+    servletRegistrationBean.setUrlMappings(java.util.List.of(properties.getStatView))
     //添加初始化参数：initParams
     //白名单：
     servletRegistrationBean.addInitParameter("allow", properties.getAllow)

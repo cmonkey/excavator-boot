@@ -1,6 +1,6 @@
 package org.excavator.boot.druid.test
 
-import com.alibaba.druid.support.http.WebStatFilter
+import com.alibaba.druid.support.jakarta.WebStatFilter
 import javax.annotation.Resource
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions._
