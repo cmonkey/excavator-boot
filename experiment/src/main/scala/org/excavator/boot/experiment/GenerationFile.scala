@@ -1,7 +1,5 @@
 package org.excavator.boot.experiment
 
-import org.slf4j.LoggerFactory
-
 import java.io.{BufferedWriter, FileWriter}
 import java.nio.file.Path
 import scala.util.Random
