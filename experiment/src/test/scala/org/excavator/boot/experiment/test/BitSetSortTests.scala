@@ -15,7 +15,7 @@ class BitSetSortTests {
       GenerationFile.generateRandomNumbers(outputPath)
     )
     println(s"程序执行时间:${measurementResult.executionTime / 1000000} 毫秒")
-    println(s"程序内存消耗:${measurementResult.memoryConsumed} MB")
+    println(s"程序内存消耗:${measurementResult.memoryConsumed} 字节")
   }
 
   @Test
@@ -26,7 +26,7 @@ class BitSetSortTests {
       GenerationFile.generateRandomNumbers(outputPath)
     )
     println(s"生成数据的程序执行时间:${measurementGenerateResult.executionTime / 1000000} 毫秒")
-    println(s"生成数据程序内存消耗:${measurementGenerateResult.memoryConsumed} MB")
+    println(s"生成数据程序内存消耗:${measurementGenerateResult.memoryConsumed} 字节")
 
     val sortInputPath = outputPath
     val sortOutputPath = Files.createTempFile("random-bitset-sort",".txt")
@@ -36,7 +36,7 @@ class BitSetSortTests {
     )
 
     println(s"排序数据的程序执行时间:${measurementBitSetSortResult.executionTime / 1000000} 毫秒")
-    println(s"排序数据程序内存消耗:${measurementBitSetSortResult.memoryConsumed} MB")
+    println(s"排序数据程序内存消耗:${measurementBitSetSortResult.memoryConsumed} 字节")
   }
 
 }

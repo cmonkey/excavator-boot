@@ -18,10 +18,9 @@ object MeasureUtils {
     val executionTime = endTime - startTime
 
     val heapMemoryUsageAfter = memoryMXBean.getHeapMemoryUsage.getUsed
-    val memoryConsumedBytes = heapMemoryUsageAfter - usedHeapMemoryBefore
-    val memoryConsumedMB = memoryConsumedBytes.toDouble / (1024 * 1024)
+    val memoryConsumed= heapMemoryUsageAfter - usedHeapMemoryBefore
 
-    MeasurementResult(result,executionTime,memoryConsumedMB.toLong)
+    MeasurementResult(result,executionTime,memoryConsumed)
   }
   def measureTime[R](block: => R): (R,Long) = {
     val startTime = System.nanoTime()
