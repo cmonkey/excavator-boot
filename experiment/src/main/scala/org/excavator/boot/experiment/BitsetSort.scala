@@ -32,6 +32,7 @@ object BitsetSort {
         count = totalNumbers
       }
     }
+    println(s"index is [${index}] count is [${count}]")
     writer.close()
     println("Sorting completed!")
   }
