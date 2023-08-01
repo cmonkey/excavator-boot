@@ -6,7 +6,7 @@ import org.junit.jupiter.api.{DisplayName, Test}
 
 import scala.concurrent.duration.DurationInt
 
-class OSUtilsTestScala {
+class OSUtilsTests{
 
   @Test
   @DisplayName("test os Utils")
