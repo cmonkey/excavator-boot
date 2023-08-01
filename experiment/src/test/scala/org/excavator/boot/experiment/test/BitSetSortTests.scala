@@ -1,5 +1,6 @@
-package org.excavator.boot.experiment
+package org.excavator.boot.experiment.test
 
+import org.excavator.boot.experiment.{GenerationFile, MeasureUtils}
 import org.junit.jupiter.api.{DisplayName, Test}
 
 import java.nio.file.Files

@@ -1,7 +1,7 @@
-package org.excavator.boot.experiment
+package org.excavator.boot.experiment.test
 
 import cats.effect.{ExitCode, IO}
-import org.excavator.boot.experiment.executeShell.{OSUtils, OSUtilsScala}
+import org.excavator.boot.experiment.executeShell.OSUtilsScala
 import org.junit.jupiter.api.{DisplayName, Test}
 
 import scala.concurrent.duration.DurationInt
