@@ -61,3 +61,4 @@
 61. 2023年8月30日14:07:35 upgrade spring boot version from 3.1.2 to 3.1.3
 62. 2023年9月27日18:53:58 upgrade spring boot version from 3.1.3 to 3.1.4
 63. 2023年10月25日11:52:51 upgrade spring boot version from 3.1.4 to 3.1.5
+64. 2023年12月6日09:56:36 upgrade spring boot version from 3.1.5 to 3.1.6
