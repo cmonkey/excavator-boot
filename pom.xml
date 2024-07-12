@@ -60,7 +60,7 @@
 
 		<!-- 3rd lib dependency -->
 		<fastjson.version>1.2.83</fastjson.version>
-		<zookeeper.version>3.7.2</zookeeper.version>
+		<zookeeper.version>3.9.2</zookeeper.version>
         <curator.version>5.3.0</curator.version>
 		<joda.time.version>2.12.2</joda.time.version>
 		<scala.major-version>2.13</scala.major-version>
@@ -89,7 +89,7 @@
 		<javassist.version>3.29.2-GA</javassist.version>
 		<byte-buddy.version>1.14.2</byte-buddy.version>
 		<commons-io.version>2.11.0</commons-io.version>
-		<bouncycastle.version>1.76</bouncycastle.version>
+		<bouncycastle.version>1.78</bouncycastle.version>
 		<springswagger.version>3.0.0</springswagger.version>
         <jsch.version>0.1.55</jsch.version>
 		<monix.io.version>1.0.0</monix.io.version>
