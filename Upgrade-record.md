@@ -75,3 +75,4 @@
 75. 2024年7月31日19:51:18 upgrade spring boot version from 3.2.7 to 3.2.8
 76. 2024年8月31日21:22:36 upgrade spring boot version from 3.2.8 to 3.2.9
 77. 2024年9月26日10:45:22 upgrade spring boot version from 3.2.9 to 3.2.10
+78. 2024年11月6日09:25:03 upgrade spring boot version from 3.2.10 to 3.2.11
