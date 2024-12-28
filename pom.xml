@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.7</version>
+		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<modules>
@@ -54,7 +54,7 @@
 		<project.encoding>UTF-8</project.encoding>
 		<project.build.encoding>UTF-8</project.build.encoding>
 
-		<spring-cloud.version>2023.0.4</spring-cloud.version>
+		<spring-cloud.version>2024.0.0</spring-cloud.version>
 
 		<excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
