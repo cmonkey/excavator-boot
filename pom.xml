@@ -72,7 +72,6 @@
 		<pack.version>0.5.0</pack.version>
 		<mysql-connector.version>8.2.0</mysql-connector.version>
 		<commons-lang3.version>3.12.0</commons-lang3.version>
-		<lombok.version>1.18.36</lombok.version>
 		<druid.version>1.2.18</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
 		<redisson.version>3.22.0</redisson.version>
@@ -219,11 +218,6 @@
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>${joda.time.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.alibaba</groupId>
