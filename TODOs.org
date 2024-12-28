@@ -1,14 +1,38 @@
-** 进行中 Upgrade Spring Boot Version [#B] [0/1]                  :excavator:
-   SCHEDULED: <2020-09-16 Wed +1w>
+** 已取消 Upgrade Spring Boot Version [#B] [0/1]                  :excavator:
+   CLOSED: [2024-12-18 三 16:04] SCHEDULED: <2020-09-30 三 >
+   :PROPERTIES:
+   :LAST_REPEAT: [2024-12-17 二 21:34]
+   :END:
+   - State "已取消"     from "未开始"     [2024-12-18 三 16:04] \\
+     cancel
+   - State "已取消"     from "未开始"     [2024-12-17 二 21:34] \\
+     cancel
+   - State "已完成"     from "进行中"     [2024-12-17 二 21:33]
    - State "进行中"     from              [2020-09-16 Wed 16:28]
    - [ ] Upgrade Spring Boot Version
      
-** 进行中 Upgrade Spring Cloud Version [#B] [0/1]                 :excavator:
-   SCHEDULED: <2020-09-16 Wed +1w>
+** 已取消 Upgrade Spring Cloud Version [#B] [0/1]                 :excavator:
+   CLOSED: [2024-12-18 三 16:05] SCHEDULED: <2020-09-30 三 >
+   :PROPERTIES:
+   :LAST_REPEAT: [2024-12-17 二 21:34]
+   :END:
+   - State "已取消"     from "未开始"     [2024-12-18 三 16:05] \\
+     cancel
+   - State "已取消"     from "未开始"     [2024-12-17 二 21:34] \\
+     cancel
+   - State "已完成"     from "进行中"     [2024-12-17 二 21:33]
    - State "进行中"     from              [2020-09-16 Wed 16:29]
    - [ ] Upgrade Spring Cloud Version
 
-** 进行中 Upgrade Dependency Version [#B] [0/1]                   :excavator:
-   SCHEDULED: <2020-09-16 Wed +1m>
+** 已取消 Upgrade Dependency Version [#B] [0/1]                   :excavator:
+   CLOSED: [2024-12-18 三 16:05] SCHEDULED: <2020-11-16 一 >
+   :PROPERTIES:
+   :LAST_REPEAT: [2024-12-17 二 21:34]
+   :END:
+   - State "已取消"     from "未开始"     [2024-12-18 三 16:05] \\
+     cancel
+   - State "已取消"     from "未开始"     [2024-12-17 二 21:34] \\
+     cancel
+   - State "已完成"     from "进行中"     [2024-12-17 二 21:33]
    - State "进行中"     from              [2020-09-16 Wed 16:33]
    - [ ] Upgrade Dependenc Version
