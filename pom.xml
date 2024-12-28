@@ -107,7 +107,7 @@
 		<!-- plugin -->
 		<license.maven.plugin>3.0</license.maven.plugin>
 		<maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
-		<maven.compiler.plugin>3.11.0</maven.compiler.plugin>
+		<maven.compiler.plugin>3.13.0</maven.compiler.plugin>
 		<maven.source.plugin>3.2.1</maven.source.plugin>
 		<maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
@@ -116,7 +116,7 @@
 		<alchim31.scala.plugin>4.9.2</alchim31.scala.plugin>
 		<maven.surefire.plugin>3.0.0-M5</maven.surefire.plugin>
         <enforcer.plugin>3.0.0</enforcer.plugin>
-
+		<maven.compiler.proc>full</maven.compiler.proc>
 	</properties>
 
 	<licenses>
