@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.excavator.boot.experiment;
 
 import java.util.HashMap;
@@ -5,58 +21,62 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-public class MinHash<T>{
+
+public class MinHash<T> {
     private int hash[];
     private int numHash;
 
-    public MinHash(int numHash){
+    public MinHash(int numHash) {
         this.numHash = numHash;
         hash = new int[numHash];
         Random r = new Random(11);
-        for(int i = 0; i < numHash; i++){
-            int a = (int)r.nextInt();
-            int b = (int)r.nextInt();
-            int c = (int)r.nextInt();
-            int x = hash(a * b * c, a, b ,c);
+        for (int i = 0; i < numHash; i++) {
+            int a = (int) r.nextInt();
+            int b = (int) r.nextInt();
+            int c = (int) r.nextInt();
+            int x = hash(a * b * c, a, b, c);
             hash[i] = x;
         }
     }
 
-    private static int hash(int x, int a, int b, int c){
-        int hashValue = (int)((a * (x >> 4) + b * x + c ) & 131071);
+    private static int hash(int x, int a, int b, int c) {
+        int hashValue = (int) ((a * (x >> 4) + b * x + c) & 131071);
         return Math.abs(hashValue);
     }
 
-    public double slimlarity(Set<T> set1, Set<T> set2){
+    public double slimlarity(Set<T> set1, Set<T> set2) {
         int numSets = 2;
         Map<T, boolean[]> bitMap = buildBitMap(set1, set2);
-        int [][] minHashValues = initializeHashBuckets(numSets, numHash);
+        int[][] minHashValues = initializeHashBuckets(numSets, numHash);
         computeMinHashForSet(set1, 0, minHashValues, bitMap);
         computeMinHashForSet(set2, 2, minHashValues, bitMap);
 
         return computeSimilarityFromSignautures(minHashValues, numHash);
     }
 
-    private static int[][] initializeHashBuckets(int numSets, int numHashFunctions){
+    private static int[][] initializeHashBuckets(int numSets, int numHashFunctions) {
         int[][] minHashValues = new int[numSets][numHashFunctions];
-        for(int i = 0; i < numSets; i++){
-            for(int j = 0; j < numHashFunctions; j++){
+        for (int i = 0; i < numSets; i++) {
+            for (int j = 0; j < numHashFunctions; j++) {
                 minHashValues[i][j] = Integer.MAX_VALUE;
             }
         }
         return minHashValues;
     }
-    private static double computeSimilarityFromSignautures(int[][] minHashValues, int numHashFunctions){
+
+    private static double computeSimilarityFromSignautures(int[][] minHashValues,
+                                                           int numHashFunctions) {
         int identicalMinHashes = 0;
-        for (int i = 0; i < numHashFunctions; i++){
-            if(minHashValues[0][i] == minHashValues[1][i]){
+        for (int i = 0; i < numHashFunctions; i++) {
+            if (minHashValues[0][i] == minHashValues[1][i]) {
                 identicalMinHashes++;
             }
         }
         return (1.0 * identicalMinHashes) / numHashFunctions;
     }
-    private void computeMinHashForSet(Set<T> set, int setIndex,
-                                      int[][] minHashValues, Map<T, boolean[]> bitArray) {
+
+    private void computeMinHashForSet(Set<T> set, int setIndex, int[][] minHashValues,
+                                      Map<T, boolean[]> bitArray) {
 
         int index = 0;
 
@@ -73,7 +93,7 @@ public class MinHash<T>{
         }
     }
 
-    public Map<T, boolean[]> buildBitMap(Set<T> set1, Set<T> set2){
+    public Map<T, boolean[]> buildBitMap(Set<T> set1, Set<T> set2) {
         Map<T, boolean[]> bitArray = new HashMap<T, boolean[]>();
 
         for (T t : set1) {
@@ -83,14 +103,14 @@ public class MinHash<T>{
         for (T t : set2) {
             if (bitArray.containsKey(t)) {
                 bitArray.put(t, new boolean[] { true, true });
-            }
-            else if (!bitArray.containsKey(t)) {
+            } else if (!bitArray.containsKey(t)) {
                 bitArray.put(t, new boolean[] { false, true });
             }
         }
         return bitArray;
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         Set<String> set1 = new HashSet<String>();
         set1.add("FRANCISCO");
         set1.add("MISSION");

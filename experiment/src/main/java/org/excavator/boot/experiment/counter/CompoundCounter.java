@@ -16,8 +16,6 @@
  */
 package org.excavator.boot.experiment.counter;
 
-import lombok.SneakyThrows;
-
 import java.util.ArrayList;
 
 public class CompoundCounter extends ServerCounter {
@@ -29,12 +27,16 @@ public class CompoundCounter extends ServerCounter {
         this.clazz = clazz;
     }
 
-    @SneakyThrows
     @Override
     public synchronized Counter getThreadLocalView() {
-        ServerCounter view = clazz.newInstance();
-        views.add(view);
-        return view;
+        ServerCounter view = null;
+        try {
+            view = clazz.newInstance();
+            views.add(view);
+            return view;
+        } catch (InstantiationException | IllegalAccessException e) {
+            return null;
+        }
     }
 
     @Override

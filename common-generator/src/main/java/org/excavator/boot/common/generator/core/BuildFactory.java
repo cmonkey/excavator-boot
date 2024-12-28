@@ -107,8 +107,8 @@ public class BuildFactory {
 
         map.put("table_column", columns);
         map.put("hasDateColumn", Column.typeContains(columns, "Date"));
-        map.put("project", config.getProject());
-        map.put("author", config.getAuthor());
+        map.put("project", config.project());
+        map.put("author", config.author());
         map.put("sysDate", new Date());
 
         CACHE.put(tableName, map);

@@ -209,12 +209,12 @@ public class GeneratePublicPrivateKeys {
         KeyFactory keyFactory = KeyFactory.getInstance(keyAlgorithm, new BouncyCastleProvider());
 
         byte[] privateBytes = Base64.decodeBase64(generatePublicPrivateKey
-            .getPrivateKeyEncodeBase64String());
+            .privateKeyEncodeBase64String());
         EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateBytes);
         PrivateKey privateKey = keyFactory.generatePrivate(privateKeySpec);
 
         byte[] publicBytes = Base64.decodeBase64(generatePublicPrivateKey
-            .getPublicKeyEncodeBase64String());
+            .publicKeyEncodeBase64String());
         EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicBytes);
         PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
 
@@ -230,12 +230,11 @@ public class GeneratePublicPrivateKeys {
                                                                                                  NoSuchAlgorithmException {
         KeyFactory keyFactory = KeyFactory.getInstance(keyAlgorithm, new BouncyCastleProvider());
 
-        byte[] privateBytes = Hex
-            .decodeHex(generatePublicPrivateKey.getPrivateKeyEncodeHexString());
+        byte[] privateBytes = Hex.decodeHex(generatePublicPrivateKey.privateKeyEncodeHexString());
         EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateBytes);
         PrivateKey privateKey = keyFactory.generatePrivate(privateKeySpec);
 
-        byte[] publicBytes = Hex.decodeHex(generatePublicPrivateKey.getPublicKeyEncodeHexString());
+        byte[] publicBytes = Hex.decodeHex(generatePublicPrivateKey.publicKeyEncodeHexString());
         EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicBytes);
         PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
 

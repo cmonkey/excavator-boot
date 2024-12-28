@@ -53,7 +53,7 @@ public class Builder {
 
     private void dbSchemeToEntity(BuildFactory factory, Config config, String table) {
         // iterator all template file
-        TemplateMapping[] mappings = config.getMappings();
+        TemplateMapping[] mappings = config.mappings();
 
         List<String> tableList = Arrays.asList(tables);
 
@@ -69,11 +69,11 @@ public class Builder {
             // iterator all databases tables.
             for (String tableName : tableList) {
 
-                String packagePath = m.buildPackage(config.getProject(), config.getPackagePath(),
-                    config.getModel());//MyUtils.getModelName(tableName, ".")
+                String packagePath = m.buildPackage(config.project(), config.packagePath(),
+                    config.model());//MyUtils.getModelName(tableName, ".")
 
                 String className = StringUtil.className(tableName.toLowerCase().replace(
-                    config.getIgnorePrefix(), ""));
+                    config.ignorePrefix(), ""));
 
                 Map<String, Object> data = factory.getParams(className, tableName, packagePath,
                     config);
@@ -113,12 +113,7 @@ public class Builder {
 
         copyPath(path);
 
-        DatabaseConfig databaseConfig = new DatabaseConfig();
-
-        databaseConfig.setDriverClass(driverClass);
-        databaseConfig.setPassword(password);
-        databaseConfig.setUsername(user);
-        databaseConfig.setUrl(url);
+        DatabaseConfig databaseConfig = new DatabaseConfig(driverClass, user, password, url);
 
         if (StringUtils.isBlank(author)) {
             author = getAuthor(path);
@@ -188,7 +183,9 @@ public class Builder {
 
         Config config = getConfig(resourcesDir);
 
+        /* FIXME: change databaseConfig model
         if (null != databaseConfig) {
+            config.d
             config.setDatabaseConfig(databaseConfig);
         }
 
@@ -199,10 +196,11 @@ public class Builder {
         if (StringUtils.isNotBlank(author)) {
             config.setAuthor(author);
         }
+         */
 
         BuildFactory factory = new BuildFactory();
 
-        factory.setSettingInfo(resourcesDir, config.getDatabaseConfig());
+        factory.setSettingInfo(resourcesDir, config.databaseConfig());
 
         instance.dbSchemeToEntity(factory, config, table);
     }

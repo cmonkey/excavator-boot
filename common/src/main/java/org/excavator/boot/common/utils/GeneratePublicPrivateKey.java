@@ -16,17 +16,9 @@
  */
 package org.excavator.boot.common.utils;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class GeneratePublicPrivateKey {
-    private String privateKeyEncodeHexString;
-    private String publicKeyEncodeHexString;
-    private String privateKeyEncodeBase64String;
-    private String publicKeyEncodeBase64String;
-
-}
+public record GeneratePublicPrivateKey (
+    String privateKeyEncodeHexString,
+    String publicKeyEncodeHexString,
+    String privateKeyEncodeBase64String,
+    String publicKeyEncodeBase64String)
+{}

@@ -47,7 +47,7 @@ public class StringUtil {
 
     //去前缀
     public static String javaStyleOfTableName(Config config, String tableName) {
-        String prefixs = config.getIgnorePrefix();
+        String prefixs = config.ignorePrefix();
         String[] ps = prefixs.split(",");
         for (String p : ps) {
             if (tableName.startsWith(p)) {

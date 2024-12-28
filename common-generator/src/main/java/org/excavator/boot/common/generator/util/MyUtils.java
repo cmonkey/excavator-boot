@@ -32,11 +32,11 @@ public class MyUtils {
     private final static Logger logger = LoggerFactory.getLogger(MyUtils.class);
 
     public static String getTemplatePath(Config config, TemplateMapping m) {
-        return config.getTemplateDir() + File.separator + m.getTemplate();
+        return config.templateDir() + File.separator + m.template();
     }
 
     public static String getGroupName(Config config, String tableName) {
-        Group[] groups = config.getGroups();
+        Group[] groups = config.groups();
         String name;
         for (Group g : groups) {
             name = g.findGroupName(tableName);
@@ -60,11 +60,10 @@ public class MyUtils {
 
     public static String getOutPutPath(Config config, TemplateMapping m, String tableName) {
 
-        String path = m.buildDir(config.getProject(), config.getPackagePath(), config.getModel())
+        String path = m.buildDir(config.project(), config.packagePath(), config.model())
                       + SetupConfig.SEPARATOR;//getModelName(tableName, "/")
 
-        path += m.getSPadding() + StringUtil.className(tableName) + m.getEPadding() + "."
-                + m.getSuffix();
+        path += m.sPadding() + StringUtil.className(tableName) + m.ePadding() + "." + m.suffix();
 
         logger.info("getOutPutPath ### modelName = {}", getModelName(config, tableName, "/"));
         logger.info("getOutPutPath path = {}", path);
@@ -90,7 +89,7 @@ public class MyUtils {
     }
 
     public static String buildModelPackage(Config config, String tableName) {
-        return config.getPackagePath() + "." + getModelName(config, tableName, ".");
+        return config.packagePath() + "." + getModelName(config, tableName, ".");
     }
 
 }

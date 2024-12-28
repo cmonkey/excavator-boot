@@ -38,10 +38,10 @@ public abstract class AbstractDaoSupport {
     protected static String     password   = "";
 
     public static AbstractDaoSupport getInstance(DatabaseConfig databaseConfig) {
-        driverName = databaseConfig.getDriverClass();
-        url = databaseConfig.getUrl();
-        username = databaseConfig.getUsername();
-        password = databaseConfig.getPassword();
+        driverName = databaseConfig.driverClass();
+        url = databaseConfig.url();
+        username = databaseConfig.username();
+        password = databaseConfig.password();
 
         if (driverName.contains("oracle")) {
             return new OracleDao();

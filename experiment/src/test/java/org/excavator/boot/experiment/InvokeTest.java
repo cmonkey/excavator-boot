@@ -16,19 +16,19 @@
  */
 package org.excavator.boot.experiment;
 
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InvokeTest {
 
-    @SneakyThrows
     @Test
     @DisplayName("test invoke")
-    public void testInvoke() {
+    public void testInvoke() throws NoSuchMethodException, InvocationTargetException,
+                            IllegalAccessException {
         var names = new ArrayList<String>();
         var add = List.class.getMethod("add", Object.class);
         add.invoke(names, "John");

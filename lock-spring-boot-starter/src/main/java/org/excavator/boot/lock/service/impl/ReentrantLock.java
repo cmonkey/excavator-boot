@@ -38,8 +38,8 @@ public class ReentrantLock implements LockService {
     @Override
     public boolean acquire() {
         try {
-            rLock = redissonClient.getLock(lockInfo.getName());
-            return rLock.tryLock(lockInfo.getWaitTime(), lockInfo.getLeaseTime(), TimeUnit.SECONDS);
+            rLock = redissonClient.getLock(lockInfo.name());
+            return rLock.tryLock(lockInfo.waitTime(), lockInfo.leaseTime(), TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             return false;
         }

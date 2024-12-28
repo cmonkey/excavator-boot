@@ -16,14 +16,10 @@
  */
 package org.excavator.boot.common.generator.config;
 
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-@ToString
-public class DatabaseConfig {
-    private String driverClass;
-    private String username;
-    private String password;
-    private String url;
+public record DatabaseConfig (
+    String driverClass,
+    String username,
+    String password,
+    String url
+){
 }

@@ -16,15 +16,12 @@
  */
 package org.excavator.boot.lock.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.excavator.boot.lock.enums.LockType;
 
-@Data
-@AllArgsConstructor
-public class LockInfo {
-    private LockType type;
-    private String   name;
-    private long     waitTime;
-    private long     leaseTime;
+public record LockInfo (
+    LockType type,
+    String   name,
+    long     waitTime,
+    long     leaseTime
+){
 }

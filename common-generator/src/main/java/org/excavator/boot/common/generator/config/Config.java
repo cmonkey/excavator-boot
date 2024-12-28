@@ -16,21 +16,20 @@
  */
 package org.excavator.boot.common.generator.config;
 
-import lombok.Data;
-import lombok.ToString;
+public record Config (
+    String            project,
+    String            packagePath,
+    String            author ,
+    String            model,
 
-@Data
-@ToString
-public class Config {
-    private String            project;
-    private String            packagePath;
-    private String            author = "cmonkey";
-    private String            model;
+    String            ignorePrefix,
 
-    private String            ignorePrefix;
-
-    private DatabaseConfig    databaseConfig;
-    private String            templateDir;
-    private TemplateMapping[] mappings;
-    private Group[]           groups;
+    DatabaseConfig    databaseConfig,
+    String            templateDir,
+    TemplateMapping[] mappings,
+    Group[]           groups
+){
+    public Config{
+        author = "cmonkey";
+    }
 }

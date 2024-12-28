@@ -16,8 +16,7 @@
  */
 package org.excavator.boot.experiment.stream;
 
-import lombok.SneakyThrows;
-
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -39,9 +38,12 @@ public class ExceptionsAndStreams {
         return dates;
     }
 
-    @SneakyThrows
     private static Date uglyParse(SimpleDateFormat format, String s) {
-        return format.parse(s);
+        try {
+            return format.parse(s);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static <T, R> Function<T, R> wrapAsRuntime(ThrowingFunction<T, R> p){

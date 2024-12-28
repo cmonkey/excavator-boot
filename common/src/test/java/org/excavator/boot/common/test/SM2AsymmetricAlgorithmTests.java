@@ -88,15 +88,14 @@ public class SM2AsymmetricAlgorithmTests {
         // Generate SM2sign with sm3 signature verification algorithm instance
 
         Optional<byte[]> optionalSign = GeneratePublicPrivateKeys.sign(input,
-            GMObjectIdentifiers.sm2sign_with_sm3.toString(), publicPrivateKey.getPrivateKey());
+            GMObjectIdentifiers.sm2sign_with_sm3.toString(), publicPrivateKey.privateKey());
 
         assertEquals(true, optionalSign.isPresent());
 
         byte[] signbytes = optionalSign.get();
 
-        Optional<Boolean> optionalVerifySign = GeneratePublicPrivateKeys
-            .verifySign(signbytes, input, GMObjectIdentifiers.sm2sign_with_sm3.toString(),
-                publicPrivateKey.getPublicKey());
+        Optional<Boolean> optionalVerifySign = GeneratePublicPrivateKeys.verifySign(signbytes,
+            input, GMObjectIdentifiers.sm2sign_with_sm3.toString(), publicPrivateKey.publicKey());
 
         assertEquals(true, optionalVerifySign.isPresent());
 
@@ -140,14 +139,14 @@ public class SM2AsymmetricAlgorithmTests {
         PublicPrivateKey publicPrivateKey = optionalPublicPrivateKey.get();
 
         Optional<byte[]> optionalEncrypt = GeneratePublicPrivateKeys.encrypt(input, "SM2",
-            publicPrivateKey.getPublicKey());
+            publicPrivateKey.publicKey());
 
         assertEquals(true, optionalEncrypt.isPresent());
 
         byte[] outputEncrypt = optionalEncrypt.get();
 
         Optional<byte[]> optionalDecrypt = GeneratePublicPrivateKeys.decrypt(outputEncrypt, "SM2",
-            publicPrivateKey.getPrivateKey());
+            publicPrivateKey.privateKey());
 
         assertEquals(true, optionalDecrypt.isPresent());
 
@@ -158,14 +157,14 @@ public class SM2AsymmetricAlgorithmTests {
         assertEquals(data, decStr);
 
         Optional<byte[]> optionalEncryptBySm2 = GeneratePublicPrivateKeys.encryptBySM2(input,
-            publicPrivateKey.getPublicKey());
+            publicPrivateKey.publicKey());
 
         assertEquals(true, optionalEncryptBySm2.isPresent());
 
         byte[] outputEncryptBySm2 = optionalEncryptBySm2.get();
 
         Optional<byte[]> optionalDecryptBySm2 = GeneratePublicPrivateKeys.decryptBySM2(
-            outputEncryptBySm2, publicPrivateKey.getPrivateKey());
+            outputEncryptBySm2, publicPrivateKey.privateKey());
 
         assertEquals(true, optionalDecryptBySm2.isPresent());
 
@@ -183,9 +182,8 @@ public class SM2AsymmetricAlgorithmTests {
         String base64PrivateKey = "MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQgACzs7q8xNRkQNX1cNuNbZJylEW27s3+njSryRHBptE6gCgYIKoEcz1UBgi2hRANCAASSBlyRGzj0NinG2FFnHesYuxmb9qztrD5IR3Mn1oiQTgDNXV/zAQpCrdWElqMss6Cnh1+6nK6W2b0PKZgqFOtU";
         String base64PublicKey = "MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEkgZckRs49DYpxthRZx3rGLsZm/as7aw+SEdzJ9aIkE4AzV1f8wEKQq3VhJajLLOgp4dfupyultm9DymYKhTrVA==";
 
-        GeneratePublicPrivateKey generatePublicPrivateKey = new GeneratePublicPrivateKey();
-        generatePublicPrivateKey.setPrivateKeyEncodeBase64String(base64PrivateKey);
-        generatePublicPrivateKey.setPublicKeyEncodeBase64String(base64PublicKey);
+        GeneratePublicPrivateKey generatePublicPrivateKey = new GeneratePublicPrivateKey(null,
+            null, base64PrivateKey, base64PublicKey);
 
         Optional<PublicPrivateKey> optionalPublicPrivateKey = GeneratePublicPrivateKeys
             .getPublicPrivateKey("EC", generatePublicPrivateKey, ResolveEnum.BASE64);
@@ -197,7 +195,7 @@ public class SM2AsymmetricAlgorithmTests {
         String data = "javascript";
 
         Optional<byte[]> optionalEncrypt = GeneratePublicPrivateKeys.encrypt(
-            data.getBytes(StandardCharsets.UTF_8), "SM2", publicPrivateKey.getPublicKey());
+            data.getBytes(StandardCharsets.UTF_8), "SM2", publicPrivateKey.publicKey());
 
         assertEquals(true, optionalEncrypt.isPresent());
 
@@ -207,7 +205,7 @@ public class SM2AsymmetricAlgorithmTests {
 
         try {
             Optional<byte[]> optionalDecrypt = GeneratePublicPrivateKeys.decrypt(
-                Hex.decodeHex(encData), "SM2", publicPrivateKey.getPrivateKey());
+                Hex.decodeHex(encData), "SM2", publicPrivateKey.privateKey());
 
             assertEquals(true, optionalDecrypt.isPresent());
 
@@ -215,7 +213,7 @@ public class SM2AsymmetricAlgorithmTests {
                 new String(optionalDecrypt.get(), StandardCharsets.UTF_8));
 
             Optional<byte[]> optionalDecryptBySM2 = GeneratePublicPrivateKeys.decryptBySM2(
-                Hex.decodeHex(encData), publicPrivateKey.getPrivateKey());
+                Hex.decodeHex(encData), publicPrivateKey.privateKey());
 
             assertEquals(true, optionalDecryptBySM2.isPresent());
             logger.info("decrypt = {}", new String(optionalDecrypt.get(), StandardCharsets.UTF_8));
