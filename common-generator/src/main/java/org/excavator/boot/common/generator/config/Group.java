@@ -16,16 +16,10 @@
  */
 package org.excavator.boot.common.generator.config;
 
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-@ToString
-public class Group {
-
-    private String name;
-    private String prefix;
-
+public record Group (
+    String name,
+    String prefix
+){
     public String findGroupName(String tableName) {
         String[] ps = prefix.split(",");
         for (String s : ps) {

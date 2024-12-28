@@ -16,16 +16,17 @@
  */
 package org.excavator.boot.lambda.expression.test;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.function.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Slf4j
 public class ExpressionTest {
+    public static final Logger log = LoggerFactory.getLogger(ExpressionTest.class);
 
     @Test
     @DisplayName("test lambda expression")

@@ -16,7 +16,6 @@
  */
 package org.excavator.boot.experiment.tribuo;
 
-import lombok.SneakyThrows;
 import org.tribuo.DataSource;
 import org.tribuo.Model;
 import org.tribuo.MutableDataset;
@@ -28,20 +27,24 @@ import org.tribuo.classification.sgd.linear.LogisticRegressionTrainer;
 import org.tribuo.data.csv.CSVLoader;
 import org.tribuo.evaluation.TrainTestSplitter;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class MLIris {
-    @SneakyThrows
     private static Path getCurrentPath(String fileName) {
         var classLoader = MLIris.class.getClassLoader();
-        var uri = classLoader.getResource(fileName).toURI();
-        var path = Paths.get(uri);
-        return path;
+        try {
+            var uri = classLoader.getResource(fileName).toURI();
+            var path = Paths.get(uri);
+            return path;
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @SneakyThrows
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Load labelled iris data
         var irisHeaders = new String[] { "sepalLength", "sepalWidth", "petalLength", "petalWidth",
                 "species" };

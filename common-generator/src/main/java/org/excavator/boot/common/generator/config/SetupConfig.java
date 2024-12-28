@@ -17,16 +17,12 @@
 package org.excavator.boot.common.generator.config;
 
 import com.alibaba.fastjson.JSON;
-import lombok.Data;
-import lombok.ToString;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-@Data
-@ToString
 public class SetupConfig {
 
     private static SetupConfig instance;

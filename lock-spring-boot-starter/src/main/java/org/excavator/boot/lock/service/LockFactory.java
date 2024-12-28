@@ -57,7 +57,7 @@ public class LockFactory {
 
     public LockService getLock(ProceedingJoinPoint joinPoint, Lock lock) {
         LockInfo lockInfo = lockInfoProvider.get(joinPoint, lock);
-        return LOCKMAP.get(lockInfo.getType()).setLockInfo(lockInfo);
+        return LOCKMAP.get(lockInfo.type()).setLockInfo(lockInfo);
     }
 
 }

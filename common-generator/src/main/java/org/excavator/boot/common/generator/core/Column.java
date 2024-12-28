@@ -16,13 +16,8 @@
  */
 package org.excavator.boot.common.generator.core;
 
-import lombok.Data;
-import lombok.ToString;
-
 import java.util.List;
 
-@Data
-@ToString
 public class Column {
 
     //列数据类型
@@ -36,6 +31,38 @@ public class Column {
 
     //备注，注释
     private String remark;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNameJ() {
+        return nameJ;
+    }
+
+    public void setNameJ(String nameJ) {
+        this.nameJ = nameJ;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public Column() {
     }

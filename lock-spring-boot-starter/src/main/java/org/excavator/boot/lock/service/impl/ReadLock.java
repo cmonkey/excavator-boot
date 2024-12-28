@@ -38,8 +38,8 @@ public class ReadLock implements LockService {
     @Override
     public boolean acquire() {
         try {
-            rLock = redissonClient.getReadWriteLock(lockInfo.getName());
-            return rLock.readLock().tryLock(lockInfo.getWaitTime(), lockInfo.getLeaseTime(),
+            rLock = redissonClient.getReadWriteLock(lockInfo.name());
+            return rLock.readLock().tryLock(lockInfo.waitTime(), lockInfo.leaseTime(),
                 TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             return false;

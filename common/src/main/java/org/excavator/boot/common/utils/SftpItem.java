@@ -16,22 +16,21 @@
  */
 package org.excavator.boot.common.utils;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class SftpItem {
-    private String name;
-    private String ip;
-    private int    port            = 22;
-    private String path            = "/";
-    private int    model           = 0;      //model  OVERWRITE=0; RESUME=1   APPEND=2;
-    private String user;
-    private String password;
-    private String privateKey;
-
-    private String controlEncoding = "UTF-8";
+public record SftpItem (
+    String name,
+    String ip,
+    int    port,
+    String path,
+    int    model,
+    String user,
+    String password,
+    String privateKey,
+    String controlEncoding
+){
+    public SftpItem {
+        port = 22;
+        path = "/";
+        model = 0;
+       controlEncoding= "UTF-8";
+    }
 }

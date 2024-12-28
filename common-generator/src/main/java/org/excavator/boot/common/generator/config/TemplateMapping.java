@@ -16,30 +16,30 @@
  */
 package org.excavator.boot.common.generator.config;
 
-import lombok.Data;
-import lombok.ToString;
-
 /**
  * 模板映射
  * @author cmonkey
  */
-@Data
-@ToString
-public class TemplateMapping {
-
-    private String template;
-    private String dir;
-    private String suffix   = "java"; // default java
-    private String project;
-    private String packagePath;      // default calc from dir
-    private String ePadding = "";    // padding the end of file name
-    private String sPadding = "";    // padding the start of file name
+public record TemplateMapping (
+    String template,
+    String dir,
+    String suffix   ,
+    String project,
+    String packagePath,      // default calc from dir
+    String ePadding,
+    String sPadding
+){
+    public TemplateMapping{
+        suffix = "java";
+        ePadding = "";
+        sPadding = "";
+    }
 
     public String buildPackage(String project, String packageP, String modelName) {
 
-        String localPackagePath = this.getPackagePath();
+        String localPackagePath = this.packagePath();
 
-        if (this.getPackagePath() != null && !"".equals(this.getPackagePath())) {
+        if (this.packagePath() != null && !"".equals(this.packagePath())) {
 
             localPackagePath = localPackagePath.replaceAll("\\$\\{project\\}", project);
             localPackagePath = localPackagePath.replaceAll("\\$\\{packagePath\\}", packageP);
@@ -50,9 +50,9 @@ public class TemplateMapping {
     }
 
     public String buildDir(String project, String packageP) {
-        String localDir = getDir();
+        String localDir = dir();
 
-        if (this.getDir() != null && !"".equals(this.getDir())) {
+        if (this.dir() != null && !"".equals(this.dir())) {
             localDir = localDir.replaceAll("\\$\\{project\\}", project);
             localDir = localDir.replaceAll("\\$\\{packagePath\\}", packageP);
         }
@@ -61,9 +61,9 @@ public class TemplateMapping {
     }
 
     public String buildDir(String project, String packageP, String modelName) {
-        String localDir = getDir();
+        String localDir = dir();
 
-        if (this.getDir() != null && !"".equals(this.getDir())) {
+        if (this.dir() != null && !"".equals(this.dir())) {
             localDir = localDir.replaceAll("\\$\\{project\\}", project);
             packageP = packageP.replaceAll("[\\.]", "/");
             localDir = localDir.replaceAll("\\$\\{packagePath\\}", packageP);

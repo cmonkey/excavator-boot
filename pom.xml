@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.7</version>
+		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<modules>
@@ -54,7 +54,7 @@
 		<project.encoding>UTF-8</project.encoding>
 		<project.build.encoding>UTF-8</project.build.encoding>
 
-		<spring-cloud.version>2023.0.4</spring-cloud.version>
+		<spring-cloud.version>2024.0.0</spring-cloud.version>
 
 		<excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
@@ -64,7 +64,7 @@
         <curator.version>5.3.0</curator.version>
 		<joda.time.version>2.12.2</joda.time.version>
 		<scala.major-version>2.13</scala.major-version>
-		<scala.version>${scala.major-version}.11-M1</scala.version>
+		<scala.version>${scala.major-version}.15</scala.version>
 		<pagehelper.version>1.4.6</pagehelper.version>
 		<mybatis.version>3.0.1</mybatis.version>
 		<dom4j.version>2.1.4</dom4j.version>
@@ -72,7 +72,7 @@
 		<pack.version>0.5.0</pack.version>
 		<mysql-connector.version>8.2.0</mysql-connector.version>
 		<commons-lang3.version>3.12.0</commons-lang3.version>
-		<lombok.version>1.18.28</lombok.version>
+		<lombok.version>1.18.36</lombok.version>
 		<druid.version>1.2.18</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
 		<redisson.version>3.22.0</redisson.version>
@@ -107,16 +107,16 @@
 		<!-- plugin -->
 		<license.maven.plugin>3.0</license.maven.plugin>
 		<maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
-		<maven.compiler.plugin>3.11.0</maven.compiler.plugin>
+		<maven.compiler.plugin>3.13.0</maven.compiler.plugin>
 		<maven.source.plugin>3.2.1</maven.source.plugin>
 		<maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
 		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
 		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
-		<alchim31.scala.plugin>4.8.1</alchim31.scala.plugin>
+		<alchim31.scala.plugin>4.9.2</alchim31.scala.plugin>
 		<maven.surefire.plugin>3.0.0-M5</maven.surefire.plugin>
         <enforcer.plugin>3.0.0</enforcer.plugin>
-
+		<maven.compiler.proc>full</maven.compiler.proc>
 	</properties>
 
 	<licenses>

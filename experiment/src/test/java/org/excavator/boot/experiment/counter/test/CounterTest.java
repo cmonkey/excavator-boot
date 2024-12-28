@@ -16,7 +16,6 @@
  */
 package org.excavator.boot.experiment.counter.test;
 
-import lombok.SneakyThrows;
 import org.excavator.boot.experiment.counter.*;
 import org.junit.jupiter.api.*;
 
@@ -28,7 +27,7 @@ public class CounterTest {
     @Test
     @DisplayName("counter test by EmptyCounter")
     @Order(1)
-    public void testEmptyCounter() {
+    public void testEmptyCounter() throws InterruptedException {
         counterTest(new EmptyCounter(), Runtime.getRuntime().availableProcessors(), 0);
         counterTest(new EmptyCounter(), Runtime.getRuntime().availableProcessors(), 10);
         counterTest(new EmptyCounter(), Runtime.getRuntime().availableProcessors(), 50);
@@ -38,7 +37,7 @@ public class CounterTest {
     @Test
     @DisplayName("counter test by TrivialCounter")
     @Order(2)
-    public void testTrivialCounter() {
+    public void testTrivialCounter() throws InterruptedException {
         counterTest(new TrivialCounter(), Runtime.getRuntime().availableProcessors(), 0);
         counterTest(new TrivialCounter(), Runtime.getRuntime().availableProcessors(), 10);
         counterTest(new TrivialCounter(), Runtime.getRuntime().availableProcessors(), 50);
@@ -48,7 +47,7 @@ public class CounterTest {
     @Test
     @DisplayName("counter test by VolatileCounter")
     @Order(3)
-    public void testVolatileCounter() {
+    public void testVolatileCounter() throws InterruptedException {
         counterTest(new VolatileCounter(), Runtime.getRuntime().availableProcessors(), 0);
         counterTest(new VolatileCounter(), Runtime.getRuntime().availableProcessors(), 10);
         counterTest(new VolatileCounter(), Runtime.getRuntime().availableProcessors(), 50);
@@ -58,7 +57,7 @@ public class CounterTest {
     @Test
     @DisplayName("counter test by SynchronizedCounter")
     @Order(4)
-    public void testSynchronizedCounter() {
+    public void testSynchronizedCounter() throws InterruptedException {
         counterTest(new SynchronizedCounter(), Runtime.getRuntime().availableProcessors(), 0);
         counterTest(new SynchronizedCounter(), Runtime.getRuntime().availableProcessors(), 10);
         counterTest(new SynchronizedCounter(), Runtime.getRuntime().availableProcessors(), 50);
@@ -68,7 +67,7 @@ public class CounterTest {
     @Test
     @DisplayName("counter test by AtomicCounter")
     @Order(5)
-    public void testAtomicCounter() {
+    public void testAtomicCounter() throws InterruptedException {
         counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 0);
         counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 10);
         counterTest(new AtomicCounter(), Runtime.getRuntime().availableProcessors(), 50);
@@ -78,7 +77,7 @@ public class CounterTest {
     @Test
     @DisplayName("counter test by CompoundCounter")
     @Order(6)
-    public void testCompoundCounter() {
+    public void testCompoundCounter() throws InterruptedException {
         counterTest(new CompoundCounter(TrivialCounter.class), Runtime.getRuntime()
             .availableProcessors(), 0);
         counterTest(new CompoundCounter(TrivialCounter.class), Runtime.getRuntime()
@@ -116,8 +115,7 @@ public class CounterTest {
             .availableProcessors(), 100);
     }
 
-    @SneakyThrows
-    public static void counterTest(ServerCounter counter, int nThreads, int delayFactor){
+    public static void counterTest(ServerCounter counter, int nThreads, int delayFactor) throws InterruptedException {
         AtomicBoolean atomicBoolean = new AtomicBoolean(true);
         ArrayList<CounterThread> threads = new ArrayList<>();
         for (int i = 0; i < nThreads; i++) {

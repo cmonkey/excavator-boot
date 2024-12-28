@@ -32,12 +32,12 @@ class CryptoHelper(stringRedisTemplate: StringRedisTemplate) {
 
       resolveEnum match {
         case ResolveEnum.BASE64 => {
-          privateKey = generatePublicPrivateKey.getPrivateKeyEncodeBase64String
-          publicKey = generatePublicPrivateKey.getPublicKeyEncodeBase64String
+          privateKey = generatePublicPrivateKey.privateKeyEncodeBase64String
+          publicKey = generatePublicPrivateKey.publicKeyEncodeBase64String
         }
         case ResolveEnum.HEX => {
-          privateKey = generatePublicPrivateKey.getPrivateKeyEncodeHexString
-          publicKey = generatePublicPrivateKey.getPublicKeyEncodeHexString
+          privateKey = generatePublicPrivateKey.privateKeyEncodeHexString
+          publicKey = generatePublicPrivateKey.publicKeyEncodeHexString
         }
         case _ => {
           logger.warn("saveUserCryptoInfo resolve match failed")
@@ -70,16 +70,14 @@ class CryptoHelper(stringRedisTemplate: StringRedisTemplate) {
 
         val resolveEnum = ResolveEnum.valueOf(resolve)
 
-        val generatePublicPrivateKey = new GeneratePublicPrivateKey()
+        var generatePublicPrivateKey = new GeneratePublicPrivateKey(null, null, null, null)
 
         resolveEnum match {
           case ResolveEnum.BASE64 => {
-            generatePublicPrivateKey.setPrivateKeyEncodeBase64String(privateKey)
-            generatePublicPrivateKey.setPublicKeyEncodeBase64String(publicKey)
+            generatePublicPrivateKey = new GeneratePublicPrivateKey(null, null, privateKey, publicKey)
           }
           case ResolveEnum.HEX => {
-            generatePublicPrivateKey.setPrivateKeyEncodeHexString(privateKey)
-            generatePublicPrivateKey.setPublicKeyEncodeHexString(publicKey)
+            generatePublicPrivateKey = new GeneratePublicPrivateKey(privateKey, publicKey, null, null)
           }
           case _ => {
             logger.warn("getPublicPrivateKey resolve match failed ")

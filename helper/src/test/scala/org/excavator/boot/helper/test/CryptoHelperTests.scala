@@ -59,7 +59,7 @@ class CryptoHelperTests {
 
     optionalPublicPrivateKey.ifPresent(publicPrivateKey => {
       val input = Hex.decodeHex(text)
-      val dec  = GeneratePublicPrivateKeys.decryptBySM2(input, publicPrivateKey.getPrivateKey)
+      val dec  = GeneratePublicPrivateKeys.decryptBySM2(input, publicPrivateKey.privateKey)
 
       dec.ifPresent(r => {
         val result = new String(r, StandardCharsets.UTF_8)

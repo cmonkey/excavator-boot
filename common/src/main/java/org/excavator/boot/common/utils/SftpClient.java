@@ -68,12 +68,12 @@ public class SftpClient {
             return;
         }
         this.sftpItem = sftpItem;
-        this.username = sftpItem.getUser();
-        this.password = sftpItem.getPassword();
-        this.privateKey = sftpItem.getPrivateKey();
-        this.host = sftpItem.getIp();
-        this.port = sftpItem.getPort();
-        this.mode = sftpItem.getModel();
+        this.username = sftpItem.user();
+        this.password = sftpItem.password();
+        this.privateKey = sftpItem.privateKey();
+        this.host = sftpItem.ip();
+        this.port = sftpItem.port();
+        this.mode = sftpItem.model();
     }
 
     public SftpClient(String username, String password, String privateKey, String host, int port) {
@@ -151,7 +151,7 @@ public class SftpClient {
      * @param input        输入流
      */
     public void upload(String sftpFileName, InputStream input) throws SftpException, IOException {
-        String remotePath = sftpItem.getPath();
+        String remotePath = sftpItem.path();
         upload(remotePath, sftpFileName, input);
     }
 
