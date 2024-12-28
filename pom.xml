@@ -72,7 +72,7 @@
 		<pack.version>0.5.0</pack.version>
 		<mysql-connector.version>8.2.0</mysql-connector.version>
 		<commons-lang3.version>3.12.0</commons-lang3.version>
-		<lombok.version>1.18.28</lombok.version>
+		<lombok.version>1.18.36</lombok.version>
 		<druid.version>1.2.18</druid.version>
 		<javax-servlet.version>4.0.1</javax-servlet.version>
 		<redisson.version>3.22.0</redisson.version>
@@ -113,7 +113,7 @@
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
 		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
 		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
-		<alchim31.scala.plugin>4.8.1</alchim31.scala.plugin>
+		<alchim31.scala.plugin>4.9.2</alchim31.scala.plugin>
 		<maven.surefire.plugin>3.0.0-M5</maven.surefire.plugin>
         <enforcer.plugin>3.0.0</enforcer.plugin>
 
