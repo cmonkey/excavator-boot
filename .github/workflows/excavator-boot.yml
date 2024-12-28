@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'oracle'
-          java-version: 22
+          java-version: 23
       - name: maven build
         run: 
           mvn clean package -DskipTests 
