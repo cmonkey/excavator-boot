@@ -78,3 +78,4 @@
 78. 2024年11月6日09:25:03 upgrade spring boot version from 3.2.10 to 3.2.11
 79. 2024年12月28日19:57:51 upgrade spring cloud version from 2023.0.3 to 2023.0.4
 80. 2024年12月28日19:58:16 upgrade spring version from 3.2.12 to 3.3.7
+81. 2025年2月19日11:26:38 upgrade spring version from 3.4.1 to 3.4.2
