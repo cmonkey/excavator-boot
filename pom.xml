@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.2</version>
+		<version>3.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<modules>
@@ -48,13 +48,13 @@
 		<module>experiment</module>
 	</modules>
 	<properties>
-		<java.version>23</java.version>
+		<java.version>24</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.encoding>UTF-8</project.encoding>
 		<project.build.encoding>UTF-8</project.build.encoding>
 
-		<spring-cloud.version>2024.0.0</spring-cloud.version>
+		<spring-cloud.version>2024.0.1</spring-cloud.version>
 
 		<excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
