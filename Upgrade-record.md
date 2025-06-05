@@ -82,3 +82,7 @@
 82. 2025年5月13日17:34:15 feature: upgrade java version from 23 to 24
 83. 2025年5月13日17:34:22 feature: upgrade spring cloud version from 2024.0.0 to 2024.0.1
 84. 2025年5月13日17:34:35 feature: upgrade spring boot version from 3.4.2 to 3.4.5
+86. 2025年6月5日19:50:25 feature: upgrade alchim31 scala plugin version from 4.9.2 to 4.9.5
+87. 2025年6月5日19:50:44 feature: upgrade scala version from 2.13.15 to 2.13.16
+88. 2025年6月5日19:50:59 feature: upgrade spring cloud version from 2024.0.1 to 2025.0.0
+89. 2025年6月5日19:51:07 feature: upgrade spring boot version from 3.4.5 to 3.5.0
