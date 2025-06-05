@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.5</version>
+		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<modules>
@@ -54,7 +54,7 @@
 		<project.encoding>UTF-8</project.encoding>
 		<project.build.encoding>UTF-8</project.build.encoding>
 
-		<spring-cloud.version>2024.0.1</spring-cloud.version>
+		<spring-cloud.version>2025.0.0</spring-cloud.version>
 
 		<excavator.boot.version>2.0.0-SNAPSHOT</excavator.boot.version>
 
@@ -64,7 +64,7 @@
         <curator.version>5.3.0</curator.version>
 		<joda.time.version>2.12.2</joda.time.version>
 		<scala.major-version>2.13</scala.major-version>
-		<scala.version>${scala.major-version}.15</scala.version>
+		<scala.version>${scala.major-version}.16</scala.version>
 		<pagehelper.version>1.4.6</pagehelper.version>
 		<mybatis.version>3.0.1</mybatis.version>
 		<dom4j.version>2.1.4</dom4j.version>
@@ -112,7 +112,7 @@
 		<maven.gpg.plugin>1.6</maven.gpg.plugin>
 		<cobertura.maven.plugin>2.7</cobertura.maven.plugin>
 		<coveralls.maven.plugin>4.3.0</coveralls.maven.plugin>
-		<alchim31.scala.plugin>4.9.2</alchim31.scala.plugin>
+		<alchim31.scala.plugin>4.9.5</alchim31.scala.plugin>
 		<maven.surefire.plugin>3.0.0-M5</maven.surefire.plugin>
         <enforcer.plugin>3.0.0</enforcer.plugin>
 		<maven.compiler.proc>full</maven.compiler.proc>
