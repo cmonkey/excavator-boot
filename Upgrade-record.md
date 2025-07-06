@@ -86,3 +86,4 @@
 87. 2025年6月5日19:50:44 feature: upgrade scala version from 2.13.15 to 2.13.16
 88. 2025年6月5日19:50:59 feature: upgrade spring cloud version from 2024.0.1 to 2025.0.0
 89. 2025年6月5日19:51:07 feature: upgrade spring boot version from 3.4.5 to 3.5.0
+90. 2025年7月6日18:50:13 feature: upgrade spring boot version from 3.5.0 to 3.5.3
