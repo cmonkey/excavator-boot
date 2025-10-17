@@ -88,7 +88,7 @@
 		<javassist.version>3.29.2-GA</javassist.version>
 		<byte-buddy.version>1.14.2</byte-buddy.version>
 		<commons-io.version>2.14.0</commons-io.version>
-		<bouncycastle.version>1.78</bouncycastle.version>
+		<bouncycastle.version>1.79</bouncycastle.version>
 		<springswagger.version>3.0.0</springswagger.version>
         <jsch.version>0.1.55</jsch.version>
 		<monix.io.version>1.0.0</monix.io.version>
