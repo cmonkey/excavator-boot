@@ -64,7 +64,7 @@
         <curator.version>5.3.0</curator.version>
 		<joda.time.version>2.12.2</joda.time.version>
 		<scala.major-version>2.13</scala.major-version>
-		<scala.version>${scala.major-version}.16</scala.version>
+		<scala.version>${scala.major-version}.17</scala.version>
 		<pagehelper.version>1.4.6</pagehelper.version>
 		<mybatis.version>3.0.1</mybatis.version>
 		<dom4j.version>2.1.4</dom4j.version>
