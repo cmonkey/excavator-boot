@@ -95,4 +95,5 @@
 							feature: upgrade spring cloud version from 2025.0.0 to 2025.1.0
 96. 2026年2月11日10:35:48 feature: upgrade spring boot version from 4.0.1 to 4.0.2
 97. 2026年3月10日12:57:15 feature: upgrade spring boot version from 4.0.2 to 4.0.3
+98. 2026年6月23日20:55:22 feature: update spring boot version from 4.0.3 to 4.0.7
 
