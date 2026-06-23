@@ -96,4 +96,5 @@
 96. 2026年2月11日10:35:48 feature: upgrade spring boot version from 4.0.1 to 4.0.2
 97. 2026年3月10日12:57:15 feature: upgrade spring boot version from 4.0.2 to 4.0.3
 98. 2026年4月9日16:01:07 optimize: upgrade spring boot to 4.0.5 and upgrade java to 26 and upgrade spring cloude to 2025.1.1
+99. 2026年6月23日20:55:22 feature: update spring boot version from 4.0.3 to 4.0.7
 
